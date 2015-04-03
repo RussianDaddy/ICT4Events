@@ -1,6 +1,6 @@
-﻿namespace ICT4Events_user_interface
+﻿namespace ICT4Events
 {
-    partial class Form1
+    partial class ICT4EventsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
             this.gbInloggen = new System.Windows.Forms.GroupBox();
