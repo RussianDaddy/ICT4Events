@@ -44,14 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MateriaalBeheer\Exemplaar.cs" />
     <Compile Include="ICT4EventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ICT4EventsForm.Designer.cs">
       <DependentUpon>ICT4EventsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MateriaalBeheer\Materiaal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ICT4EventsForm.resx">
