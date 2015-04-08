@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ICT4Events
+﻿namespace ICT4Events.MateriaalBeheer
 {
     class Exemplaar
     {

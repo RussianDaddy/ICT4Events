@@ -54,6 +54,8 @@
     <Compile Include="MateriaalBeheer\Materiaal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReserveringBeheer\Reservering.cs" />
+    <Compile Include="ReserveringBeheer\ReserveringBeheer.cs" />
     <EmbeddedResource Include="ICT4EventsForm.resx">
       <DependentUpon>ICT4EventsForm.cs</DependentUpon>
     </EmbeddedResource>
