@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
+//database
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
         //private Enum e = new Enum;
-
+        private OracleConnection connection;
 
         public ICT4EventsForm()
         {
             InitializeComponent();
+            connection = new OracleConnection();
+            openDatabaseConnection();
             dtpDatumVan.MinDate = DateTime.Today;
             dtpDatumTot.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
@@ -28,6 +33,23 @@ namespace ICT4Events
                 "Comfortplaatsen", "Huurtentjes", "Plaatsen voor eigen tenten", "Stacaravans", "Invalidenaccomodaties",
                 "Bungalows", "Blokhutten", "Bungalinos"
             });
+        }
+
+        private void openDatabaseConnection()
+        {
+            try
+            {
+                String user = "system";
+                String pw = "P@ssw0rd";
+                connection.ConnectionString = "User Id=" + user + ";Password=" + pw + ";Data Source=" +
+                                              "//192.168.20.16/xe" + ";";
+                connection.Open();
+                MessageBox.Show("Database Connectie gelukt");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(" Database Connectie mislukt");
+            }
         }
 
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
