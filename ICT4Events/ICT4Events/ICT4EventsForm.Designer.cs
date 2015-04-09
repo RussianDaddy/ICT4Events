@@ -114,6 +114,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -147,7 +148,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
-            this.label43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1040,6 +1040,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlenen";
             // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 473);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 13);
+            this.label43.TabIndex = 12;
+            this.label43.Text = "label43";
+            // 
             // label42
             // 
             this.label42.AutoSize = true;
@@ -1360,22 +1369,13 @@
             this.checkedListBox3.Size = new System.Drawing.Size(315, 484);
             this.checkedListBox3.TabIndex = 75;
             // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(6, 473);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 13);
-            this.label43.TabIndex = 12;
-            this.label43.Text = "label43";
-            // 
-            // Form1
+            // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 593);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "ICT4EventsForm";
             this.Text = "ICT4Events";
             this.tabControl1.ResumeLayout(false);
             this.TabInloggen.ResumeLayout(false);

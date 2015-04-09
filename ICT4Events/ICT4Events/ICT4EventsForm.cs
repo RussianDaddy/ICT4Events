@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Data;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 //database
 using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 
 namespace ICT4Events
 {
@@ -10,12 +11,11 @@ namespace ICT4Events
     {
         //private Enum e = new Enum;
         private OracleConnection connection;
+        private String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.16/xe;";
 
         public ICT4EventsForm()
         {
             InitializeComponent();
-            connection = new OracleConnection();
-            openDatabaseConnection();
             dtpDatumVan.MinDate = DateTime.Today;
             dtpDatumTot.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
@@ -33,23 +33,6 @@ namespace ICT4Events
                 "Comfortplaatsen", "Huurtentjes", "Plaatsen voor eigen tenten", "Stacaravans", "Invalidenaccomodaties",
                 "Bungalows", "Blokhutten", "Bungalinos"
             });
-        }
-
-        private void openDatabaseConnection()
-        {
-            try
-            {
-                String user = "system";
-                String pw = "P@ssw0rd";
-                connection.ConnectionString = "User Id=" + user + ";Password=" + pw + ";Data Source=" +
-                                              "//192.168.20.16/xe" + ";";
-                connection.Open();
-                MessageBox.Show("Database Connectie gelukt");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(" Database Connectie mislukt");
-            }
         }
 
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
@@ -78,6 +61,30 @@ namespace ICT4Events
             {
                 MessageBox.Show("Vul alle velden in!");
             }
+        }
+
+        private DataTable geefKampeerplaatsen()
+        {
+            connection = new OracleConnection(connectionString);
+            OracleCommand command = new OracleCommand(ReserveringBeheer.ReserveringBeheer.AllePlaatsen(), connection);
+            connection.Open();
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+                return dataTable;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Query Mislukt!");
+            }
+            finally
+            {
+                connection.Close();
+                command.Dispose();
+            }
+            return null;
         }
     }
 }

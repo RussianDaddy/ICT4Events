@@ -14,9 +14,11 @@ namespace ICT4Events.Mediabeheer
         public bool Like { get; set; }
         public bool Report { get; set; }
 
+        /*
         public MediaFile(int id, string type, Categorie categorie, string path, Gebruiker gebruiker)
         {
             
         }
+         */
     }
 }
