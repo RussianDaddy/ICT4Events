@@ -14,10 +14,11 @@ namespace ICT4Events
         public ICT4EventsForm()
         {
             InitializeComponent();
-            dtpDatumVan.MinDate = DateTime.Today;
-            dtpDatumTot.MinDate = DateTime.Today;
+            dtpDatumAankomst.MinDate = DateTime.Today;
+            dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
             dtpGeboorteDatum.MaxDate = oneYearAgoToday;
+            /*
             for (var i = 1; i < 101; i++)
             {
                 cbAantalPersonen.Items.Add(i);
@@ -30,17 +31,18 @@ namespace ICT4Events
             {
                 "Comfortplaatsen", "Huurtentjes", "Plaatsen voor eigen tenten", "Stacaravans", "Invalidenaccomodaties",
                 "Bungalows", "Blokhutten", "Bungalinos"
-            });
+            });*/
         }
 
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
-            reservatievan = dtpDatumVan.Value;
-            dtpDatumTot.MinDate = reservatievan;
-            dtpDatumTot.Refresh();
+            reservatievan = dtpDatumAankomst.Value;
+            dtpDatumVertrek.MinDate = reservatievan;
+            dtpDatumVertrek.Refresh();
         }
 
+        /*
         private void btReserveer_Click(object sender, EventArgs e)
         {
             if (tbVoornaam.Text == "" || tbAchternaam.Text == "" || tbWoonplaats.Text == "" ||
@@ -60,5 +62,6 @@ namespace ICT4Events
                 MessageBox.Show("Vul alle velden in!");
             }
         }
+         */
     }
 }

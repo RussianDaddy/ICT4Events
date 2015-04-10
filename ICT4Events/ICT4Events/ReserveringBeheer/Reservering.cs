@@ -8,17 +8,17 @@ namespace ICT4Events.ReserveringBeheer
 {
     class Reservering
     {
-        public int Number { get; set; }
-        public DateTime Date { get; set; }
-        public bool Paid { get; set; }
+        public int Nummer { get; set; }
+        public DateTime Datum { get; set; }
+        public bool Betaald { get; set; }
 
 
 
         public Reservering(int number, DateTime date, bool paid)
         {
-            Number = number;
-            Date = date;
-            Paid = paid;
+            Nummer = number;
+            Datum = date;
+            Betaald = paid;
         }
     }
 }

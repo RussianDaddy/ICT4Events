@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Database.cs" />
     <Compile Include="MateriaalBeheer\Exemplaar.cs" />
     <Compile Include="ICT4EventsForm.cs">
       <SubType>Form</SubType>
