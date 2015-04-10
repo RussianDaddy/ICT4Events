@@ -16,6 +16,8 @@ namespace ICT4Events
         public ICT4EventsForm()
         {
             InitializeComponent();
+            //clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
+            //clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
