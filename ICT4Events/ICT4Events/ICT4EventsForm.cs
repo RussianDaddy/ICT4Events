@@ -17,8 +17,11 @@ namespace ICT4Events
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
+<<<<<<< HEAD
             dtpGeboorteDatum.MaxDate = oneYearAgoToday;
             /*
+=======
+>>>>>>> origin/master
             for (var i = 1; i < 101; i++)
             {
                 cbAantalPersonen.Items.Add(i);
@@ -62,6 +65,14 @@ namespace ICT4Events
                 MessageBox.Show("Vul alle velden in!");
             }
         }
+<<<<<<< HEAD
          */
+=======
+
+        private void btnAanmakenBeheer_Click(object sender, EventArgs e)
+        {
+
+        }
+>>>>>>> origin/master
     }
 }

@@ -95,32 +95,27 @@
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnWijzigenBeheer = new System.Windows.Forms.Button();
+            this.btnAanpassenBeheer = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dtpGeboorteDatum = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.tbEmailBeheer = new System.Windows.Forms.TextBox();
+            this.tbVoornaamBeheer = new System.Windows.Forms.TextBox();
+            this.tbAchternaamBeheer = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.btnAanmakenBeheer = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
             this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
+=======
+            this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+>>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -141,7 +136,6 @@
             this.groupBox1.SuspendLayout();
             this.TabBeheren.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -801,8 +795,10 @@
             // TabBeheren
             // 
             this.TabBeheren.BackColor = System.Drawing.Color.LightGray;
-            this.TabBeheren.Controls.Add(this.button5);
-            this.TabBeheren.Controls.Add(this.button4);
+            this.TabBeheren.Controls.Add(this.BetaalstatusBeheer);
+            this.TabBeheren.Controls.Add(this.btnAanmakenBeheer);
+            this.TabBeheren.Controls.Add(this.btnWijzigenBeheer);
+            this.TabBeheren.Controls.Add(this.btnAanpassenBeheer);
             this.TabBeheren.Controls.Add(this.groupBox4);
             this.TabBeheren.Controls.Add(this.groupBox2);
             this.TabBeheren.Location = new System.Drawing.Point(4, 22);
@@ -811,242 +807,124 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
-            // button5
+            // btnWijzigenBeheer
             // 
-            this.button5.Location = new System.Drawing.Point(704, 258);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Wijzigen";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnWijzigenBeheer.Location = new System.Drawing.Point(704, 141);
+            this.btnWijzigenBeheer.Name = "btnWijzigenBeheer";
+            this.btnWijzigenBeheer.Size = new System.Drawing.Size(75, 23);
+            this.btnWijzigenBeheer.TabIndex = 2;
+            this.btnWijzigenBeheer.Text = "Wijzigen";
+            this.btnWijzigenBeheer.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnAanpassenBeheer
             // 
-            this.button4.Location = new System.Drawing.Point(368, 35);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Aanpassen";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAanpassenBeheer.Location = new System.Drawing.Point(368, 35);
+            this.btnAanpassenBeheer.Name = "btnAanpassenBeheer";
+            this.btnAanpassenBeheer.Size = new System.Drawing.Size(75, 23);
+            this.btnAanpassenBeheer.TabIndex = 0;
+            this.btnAanpassenBeheer.Text = "Aanpassen";
+            this.btnAanpassenBeheer.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.numericUpDown1);
-            this.groupBox4.Controls.Add(this.dtpGeboorteDatum);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.textBox7);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.tbEmailBeheer);
+            this.groupBox4.Controls.Add(this.tbVoornaamBeheer);
+            this.groupBox4.Controls.Add(this.tbAchternaamBeheer);
             this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Controls.Add(this.label25);
-            this.groupBox4.Controls.Add(this.label26);
-            this.groupBox4.Controls.Add(this.label27);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Location = new System.Drawing.Point(470, 15);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(327, 237);
+            this.groupBox4.Size = new System.Drawing.Size(327, 120);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Persoons Gegevens";
             // 
-            // numericUpDown1
+            // tbEmailBeheer
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(144, 124);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            18926,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(42, 20);
-            this.numericUpDown1.TabIndex = 74;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.tbEmailBeheer.Location = new System.Drawing.Point(144, 71);
+            this.tbEmailBeheer.Name = "tbEmailBeheer";
+            this.tbEmailBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbEmailBeheer.TabIndex = 72;
             // 
-            // dtpGeboorteDatum
+            // tbVoornaamBeheer
             // 
-            this.dtpGeboorteDatum.Location = new System.Drawing.Point(144, 180);
-            this.dtpGeboorteDatum.MaxDate = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
-            this.dtpGeboorteDatum.Name = "dtpGeboorteDatum";
-            this.dtpGeboorteDatum.Size = new System.Drawing.Size(165, 20);
-            this.dtpGeboorteDatum.TabIndex = 73;
-            this.dtpGeboorteDatum.Value = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
+            this.tbVoornaamBeheer.Location = new System.Drawing.Point(144, 17);
+            this.tbVoornaamBeheer.Name = "tbVoornaamBeheer";
+            this.tbVoornaamBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbVoornaamBeheer.TabIndex = 66;
             // 
-            // textBox2
+            // tbAchternaamBeheer
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 206);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 20);
-            this.textBox2.TabIndex = 72;
+            this.tbAchternaamBeheer.Location = new System.Drawing.Point(144, 43);
+            this.tbAchternaamBeheer.Name = "tbAchternaamBeheer";
+            this.tbAchternaamBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbAchternaamBeheer.TabIndex = 64;
             // 
-            // textBox3
+            // groupBox2
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(165, 20);
-            this.textBox3.TabIndex = 71;
+            this.groupBox2.Controls.Add(this.clbGebruikersBeheer);
+            this.groupBox2.Location = new System.Drawing.Point(12, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(327, 509);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Gebruikers";
             // 
-            // textBox4
+            // clbGebruikersBeheer
             // 
-            this.textBox4.Location = new System.Drawing.Point(266, 124);
-            this.textBox4.MaxLength = 3;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(43, 20);
-            this.textBox4.TabIndex = 70;
+            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
+            this.clbGebruikersBeheer.FormattingEnabled = true;
+            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
+            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
+            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
+            this.clbGebruikersBeheer.TabIndex = 75;
             // 
-            // label21
+            // btnAanmakenBeheer
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(193, 127);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(67, 13);
-            this.label21.TabIndex = 69;
-            this.label21.Text = "Toevoeging:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox5.Location = new System.Drawing.Point(266, 95);
-            this.textBox5.MaxLength = 2;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(43, 20);
-            this.textBox5.TabIndex = 68;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(144, 95);
-            this.textBox6.MaxLength = 4;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(116, 20);
-            this.textBox6.TabIndex = 67;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(144, 17);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(165, 20);
-            this.textBox7.TabIndex = 66;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(144, 69);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(165, 20);
-            this.textBox8.TabIndex = 65;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(144, 43);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(165, 20);
-            this.textBox9.TabIndex = 64;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(117, 126);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(21, 13);
-            this.label22.TabIndex = 63;
-            this.label22.Text = "Nr:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 209);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(35, 13);
-            this.label23.TabIndex = 62;
-            this.label23.Text = "Email:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 183);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(83, 13);
-            this.label24.TabIndex = 61;
-            this.label24.Text = "Geboortedatum:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 157);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(89, 13);
-            this.label25.TabIndex = 60;
-            this.label25.Text = "Telefoonnummer:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 98);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(55, 13);
-            this.label26.TabIndex = 59;
-            this.label26.Text = "Postcode:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(6, 72);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(67, 13);
-            this.label27.TabIndex = 58;
-            this.label27.Text = "Woonplaats:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 46);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(67, 13);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "Achternaam:";
+            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 141);
+            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
+            this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
+            this.btnAanmakenBeheer.TabIndex = 3;
+            this.btnAanmakenBeheer.Text = "Aanmaken";
+            this.btnAanmakenBeheer.UseVisualStyleBackColor = true;
+            this.btnAanmakenBeheer.Click += new System.EventHandler(this.btnAanmakenBeheer_Click);
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(6, 20);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(58, 13);
+            this.label29.Size = new System.Drawing.Size(87, 13);
             this.label29.TabIndex = 56;
-            this.label29.Text = "Voornaam:";
+            this.label29.Text = "Gebruikersnaam:";
             // 
-            // groupBox2
+            // label23
             // 
-            this.groupBox2.Controls.Add(this.checkedListBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(327, 509);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 74);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(71, 13);
+            this.label23.TabIndex = 62;
+            this.label23.Text = "Wachtwoord:";
             // 
-            // checkedListBox3
+            // label28
             // 
-            this.checkedListBox3.BackColor = System.Drawing.Color.SeaShell;
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Location = new System.Drawing.Point(6, 17);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(315, 484);
-            this.checkedListBox3.TabIndex = 75;
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 46);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "Naam:";
+            // 
+            // BetaalstatusBeheer
+            // 
+            this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
+            this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
+            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
+            this.BetaalstatusBeheer.TabIndex = 4;
+            this.BetaalstatusBeheer.TabStop = false;
+            this.BetaalstatusBeheer.Text = "Betaalstatus";
             // 
             // clbGebruikers
             // 
@@ -1100,7 +978,6 @@
             this.TabBeheren.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1138,30 +1015,14 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAanpassenBeheer;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DateTimePicker dtpGeboorteDatum;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.CheckedListBox checkedListBox3;
+        private System.Windows.Forms.TextBox tbEmailBeheer;
+        private System.Windows.Forms.TextBox tbVoornaamBeheer;
+        private System.Windows.Forms.TextBox tbAchternaamBeheer;
+        private System.Windows.Forms.Button btnWijzigenBeheer;
+        private System.Windows.Forms.CheckedListBox clbGebruikersBeheer;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -1198,8 +1059,16 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label43;
+<<<<<<< HEAD
         private System.Windows.Forms.CheckedListBox clbKampeerplaatsen;
         private System.Windows.Forms.CheckedListBox clbGebruikers;
+=======
+        private System.Windows.Forms.Button btnAanmakenBeheer;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.GroupBox BetaalstatusBeheer;
+>>>>>>> origin/master
     }
 }
 
