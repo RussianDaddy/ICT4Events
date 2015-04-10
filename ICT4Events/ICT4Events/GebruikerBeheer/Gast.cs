@@ -8,8 +8,8 @@ namespace ICT4Events.GebruikerBeheer
 {
     class Gast : Gebruiker
     {
-        public Gast(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, int rfid) 
-            : base(gebruikersnaam, naam, wachtwoord, aanwezig, rfid)
+        public Gast(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, int rfid, bool admin) 
+            : base(gebruikersnaam, naam, wachtwoord, aanwezig, rfid, admin)
         {
 
         }
