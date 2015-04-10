@@ -14,9 +14,11 @@ namespace ICT4Events.GebruikerBeheer
 
         }
 
-        public string Registreren(string email, string naam, string wachtwoord, bool admin)
+        public void Registreren(string email, string naam, string wachtwoord, int aanwezig, string admin)
         {
-            return "";
+            string sql = "INSERT INTO GEBRUIKER(Gebruikersnaam, Naam, Wachtwoord,  Aanwezig, AdminCheck) VALUES('"+ email +"','" + naam + "','" + wachtwoord + "','" + Convert.ToString(aanwezig) + "','" + Convert.ToString(admin) + "')";
+            Database.Insert(sql);
         }
+
     }
 }

@@ -41,6 +41,8 @@
             this.TebReserveren = new System.Windows.Forms.TabPage();
             this.btReserveer = new System.Windows.Forms.Button();
             this.gbReserveren = new System.Windows.Forms.GroupBox();
+            this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
+            this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
             this.dtpDatumVertrek = new System.Windows.Forms.DateTimePicker();
             this.dtpDatumAankomst = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
@@ -95,21 +97,21 @@
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
+            this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+            this.btnAanmakenBeheer = new System.Windows.Forms.Button();
             this.btnWijzigenBeheer = new System.Windows.Forms.Button();
             this.btnAanpassenBeheer = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tbEmailBeheer = new System.Windows.Forms.TextBox();
-            this.tbVoornaamBeheer = new System.Windows.Forms.TextBox();
-            this.tbAchternaamBeheer = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.btnAanmakenBeheer = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
+            this.tbWachtwoordBeheer = new System.Windows.Forms.TextBox();
+            this.tbGebruikersnaamBeheer = new System.Windows.Forms.TextBox();
+            this.tbNaamBeheer = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
-            this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
-            this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbAdminBeheer = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -263,6 +265,22 @@
             this.gbReserveren.TabIndex = 0;
             this.gbReserveren.TabStop = false;
             this.gbReserveren.Text = "Reserveren";
+            // 
+            // clbKampeerplaatsen
+            // 
+            this.clbKampeerplaatsen.FormattingEnabled = true;
+            this.clbKampeerplaatsen.Location = new System.Drawing.Point(602, 19);
+            this.clbKampeerplaatsen.Name = "clbKampeerplaatsen";
+            this.clbKampeerplaatsen.Size = new System.Drawing.Size(191, 469);
+            this.clbKampeerplaatsen.TabIndex = 54;
+            // 
+            // clbGebruikers
+            // 
+            this.clbGebruikers.FormattingEnabled = true;
+            this.clbGebruikers.Location = new System.Drawing.Point(6, 19);
+            this.clbGebruikers.Name = "clbGebruikers";
+            this.clbGebruikers.Size = new System.Drawing.Size(191, 469);
+            this.clbGebruikers.TabIndex = 53;
             // 
             // dtpDatumVertrek
             // 
@@ -801,9 +819,28 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
+            // BetaalstatusBeheer
+            // 
+            this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
+            this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
+            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
+            this.BetaalstatusBeheer.TabIndex = 4;
+            this.BetaalstatusBeheer.TabStop = false;
+            this.BetaalstatusBeheer.Text = "Betaalstatus";
+            // 
+            // btnAanmakenBeheer
+            // 
+            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 156);
+            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
+            this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
+            this.btnAanmakenBeheer.TabIndex = 3;
+            this.btnAanmakenBeheer.Text = "Aanmaken";
+            this.btnAanmakenBeheer.UseVisualStyleBackColor = true;
+            this.btnAanmakenBeheer.Click += new System.EventHandler(this.btnAanmakenBeheer_Click);
+            // 
             // btnWijzigenBeheer
             // 
-            this.btnWijzigenBeheer.Location = new System.Drawing.Point(704, 141);
+            this.btnWijzigenBeheer.Location = new System.Drawing.Point(704, 156);
             this.btnWijzigenBeheer.Name = "btnWijzigenBeheer";
             this.btnWijzigenBeheer.Size = new System.Drawing.Size(75, 23);
             this.btnWijzigenBeheer.TabIndex = 2;
@@ -821,39 +858,68 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.tbEmailBeheer);
-            this.groupBox4.Controls.Add(this.tbVoornaamBeheer);
-            this.groupBox4.Controls.Add(this.tbAchternaamBeheer);
+            this.groupBox4.Controls.Add(this.cbAdminBeheer);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.tbWachtwoordBeheer);
+            this.groupBox4.Controls.Add(this.tbGebruikersnaamBeheer);
+            this.groupBox4.Controls.Add(this.tbNaamBeheer);
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Location = new System.Drawing.Point(470, 15);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(327, 120);
+            this.groupBox4.Size = new System.Drawing.Size(327, 128);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Persoons Gegevens";
             // 
-            // tbEmailBeheer
+            // tbWachtwoordBeheer
             // 
-            this.tbEmailBeheer.Location = new System.Drawing.Point(144, 71);
-            this.tbEmailBeheer.Name = "tbEmailBeheer";
-            this.tbEmailBeheer.Size = new System.Drawing.Size(165, 20);
-            this.tbEmailBeheer.TabIndex = 72;
+            this.tbWachtwoordBeheer.Location = new System.Drawing.Point(144, 71);
+            this.tbWachtwoordBeheer.Name = "tbWachtwoordBeheer";
+            this.tbWachtwoordBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbWachtwoordBeheer.TabIndex = 72;
             // 
-            // tbVoornaamBeheer
+            // tbGebruikersnaamBeheer
             // 
-            this.tbVoornaamBeheer.Location = new System.Drawing.Point(144, 17);
-            this.tbVoornaamBeheer.Name = "tbVoornaamBeheer";
-            this.tbVoornaamBeheer.Size = new System.Drawing.Size(165, 20);
-            this.tbVoornaamBeheer.TabIndex = 66;
+            this.tbGebruikersnaamBeheer.Location = new System.Drawing.Point(144, 17);
+            this.tbGebruikersnaamBeheer.Name = "tbGebruikersnaamBeheer";
+            this.tbGebruikersnaamBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbGebruikersnaamBeheer.TabIndex = 66;
             // 
-            // tbAchternaamBeheer
+            // tbNaamBeheer
             // 
-            this.tbAchternaamBeheer.Location = new System.Drawing.Point(144, 43);
-            this.tbAchternaamBeheer.Name = "tbAchternaamBeheer";
-            this.tbAchternaamBeheer.Size = new System.Drawing.Size(165, 20);
-            this.tbAchternaamBeheer.TabIndex = 64;
+            this.tbNaamBeheer.Location = new System.Drawing.Point(144, 43);
+            this.tbNaamBeheer.Name = "tbNaamBeheer";
+            this.tbNaamBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbNaamBeheer.TabIndex = 64;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 74);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(71, 13);
+            this.label23.TabIndex = 62;
+            this.label23.Text = "Wachtwoord:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 46);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "Naam:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 20);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(87, 13);
+            this.label29.TabIndex = 56;
+            this.label29.Text = "Gebruikersnaam:";
             // 
             // groupBox2
             // 
@@ -874,67 +940,23 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
-            // btnAanmakenBeheer
+            // label1
             // 
-            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 141);
-            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
-            this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
-            this.btnAanmakenBeheer.TabIndex = 3;
-            this.btnAanmakenBeheer.Text = "Aanmaken";
-            this.btnAanmakenBeheer.UseVisualStyleBackColor = true;
-            this.btnAanmakenBeheer.Click += new System.EventHandler(this.btnAanmakenBeheer_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Admin:";
             // 
-            // label29
+            // cbAdminBeheer
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 20);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(87, 13);
-            this.label29.TabIndex = 56;
-            this.label29.Text = "Gebruikersnaam:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 74);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(71, 13);
-            this.label23.TabIndex = 62;
-            this.label23.Text = "Wachtwoord:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 46);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 13);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "Naam:";
-            // 
-            // BetaalstatusBeheer
-            // 
-            this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
-            this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
-            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
-            this.BetaalstatusBeheer.TabIndex = 4;
-            this.BetaalstatusBeheer.TabStop = false;
-            this.BetaalstatusBeheer.Text = "Betaalstatus";
-            // 
-            // clbGebruikers
-            // 
-            this.clbGebruikers.FormattingEnabled = true;
-            this.clbGebruikers.Location = new System.Drawing.Point(6, 19);
-            this.clbGebruikers.Name = "clbGebruikers";
-            this.clbGebruikers.Size = new System.Drawing.Size(191, 469);
-            this.clbGebruikers.TabIndex = 53;
-            // 
-            // clbKampeerplaatsen
-            // 
-            this.clbKampeerplaatsen.FormattingEnabled = true;
-            this.clbKampeerplaatsen.Location = new System.Drawing.Point(602, 19);
-            this.clbKampeerplaatsen.Name = "clbKampeerplaatsen";
-            this.clbKampeerplaatsen.Size = new System.Drawing.Size(191, 469);
-            this.clbKampeerplaatsen.TabIndex = 54;
+            this.cbAdminBeheer.AutoSize = true;
+            this.cbAdminBeheer.Location = new System.Drawing.Point(144, 98);
+            this.cbAdminBeheer.Name = "cbAdminBeheer";
+            this.cbAdminBeheer.Size = new System.Drawing.Size(15, 14);
+            this.cbAdminBeheer.TabIndex = 74;
+            this.cbAdminBeheer.UseVisualStyleBackColor = true;
             // 
             // ICT4EventsForm
             // 
@@ -1012,9 +1034,9 @@
         private System.Windows.Forms.Button btnAanpassenBeheer;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox tbEmailBeheer;
-        private System.Windows.Forms.TextBox tbVoornaamBeheer;
-        private System.Windows.Forms.TextBox tbAchternaamBeheer;
+        private System.Windows.Forms.TextBox tbWachtwoordBeheer;
+        private System.Windows.Forms.TextBox tbGebruikersnaamBeheer;
+        private System.Windows.Forms.TextBox tbNaamBeheer;
         private System.Windows.Forms.Button btnWijzigenBeheer;
         private System.Windows.Forms.CheckedListBox clbGebruikersBeheer;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1060,6 +1082,8 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox BetaalstatusBeheer;
+        private System.Windows.Forms.CheckBox cbAdminBeheer;
+        private System.Windows.Forms.Label label1;
     }
 }
 
