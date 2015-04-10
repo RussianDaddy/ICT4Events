@@ -14,7 +14,7 @@ namespace ICT4Events.ReserveringBeheer
         private OracleConnection connection;
         private String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.16/xe;";
 
-        public void Reserveren(int number, DateTime date, bool paid)
+        public bool Reserveren(int number, DateTime date, bool paid, int campnumber)
         {
             throw new NotImplementedException();
         }

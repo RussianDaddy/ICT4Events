@@ -17,7 +17,7 @@ namespace ICT4Events
             dtpDatumVan.MinDate = DateTime.Today;
             dtpDatumTot.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
-            dtpGeboortedatum.MaxDate = oneYearAgoToday;
+            dtpGeboorteDatum.MaxDate = oneYearAgoToday;
             for (var i = 1; i < 101; i++)
             {
                 cbAantalPersonen.Items.Add(i);

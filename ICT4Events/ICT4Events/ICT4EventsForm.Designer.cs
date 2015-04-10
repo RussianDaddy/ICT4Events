@@ -49,7 +49,7 @@
             this.cbKampeerplaats = new System.Windows.Forms.ComboBox();
             this.cbVoorkeursplek = new System.Windows.Forms.ComboBox();
             this.cbAantalPersonen = new System.Windows.Forms.ComboBox();
-            this.dtpGeboortedatum = new System.Windows.Forms.DateTimePicker();
+            this.dtpBlaBla = new System.Windows.Forms.DateTimePicker();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbTelefoonnummer = new System.Windows.Forms.TextBox();
             this.tbToevoeging = new System.Windows.Forms.TextBox();
@@ -128,7 +128,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpGeboorteDatum = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -301,7 +301,7 @@
             this.gbReserveren.Controls.Add(this.cbKampeerplaats);
             this.gbReserveren.Controls.Add(this.cbVoorkeursplek);
             this.gbReserveren.Controls.Add(this.cbAantalPersonen);
-            this.gbReserveren.Controls.Add(this.dtpGeboortedatum);
+            this.gbReserveren.Controls.Add(this.dtpBlaBla);
             this.gbReserveren.Controls.Add(this.tbEmail);
             this.gbReserveren.Controls.Add(this.tbTelefoonnummer);
             this.gbReserveren.Controls.Add(this.tbToevoeging);
@@ -417,14 +417,14 @@
             this.cbAantalPersonen.Size = new System.Drawing.Size(165, 21);
             this.cbAantalPersonen.TabIndex = 47;
             // 
-            // dtpGeboortedatum
+            // dtpBlaBla
             // 
-            this.dtpGeboortedatum.Location = new System.Drawing.Point(144, 171);
-            this.dtpGeboortedatum.MaxDate = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
-            this.dtpGeboortedatum.Name = "dtpGeboortedatum";
-            this.dtpGeboortedatum.Size = new System.Drawing.Size(165, 20);
-            this.dtpGeboortedatum.TabIndex = 46;
-            this.dtpGeboortedatum.Value = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
+            this.dtpBlaBla.Location = new System.Drawing.Point(144, 171);
+            this.dtpBlaBla.MaxDate = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
+            this.dtpBlaBla.Name = "dtpBlaBla";
+            this.dtpBlaBla.Size = new System.Drawing.Size(165, 20);
+            this.dtpBlaBla.TabIndex = 46;
+            this.dtpBlaBla.Value = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
             // 
             // tbEmail
             // 
@@ -1153,7 +1153,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.numericUpDown1);
-            this.groupBox4.Controls.Add(this.dateTimePicker1);
+            this.groupBox4.Controls.Add(this.dtpGeboorteDatum);
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.textBox4);
@@ -1200,14 +1200,14 @@
             0,
             0});
             // 
-            // dateTimePicker1
+            // dtpGeboorteDatum
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(144, 180);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(165, 20);
-            this.dateTimePicker1.TabIndex = 73;
-            this.dateTimePicker1.Value = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
+            this.dtpGeboorteDatum.Location = new System.Drawing.Point(144, 180);
+            this.dtpGeboorteDatum.MaxDate = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
+            this.dtpGeboorteDatum.Name = "dtpGeboorteDatum";
+            this.dtpGeboorteDatum.Size = new System.Drawing.Size(165, 20);
+            this.dtpGeboorteDatum.TabIndex = 73;
+            this.dtpGeboorteDatum.Value = new System.DateTime(2015, 3, 9, 0, 0, 0, 0);
             // 
             // textBox2
             // 
@@ -1433,7 +1433,7 @@
         private System.Windows.Forms.DateTimePicker dtpDatumVan;
         private System.Windows.Forms.ComboBox cbVoorkeursplek;
         private System.Windows.Forms.ComboBox cbAantalPersonen;
-        private System.Windows.Forms.DateTimePicker dtpGeboortedatum;
+        private System.Windows.Forms.DateTimePicker dtpBlaBla;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbTelefoonnummer;
         private System.Windows.Forms.TextBox tbToevoeging;
@@ -1476,7 +1476,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpGeboorteDatum;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
