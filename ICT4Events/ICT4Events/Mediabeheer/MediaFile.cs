@@ -8,7 +8,8 @@ namespace ICT4Events.Mediabeheer
 {
     public class Mediafile
     {
-        public Mediafile(int Id, String Naam, String Type, Categorie categorie, String Path, bool Like, bool Report)
+        private string stringding;
+        public Mediafile(int Id, String Naam, String Type, Categorie categorie, String Path, int Like, bool Report)
         {
             this.Id = Id;
             this.Naam = Naam;
@@ -24,11 +25,14 @@ namespace ICT4Events.Mediabeheer
         public String Type { get; set; }
         public Categorie categorie { get; set; }
         public String Path { get; set; }
-        public bool Like { get; set; }
+        public int Like { get; set; }
         public bool Report { get; set; }
 
 
-
+        public string ToString()
+        {
+            return Id + " - " + Naam + " - " + Type + " - " + categorie.Naam + " - " + Path + " - " + Like + " - " + Report;
+        }
 
 
     }

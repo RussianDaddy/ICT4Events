@@ -43,8 +43,6 @@
             this.gbReserveren = new System.Windows.Forms.GroupBox();
             this.clbReserveringKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
             this.clbReserveringGebruikers = new System.Windows.Forms.CheckedListBox();
-            //this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
-            //this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
             this.dtpDatumVertrek = new System.Windows.Forms.DateTimePicker();
             this.dtpDatumAankomst = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
@@ -59,15 +57,15 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.gbsoort = new System.Windows.Forms.GroupBox();
+            this.btFilter = new System.Windows.Forms.Button();
+            this.chbEvent = new System.Windows.Forms.CheckBox();
+            this.chbBestand = new System.Windows.Forms.CheckBox();
+            this.chbFoto = new System.Windows.Forms.CheckBox();
+            this.chbBericht = new System.Windows.Forms.CheckBox();
+            this.chbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LbFeed = new System.Windows.Forms.ListBox();
             this.TabAlgemeneinfo = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -111,6 +109,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btShowAll = new System.Windows.Forms.Button();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbAdminBeheer = new System.Windows.Forms.CheckBox();
@@ -124,7 +123,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.gbsoort.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.TabAlgemeneinfo.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -390,7 +389,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.groupBox7);
-            this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Controls.Add(this.gbsoort);
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox5.Location = new System.Drawing.Point(580, 3);
             this.groupBox5.Name = "groupBox5";
@@ -417,83 +416,85 @@
             this.treeView1.Size = new System.Drawing.Size(187, 291);
             this.treeView1.TabIndex = 0;
             // 
-            // groupBox6
+            // gbsoort
             // 
-            this.groupBox6.Controls.Add(this.button10);
-            this.groupBox6.Controls.Add(this.checkBox6);
-            this.groupBox6.Controls.Add(this.checkBox5);
-            this.groupBox6.Controls.Add(this.checkBox4);
-            this.groupBox6.Controls.Add(this.checkBox3);
-            this.groupBox6.Controls.Add(this.checkBox2);
-            this.groupBox6.Location = new System.Drawing.Point(7, 20);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 158);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Soort";
+            this.gbsoort.Controls.Add(this.btShowAll);
+            this.gbsoort.Controls.Add(this.btFilter);
+            this.gbsoort.Controls.Add(this.chbEvent);
+            this.gbsoort.Controls.Add(this.chbBestand);
+            this.gbsoort.Controls.Add(this.chbFoto);
+            this.gbsoort.Controls.Add(this.chbBericht);
+            this.gbsoort.Controls.Add(this.chbVideo);
+            this.gbsoort.Location = new System.Drawing.Point(7, 20);
+            this.gbsoort.Name = "gbsoort";
+            this.gbsoort.Size = new System.Drawing.Size(200, 158);
+            this.gbsoort.TabIndex = 0;
+            this.gbsoort.TabStop = false;
+            this.gbsoort.Text = "Soort";
             // 
-            // button10
+            // btFilter
             // 
-            this.button10.Location = new System.Drawing.Point(119, 129);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 5;
-            this.button10.Text = "Filter";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btFilter.Location = new System.Drawing.Point(119, 129);
+            this.btFilter.Name = "btFilter";
+            this.btFilter.Size = new System.Drawing.Size(75, 23);
+            this.btFilter.TabIndex = 5;
+            this.btFilter.Text = "Filter";
+            this.btFilter.UseVisualStyleBackColor = true;
+            this.btFilter.Click += new System.EventHandler(this.btFilter_Click);
             // 
-            // checkBox6
+            // chbEvent
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(3, 107);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(59, 17);
-            this.checkBox6.TabIndex = 4;
-            this.checkBox6.Text = "Events";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.chbEvent.AutoSize = true;
+            this.chbEvent.Location = new System.Drawing.Point(3, 107);
+            this.chbEvent.Name = "chbEvent";
+            this.chbEvent.Size = new System.Drawing.Size(59, 17);
+            this.chbEvent.TabIndex = 4;
+            this.chbEvent.Text = "Events";
+            this.chbEvent.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chbBestand
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(3, 84);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(65, 17);
-            this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "Bestand";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chbBestand.AutoSize = true;
+            this.chbBestand.Location = new System.Drawing.Point(3, 84);
+            this.chbBestand.Name = "chbBestand";
+            this.chbBestand.Size = new System.Drawing.Size(65, 17);
+            this.chbBestand.TabIndex = 3;
+            this.chbBestand.Text = "Bestand";
+            this.chbBestand.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // chbFoto
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(3, 61);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(54, 17);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "Foto\'s";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.chbFoto.AutoSize = true;
+            this.chbFoto.Location = new System.Drawing.Point(3, 61);
+            this.chbFoto.Name = "chbFoto";
+            this.chbFoto.Size = new System.Drawing.Size(54, 17);
+            this.chbFoto.TabIndex = 2;
+            this.chbFoto.Text = "Foto\'s";
+            this.chbFoto.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // chbBericht
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(3, 15);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(59, 17);
-            this.checkBox3.TabIndex = 1;
-            this.checkBox3.Text = "Bericht";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chbBericht.AutoSize = true;
+            this.chbBericht.Location = new System.Drawing.Point(3, 15);
+            this.chbBericht.Name = "chbBericht";
+            this.chbBericht.Size = new System.Drawing.Size(59, 17);
+            this.chbBericht.TabIndex = 1;
+            this.chbBericht.Text = "Bericht";
+            this.chbBericht.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chbVideo
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(3, 38);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(53, 17);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Video";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chbVideo.AutoSize = true;
+            this.chbVideo.Location = new System.Drawing.Point(3, 38);
+            this.chbVideo.Name = "chbVideo";
+            this.chbVideo.Size = new System.Drawing.Size(53, 17);
+            this.chbVideo.TabIndex = 0;
+            this.chbVideo.Text = "Video";
+            this.chbVideo.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Controls.Add(this.LbFeed);
             this.groupBox3.Location = new System.Drawing.Point(3, 53);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(571, 483);
@@ -501,14 +502,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Feed";
             // 
-            // listBox1
+            // LbFeed
             // 
-            this.listBox1.BackColor = System.Drawing.Color.SeaShell;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(7, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(558, 459);
-            this.listBox1.TabIndex = 0;
+            this.LbFeed.BackColor = System.Drawing.Color.SeaShell;
+            this.LbFeed.FormattingEnabled = true;
+            this.LbFeed.Location = new System.Drawing.Point(7, 20);
+            this.LbFeed.Name = "LbFeed";
+            this.LbFeed.Size = new System.Drawing.Size(558, 459);
+            this.LbFeed.TabIndex = 0;
             // 
             // TabAlgemeneinfo
             // 
@@ -832,8 +833,8 @@
             // 
             // btnAanmakenBeheer
             // 
-            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 141);
             this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 156);
+            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
             this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
             this.btnAanmakenBeheer.TabIndex = 3;
             this.btnAanmakenBeheer.Text = "Aanmaken";
@@ -874,6 +875,9 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Persoons Gegevens";
+            // 
+            // tbWachtwoordBeheer
+            // 
             this.tbWachtwoordBeheer.Location = new System.Drawing.Point(144, 71);
             this.tbWachtwoordBeheer.Name = "tbWachtwoordBeheer";
             this.tbWachtwoordBeheer.Size = new System.Drawing.Size(165, 20);
@@ -957,6 +961,16 @@
             this.cbAdminBeheer.TabIndex = 74;
             this.cbAdminBeheer.UseVisualStyleBackColor = true;
             // 
+            // btShowAll
+            // 
+            this.btShowAll.Location = new System.Drawing.Point(7, 129);
+            this.btShowAll.Name = "btShowAll";
+            this.btShowAll.Size = new System.Drawing.Size(87, 23);
+            this.btShowAll.TabIndex = 2;
+            this.btShowAll.Text = "Laat allen zien";
+            this.btShowAll.UseVisualStyleBackColor = true;
+            this.btShowAll.Click += new System.EventHandler(this.btShowAll_Click);
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -978,8 +992,8 @@
             this.groupBox8.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.gbsoort.ResumeLayout(false);
+            this.gbsoort.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.TabAlgemeneinfo.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
@@ -1040,9 +1054,14 @@
         private System.Windows.Forms.CheckedListBox clbGebruikersBeheer;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox gbsoort;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.CheckBox chbBestand;
+        private System.Windows.Forms.CheckBox chbFoto;
+        private System.Windows.Forms.CheckBox chbBericht;
+        private System.Windows.Forms.CheckBox chbVideo;
+        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -1053,9 +1072,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btFilter;
+        private System.Windows.Forms.CheckBox chbEvent;
+        private System.Windows.Forms.ListBox LbFeed;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label33;
@@ -1083,6 +1102,7 @@
         private System.Windows.Forms.GroupBox BetaalstatusBeheer;
         private System.Windows.Forms.CheckBox cbAdminBeheer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btShowAll;
     }
 }
 

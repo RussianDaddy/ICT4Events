@@ -9,10 +9,32 @@ namespace ICT4Events.Mediabeheer
     public class Mediabeheer
     {
         private List<Categorie> CategorieLijst;
+        private List<Mediafile> searchedSoortLijst = new List<Mediafile>();
         private List<Mediafile> MediafileLijst;
+        private List<Reactie> reactielijst;
+        public List<Mediafile> SearchedSoortLijst { get { return searchedSoortLijst; } set { searchedSoortLijst = value; } }
+        public List<Mediafile> GetMediafileLijst { get { return MediafileLijst; } set { MediafileLijst = value; } }
         public Mediabeheer()
         {
             CategorieLijst = new List<Categorie>();
+            MediafileLijst = new List<Mediafile>();
+            Categorie Sport = new Categorie(1, "Sport");
+            Categorie Eten = new Categorie(2, "Eten");
+            Categorie Spelen = new Categorie(3, "Spelen");
+            Categorie Feesten = new Categorie(4, "Feesten");
+            Categorie Gamen = new Categorie(5, "Gamen");
+
+
+
+            //testdata mediafiles
+            MediafileLijst = new List<Mediafile> {
+            new Mediafile(1, "beleg", "Foto", Eten, @"C:\...", 8564947, false),
+            new Mediafile(2, "Glijbaan", "Bericht", Spelen, @"C:\...", 8, true),
+            new Mediafile(3, "Basketbal!", "Event", Sport, @"C:\...", 23, false),
+            new Mediafile(4, "Disco!!", "Video", Feesten, @"C:\...", 23, false),
+            new Mediafile(5, "Weer", "Foto", Gamen, @"C:\...", 48, false),
+            new Mediafile(6, "Yu-Gi-Oh TCG", "Bestand", Gamen, @"C:\...", 1223, false)
+            };
         }
 
         public void DownloadenMedia(int Id)
@@ -25,17 +47,18 @@ namespace ICT4Events.Mediabeheer
             //Code voor het uploaden van media naar de server
         }
 
-        public List<Categorie> GetSearchedCategorie(String Naam)
+        public List<Mediafile> GetSearchedSoort(String searchstring)
         {
-            List<Categorie> SearchedCategorieLijst = new List<Categorie>();
-            foreach (Categorie c in CategorieLijst)
+
+            foreach (Mediafile m in MediafileLijst)
             {
-                if (c.Naam == Naam)
+                if (searchstring.IndexOf(m.Type) != -1)
                 {
-                    SearchedCategorieLijst.Add(c);
+                    SearchedSoortLijst.Add(m);
                 }
             }
-            return SearchedCategorieLijst;
+            return SearchedSoortLijst;
+
             //Code voor het returnen van een list met categorie
         }
         public bool BerichtPlaatsen(Mediafile mediafile, String Bericht, DateTime Datum/*,Gebruiker gebruiker*/)
@@ -47,6 +70,7 @@ namespace ICT4Events.Mediabeheer
         public void MediafileRapporteren()
         {
             //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
+
         }
 
         public void BerichtRapporteren()
@@ -70,6 +94,11 @@ namespace ICT4Events.Mediabeheer
         public List<Mediafile> Filteren()
         {
             throw new NotImplementedException();
+        }
+
+        public void Liken()
+        {
+
         }
     }
 }
