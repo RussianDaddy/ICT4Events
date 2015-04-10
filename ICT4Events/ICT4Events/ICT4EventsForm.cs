@@ -10,8 +10,6 @@ namespace ICT4Events
     public partial class ICT4EventsForm : Form
     {
         //private Enum e = new Enum;
-        private OracleConnection connection;
-        private String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.16/xe;";
 
         public ICT4EventsForm()
         {
@@ -61,30 +59,6 @@ namespace ICT4Events
             {
                 MessageBox.Show("Vul alle velden in!");
             }
-        }
-
-        private DataTable geefKampeerplaatsen()
-        {
-            connection = new OracleConnection(connectionString);
-            OracleCommand command = new OracleCommand(ReserveringBeheer.ReserveringBeheer.AllePlaatsen(), connection);
-            connection.Open();
-            try
-            {
-                OracleDataReader reader = command.ExecuteReader();
-                DataTable dataTable = new DataTable();
-                dataTable.Load(reader);
-                return dataTable;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Query Mislukt!");
-            }
-            finally
-            {
-                connection.Close();
-                command.Dispose();
-            }
-            return null;
         }
     }
 }
