@@ -19,7 +19,7 @@ namespace ICT4Events.ReserveringBeheer
             throw new NotImplementedException();
         }
 
-        public DataTable AllePlaatsen()
+        public void AllePlaatsen()
         {
             string query = "SELECT * FROM KAMPEERPLAATS";
             database.voerQueryUit(query);

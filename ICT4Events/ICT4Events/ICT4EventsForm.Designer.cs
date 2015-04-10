@@ -107,15 +107,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-            this.label29 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
             this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
-=======
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
->>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1059,16 +1053,13 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label43;
-<<<<<<< HEAD
         private System.Windows.Forms.CheckedListBox clbKampeerplaatsen;
         private System.Windows.Forms.CheckedListBox clbGebruikers;
-=======
         private System.Windows.Forms.Button btnAanmakenBeheer;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox BetaalstatusBeheer;
->>>>>>> origin/master
     }
 }
 
