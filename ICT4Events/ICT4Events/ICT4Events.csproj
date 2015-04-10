@@ -69,6 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GebruikerBeheer\Admin.cs" />
+    <Compile Include="GebruikerBeheer\Gast.cs" />
+    <Compile Include="GebruikerBeheer\Gebruiker.cs" />
+    <Compile Include="GebruikerBeheer\GebruikerBeheer.cs" />
     <Compile Include="MateriaalBeheer\Exemplaar.cs" />
     <Compile Include="ICT4EventsForm.cs">
       <SubType>Form</SubType>
