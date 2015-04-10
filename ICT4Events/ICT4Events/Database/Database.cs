@@ -14,7 +14,7 @@ namespace ICT4Events.Database
     class Database
     {
         OracleConnection connection;
-        String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.16/xe;";
+        String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.22/xe;";
 
         public void openConnection()
         {

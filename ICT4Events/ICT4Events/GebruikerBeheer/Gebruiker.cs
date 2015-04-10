@@ -1,4 +1,10 @@
-﻿namespace ICT4Events.GebruikerBeheer
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ICT4Events.GebruikerBeheer
 {
     abstract class Gebruiker
     {
