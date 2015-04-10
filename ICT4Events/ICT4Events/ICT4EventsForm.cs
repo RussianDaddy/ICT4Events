@@ -16,7 +16,6 @@ namespace ICT4Events
             InitializeComponent();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
-            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
 
             /*
