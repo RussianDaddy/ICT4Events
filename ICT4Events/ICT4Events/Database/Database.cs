@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 
 
@@ -43,6 +44,62 @@ namespace ICT4Events.Database
                 connection.Close();
                 command.Dispose();
             }
+            return null;
+        }
+
+        public bool Insert(string sql)
+        {
+            try
+            {
+                openConnection();
+                OracleDataAdapter DataAdapter = new OracleDataAdapter(sql, connection);
+                DataSet Data = new DataSet();
+                DataAdapter.Fill(Data);
+                return true;
+            }
+            catch (OracleException exc)
+            {
+                MessageBox.Show(exc.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }          
+        }
+
+        public List<string> GetStringList(string sql)
+        {
+            OracleCommand List = new OracleCommand(sql, connection);
+            List<string> strings = new List<string>();
+
+            try
+            {
+                openConnection();
+                OracleDataReader stringReader = List.ExecuteReader();
+
+                string Record;
+
+                while (stringReader.Read())
+                {
+                    Record = stringReader.ToString();
+                    strings.Add(Record);
+                }
+            }
+            catch
+            {
+
+            }
+            return strings;
+        }
+
+        public List<object> GetObjectList(string sql)
+        {
+            return null;
+        }
+
+        public List<int> GetIntList(string sql)
+        {
             return null;
         }
     }

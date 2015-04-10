@@ -68,7 +68,15 @@ namespace ICT4Events
 
         private void btnAanmakenBeheer_Click(object sender, EventArgs e)
         {
-
+            GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
+            if (cbAdminBeheer.Checked == true)
+            {
+                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,  "Ja");
+            }
+            else
+            {
+                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,"Nee");
+            }
         }
     }
 }
