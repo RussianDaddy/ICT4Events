@@ -35,6 +35,8 @@ namespace ICT4Events
                 "Comfortplaatsen", "Huurtentjes", "Plaatsen voor eigen tenten", "Stacaravans", "Invalidenaccomodaties",
                 "Bungalows", "Blokhutten", "Bungalinos"
             });*/
+            mediabeheer = new Mediabeheer.Mediabeheer();
+            RefreshAll();
         }
 
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
