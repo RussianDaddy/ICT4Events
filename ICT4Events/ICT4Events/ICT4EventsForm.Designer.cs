@@ -41,6 +41,8 @@
             this.TebReserveren = new System.Windows.Forms.TabPage();
             this.btReserveer = new System.Windows.Forms.Button();
             this.gbReserveren = new System.Windows.Forms.GroupBox();
+            this.clbReserveringKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
+            this.clbReserveringGebruikers = new System.Windows.Forms.CheckedListBox();
             this.dtpDatumVertrek = new System.Windows.Forms.DateTimePicker();
             this.dtpDatumAankomst = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
@@ -95,21 +97,19 @@
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
+            this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+            this.btnAanmakenBeheer = new System.Windows.Forms.Button();
             this.btnWijzigenBeheer = new System.Windows.Forms.Button();
             this.btnAanpassenBeheer = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbEmailBeheer = new System.Windows.Forms.TextBox();
             this.tbVoornaamBeheer = new System.Windows.Forms.TextBox();
             this.tbAchternaamBeheer = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.btnAanmakenBeheer = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.clbGebruikers = new System.Windows.Forms.CheckedListBox();
-            this.clbKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
-            this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -251,8 +251,8 @@
             // 
             // gbReserveren
             // 
-            this.gbReserveren.Controls.Add(this.clbKampeerplaatsen);
-            this.gbReserveren.Controls.Add(this.clbGebruikers);
+            this.gbReserveren.Controls.Add(this.clbReserveringKampeerplaatsen);
+            this.gbReserveren.Controls.Add(this.clbReserveringGebruikers);
             this.gbReserveren.Controls.Add(this.dtpDatumVertrek);
             this.gbReserveren.Controls.Add(this.dtpDatumAankomst);
             this.gbReserveren.Controls.Add(this.label19);
@@ -263,6 +263,22 @@
             this.gbReserveren.TabIndex = 0;
             this.gbReserveren.TabStop = false;
             this.gbReserveren.Text = "Reserveren";
+            // 
+            // clbReserveringKampeerplaatsen
+            // 
+            this.clbReserveringKampeerplaatsen.FormattingEnabled = true;
+            this.clbReserveringKampeerplaatsen.Location = new System.Drawing.Point(602, 19);
+            this.clbReserveringKampeerplaatsen.Name = "clbReserveringKampeerplaatsen";
+            this.clbReserveringKampeerplaatsen.Size = new System.Drawing.Size(191, 469);
+            this.clbReserveringKampeerplaatsen.TabIndex = 54;
+            // 
+            // clbReserveringGebruikers
+            // 
+            this.clbReserveringGebruikers.FormattingEnabled = true;
+            this.clbReserveringGebruikers.Location = new System.Drawing.Point(6, 19);
+            this.clbReserveringGebruikers.Name = "clbReserveringGebruikers";
+            this.clbReserveringGebruikers.Size = new System.Drawing.Size(191, 469);
+            this.clbReserveringGebruikers.TabIndex = 53;
             // 
             // dtpDatumVertrek
             // 
@@ -801,6 +817,25 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
+            // BetaalstatusBeheer
+            // 
+            this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
+            this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
+            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
+            this.BetaalstatusBeheer.TabIndex = 4;
+            this.BetaalstatusBeheer.TabStop = false;
+            this.BetaalstatusBeheer.Text = "Betaalstatus";
+            // 
+            // btnAanmakenBeheer
+            // 
+            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 141);
+            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
+            this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
+            this.btnAanmakenBeheer.TabIndex = 3;
+            this.btnAanmakenBeheer.Text = "Aanmaken";
+            this.btnAanmakenBeheer.UseVisualStyleBackColor = true;
+            this.btnAanmakenBeheer.Click += new System.EventHandler(this.btnAanmakenBeheer_Click);
+            // 
             // btnWijzigenBeheer
             // 
             this.btnWijzigenBeheer.Location = new System.Drawing.Point(704, 141);
@@ -855,44 +890,6 @@
             this.tbAchternaamBeheer.Size = new System.Drawing.Size(165, 20);
             this.tbAchternaamBeheer.TabIndex = 64;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.clbGebruikersBeheer);
-            this.groupBox2.Location = new System.Drawing.Point(12, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(327, 509);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Gebruikers";
-            // 
-            // clbGebruikersBeheer
-            // 
-            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
-            this.clbGebruikersBeheer.FormattingEnabled = true;
-            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
-            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
-            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
-            this.clbGebruikersBeheer.TabIndex = 75;
-            // 
-            // btnAanmakenBeheer
-            // 
-            this.btnAanmakenBeheer.Location = new System.Drawing.Point(470, 141);
-            this.btnAanmakenBeheer.Name = "btnAanmakenBeheer";
-            this.btnAanmakenBeheer.Size = new System.Drawing.Size(75, 23);
-            this.btnAanmakenBeheer.TabIndex = 3;
-            this.btnAanmakenBeheer.Text = "Aanmaken";
-            this.btnAanmakenBeheer.UseVisualStyleBackColor = true;
-            this.btnAanmakenBeheer.Click += new System.EventHandler(this.btnAanmakenBeheer_Click);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 20);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(87, 13);
-            this.label29.TabIndex = 56;
-            this.label29.Text = "Gebruikersnaam:";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -911,30 +908,33 @@
             this.label28.TabIndex = 57;
             this.label28.Text = "Naam:";
             // 
-            // BetaalstatusBeheer
+            // label29
             // 
-            this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
-            this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
-            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
-            this.BetaalstatusBeheer.TabIndex = 4;
-            this.BetaalstatusBeheer.TabStop = false;
-            this.BetaalstatusBeheer.Text = "Betaalstatus";
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 20);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(87, 13);
+            this.label29.TabIndex = 56;
+            this.label29.Text = "Gebruikersnaam:";
             // 
-            // clbGebruikers
+            // groupBox2
             // 
-            this.clbGebruikers.FormattingEnabled = true;
-            this.clbGebruikers.Location = new System.Drawing.Point(6, 19);
-            this.clbGebruikers.Name = "clbGebruikers";
-            this.clbGebruikers.Size = new System.Drawing.Size(191, 469);
-            this.clbGebruikers.TabIndex = 53;
+            this.groupBox2.Controls.Add(this.clbGebruikersBeheer);
+            this.groupBox2.Location = new System.Drawing.Point(12, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(327, 509);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Gebruikers";
             // 
-            // clbKampeerplaatsen
+            // clbGebruikersBeheer
             // 
-            this.clbKampeerplaatsen.FormattingEnabled = true;
-            this.clbKampeerplaatsen.Location = new System.Drawing.Point(602, 19);
-            this.clbKampeerplaatsen.Name = "clbKampeerplaatsen";
-            this.clbKampeerplaatsen.Size = new System.Drawing.Size(191, 469);
-            this.clbKampeerplaatsen.TabIndex = 54;
+            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
+            this.clbGebruikersBeheer.FormattingEnabled = true;
+            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
+            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
+            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
+            this.clbGebruikersBeheer.TabIndex = 75;
             // 
             // ICT4EventsForm
             // 
@@ -1053,8 +1053,8 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.CheckedListBox clbKampeerplaatsen;
-        private System.Windows.Forms.CheckedListBox clbGebruikers;
+        private System.Windows.Forms.CheckedListBox clbReserveringKampeerplaatsen;
+        private System.Windows.Forms.CheckedListBox clbReserveringGebruikers;
         private System.Windows.Forms.Button btnAanmakenBeheer;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label28;

@@ -12,17 +12,26 @@ namespace ICT4Events.ReserveringBeheer
 {
     class ReserveringBeheer
     {
-        Database.Database database = new Database.Database();
+        static Database.Database database = new Database.Database();
 
         public bool Reserveren(int number, DateTime date, bool paid, int campnumber)
         {
             throw new NotImplementedException();
         }
 
-        public void AllePlaatsen()
+        public static List<string> AllePlaatsen()
         {
             string query = "SELECT * FROM KAMPEERPLAATS";
-            database.voerQueryUit(query);
+            DataTable kampeerplaatsen = database.voerQueryUit(query);
+            List<String> stringlist= new List<string>();
+            foreach (DataRow dr in kampeerplaatsen.Rows)
+            {
+                foreach (var item in dr.ItemArray)
+                {
+                    stringlist.Add(item.ToString());
+                }
+            }
+            return stringlist;
         }
 
         public void VrijePlaatsen()
