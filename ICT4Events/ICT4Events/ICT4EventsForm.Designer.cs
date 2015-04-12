@@ -39,8 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblGebruikersnaam = new System.Windows.Forms.Label();
             this.TebReserveren = new System.Windows.Forms.TabPage();
-            this.btReserveer = new System.Windows.Forms.Button();
             this.gbReserveren = new System.Windows.Forms.GroupBox();
+            this.btReserveer = new System.Windows.Forms.Button();
+            this.cbBetaald = new System.Windows.Forms.CheckBox();
             this.clbReserveringKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
             this.clbReserveringGebruikers = new System.Windows.Forms.CheckedListBox();
             this.dtpDatumVertrek = new System.Windows.Forms.DateTimePicker();
@@ -113,7 +114,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.cbBetaald = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -244,14 +244,6 @@
             this.TebReserveren.TabIndex = 1;
             this.TebReserveren.Text = "Reserveren";
             // 
-            // btReserveer
-            // 
-            this.btReserveer.Location = new System.Drawing.Point(326, 144);
-            this.btReserveer.Name = "btReserveer";
-            this.btReserveer.Size = new System.Drawing.Size(165, 23);
-            this.btReserveer.TabIndex = 54;
-            this.btReserveer.Text = "Reserveer";
-            // 
             // gbReserveren
             // 
             this.gbReserveren.Controls.Add(this.btReserveer);
@@ -269,6 +261,25 @@
             this.gbReserveren.TabStop = false;
             this.gbReserveren.Text = "Reserveren";
             // 
+            // btReserveer
+            // 
+            this.btReserveer.Location = new System.Drawing.Point(326, 144);
+            this.btReserveer.Name = "btReserveer";
+            this.btReserveer.Size = new System.Drawing.Size(165, 23);
+            this.btReserveer.TabIndex = 54;
+            this.btReserveer.Text = "Reserveer";
+            this.btReserveer.Click += new System.EventHandler(this.btReserveer_Click);
+            // 
+            // cbBetaald
+            // 
+            this.cbBetaald.AutoSize = true;
+            this.cbBetaald.Location = new System.Drawing.Point(371, 112);
+            this.cbBetaald.Name = "cbBetaald";
+            this.cbBetaald.Size = new System.Drawing.Size(62, 17);
+            this.cbBetaald.TabIndex = 56;
+            this.cbBetaald.Text = "Betaald";
+            this.cbBetaald.UseVisualStyleBackColor = true;
+            // 
             // clbReserveringKampeerplaatsen
             // 
             this.clbReserveringKampeerplaatsen.FormattingEnabled = true;
@@ -276,6 +287,7 @@
             this.clbReserveringKampeerplaatsen.Name = "clbReserveringKampeerplaatsen";
             this.clbReserveringKampeerplaatsen.Size = new System.Drawing.Size(296, 499);
             this.clbReserveringKampeerplaatsen.TabIndex = 54;
+            this.clbReserveringKampeerplaatsen.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbReserveringKampeerplaatsen_ItemCheck);
             // 
             // clbReserveringGebruikers
             // 
@@ -287,6 +299,7 @@
             // 
             // dtpDatumVertrek
             // 
+            this.dtpDatumVertrek.CustomFormat = "dd-MMM-yy";
             this.dtpDatumVertrek.Location = new System.Drawing.Point(326, 74);
             this.dtpDatumVertrek.Name = "dtpDatumVertrek";
             this.dtpDatumVertrek.Size = new System.Drawing.Size(165, 20);
@@ -294,6 +307,7 @@
             // 
             // dtpDatumAankomst
             // 
+            this.dtpDatumAankomst.CustomFormat = "dd-MMM-yy";
             this.dtpDatumAankomst.Location = new System.Drawing.Point(326, 35);
             this.dtpDatumAankomst.Name = "dtpDatumAankomst";
             this.dtpDatumAankomst.Size = new System.Drawing.Size(165, 20);
@@ -972,16 +986,6 @@
             this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
-            // 
-            // cbBetaald
-            // 
-            this.cbBetaald.AutoSize = true;
-            this.cbBetaald.Location = new System.Drawing.Point(371, 112);
-            this.cbBetaald.Name = "cbBetaald";
-            this.cbBetaald.Size = new System.Drawing.Size(62, 17);
-            this.cbBetaald.TabIndex = 56;
-            this.cbBetaald.Text = "Betaald";
-            this.cbBetaald.UseVisualStyleBackColor = true;
             // 
             // ICT4EventsForm
             // 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
@@ -16,8 +17,8 @@ namespace ICT4Events
         public ICT4EventsForm()
         {
             InitializeComponent();
-            //clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
-            //clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
+            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
+            clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
@@ -146,5 +147,62 @@ namespace ICT4Events
             chbFoto.Checked = false;
             chbVideo.Checked = false;
         }
+
+        private void btReserveer_Click(object sender, EventArgs e)
+        {
+            DateTime aankomstDatum = dtpDatumAankomst.Value.Date;
+            DateTime vertrekdatum = dtpDatumVertrek.Value.Date;
+            int betaald = 0;
+            if (cbBetaald.Checked)
+            {
+                betaald = 1;
+            }
+            List<String> kampeerPlaatsen = new List<string>();
+            foreach (String kampeerplaats in clbReserveringKampeerplaatsen.CheckedItems)
+            {
+                string kampeerplaatsNummer = kampeerplaats.Substring(8, kampeerplaats.IndexOf(":") - 5);
+                kampeerPlaatsen.Add(kampeerplaatsNummer);
+            }
+            List<String> gebruikersnamen = new List<string>();
+            foreach (String gegevens in clbReserveringGebruikers.CheckedItems)
+            {
+                string gebruikersnaam = gegevens.Substring(11);
+                gebruikersnaam = gebruikersnaam.Substring(0, gebruikersnaam.IndexOf(" Naam:"));
+                gebruikersnamen.Add(gebruikersnaam);
+            }
+            string hoofdboeker = gebruikersnamen.First();
+            string verblijfplaats = kampeerPlaatsen.First();
+            if(ReserveringBeheer.ReserveringBeheer.Reserveren(hoofdboeker,aankomstDatum,vertrekdatum,betaald) && ReserveringBeheer.ReserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
+                    verblijfplaats))
+            {
+                MessageBox.Show("Reservering Toegevoegd");
+                gebruikersnamen.Remove(hoofdboeker);
+            }
+            if (gebruikersnamen.Count > 0)
+            {
+                string reserveringsNummer = ReserveringBeheer.ReserveringBeheer.VindReserveringNummer(hoofdboeker,
+                    aankomstDatum, vertrekdatum);
+                foreach (String medereiziger in gebruikersnamen)
+                {
+                    if (ReserveringBeheer.ReserveringBeheer.VoegMedereizigerToe(medereiziger, reserveringsNummer))
+                    {
+                        MessageBox.Show("Medereiziger: " + medereiziger + " toegevoegd aan reservering: " +
+                                        reserveringsNummer);
+                    }
+                }
+            }
+        }
+
+        private void clbReserveringKampeerplaatsen_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int i = 0; i < clbReserveringKampeerplaatsen.Items.Count; i++)
+            {
+                if (i != e.Index)
+                {
+                    clbReserveringKampeerplaatsen.SetItemChecked(i,false);
+                }
+            }
+        }
+
     }
 }
