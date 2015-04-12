@@ -114,6 +114,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.rbtnAllePlaasten = new System.Windows.Forms.RadioButton();
+            this.rbtnVrijePlaatsen = new System.Windows.Forms.RadioButton();
+            this.rbtnSpecifiekePlaatsen = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -246,6 +249,9 @@
             // 
             // gbReserveren
             // 
+            this.gbReserveren.Controls.Add(this.rbtnSpecifiekePlaatsen);
+            this.gbReserveren.Controls.Add(this.rbtnVrijePlaatsen);
+            this.gbReserveren.Controls.Add(this.rbtnAllePlaasten);
             this.gbReserveren.Controls.Add(this.btReserveer);
             this.gbReserveren.Controls.Add(this.cbBetaald);
             this.gbReserveren.Controls.Add(this.clbReserveringKampeerplaatsen);
@@ -263,7 +269,7 @@
             // 
             // btReserveer
             // 
-            this.btReserveer.Location = new System.Drawing.Point(326, 144);
+            this.btReserveer.Location = new System.Drawing.Point(528, 485);
             this.btReserveer.Name = "btReserveer";
             this.btReserveer.Size = new System.Drawing.Size(165, 23);
             this.btReserveer.TabIndex = 54;
@@ -273,7 +279,7 @@
             // cbBetaald
             // 
             this.cbBetaald.AutoSize = true;
-            this.cbBetaald.Location = new System.Drawing.Point(371, 112);
+            this.cbBetaald.Location = new System.Drawing.Point(460, 489);
             this.cbBetaald.Name = "cbBetaald";
             this.cbBetaald.Size = new System.Drawing.Size(62, 17);
             this.cbBetaald.TabIndex = 56;
@@ -283,23 +289,25 @@
             // clbReserveringKampeerplaatsen
             // 
             this.clbReserveringKampeerplaatsen.FormattingEnabled = true;
-            this.clbReserveringKampeerplaatsen.Location = new System.Drawing.Point(497, 19);
+            this.clbReserveringKampeerplaatsen.HorizontalScrollbar = true;
+            this.clbReserveringKampeerplaatsen.Location = new System.Drawing.Point(6, 224);
             this.clbReserveringKampeerplaatsen.Name = "clbReserveringKampeerplaatsen";
-            this.clbReserveringKampeerplaatsen.Size = new System.Drawing.Size(296, 499);
+            this.clbReserveringKampeerplaatsen.Size = new System.Drawing.Size(787, 199);
             this.clbReserveringKampeerplaatsen.TabIndex = 54;
             // 
             // clbReserveringGebruikers
             // 
             this.clbReserveringGebruikers.FormattingEnabled = true;
+            this.clbReserveringGebruikers.HorizontalScrollbar = true;
             this.clbReserveringGebruikers.Location = new System.Drawing.Point(6, 19);
             this.clbReserveringGebruikers.Name = "clbReserveringGebruikers";
-            this.clbReserveringGebruikers.Size = new System.Drawing.Size(311, 499);
+            this.clbReserveringGebruikers.Size = new System.Drawing.Size(787, 199);
             this.clbReserveringGebruikers.TabIndex = 53;
             // 
             // dtpDatumVertrek
             // 
             this.dtpDatumVertrek.CustomFormat = "dd-MMM-yy";
-            this.dtpDatumVertrek.Location = new System.Drawing.Point(326, 74);
+            this.dtpDatumVertrek.Location = new System.Drawing.Point(274, 489);
             this.dtpDatumVertrek.Name = "dtpDatumVertrek";
             this.dtpDatumVertrek.Size = new System.Drawing.Size(165, 20);
             this.dtpDatumVertrek.TabIndex = 52;
@@ -307,7 +315,7 @@
             // dtpDatumAankomst
             // 
             this.dtpDatumAankomst.CustomFormat = "dd-MMM-yy";
-            this.dtpDatumAankomst.Location = new System.Drawing.Point(326, 35);
+            this.dtpDatumAankomst.Location = new System.Drawing.Point(103, 489);
             this.dtpDatumAankomst.Name = "dtpDatumAankomst";
             this.dtpDatumAankomst.Size = new System.Drawing.Size(165, 20);
             this.dtpDatumAankomst.TabIndex = 51;
@@ -316,7 +324,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(323, 58);
+            this.label19.Location = new System.Drawing.Point(271, 473);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(73, 13);
             this.label19.TabIndex = 26;
@@ -325,7 +333,7 @@
             // lblAankomstDatum
             // 
             this.lblAankomstDatum.AutoSize = true;
-            this.lblAankomstDatum.Location = new System.Drawing.Point(323, 19);
+            this.lblAankomstDatum.Location = new System.Drawing.Point(100, 473);
             this.lblAankomstDatum.Name = "lblAankomstDatum";
             this.lblAankomstDatum.Size = new System.Drawing.Size(86, 13);
             this.lblAankomstDatum.TabIndex = 23;
@@ -986,6 +994,39 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
+            // rbtnAllePlaasten
+            // 
+            this.rbtnAllePlaasten.AutoSize = true;
+            this.rbtnAllePlaasten.Location = new System.Drawing.Point(103, 429);
+            this.rbtnAllePlaasten.Name = "rbtnAllePlaasten";
+            this.rbtnAllePlaasten.Size = new System.Drawing.Size(127, 17);
+            this.rbtnAllePlaasten.TabIndex = 57;
+            this.rbtnAllePlaasten.TabStop = true;
+            this.rbtnAllePlaasten.Text = "Alle Kampeerplaatsen";
+            this.rbtnAllePlaasten.UseVisualStyleBackColor = true;
+            // 
+            // rbtnVrijePlaatsen
+            // 
+            this.rbtnVrijePlaatsen.AutoSize = true;
+            this.rbtnVrijePlaatsen.Location = new System.Drawing.Point(274, 429);
+            this.rbtnVrijePlaatsen.Name = "rbtnVrijePlaatsen";
+            this.rbtnVrijePlaatsen.Size = new System.Drawing.Size(130, 17);
+            this.rbtnVrijePlaatsen.TabIndex = 58;
+            this.rbtnVrijePlaatsen.TabStop = true;
+            this.rbtnVrijePlaatsen.Text = "Vrije Kampeerplaatsen";
+            this.rbtnVrijePlaatsen.UseVisualStyleBackColor = true;
+            // 
+            // rbtnSpecifiekePlaatsen
+            // 
+            this.rbtnSpecifiekePlaatsen.AutoSize = true;
+            this.rbtnSpecifiekePlaatsen.Location = new System.Drawing.Point(460, 429);
+            this.rbtnSpecifiekePlaatsen.Name = "rbtnSpecifiekePlaatsen";
+            this.rbtnSpecifiekePlaatsen.Size = new System.Drawing.Size(160, 17);
+            this.rbtnSpecifiekePlaatsen.TabIndex = 59;
+            this.rbtnSpecifiekePlaatsen.TabStop = true;
+            this.rbtnSpecifiekePlaatsen.Text = "Specifieke Kampeerplaasten";
+            this.rbtnSpecifiekePlaatsen.UseVisualStyleBackColor = true;
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1119,6 +1160,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btShowAll;
         private System.Windows.Forms.CheckBox cbBetaald;
+        private System.Windows.Forms.RadioButton rbtnSpecifiekePlaatsen;
+        private System.Windows.Forms.RadioButton rbtnVrijePlaatsen;
+        private System.Windows.Forms.RadioButton rbtnAllePlaasten;
     }
 }
 
