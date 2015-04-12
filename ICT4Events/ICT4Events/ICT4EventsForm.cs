@@ -12,7 +12,7 @@ namespace ICT4Events
         //private Enum e = new Enum;
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
-        Mediabeheer.Mediabeheer mediabeheer;
+        private Mediabeheer.Mediabeheer mediabeheer;
 
         public ICT4EventsForm()
         {
@@ -77,11 +77,13 @@ namespace ICT4Events
             GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
             if (cbAdminBeheer.Checked == true)
             {
-                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,  "Ja");
+                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,
+                    "Ja");
             }
             else
             {
-                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,"Nee");
+                Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,
+                    "Nee");
             }
         }
 
@@ -158,9 +160,12 @@ namespace ICT4Events
                 betaald = 1;
             }
             List<String> kampeerPlaatsen = new List<string>();
+            int aantalPersonen = 0;
             foreach (String kampeerplaats in clbReserveringKampeerplaatsen.CheckedItems)
             {
-                string kampeerplaatsNummer = kampeerplaats.Substring(8, kampeerplaats.IndexOf(":") - 5);
+                aantalPersonen = aantalPersonen + Convert.ToInt32(kampeerplaats.Substring(kampeerplaats.Length - 1, 1));
+                string kampeerplaatsNummer = kampeerplaats.Substring(8);
+                kampeerplaatsNummer = kampeerplaatsNummer.Substring(0, kampeerplaatsNummer.IndexOf(" Soort:"));
                 kampeerPlaatsen.Add(kampeerplaatsNummer);
             }
             List<String> gebruikersnamen = new List<string>();
@@ -171,38 +176,42 @@ namespace ICT4Events
                 gebruikersnamen.Add(gebruikersnaam);
             }
             string hoofdboeker = gebruikersnamen.First();
-            string verblijfplaats = kampeerPlaatsen.First();
-            if(ReserveringBeheer.ReserveringBeheer.Reserveren(hoofdboeker,aankomstDatum,vertrekdatum,betaald) && ReserveringBeheer.ReserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
-                    verblijfplaats))
+            if (aantalPersonen > gebruikersnamen.Count)
             {
-                MessageBox.Show("Reservering Toegevoegd");
-                gebruikersnamen.Remove(hoofdboeker);
-            }
-            if (gebruikersnamen.Count > 0)
-            {
-                string reserveringsNummer = ReserveringBeheer.ReserveringBeheer.VindReserveringNummer(hoofdboeker,
-                    aankomstDatum, vertrekdatum);
-                foreach (String medereiziger in gebruikersnamen)
+                if (ReserveringBeheer.ReserveringBeheer.Reserveren(hoofdboeker, aankomstDatum, vertrekdatum, betaald))
                 {
-                    if (ReserveringBeheer.ReserveringBeheer.VoegMedereizigerToe(medereiziger, reserveringsNummer))
+                    gebruikersnamen.Remove(hoofdboeker);
+                    MessageBox.Show("Reservering Toegevoegd");
+                    string reserveringsNummer = ReserveringBeheer.ReserveringBeheer.VindReserveringNummer(hoofdboeker,
+                        aankomstDatum, vertrekdatum);
+                    if (gebruikersnamen.Count > 0)
                     {
-                        MessageBox.Show("Medereiziger: " + medereiziger + " toegevoegd aan reservering: " +
-                                        reserveringsNummer);
+                        foreach (String medereiziger in gebruikersnamen)
+                        {
+                            if (ReserveringBeheer.ReserveringBeheer.VoegMedereizigerToe(medereiziger, reserveringsNummer))
+                            {
+                                MessageBox.Show("Medereiziger: " + medereiziger + " toegevoegd aan reservering: " +
+                                                reserveringsNummer);
+                            }
+                        }
+                    }
+                    foreach (var verblijfplaats in kampeerPlaatsen)
+                    {
+                        if (ReserveringBeheer.ReserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
+                            verblijfplaats))
+                        {
+                            MessageBox.Show("Verblijfplaats: " + verblijfplaats + " toegevoegd aan reservering: " +
+                                            reserveringsNummer);
+                        }
                     }
                 }
             }
-        }
-
-        private void clbReserveringKampeerplaatsen_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            for (int i = 0; i < clbReserveringKampeerplaatsen.Items.Count; i++)
+            else
             {
-                if (i != e.Index)
-                {
-                    clbReserveringKampeerplaatsen.SetItemChecked(i,false);
-                }
+                MessageBox.Show(
+                    "Er zijn meer personen geselecteerd, dan er daadwerkelijk verblijven kan. Selecteer minder gebruikers of meer kampeerplaatsen.");
             }
         }
-
     }
 }
+ 

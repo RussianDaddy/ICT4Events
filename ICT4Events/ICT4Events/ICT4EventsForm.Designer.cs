@@ -287,7 +287,6 @@
             this.clbReserveringKampeerplaatsen.Name = "clbReserveringKampeerplaatsen";
             this.clbReserveringKampeerplaatsen.Size = new System.Drawing.Size(296, 499);
             this.clbReserveringKampeerplaatsen.TabIndex = 54;
-            this.clbReserveringKampeerplaatsen.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbReserveringKampeerplaatsen_ItemCheck);
             // 
             // clbReserveringGebruikers
             // 
