@@ -10,6 +10,7 @@ namespace ICT4Events
     public partial class ICT4EventsForm : Form
     {
         //private Enum e = new Enum;
+        GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
 
         public ICT4EventsForm()
         {
@@ -67,8 +68,11 @@ namespace ICT4Events
 
         private void btnAanmakenBeheer_Click(object sender, EventArgs e)
         {
-            GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
-            if (cbAdminBeheer.Checked == true)
+            if(tbGebruikersnaamBeheer.Text == "" || tbNaamBeheer.Text == "" || tbWachtwoordBeheer.Text == "")
+            {
+                MessageBox.Show("Vul alle informatie in.");
+            }
+            else if (cbAdminBeheer.Checked == true)
             {
                 Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,  "Ja");
             }
