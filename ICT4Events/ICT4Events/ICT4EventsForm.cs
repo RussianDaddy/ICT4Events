@@ -17,8 +17,10 @@ namespace ICT4Events
         public ICT4EventsForm()
         {
             InitializeComponent();
+            rbtnAllePlaasten.Checked = true;
             clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
             clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
+            listboxReserveringen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleReserveringen();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
@@ -210,6 +212,36 @@ namespace ICT4Events
             {
                 MessageBox.Show(
                     "Er zijn meer personen geselecteerd, dan er daadwerkelijk verblijven kan. Selecteer minder gebruikers of meer kampeerplaatsen.");
+            }
+        }
+
+        private void rbtnAllePlaasten_CheckedChanged(object sender, EventArgs e)
+        {
+            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
+        }
+
+        private void rbtnSpecifiekePlaatsen_CheckedChanged(object sender, EventArgs e)
+        {
+            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleSpecifiekePlaatsen();
+        }
+
+        private void rbtnVrijePlaatsen_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnReserveringBetaald_Click(object sender, EventArgs e)
+        {
+            string reservering = listboxReserveringen.SelectedItem.ToString();
+            reservering = reservering.Substring(8);
+            reservering = reservering.Substring(0, reservering.IndexOf(" Naam:"));
+            if(ReserveringBeheer.ReserveringBeheer.UpdateBetaling(reservering))
+            {
+                MessageBox.Show("Reservering: " + reservering + " is betaald");
+            }
+            else
+            {
+                MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
         }
     }

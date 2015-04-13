@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
@@ -35,9 +36,9 @@ namespace ICT4Events.Database
                 dataTable.Load(reader);
                 return dataTable;
             }
-            catch (Exception)
+            catch (OracleException exc)
             {
-                MessageBox.Show("Query kan niet worden uitgevoerd. Controleer de verbinding met de database.");
+                MessageBox.Show(exc.Message);
             }
             finally
             {
@@ -66,6 +67,29 @@ namespace ICT4Events.Database
             {
                 connection.Close();
             }          
+        }
+
+        public bool Update(string selectSql, string updateSql)
+        {
+            try
+            {
+                openConnection();
+                OracleDataAdapter DataAdapter = new OracleDataAdapter(selectSql, connection);
+                DataAdapter.UpdateCommand = new OracleCommand(updateSql, connection);
+                DataSet Data = new DataSet();
+                DataAdapter.Fill(Data);
+                DataAdapter.Update(Data);
+                return true;
+            }
+            catch (OracleException exc)
+            {
+                MessageBox.Show(exc.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public List<string> GetStringList(string sql)

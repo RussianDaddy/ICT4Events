@@ -16,7 +16,7 @@ namespace ICT4Events.ReserveringBeheer
             try
             {
                 string query =
-                    "INSERT INTO RESERVERING (Nummer, Aankomstdatum, Vertrekdatum, Betaald, Gastgebruikersnaam) VALUES(SEQ_RESERVERING.NEXTVAL, TO_DATE('" +
+                    "INSERT INTO RESERVERING (Nummer, Aankomstdatum, Vertrekdatum, Betaald, Gebruikergebruikersnaam) VALUES(SEQ_RESERVERING.NEXTVAL, TO_DATE('" +
                     aankomstDatum + "','DD/MM/YYYY HH24:MI:SS'),TO_DATE('" + vertrekDatum +
                     "','DD/MM/YYYY HH24:MI:SS'),'" + betaald + "','" + gebruikersnaam + "')";
                 database.Insert(query);
@@ -49,9 +49,24 @@ namespace ICT4Events.ReserveringBeheer
         {
             try
             {
-                string queryInsert = "INSERT INTO Medereiziger (GebruikerGebruikersnaam, ReserveringNummer) VALUES('" +
+                string queryInsert = "INSERT INTO Medereiziger (GastGebruikersnaam, ReserveringNummer) VALUES('" +
                                      medereizigerGebruikersnaam + "','" + reserveringsNummer + "')";
                 database.Insert(queryInsert);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool UpdateBetaling(string reserveringsnummer)
+        {
+            try
+            {
+                string querySelect = "SELECT * FROM Reservering";
+                string queryUpdate = "UPDATE Reservering SET Betaald = '1' WHERE Nummer= '" + reserveringsnummer + "';";
+                database.Update(querySelect,queryUpdate);
                 return true;
             }
             catch (Exception)
@@ -64,7 +79,7 @@ namespace ICT4Events.ReserveringBeheer
         {
             try
             {
-                string query = "SELECT r.nummer FROM Reservering r WHERE r.GASTGEBRUIKERSNAAM = '" + gebruikersnaam +
+                string query = "SELECT r.nummer FROM Reservering r WHERE r.GEBRUIKERGEBRUIKERSNAAM = '" + gebruikersnaam +
                                "' AND r.AANKOMSTDATUM = TO_DATE('" + aankomstDatum +
                                "', 'DD/MM/YYYY HH24:MI:SS') AND r.VERTREKDATUM = TO_DATE('" + vertrekDatum +
                                "', 'DD/MM/YYYY HH24:MI:SS')";
@@ -96,6 +111,22 @@ namespace ICT4Events.ReserveringBeheer
             }
             return stringlist;
         }
+        public static List<string> AlleSpecifiekePlaatsen()
+        {
+            string query = "SELECT * FROM Kampeerplaats k WHERE k.eigenschappen IS NOT NULL";
+            DataTable vrijeKampeerplaatsen = database.voerQueryUit(query);
+            List<String> stringlist = new List<string>();
+            foreach (DataRow dr in vrijeKampeerplaatsen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Eigenschappen: " + dr[3] + " Aantal Personen: " + dr[2]);
+            }
+            return stringlist;
+        }
+
+        public static List<string> AlleVrijePlaatsen()
+        {
+            throw new NotImplementedException();
+        }
 
         public static List<string> AlleGebruikers()
         {
@@ -109,9 +140,16 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
-        public void VrijePlaatsen()
+        public static List<string> AlleReserveringen()
         {
-            throw new NotImplementedException();
+            string query = "SELECT r.nummer, r.gebruikergebruikersnaam FROM Reservering r";
+            DataTable reserveringen = database.voerQueryUit(query);
+            List<String> stringlist = new List<string>();
+            foreach (DataRow dr in reserveringen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Naam: " + dr[1]);
+            }
+            return stringlist;
         }
     }
 }

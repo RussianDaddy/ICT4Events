@@ -40,6 +40,13 @@
             this.lblGebruikersnaam = new System.Windows.Forms.Label();
             this.TebReserveren = new System.Windows.Forms.TabPage();
             this.gbReserveren = new System.Windows.Forms.GroupBox();
+            this.listboxReserveringen = new System.Windows.Forms.ListBox();
+            this.gbBetaling = new System.Windows.Forms.GroupBox();
+            this.lblReservingsnummer = new System.Windows.Forms.Label();
+            this.btnReserveringBetaald = new System.Windows.Forms.Button();
+            this.rbtnSpecifiekePlaatsen = new System.Windows.Forms.RadioButton();
+            this.rbtnVrijePlaatsen = new System.Windows.Forms.RadioButton();
+            this.rbtnAllePlaasten = new System.Windows.Forms.RadioButton();
             this.btReserveer = new System.Windows.Forms.Button();
             this.cbBetaald = new System.Windows.Forms.CheckBox();
             this.clbReserveringKampeerplaatsen = new System.Windows.Forms.CheckedListBox();
@@ -114,20 +121,13 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.rbtnAllePlaasten = new System.Windows.Forms.RadioButton();
-            this.rbtnVrijePlaatsen = new System.Windows.Forms.RadioButton();
-            this.rbtnSpecifiekePlaatsen = new System.Windows.Forms.RadioButton();
-            this.lblReservingsnummer = new System.Windows.Forms.Label();
-            this.tbReserveringsnummerBetaald = new System.Windows.Forms.TextBox();
-            this.btnReserveringBetaald = new System.Windows.Forms.Button();
-            this.gbBetaling = new System.Windows.Forms.GroupBox();
-            this.listboxReserveringen = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TebReserveren.SuspendLayout();
             this.gbReserveren.SuspendLayout();
+            this.gbBetaling.SuspendLayout();
             this.TabFeed.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -143,7 +143,6 @@
             this.TabBeheren.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.gbBetaling.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -274,6 +273,80 @@
             this.gbReserveren.TabIndex = 0;
             this.gbReserveren.TabStop = false;
             this.gbReserveren.Text = "Reserveren";
+            // 
+            // listboxReserveringen
+            // 
+            this.listboxReserveringen.FormattingEnabled = true;
+            this.listboxReserveringen.Location = new System.Drawing.Point(605, 19);
+            this.listboxReserveringen.Name = "listboxReserveringen";
+            this.listboxReserveringen.Size = new System.Drawing.Size(188, 407);
+            this.listboxReserveringen.TabIndex = 64;
+            // 
+            // gbBetaling
+            // 
+            this.gbBetaling.Controls.Add(this.lblReservingsnummer);
+            this.gbBetaling.Controls.Add(this.btnReserveringBetaald);
+            this.gbBetaling.Location = new System.Drawing.Point(605, 429);
+            this.gbBetaling.Name = "gbBetaling";
+            this.gbBetaling.Size = new System.Drawing.Size(188, 100);
+            this.gbBetaling.TabIndex = 63;
+            this.gbBetaling.TabStop = false;
+            this.gbBetaling.Text = "Betaling";
+            // 
+            // lblReservingsnummer
+            // 
+            this.lblReservingsnummer.AutoSize = true;
+            this.lblReservingsnummer.Location = new System.Drawing.Point(6, 26);
+            this.lblReservingsnummer.Name = "lblReservingsnummer";
+            this.lblReservingsnummer.Size = new System.Drawing.Size(174, 13);
+            this.lblReservingsnummer.TabIndex = 60;
+            this.lblReservingsnummer.Text = "Selecteer een reservering uit de lijst";
+            // 
+            // btnReserveringBetaald
+            // 
+            this.btnReserveringBetaald.Location = new System.Drawing.Point(57, 55);
+            this.btnReserveringBetaald.Name = "btnReserveringBetaald";
+            this.btnReserveringBetaald.Size = new System.Drawing.Size(75, 23);
+            this.btnReserveringBetaald.TabIndex = 62;
+            this.btnReserveringBetaald.Text = "Betaald";
+            this.btnReserveringBetaald.UseVisualStyleBackColor = true;
+            this.btnReserveringBetaald.Click += new System.EventHandler(this.btnReserveringBetaald_Click);
+            // 
+            // rbtnSpecifiekePlaatsen
+            // 
+            this.rbtnSpecifiekePlaatsen.AutoSize = true;
+            this.rbtnSpecifiekePlaatsen.Location = new System.Drawing.Point(363, 429);
+            this.rbtnSpecifiekePlaatsen.Name = "rbtnSpecifiekePlaatsen";
+            this.rbtnSpecifiekePlaatsen.Size = new System.Drawing.Size(160, 17);
+            this.rbtnSpecifiekePlaatsen.TabIndex = 59;
+            this.rbtnSpecifiekePlaatsen.TabStop = true;
+            this.rbtnSpecifiekePlaatsen.Text = "Specifieke Kampeerplaasten";
+            this.rbtnSpecifiekePlaatsen.UseVisualStyleBackColor = true;
+            this.rbtnSpecifiekePlaatsen.CheckedChanged += new System.EventHandler(this.rbtnSpecifiekePlaatsen_CheckedChanged);
+            // 
+            // rbtnVrijePlaatsen
+            // 
+            this.rbtnVrijePlaatsen.AutoSize = true;
+            this.rbtnVrijePlaatsen.Location = new System.Drawing.Point(177, 429);
+            this.rbtnVrijePlaatsen.Name = "rbtnVrijePlaatsen";
+            this.rbtnVrijePlaatsen.Size = new System.Drawing.Size(130, 17);
+            this.rbtnVrijePlaatsen.TabIndex = 58;
+            this.rbtnVrijePlaatsen.TabStop = true;
+            this.rbtnVrijePlaatsen.Text = "Vrije Kampeerplaatsen";
+            this.rbtnVrijePlaatsen.UseVisualStyleBackColor = true;
+            this.rbtnVrijePlaatsen.CheckedChanged += new System.EventHandler(this.rbtnVrijePlaatsen_CheckedChanged);
+            // 
+            // rbtnAllePlaasten
+            // 
+            this.rbtnAllePlaasten.AutoSize = true;
+            this.rbtnAllePlaasten.Location = new System.Drawing.Point(6, 429);
+            this.rbtnAllePlaasten.Name = "rbtnAllePlaasten";
+            this.rbtnAllePlaasten.Size = new System.Drawing.Size(127, 17);
+            this.rbtnAllePlaasten.TabIndex = 57;
+            this.rbtnAllePlaasten.TabStop = true;
+            this.rbtnAllePlaasten.Text = "Alle Kampeerplaatsen";
+            this.rbtnAllePlaasten.UseVisualStyleBackColor = true;
+            this.rbtnAllePlaasten.CheckedChanged += new System.EventHandler(this.rbtnAllePlaasten_CheckedChanged);
             // 
             // btReserveer
             // 
@@ -1003,84 +1076,6 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
-            // rbtnAllePlaasten
-            // 
-            this.rbtnAllePlaasten.AutoSize = true;
-            this.rbtnAllePlaasten.Location = new System.Drawing.Point(6, 429);
-            this.rbtnAllePlaasten.Name = "rbtnAllePlaasten";
-            this.rbtnAllePlaasten.Size = new System.Drawing.Size(127, 17);
-            this.rbtnAllePlaasten.TabIndex = 57;
-            this.rbtnAllePlaasten.TabStop = true;
-            this.rbtnAllePlaasten.Text = "Alle Kampeerplaatsen";
-            this.rbtnAllePlaasten.UseVisualStyleBackColor = true;
-            // 
-            // rbtnVrijePlaatsen
-            // 
-            this.rbtnVrijePlaatsen.AutoSize = true;
-            this.rbtnVrijePlaatsen.Location = new System.Drawing.Point(177, 429);
-            this.rbtnVrijePlaatsen.Name = "rbtnVrijePlaatsen";
-            this.rbtnVrijePlaatsen.Size = new System.Drawing.Size(130, 17);
-            this.rbtnVrijePlaatsen.TabIndex = 58;
-            this.rbtnVrijePlaatsen.TabStop = true;
-            this.rbtnVrijePlaatsen.Text = "Vrije Kampeerplaatsen";
-            this.rbtnVrijePlaatsen.UseVisualStyleBackColor = true;
-            // 
-            // rbtnSpecifiekePlaatsen
-            // 
-            this.rbtnSpecifiekePlaatsen.AutoSize = true;
-            this.rbtnSpecifiekePlaatsen.Location = new System.Drawing.Point(363, 429);
-            this.rbtnSpecifiekePlaatsen.Name = "rbtnSpecifiekePlaatsen";
-            this.rbtnSpecifiekePlaatsen.Size = new System.Drawing.Size(160, 17);
-            this.rbtnSpecifiekePlaatsen.TabIndex = 59;
-            this.rbtnSpecifiekePlaatsen.TabStop = true;
-            this.rbtnSpecifiekePlaatsen.Text = "Specifieke Kampeerplaasten";
-            this.rbtnSpecifiekePlaatsen.UseVisualStyleBackColor = true;
-            // 
-            // lblReservingsnummer
-            // 
-            this.lblReservingsnummer.AutoSize = true;
-            this.lblReservingsnummer.Location = new System.Drawing.Point(6, 16);
-            this.lblReservingsnummer.Name = "lblReservingsnummer";
-            this.lblReservingsnummer.Size = new System.Drawing.Size(109, 13);
-            this.lblReservingsnummer.TabIndex = 60;
-            this.lblReservingsnummer.Text = "Reserveringsnummer:";
-            // 
-            // tbReserveringsnummerBetaald
-            // 
-            this.tbReserveringsnummerBetaald.Location = new System.Drawing.Point(9, 32);
-            this.tbReserveringsnummerBetaald.Name = "tbReserveringsnummerBetaald";
-            this.tbReserveringsnummerBetaald.Size = new System.Drawing.Size(168, 20);
-            this.tbReserveringsnummerBetaald.TabIndex = 61;
-            // 
-            // btnReserveringBetaald
-            // 
-            this.btnReserveringBetaald.Location = new System.Drawing.Point(57, 59);
-            this.btnReserveringBetaald.Name = "btnReserveringBetaald";
-            this.btnReserveringBetaald.Size = new System.Drawing.Size(75, 23);
-            this.btnReserveringBetaald.TabIndex = 62;
-            this.btnReserveringBetaald.Text = "Betaald";
-            this.btnReserveringBetaald.UseVisualStyleBackColor = true;
-            // 
-            // gbBetaling
-            // 
-            this.gbBetaling.Controls.Add(this.lblReservingsnummer);
-            this.gbBetaling.Controls.Add(this.btnReserveringBetaald);
-            this.gbBetaling.Controls.Add(this.tbReserveringsnummerBetaald);
-            this.gbBetaling.Location = new System.Drawing.Point(605, 429);
-            this.gbBetaling.Name = "gbBetaling";
-            this.gbBetaling.Size = new System.Drawing.Size(188, 100);
-            this.gbBetaling.TabIndex = 63;
-            this.gbBetaling.TabStop = false;
-            this.gbBetaling.Text = "Betaling";
-            // 
-            // listboxReserveringen
-            // 
-            this.listboxReserveringen.FormattingEnabled = true;
-            this.listboxReserveringen.Location = new System.Drawing.Point(605, 19);
-            this.listboxReserveringen.Name = "listboxReserveringen";
-            this.listboxReserveringen.Size = new System.Drawing.Size(188, 407);
-            this.listboxReserveringen.TabIndex = 64;
-            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1097,6 +1092,8 @@
             this.TebReserveren.ResumeLayout(false);
             this.gbReserveren.ResumeLayout(false);
             this.gbReserveren.PerformLayout();
+            this.gbBetaling.ResumeLayout(false);
+            this.gbBetaling.PerformLayout();
             this.TabFeed.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -1118,8 +1115,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.gbBetaling.ResumeLayout(false);
-            this.gbBetaling.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1222,7 +1217,6 @@
         private System.Windows.Forms.GroupBox gbBetaling;
         private System.Windows.Forms.Label lblReservingsnummer;
         private System.Windows.Forms.Button btnReserveringBetaald;
-        private System.Windows.Forms.TextBox tbReserveringsnummerBetaald;
         private System.Windows.Forms.ListBox listboxReserveringen;
     }
 }
