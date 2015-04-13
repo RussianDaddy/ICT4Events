@@ -1,33 +1,155 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
-using ICT4Events.Database;
 
 namespace ICT4Events.ReserveringBeheer
 {
     class ReserveringBeheer
     {
-        Database.Database database = new Database.Database();
+        static Database.Database database = new Database.Database();
 
-        public bool Reserveren(int number, DateTime date, bool paid, int campnumber)
+        public static bool Reserveren(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum,  int betaald)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string query =
+                    "INSERT INTO RESERVERING (Nummer, Aankomstdatum, Vertrekdatum, Betaald, Gebruikergebruikersnaam) VALUES(SEQ_RESERVERING.NEXTVAL, TO_DATE('" +
+                    aankomstDatum + "','DD/MM/YYYY HH24:MI:SS'),TO_DATE('" + vertrekDatum +
+                    "','DD/MM/YYYY HH24:MI:SS'),'" + betaald + "','" + gebruikersnaam + "')";
+                database.Insert(query);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void AllePlaatsen()
+        public static bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
+        {
+            try
+            {
+                string reserveringNummer = VindReserveringNummer(gebruikersnaam, aankomstDatum, vertrekDatum);
+                string queryInsert =
+                    "INSERT INTO Reservering_Kampeerplaats (KampeerplaatsNummer, ReserveringNummer) VALUES('" +
+                    kampeerplaatsnummer + "','" + reserveringNummer + "')";
+                database.Insert(queryInsert);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool VoegMedereizigerToe(string medereizigerGebruikersnaam, string reserveringsNummer)
+        {
+            try
+            {
+                string queryInsert = "INSERT INTO Medereiziger (GastGebruikersnaam, ReserveringNummer) VALUES('" +
+                                     medereizigerGebruikersnaam + "','" + reserveringsNummer + "')";
+                database.Insert(queryInsert);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool UpdateBetaling(string reserveringsnummer)
+        {
+            try
+            {
+                string querySelect = "SELECT * FROM Reservering";
+                string queryUpdate = "UPDATE Reservering SET Betaald = '1' WHERE Nummer= '" + reserveringsnummer + "';";
+                database.Update(querySelect,queryUpdate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static string VindReserveringNummer(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum)
+        {
+            try
+            {
+                string query = "SELECT r.nummer FROM Reservering r WHERE r.GEBRUIKERGEBRUIKERSNAAM = '" + gebruikersnaam +
+                               "' AND r.AANKOMSTDATUM = TO_DATE('" + aankomstDatum +
+                               "', 'DD/MM/YYYY HH24:MI:SS') AND r.VERTREKDATUM = TO_DATE('" + vertrekDatum +
+                               "', 'DD/MM/YYYY HH24:MI:SS')";
+                DataTable reserveringen = database.voerQueryUit(query);
+                string[] array = new string[1];
+                foreach (DataRow dr in reserveringen.Rows)
+                {
+                    array[0] = dr[0].ToString();
+                }
+                string reserveringNummer = array.GetValue(0).ToString();
+                return reserveringNummer;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Reserveringsnummer kan niet worden gevonden.");
+                return null;
+            }
+        }
+
+        public static List<string> AllePlaatsen()
         {
             string query = "SELECT * FROM KAMPEERPLAATS";
-            database.voerQueryUit(query);
+            DataTable kampeerplaatsen = database.voerQueryUit(query);
+            List<String> stringlist= new List<string>();
+            foreach (DataRow dr in kampeerplaatsen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Aantal Personen: " + dr[2]);
+            }
+            return stringlist;
+        }
+        public static List<string> AlleSpecifiekePlaatsen()
+        {
+            string query = "SELECT * FROM Kampeerplaats k WHERE k.eigenschappen IS NOT NULL";
+            DataTable vrijeKampeerplaatsen = database.voerQueryUit(query);
+            List<String> stringlist = new List<string>();
+            foreach (DataRow dr in vrijeKampeerplaatsen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Eigenschappen: " + dr[3] + " Aantal Personen: " + dr[2]);
+            }
+            return stringlist;
         }
 
-        public void VrijePlaatsen()
+        public static List<string> AlleVrijePlaatsen()
         {
             throw new NotImplementedException();
+        }
+
+        public static List<string> AlleGebruikers()
+        {
+            string query = "SELECT g.gebruikersnaam, g.naam FROM GEBRUIKER g";
+            DataTable gebruikers = database.voerQueryUit(query);
+            List<String> stringlist = new List<string>();
+            foreach (DataRow dr in gebruikers.Rows)
+            {
+                stringlist.Add("Gebruiker: " + dr[0] + " Naam: " + dr[1]);
+            }
+            return stringlist;
+        }
+
+        public static List<string> AlleReserveringen()
+        {
+            string query = "SELECT r.nummer, r.gebruikergebruikersnaam FROM Reservering r";
+            DataTable reserveringen = database.voerQueryUit(query);
+            List<String> stringlist = new List<string>();
+            foreach (DataRow dr in reserveringen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Naam: " + dr[1]);
+            }
+            return stringlist;
         }
     }
 }
