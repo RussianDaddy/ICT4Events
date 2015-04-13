@@ -5,13 +5,16 @@ namespace ICT4Events.MateriaalBeheer
     class Materiaal
     {
         public string Soort { get; set; }
-        public int Borg { get; set; }
-        public List<Exemplaar> Exemplaren; 
+        public int Borg { get; set; } 
         public Materiaal(string soort, int borg)
         {
             Soort = soort;
             Borg = borg;
-            Exemplaren = new List<Exemplaar>();
+        }
+
+        public override string ToString()
+        {
+            return Soort + " - " + Borg;
         }
     }
 }

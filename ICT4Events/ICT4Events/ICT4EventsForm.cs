@@ -4,19 +4,21 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using ICT4Events.MateriaalBeheer;
+
 
 namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
         //private Enum e = new Enum;
-<<<<<<< HEAD
+
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
-=======
+        private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
+        private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
->>>>>>> origin/master
 
         public ICT4EventsForm()
         {
@@ -28,6 +30,25 @@ namespace ICT4Events
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             var oneYearAgoToday = DateTime.Now.AddYears(-18);
+
+            Materiaal Beamer = new Materiaal("Beamer",50);
+            Materiaal Laptop = new Materiaal("Laptop",100);
+            Materiaal Hdmi = new Materiaal("HDMI kabel",30);
+            Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
+
+            materiaalbeheer.Exemplaren = new List<Exemplaar>
+            {
+                new Exemplaar(1, Beamer),
+                new Exemplaar(2, Beamer),
+                new Exemplaar(3, Beamer),
+                new Exemplaar(4, Laptop),
+                new Exemplaar(5, Laptop),
+                new Exemplaar(6, Hdmi),
+                new Exemplaar(7, Hdmi),
+                new Exemplaar(8, Ethernet),
+                new Exemplaar(9, Ethernet)
+            };
+            RefreshExemplaren();
 
             /*
             dtpGeboorteDatum.MaxDate = oneYearAgoToday;
@@ -45,6 +66,7 @@ namespace ICT4Events
                 "Bungalows", "Blokhutten", "Bungalinos"
             });*/
             mediabeheer = new Mediabeheer.Mediabeheer();
+            exemplaren = new List<Exemplaar>();
             RefreshAll();
         }
 
@@ -250,6 +272,38 @@ namespace ICT4Events
             {
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
+        }
+
+        private void btnZoekExemplaar_Click(object sender, EventArgs e)
+        {
+            clbExemplaren.Items.Clear();
+            foreach (Exemplaar exemplaar in materiaalbeheer.Exemplaren)
+            {
+                if (tbExemplaarId.Text == exemplaar.Id.ToString())
+                {
+                    clbExemplaren.Items.Add(exemplaar.ToString());
+                }
+            }
+        }
+
+        private void RefreshExemplaren()
+        {
+            clbExemplaren.Items.Clear();
+            foreach(Exemplaar e in materiaalbeheer.Exemplaren)
+            {
+                clbExemplaren.Items.Add(e);
+            }
+        }
+
+        private List<Exemplaar> GehuurdeExemplaren()
+        {
+            List<Exemplaar> tempExemplaren = new List<Exemplaar>();
+            foreach (Exemplaar e in clbExemplaren.CheckedItems)
+            {
+                tempExemplaren.Add(e);
+                clbExemplaarHuren.Items.Add(e);
+            }
+            return tempExemplaren;
         }
     }
 }
