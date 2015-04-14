@@ -287,7 +287,14 @@ namespace ICT4Events
 
         private void btlike_Click(object sender, EventArgs e)
         {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+            string stringId = Selectedtems.Substring(0, 3);
+            int MediafileID = Convert.ToInt32(stringId);
 
+            if(stringId.IndexOf(",") != -1)
+            {
+
+            }
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
