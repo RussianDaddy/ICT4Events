@@ -35,6 +35,16 @@ namespace ICT4Events.Mediabeheer
             new Mediafile(5, "Weer", " ", "Foto", Gamen, @"C:\...", 48, false),
             new Mediafile(6, "Yu-Gi-Oh TCG"," ", "Bestand", Gamen, @"C:\...", 1223, false)
             };
+
+            Database.Database database = new Database.Database();
+            //String QueryVulLijst = "";
+            database.openConnection();
+            //database.voerQueryUit();
+
+
+
+
+
         }
 
         public void DownloadenMedia(int Id)

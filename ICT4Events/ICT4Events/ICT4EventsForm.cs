@@ -81,32 +81,30 @@ namespace ICT4Events
             if (chbBericht.Checked)
             {
                 searchstring += " Bericht";
-                //tempSoortListBericht = mediabeheer.GetSearchedSoort("Bericht");
+                
             }
             if (chbBestand.Checked)
             {
                 searchstring += " Bestand";
-                //tempSoortListBestand = mediabeheer.GetSearchedSoort("Bestand");
+                
             }
             if (chbEvent.Checked)
             {
                 searchstring += " Event";
-                //tempSoortListEvent = mediabeheer.GetSearchedSoort("Event");
+                
             }
             if (chbFoto.Checked)
             {
                 searchstring += " Foto";
-                //tempSoortListFoto = mediabeheer.GetSearchedSoort("Foto");
+                
             }
             if (chbVideo.Checked)
             {
                 searchstring += " Video";
-                //tempSoortListVideo = mediabeheer.GetSearchedSoort("Video");
+                
             }
 
             tempSoortList = mediabeheer.GetSearchedSoort(searchstring);
-
-            //Test van methode (later een foreach die alle categoriën waarop gesorteerd is uitleest en vervolgens alle berichten met categorie.categorie die in de lijst staan in een lijst zet en vervolgens al deze berichten in de lbFeed zet
             foreach (Mediabeheer.Mediafile m in tempSoortList)
             {
                 LbFeed.Items.Add(m.ToString());
