@@ -11,25 +11,12 @@ namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
-<<<<<<< HEAD
-
-        //private Enum e = new Enum;
-
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
-
-=======
-        GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
->>>>>>> origin/master
         private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 
         public ICT4EventsForm()
         {
@@ -250,10 +237,7 @@ namespace ICT4Events
                 lbGebruikersBeheer.Items.Add(Temp.ToString());
             }
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
