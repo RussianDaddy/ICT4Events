@@ -74,9 +74,6 @@
             this.chbBericht = new System.Windows.Forms.CheckBox();
             this.chbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btreport = new System.Windows.Forms.Button();
-            this.btreply = new System.Windows.Forms.Button();
-            this.btlike = new System.Windows.Forms.Button();
             this.LbFeed = new System.Windows.Forms.ListBox();
             this.TabAlgemeneinfo = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -105,12 +102,11 @@
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnKiesExemplaar = new System.Windows.Forms.Button();
-            this.btnUndoExemplaar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
-            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
             this.btnAanmakenBeheer = new System.Windows.Forms.Button();
             this.btnWijzigenBeheer = new System.Windows.Forms.Button();
@@ -126,6 +122,10 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
+            this.btlike = new System.Windows.Forms.Button();
+            this.btreply = new System.Windows.Forms.Button();
+            this.btreport = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -626,34 +626,6 @@
             this.groupBox3.Text = "Feed";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // btreport
-            // 
-            this.btreport.Location = new System.Drawing.Point(169, 447);
-            this.btreport.Name = "btreport";
-            this.btreport.Size = new System.Drawing.Size(75, 23);
-            this.btreport.TabIndex = 3;
-            this.btreport.Text = "Report";
-            this.btreport.UseVisualStyleBackColor = true;
-            // 
-            // btreply
-            // 
-            this.btreply.Location = new System.Drawing.Point(88, 447);
-            this.btreply.Name = "btreply";
-            this.btreply.Size = new System.Drawing.Size(75, 23);
-            this.btreply.TabIndex = 2;
-            this.btreply.Text = "Reply";
-            this.btreply.UseVisualStyleBackColor = true;
-            // 
-            // btlike
-            // 
-            this.btlike.Location = new System.Drawing.Point(7, 447);
-            this.btlike.Name = "btlike";
-            this.btlike.Size = new System.Drawing.Size(75, 23);
-            this.btlike.TabIndex = 1;
-            this.btlike.Text = "Like!";
-            this.btlike.UseVisualStyleBackColor = true;
-            this.btlike.Click += new System.EventHandler(this.btlike_Click);
-            // 
             // LbFeed
             // 
             this.LbFeed.BackColor = System.Drawing.Color.SeaShell;
@@ -870,8 +842,8 @@
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.btnKiesExemplaar);
-            this.groupBox1.Controls.Add(this.btnUndoExemplaar);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.clbExemplaren);
             this.groupBox1.Controls.Add(this.clbExemplaarHuren);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
@@ -934,24 +906,23 @@
             this.label17.TabIndex = 8;
             this.label17.Text = "Uitlening";
             // 
-            // btnKiesExemplaar
+            // button2
             // 
-            this.btnKiesExemplaar.Location = new System.Drawing.Point(372, 261);
-            this.btnKiesExemplaar.Name = "btnKiesExemplaar";
-            this.btnKiesExemplaar.Size = new System.Drawing.Size(67, 23);
-            this.btnKiesExemplaar.TabIndex = 7;
-            this.btnKiesExemplaar.Text = ">>";
-            this.btnKiesExemplaar.UseVisualStyleBackColor = true;
-            this.btnKiesExemplaar.Click += new System.EventHandler(this.btnKiesExemplaar_Click);
+            this.button2.Location = new System.Drawing.Point(372, 261);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = ">>";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnUndoExemplaar
+            // button1
             // 
-            this.btnUndoExemplaar.Location = new System.Drawing.Point(372, 232);
-            this.btnUndoExemplaar.Name = "btnUndoExemplaar";
-            this.btnUndoExemplaar.Size = new System.Drawing.Size(67, 23);
-            this.btnUndoExemplaar.TabIndex = 6;
-            this.btnUndoExemplaar.Text = "<<";
-            this.btnUndoExemplaar.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(372, 232);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "<<";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // clbExemplaren
             // 
@@ -986,16 +957,6 @@
             this.TabBeheren.Size = new System.Drawing.Size(812, 542);
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
-            // 
-            // btnLaatZienBeheren
-            // 
-            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
-            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
-            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
-            this.btnLaatZienBeheren.TabIndex = 5;
-            this.btnLaatZienBeheren.Text = "Laat zien";
-            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
-            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
             // 
             // BetaalstatusBeheer
             // 
@@ -1136,6 +1097,44 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
+            // btnLaatZienBeheren
+            // 
+            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
+            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
+            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
+            this.btnLaatZienBeheren.TabIndex = 5;
+            this.btnLaatZienBeheren.Text = "Laat zien";
+            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
+            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
+            //
+            // btlike
+            // 
+            this.btlike.Location = new System.Drawing.Point(7, 447);
+            this.btlike.Name = "btlike";
+            this.btlike.Size = new System.Drawing.Size(75, 23);
+            this.btlike.TabIndex = 1;
+            this.btlike.Text = "Like!";
+            this.btlike.UseVisualStyleBackColor = true;
+            this.btlike.Click += new System.EventHandler(this.btlike_Click);
+            // 
+            // btreply
+            // 
+            this.btreply.Location = new System.Drawing.Point(88, 447);
+            this.btreply.Name = "btreply";
+            this.btreply.Size = new System.Drawing.Size(75, 23);
+            this.btreply.TabIndex = 2;
+            this.btreply.Text = "Reply";
+            this.btreply.UseVisualStyleBackColor = true;
+            // 
+            // btreport
+            // 
+            this.btreport.Location = new System.Drawing.Point(169, 447);
+            this.btreport.Name = "btreport";
+            this.btreport.Size = new System.Drawing.Size(75, 23);
+            this.btreport.TabIndex = 3;
+            this.btreport.Text = "Report";
+            this.btreport.UseVisualStyleBackColor = true;
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1205,8 +1204,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnKiesExemplaar;
-        private System.Windows.Forms.Button btnUndoExemplaar;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;

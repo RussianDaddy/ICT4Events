@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,40 +41,6 @@ namespace ICT4Events.MateriaalBeheer
         public void UitgevenRFID(Gebruiker gebruiker, int rfid)
         {
             
-        }
-
-        public static List<string> AlleExemplaren()
-        {
-            string query = "SELECT e.ID, Opmerkingen, m.Borg, m.Soort FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
-            DataTable exemplaren = database.voerQueryUit(query);
-            List<string> stringList = new List<string>();
-            foreach (DataRow dr in exemplaren.Rows)
-            {
-                stringList.Add("ID: " + dr[0] + " - " + dr[1] + " Borg: " + dr[2] + " Soort: " + dr[3]);
-            }
-            return stringList;
-        }
-
-        public static List<string> ZoekMateriaal(string id)
-        {
-            try
-            {
-                string query =
-                    "SELECT e.ID, Opmerkingen, m.Borg, m.Soort FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID AND m.ID = " +
-                    id;
-                DataTable materiaalZoeken = database.voerQueryUit(query);
-                List<string> stringList = new List<string>();
-                foreach (DataRow dr in materiaalZoeken.Rows)
-                {
-                    stringList.Add("ID: " + dr[0] + " - " + dr[1] + " Borg: " + dr[2] + " Soort: " + dr[3]);
-                }
-                return stringList;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Materiaal ID kon niet gevonden worden.");
-                return null;
-            }
         }
     }
 }
