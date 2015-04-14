@@ -278,12 +278,24 @@ namespace ICT4Events
             return tempExemplaren;
         }
 
+
+
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }
 
         private void btlike_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
         {
 
         }
