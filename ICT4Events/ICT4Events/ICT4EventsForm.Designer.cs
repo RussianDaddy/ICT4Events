@@ -74,6 +74,9 @@
             this.chbBericht = new System.Windows.Forms.CheckBox();
             this.chbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btreport = new System.Windows.Forms.Button();
+            this.btreply = new System.Windows.Forms.Button();
+            this.btlike = new System.Windows.Forms.Button();
             this.LbFeed = new System.Windows.Forms.ListBox();
             this.TabAlgemeneinfo = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -107,6 +110,7 @@
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
+            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
             this.btnAanmakenBeheer = new System.Windows.Forms.Button();
             this.btnWijzigenBeheer = new System.Windows.Forms.Button();
@@ -121,14 +125,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-<<<<<<< HEAD
-            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
-=======
-            this.btlike = new System.Windows.Forms.Button();
-            this.btreply = new System.Windows.Forms.Button();
-            this.btreport = new System.Windows.Forms.Button();
->>>>>>> origin/master
+            this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -629,6 +626,34 @@
             this.groupBox3.Text = "Feed";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // btreport
+            // 
+            this.btreport.Location = new System.Drawing.Point(169, 447);
+            this.btreport.Name = "btreport";
+            this.btreport.Size = new System.Drawing.Size(75, 23);
+            this.btreport.TabIndex = 3;
+            this.btreport.Text = "Report";
+            this.btreport.UseVisualStyleBackColor = true;
+            // 
+            // btreply
+            // 
+            this.btreply.Location = new System.Drawing.Point(88, 447);
+            this.btreply.Name = "btreply";
+            this.btreply.Size = new System.Drawing.Size(75, 23);
+            this.btreply.TabIndex = 2;
+            this.btreply.Text = "Reply";
+            this.btreply.UseVisualStyleBackColor = true;
+            // 
+            // btlike
+            // 
+            this.btlike.Location = new System.Drawing.Point(7, 447);
+            this.btlike.Name = "btlike";
+            this.btlike.Size = new System.Drawing.Size(75, 23);
+            this.btlike.TabIndex = 1;
+            this.btlike.Text = "Like!";
+            this.btlike.UseVisualStyleBackColor = true;
+            this.btlike.Click += new System.EventHandler(this.btlike_Click);
+            // 
             // LbFeed
             // 
             this.LbFeed.BackColor = System.Drawing.Color.SeaShell;
@@ -961,6 +986,16 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
+            // btnLaatZienBeheren
+            // 
+            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
+            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
+            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
+            this.btnLaatZienBeheren.TabIndex = 5;
+            this.btnLaatZienBeheren.Text = "Laat zien";
+            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
+            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
+            // 
             // BetaalstatusBeheer
             // 
             this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
@@ -1083,7 +1118,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.clbGebruikersBeheer);
+            this.groupBox2.Controls.Add(this.lbGebruikersBeheer);
             this.groupBox2.Location = new System.Drawing.Point(12, 15);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(327, 509);
@@ -1091,54 +1126,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gebruikers";
             // 
-            // clbGebruikersBeheer
+            // lbGebruikersBeheer
             // 
-            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
-            this.clbGebruikersBeheer.FormattingEnabled = true;
-            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
-            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
-            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
-            this.clbGebruikersBeheer.TabIndex = 75;
-            // 
-<<<<<<< HEAD
-            // btnLaatZienBeheren
-            // 
-            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
-            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
-            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
-            this.btnLaatZienBeheren.TabIndex = 5;
-            this.btnLaatZienBeheren.Text = "Laat zien";
-            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
-            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
-=======
-            // btlike
-            // 
-            this.btlike.Location = new System.Drawing.Point(7, 447);
-            this.btlike.Name = "btlike";
-            this.btlike.Size = new System.Drawing.Size(75, 23);
-            this.btlike.TabIndex = 1;
-            this.btlike.Text = "Like!";
-            this.btlike.UseVisualStyleBackColor = true;
-            this.btlike.Click += new System.EventHandler(this.btlike_Click);
-            // 
-            // btreply
-            // 
-            this.btreply.Location = new System.Drawing.Point(88, 447);
-            this.btreply.Name = "btreply";
-            this.btreply.Size = new System.Drawing.Size(75, 23);
-            this.btreply.TabIndex = 2;
-            this.btreply.Text = "Reply";
-            this.btreply.UseVisualStyleBackColor = true;
-            // 
-            // btreport
-            // 
-            this.btreport.Location = new System.Drawing.Point(169, 447);
-            this.btreport.Name = "btreport";
-            this.btreport.Size = new System.Drawing.Size(75, 23);
-            this.btreport.TabIndex = 3;
-            this.btreport.Text = "Report";
-            this.btreport.UseVisualStyleBackColor = true;
->>>>>>> origin/master
+            this.lbGebruikersBeheer.FormattingEnabled = true;
+            this.lbGebruikersBeheer.Location = new System.Drawing.Point(6, 19);
+            this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
+            this.lbGebruikersBeheer.Size = new System.Drawing.Size(315, 485);
+            this.lbGebruikersBeheer.TabIndex = 0;
             // 
             // ICT4EventsForm
             // 
@@ -1222,7 +1216,6 @@
         private System.Windows.Forms.TextBox tbGebruikersnaamBeheer;
         private System.Windows.Forms.TextBox tbNaamBeheer;
         private System.Windows.Forms.Button btnWijzigenBeheer;
-        private System.Windows.Forms.CheckedListBox clbGebruikersBeheer;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox gbsoort;
@@ -1282,14 +1275,12 @@
         private System.Windows.Forms.Label lblReservingsnummer;
         private System.Windows.Forms.Button btnReserveringBetaald;
         private System.Windows.Forms.ListBox listboxReserveringen;
-<<<<<<< HEAD
         private System.Windows.Forms.Button btnLaatZienBeheren;
-=======
         private System.Windows.Forms.Button btnZoekExemplaar;
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
->>>>>>> origin/master
+        private System.Windows.Forms.ListBox lbGebruikersBeheer;
     }
 }
 
