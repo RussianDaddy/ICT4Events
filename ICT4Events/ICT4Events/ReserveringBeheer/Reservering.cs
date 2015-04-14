@@ -9,16 +9,24 @@ namespace ICT4Events.ReserveringBeheer
     class Reservering
     {
         public int Nummer { get; set; }
-        public DateTime Datum { get; set; }
+        public DateTime AankomstDatum { get; set; }
+        public DateTime VertrekDatum { get; set; }
         public bool Betaald { get; set; }
 
 
 
-        public Reservering(int number, DateTime date, bool paid)
+        public Reservering(int number, DateTime arrivalDate, DateTime departureDate, bool paid)
         {
             Nummer = number;
-            Datum = date;
+            AankomstDatum = arrivalDate;
+            VertrekDatum = departureDate;
             Betaald = paid;
+        }
+
+        public override string ToString()
+        {
+            return "Nummer: " + Nummer + " Aankomstdatum: " + AankomstDatum.ToString() + " Vertrekdatum: " +
+                   VertrekDatum.ToString() + " Betaald: " + Betaald;
         }
     }
 }

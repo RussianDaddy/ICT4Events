@@ -64,9 +64,8 @@ namespace ICT4Events.ReserveringBeheer
         {
             try
             {
-                string querySelect = "SELECT * FROM Reservering";
-                string queryUpdate = "UPDATE Reservering SET Betaald = '1' WHERE Nummer= '" + reserveringsnummer + "';";
-                database.Update(querySelect,queryUpdate);
+                string queryUpdate = "UPDATE Reservering SET Betaald = '1' WHERE Nummer= '" + reserveringsnummer + "'";
+                database.voerQueryUit(queryUpdate);
                 return true;
             }
             catch (Exception)
@@ -125,6 +124,16 @@ namespace ICT4Events.ReserveringBeheer
 
         public static List<string> AlleVrijePlaatsen()
         {
+            //Waar de datum van vandaag is NIET tussen de aankomstdatum en vertrekdatum
+            /*
+             *  SELECT k.NUMMER,k.SOORT, k.EIGENSCHAPPEN, k."Aantal personen"
+                FROM KAMPEERPLAATS k, reservering r, RESERVERING_KAMPEERPLAATS rk
+                WHERE rk.KAMPEERPLAATSNUMMER = k.NUMMER
+                AND rk.RESERVERINGNUMMER = r.NUMMER
+                AND (SELECT TO_CHAR
+                (SYSDATE, 'DD-MM-YYYY HH24:MI:SS') "NOW"
+                FROM DUAL) NOT BETWEEN r.AANKOMSTDATUM AND r.VERTREKDATUM;
+             */
             throw new NotImplementedException();
         }
 

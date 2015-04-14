@@ -125,7 +125,15 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
+=======
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
+            this.btlike = new System.Windows.Forms.Button();
+            this.btreply = new System.Windows.Forms.Button();
+            this.btreport = new System.Windows.Forms.Button();
+>>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1128,11 +1136,51 @@
             // 
             // lbGebruikersBeheer
             // 
+<<<<<<< HEAD
             this.lbGebruikersBeheer.FormattingEnabled = true;
             this.lbGebruikersBeheer.Location = new System.Drawing.Point(6, 19);
             this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
             this.lbGebruikersBeheer.Size = new System.Drawing.Size(315, 485);
             this.lbGebruikersBeheer.TabIndex = 0;
+=======
+            // btnLaatZienBeheren
+            // 
+            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
+            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
+            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
+            this.btnLaatZienBeheren.TabIndex = 5;
+            this.btnLaatZienBeheren.Text = "Laat zien";
+            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
+            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
+            //
+            // btlike
+            // 
+            this.btlike.Location = new System.Drawing.Point(7, 447);
+            this.btlike.Name = "btlike";
+            this.btlike.Size = new System.Drawing.Size(75, 23);
+            this.btlike.TabIndex = 1;
+            this.btlike.Text = "Like!";
+            this.btlike.UseVisualStyleBackColor = true;
+            this.btlike.Click += new System.EventHandler(this.btlike_Click);
+            // 
+            // btreply
+            // 
+            this.btreply.Location = new System.Drawing.Point(88, 447);
+            this.btreply.Name = "btreply";
+            this.btreply.Size = new System.Drawing.Size(75, 23);
+            this.btreply.TabIndex = 2;
+            this.btreply.Text = "Reply";
+            this.btreply.UseVisualStyleBackColor = true;
+            // 
+            // btreport
+            // 
+            this.btreport.Location = new System.Drawing.Point(169, 447);
+            this.btreport.Name = "btreport";
+            this.btreport.Size = new System.Drawing.Size(75, 23);
+            this.btreport.TabIndex = 3;
+            this.btreport.Text = "Report";
+            this.btreport.UseVisualStyleBackColor = true;
+>>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1280,7 +1328,10 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
+<<<<<<< HEAD
         private System.Windows.Forms.ListBox lbGebruikersBeheer;
+=======
+>>>>>>> origin/master
     }
 }
 

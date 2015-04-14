@@ -11,18 +11,25 @@ namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
+<<<<<<< HEAD
 
         //private Enum e = new Enum;
 
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
 
+=======
+        GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
+>>>>>>> origin/master
         private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 
         public ICT4EventsForm()
         {
@@ -34,23 +41,24 @@ namespace ICT4Events
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
 
-            Materiaal Beamer = new Materiaal("Beamer",50);
-            Materiaal Laptop = new Materiaal("Laptop",100);
-            Materiaal Hdmi = new Materiaal("HDMI kabel",30);
-            Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
+            //Materiaal Beamer = new Materiaal("Beamer",50);
+            //Materiaal Laptop = new Materiaal("Laptop",100);
+            //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
+            //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
 
-            materiaalbeheer.Exemplaren = new List<Exemplaar>
-            {
-                new Exemplaar(1, Beamer),
-                new Exemplaar(2, Beamer),
-                new Exemplaar(3, Beamer),
-                new Exemplaar(4, Laptop),
-                new Exemplaar(5, Laptop),
-                new Exemplaar(6, Hdmi),
-                new Exemplaar(7, Hdmi),
-                new Exemplaar(8, Ethernet),
-                new Exemplaar(9, Ethernet)
-            };
+            //materiaalbeheer.Exemplaren = new List<Exemplaar>
+            //{
+            //    new Exemplaar(1, Beamer),
+            //    new Exemplaar(2, Beamer),
+            //    new Exemplaar(3, Beamer),
+            //    new Exemplaar(4, Laptop),
+            //    new Exemplaar(5, Laptop),
+            //    new Exemplaar(6, Hdmi),
+            //    new Exemplaar(7, Hdmi),
+            //    new Exemplaar(8, Ethernet),
+            //    new Exemplaar(9, Ethernet)
+            //};
+
             RefreshExemplaren();
             mediabeheer = new Mediabeheer.Mediabeheer();
             exemplaren = new List<Exemplaar>();
@@ -242,7 +250,10 @@ namespace ICT4Events
                 lbGebruikersBeheer.Items.Add(Temp.ToString());
             }
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();

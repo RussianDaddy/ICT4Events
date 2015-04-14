@@ -25,6 +25,11 @@ namespace ICT4Events.GebruikerBeheer
             this.Admin = admin;
         }
 
+        public string GetGebruikersnaam()
+        {
+            return Gebruikersnaam;
+        }
+
         public override string ToString()
         {
             return Gebruikersnaam + ", " + Naam + ", " + Wachtwoord + ", " + Convert.ToString(Aanwezig) + ", " + Convert.ToString(Admin) + ", " + Convert.ToString(RFID);
