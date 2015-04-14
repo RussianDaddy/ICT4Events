@@ -269,6 +269,16 @@ namespace ICT4Events
             return tempExemplaren;
         }
 
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btlike_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //EventBeheer
     }
 }
