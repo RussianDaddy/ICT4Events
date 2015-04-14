@@ -40,12 +40,12 @@ namespace ICT4Events.MateriaalBeheer
 
         public static List<string> AlleExemplaren()
         {
-            string query = "SELECT e.ID, m.Soort, m.Borg, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
+            string query = "SELECT e.ID, m.Borg, m.Soort, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
             DataTable exemplaren = database.voerQueryUit(query);
             List<string> stringList = new List<string>();
             foreach (DataRow dr in exemplaren.Rows)
             {
-                stringList.Add("ID: " + dr[0] + " - " + dr[1] + " - Borg: " + dr[2] + " - Soort: " + dr[3]);
+                stringList.Add("ID: " + dr[0] + " - Borg: " + dr[1] + " - Soort:" + dr[2] + " -  " + dr[3]);
             }
             return stringList;
         }
@@ -55,13 +55,13 @@ namespace ICT4Events.MateriaalBeheer
             try
             {
                 string query =
-                    "SELECT e.ID, Opmerkingen, m.Borg, m.Soort FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID AND m.ID = " +
+                    "SELECT e.ID, m.Borg, m.Soort, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID AND m.ID = " +
                     id;
                 DataTable materiaalZoeken = database.voerQueryUit(query);
                 List<string> stringList = new List<string>();
                 foreach (DataRow dr in materiaalZoeken.Rows)
                 {
-                    stringList.Add("ID: " + dr[0] + " - " + dr[1] + " - Borg: " + dr[2] + " - Soort: " + dr[3]);
+                    stringList.Add("ID: " + dr[0] + " - Borg: " + dr[1] + " - Soort:" + dr[2] + " -  " + dr[3]);
                 }
                 return stringList;
             }
@@ -71,5 +71,6 @@ namespace ICT4Events.MateriaalBeheer
                 return null;
             }
         }
+
     }
 }

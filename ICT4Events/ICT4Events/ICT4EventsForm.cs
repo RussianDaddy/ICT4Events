@@ -17,6 +17,7 @@ namespace ICT4Events
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+        int buttonZoekGeklikt = 0;
 
         public ICT4EventsForm()
         {
@@ -33,7 +34,7 @@ namespace ICT4Events
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
             //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
-
+            
             //materiaalbeheer.Exemplaren = new List<Exemplaar>
             //{
             //    new Exemplaar(1, Beamer),
@@ -249,6 +250,7 @@ namespace ICT4Events
         {
             clbExemplaren.DataSource = null;
             clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+            buttonZoekGeklikt++;
         }
 
         private void RefreshExemplaren()
@@ -288,12 +290,23 @@ namespace ICT4Events
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
-
+            if (buttonZoekGeklikt < 1)
+                {
+                    clbExemplaarHuren.Items.Clear();
+                }
+                foreach (string exemplaar in clbExemplaren.CheckedItems)
+                {
+                    clbExemplaarHuren.Items.Add(exemplaar);
+                }
         }
 
         private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
         {
-
+            clbExemplaarHuren.DataSource = null;
+            foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
+            {
+                clbExemplaarHuren.Items.Remove(item);
+            }
         }
 
         //EventBeheer
