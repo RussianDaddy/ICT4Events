@@ -25,6 +25,7 @@ namespace ICT4Events
             clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
             clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
             listboxReserveringen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleReserveringen();
+            clbExemplaren.DataSource = Materiaalbeheer.AlleExemplaren();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
 
@@ -245,26 +246,16 @@ namespace ICT4Events
             dtpDatumVertrek.Refresh();
         }
 
-        //MateriaaleBheer
+        //MateriaalBeheer
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
-            clbExemplaren.Items.Clear();
-            foreach (Exemplaar exemplaar in materiaalbeheer.Exemplaren)
-            {
-                if (tbExemplaarId.Text == exemplaar.Id.ToString())
-                {
-                    clbExemplaren.Items.Add(exemplaar.ToString());
-                }
-            }
+            clbExemplaren.DataSource = null;
+            clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
         }
 
         private void RefreshExemplaren()
         {
-            clbExemplaren.Items.Clear();
-            foreach(Exemplaar e in materiaalbeheer.Exemplaren)
-            {
-                clbExemplaren.Items.Add(e);
-            }
+ 
         }
 
         private List<Exemplaar> GehuurdeExemplaren()
