@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ICT4Events.GebruikerBeheer;
 
 namespace ICT4Events.MateriaalBeheer
@@ -17,10 +18,22 @@ namespace ICT4Events.MateriaalBeheer
             
         }
 
-        public void HurenMateriaal(int id, DateTime uitleenDatum, DateTime retourDatum, Exemplaar exemplaar, Gebruiker gebruiker)
+        public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, Gebruiker gebruiker)
         {
-            Uitlening uitlening = new Uitlening(id, uitleenDatum, retourDatum, exemplaar, gebruiker);
-            
+            try
+            {
+                retourdatum = uitleendatum.AddDays(3);
+                string query = 
+                    "INSERT INTO Uitlening (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + "," + uitleendatum.ToShortDateString() + "," + retourdatum.ToShortDateString() + "," + gebruiker.
+                    
+                    return true;
+            } 
+
+            catch (Exception)
+            {
+                return false;
+            }
+            //Uitlening uitlening = new Uitlening(id, uitleenDatum, retourDatum, exemplaar, gebruiker);
         }
 
         public void UitgevenRFID(Gebruiker gebruiker, int rfid)

@@ -11,12 +11,23 @@ namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
+<<<<<<< HEAD
+        //private Enum e = new Enum;
+
+        GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
+
+=======
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
         private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
+>>>>>>> origin/master
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 
         public ICT4EventsForm()
         {
@@ -28,23 +39,24 @@ namespace ICT4Events
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
 
-            Materiaal Beamer = new Materiaal("Beamer",50);
-            Materiaal Laptop = new Materiaal("Laptop",100);
-            Materiaal Hdmi = new Materiaal("HDMI kabel",30);
-            Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
+            //Materiaal Beamer = new Materiaal("Beamer",50);
+            //Materiaal Laptop = new Materiaal("Laptop",100);
+            //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
+            //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
 
-            materiaalbeheer.Exemplaren = new List<Exemplaar>
-            {
-                new Exemplaar(1, Beamer),
-                new Exemplaar(2, Beamer),
-                new Exemplaar(3, Beamer),
-                new Exemplaar(4, Laptop),
-                new Exemplaar(5, Laptop),
-                new Exemplaar(6, Hdmi),
-                new Exemplaar(7, Hdmi),
-                new Exemplaar(8, Ethernet),
-                new Exemplaar(9, Ethernet)
-            };
+            //materiaalbeheer.Exemplaren = new List<Exemplaar>
+            //{
+            //    new Exemplaar(1, Beamer),
+            //    new Exemplaar(2, Beamer),
+            //    new Exemplaar(3, Beamer),
+            //    new Exemplaar(4, Laptop),
+            //    new Exemplaar(5, Laptop),
+            //    new Exemplaar(6, Hdmi),
+            //    new Exemplaar(7, Hdmi),
+            //    new Exemplaar(8, Ethernet),
+            //    new Exemplaar(9, Ethernet)
+            //};
+
             RefreshExemplaren();
             mediabeheer = new Mediabeheer.Mediabeheer();
             exemplaren = new List<Exemplaar>();
@@ -228,6 +240,16 @@ namespace ICT4Events
             }
         }
 
+<<<<<<< HEAD
+        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
+        {
+            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
+            foreach(GebruikerBeheer.Gebruiker Temp in Gebruiker)
+            {
+                clbGebruikersBeheer.Items.Add(Temp.ToString());
+            }
+        }
+=======
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
@@ -269,7 +291,18 @@ namespace ICT4Events
             return tempExemplaren;
         }
 
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btlike_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //EventBeheer
+>>>>>>> origin/master
     }
 }
  
