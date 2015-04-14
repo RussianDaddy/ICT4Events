@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
@@ -105,8 +106,8 @@
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnVerplaatsExemplaren = new System.Windows.Forms.Button();
-            this.btnTerugplaatsenExemplaren = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
@@ -126,6 +127,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -870,8 +872,8 @@
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.btnVerplaatsExemplaren);
-            this.groupBox1.Controls.Add(this.btnTerugplaatsenExemplaren);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.clbExemplaren);
             this.groupBox1.Controls.Add(this.clbExemplaarHuren);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
@@ -934,25 +936,23 @@
             this.label17.TabIndex = 8;
             this.label17.Text = "Uitlening";
             // 
-            // btnVerplaatsExemplaren
+            // button2
             // 
-            this.btnVerplaatsExemplaren.Location = new System.Drawing.Point(372, 261);
-            this.btnVerplaatsExemplaren.Name = "btnVerplaatsExemplaren";
-            this.btnVerplaatsExemplaren.Size = new System.Drawing.Size(67, 23);
-            this.btnVerplaatsExemplaren.TabIndex = 7;
-            this.btnVerplaatsExemplaren.Text = ">>";
-            this.btnVerplaatsExemplaren.UseVisualStyleBackColor = true;
-            this.btnVerplaatsExemplaren.Click += new System.EventHandler(this.btnVerplaatsExemplaren_Click);
+            this.button2.Location = new System.Drawing.Point(372, 261);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = ">>";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnTerugplaatsenExemplaren
+            // button1
             // 
-            this.btnTerugplaatsenExemplaren.Location = new System.Drawing.Point(372, 232);
-            this.btnTerugplaatsenExemplaren.Name = "btnTerugplaatsenExemplaren";
-            this.btnTerugplaatsenExemplaren.Size = new System.Drawing.Size(67, 23);
-            this.btnTerugplaatsenExemplaren.TabIndex = 6;
-            this.btnTerugplaatsenExemplaren.Text = "<<";
-            this.btnTerugplaatsenExemplaren.UseVisualStyleBackColor = true;
-            this.btnTerugplaatsenExemplaren.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
+            this.button1.Location = new System.Drawing.Point(372, 232);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "<<";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // clbExemplaren
             // 
@@ -1137,6 +1137,11 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
+            // refreshLijstTimer
+            // 
+            this.refreshLijstTimer.Interval = 120000;
+            this.refreshLijstTimer.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1206,8 +1211,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnVerplaatsExemplaren;
-        private System.Windows.Forms.Button btnTerugplaatsenExemplaren;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;
@@ -1284,6 +1289,7 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
+        private System.Windows.Forms.Timer refreshLijstTimer;
     }
 }
 
