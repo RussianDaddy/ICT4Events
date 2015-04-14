@@ -12,6 +12,7 @@ namespace ICT4Events.MateriaalBeheer
     {
     //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
         public List<Exemplaar> Exemplaren;
+        static Database.Database database = new Database.Database();
         public Materiaalbeheer()
         {
             Exemplaren = new List<Exemplaar>();
@@ -23,9 +24,10 @@ namespace ICT4Events.MateriaalBeheer
             try
             {
                 retourdatum = uitleendatum.AddDays(3);
-                string query = 
-                    "INSERT INTO Uitlening (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + "," + uitleendatum.ToShortDateString() + "," + retourdatum.ToShortDateString() + "," + gebruiker.
-                    
+                string query =
+                    "INSERT INTO Uitlening (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",'" +
+                    uitleendatum.ToShortDateString() + "','" + retourdatum.ToShortDateString() + "','" + gebruiker.GetGebruikersnaam() + "')";
+                    database.Insert(query);
                     return true;
             } 
 
