@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Events.GebruikerBeheer
 {
-    abstract class Gebruiker
+    class Gebruiker
     {
         string Gebruikersnaam { get; set; }
         string Naam { get; set; }
@@ -23,6 +23,11 @@ namespace ICT4Events.GebruikerBeheer
             this.Aanwezig = aanwezig;
             this.RFID = rfid;
             this.Admin = admin;
+        }
+
+        public override string ToString()
+        {
+            return Gebruikersnaam + ", " + Naam + ", " + Wachtwoord + ", " + Convert.ToString(Aanwezig) + ", " + Convert.ToString(Admin) + ", " + Convert.ToString(RFID);
         }
     }
 }

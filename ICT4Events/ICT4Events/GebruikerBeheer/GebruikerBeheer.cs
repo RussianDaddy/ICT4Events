@@ -19,11 +19,33 @@ namespace ICT4Events.GebruikerBeheer
         //Zijn gegegevens worden toegevoegd aan de Database.
         public void Registreren(string email, string naam, string wachtwoord, int aanwezig, string admin)
         {
-            string sql = "INSERT INTO GEBRUIKER(Gebruikersnaam, Naam, Wachtwoord,  Aanwezig, AdminCheck) VALUES('"+ email +"','" + naam + "','" + wachtwoord + "','" + Convert.ToString(aanwezig) + "','" + Convert.ToString(admin) + "')";
-            if (Database.Insert(sql) == true)
-            {
-                MessageBox.Show("Gebruiker is toegevoegd.");
+            string sqlGebruiker = "INSERT INTO GEBRUIKER(Gebruikersnaam, Naam, Wachtwoord,  Aanwezig, AdminCheck) VALUES('" + email + "','" + naam + "','" + wachtwoord + "','" + Convert.ToString(aanwezig) + "','" + admin + "')";
+            if (admin == "Ja")
+            {  
+                string sqlAdmin = "INSERT INTO ADMIN(Gebruikergebruikersnaam) VALUES('" + email + "')";
+                if (Database.Insert(sqlGebruiker) == true)
+                {
+                    Database.Insert(sqlAdmin);
+                    MessageBox.Show("Admin is toegevoegd.");
+                }
             }
+            else
+            {
+                string sqlGast = "INSERT INTO GAST(Gebruikergebruikersnaam) VALUES('" + email + "')";
+                if (Database.Insert(sqlGebruiker) == true)
+                {
+                    Database.Insert(sqlGast);
+                    MessageBox.Show("Gast is toegevoegd.");
+                }
+            }
+        }
+
+        public List<Gebruiker> LijstAanwezigen()
+        {
+            List<Gebruiker> Gebruikers = new List<Gebruiker>();
+            string sql = "SELECT * FROM GEBRUIKER";
+            Gebruikers = Database.GetGebruikerList(sql);
+            return Gebruikers;
         }
     }
 }

@@ -121,6 +121,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -925,6 +926,7 @@
             // TabBeheren
             // 
             this.TabBeheren.BackColor = System.Drawing.Color.LightGray;
+            this.TabBeheren.Controls.Add(this.btnLaatZienBeheren);
             this.TabBeheren.Controls.Add(this.BetaalstatusBeheer);
             this.TabBeheren.Controls.Add(this.btnAanmakenBeheer);
             this.TabBeheren.Controls.Add(this.btnWijzigenBeheer);
@@ -1076,6 +1078,16 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
+            // btnLaatZienBeheren
+            // 
+            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
+            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
+            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
+            this.btnLaatZienBeheren.TabIndex = 5;
+            this.btnLaatZienBeheren.Text = "Laat zien";
+            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
+            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1218,6 +1230,7 @@
         private System.Windows.Forms.Label lblReservingsnummer;
         private System.Windows.Forms.Button btnReserveringBetaald;
         private System.Windows.Forms.ListBox listboxReserveringen;
+        private System.Windows.Forms.Button btnLaatZienBeheren;
     }
 }
 

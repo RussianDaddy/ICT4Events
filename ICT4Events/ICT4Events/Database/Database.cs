@@ -58,7 +58,7 @@ namespace ICT4Events.Database
                 DataAdapter.Fill(Data);
                 return true;
             }
-            catch (OracleException exc)
+            catch (OracleException)
             {
                 MessageBox.Show("Deze gebruiker bestaat al.");
                 return false;
@@ -92,29 +92,74 @@ namespace ICT4Events.Database
             }
         }
 
-        public List<string> GetStringList(string sql)
+        public List<GebruikerBeheer.Gebruiker> GetGebruikerList(string sql)
         {
-            OracleCommand List = new OracleCommand(sql, connection);
-            List<string> strings = new List<string>();
+            List<GebruikerBeheer.Gebruiker> Gebruiker = new List<GebruikerBeheer.Gebruiker>();
 
             try
             {
                 openConnection();
-                OracleDataReader stringReader = List.ExecuteReader();
+                OracleCommand List = new OracleCommand(sql, connection);
+                OracleDataReader Reader = List.ExecuteReader();
+                OracleDataAdapter Adapter = new OracleDataAdapter(List);
 
-                string Record;
+                string Gebruikersnaam;
+                string Naam;
+                string Wachtwoord;
+                int Aanwezig;
+                int RFID;
+                string AdminCheck;
 
-                while (stringReader.Read())
+                while (Reader.Read())
                 {
-                    Record = stringReader.ToString();
-                    strings.Add(Record);
-                }
-            }
-            catch
-            {
+                    Gebruikersnaam = Convert.ToString(Reader["GEBRUIKERSNAAM"]);
+                    Naam = Convert.ToString(Reader["NAAM"]);
+                    Wachtwoord = Convert.ToString(Reader["WACHTWOORD"]);
+                    AdminCheck = Convert.ToString(Reader["ADMINCHECK"]);
+                    Aanwezig = Convert.ToInt32(Reader["AANWEZIG"]);
+                    try
+                    {
+                        RFID = Convert.ToInt32(Reader["RFID"]);
+                    }
+                    catch(InvalidCastException)
+                    {
+                        RFID = 00000;
+                    }
 
+                    if (AdminCheck == "Ja")
+                    {
+                        if (Aanwezig == 0)
+                        {
+                            Gebruiker.Add(new GebruikerBeheer.Admin(Gebruikersnaam, Naam, Wachtwoord, false, RFID, true));
+                        }
+                        else
+                        {
+                            Gebruiker.Add(new GebruikerBeheer.Admin(Gebruikersnaam, Naam, Wachtwoord, true, RFID, true));
+                        }
+                    }
+                    else
+                    {
+                        if (Aanwezig == 0)
+                        {
+                            Gebruiker.Add(new GebruikerBeheer.Gast(Gebruikersnaam, Naam, Wachtwoord, false, RFID, false));
+                        }
+                        else
+                        {
+                            Gebruiker.Add(new GebruikerBeheer.Gast(Gebruikersnaam, Naam, Wachtwoord, true, RFID, false));
+                        }
+                    }
+                }
+                return Gebruiker;
             }
-            return strings;
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return Gebruiker;
         }
 
         public List<object> GetObjectList(string sql)

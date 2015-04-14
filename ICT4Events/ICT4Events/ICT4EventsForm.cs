@@ -10,13 +10,13 @@ namespace ICT4Events
     public partial class ICT4EventsForm : Form
     {
         //private Enum e = new Enum;
-<<<<<<< HEAD
+
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
-=======
+
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private Mediabeheer.Mediabeheer mediabeheer;
->>>>>>> origin/master
+
 
         public ICT4EventsForm()
         {
@@ -249,6 +249,15 @@ namespace ICT4Events
             else
             {
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
+            }
+        }
+
+        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
+        {
+            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
+            foreach(GebruikerBeheer.Gebruiker Temp in Gebruiker)
+            {
+                clbGebruikersBeheer.Items.Add(Temp.ToString());
             }
         }
     }
