@@ -122,13 +122,10 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-<<<<<<< HEAD
             this.btnLaatZienBeheren = new System.Windows.Forms.Button();
-=======
             this.btlike = new System.Windows.Forms.Button();
             this.btreply = new System.Windows.Forms.Button();
             this.btreport = new System.Windows.Forms.Button();
->>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1100,7 +1097,6 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
-<<<<<<< HEAD
             // btnLaatZienBeheren
             // 
             this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
@@ -1110,7 +1106,7 @@
             this.btnLaatZienBeheren.Text = "Laat zien";
             this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
             this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
-=======
+            //
             // btlike
             // 
             this.btlike.Location = new System.Drawing.Point(7, 447);
@@ -1138,7 +1134,6 @@
             this.btreport.TabIndex = 3;
             this.btreport.Text = "Report";
             this.btreport.UseVisualStyleBackColor = true;
->>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1282,14 +1277,11 @@
         private System.Windows.Forms.Label lblReservingsnummer;
         private System.Windows.Forms.Button btnReserveringBetaald;
         private System.Windows.Forms.ListBox listboxReserveringen;
-<<<<<<< HEAD
         private System.Windows.Forms.Button btnLaatZienBeheren;
-=======
         private System.Windows.Forms.Button btnZoekExemplaar;
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
->>>>>>> origin/master
     }
 }
 
