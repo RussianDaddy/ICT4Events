@@ -82,6 +82,8 @@
       <DependentUpon>ICT4EventsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MateriaalBeheer\Materiaal.cs" />
+    <Compile Include="MateriaalBeheer\Materiaalbeheer.cs" />
+    <Compile Include="MateriaalBeheer\Uitlening.cs" />
     <Compile Include="Mediabeheer\Categorie.cs" />
     <Compile Include="Mediabeheer\MediaBeheer.cs" />
     <Compile Include="Mediabeheer\MediaFile.cs" />

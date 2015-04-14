@@ -59,7 +59,6 @@ namespace ICT4Events.Mediabeheer
             }
             return SearchedSoortLijst;
 
-            //Code voor het returnen van een list met categorie
         }
         public bool BerichtPlaatsen(Mediafile mediafile, String Bericht, DateTime Datum/*,Gebruiker gebruiker*/)
         {
@@ -96,9 +95,21 @@ namespace ICT4Events.Mediabeheer
             throw new NotImplementedException();
         }
 
-        public void Liken()
+        public void Liken(Mediafile mediafile)
         {
-
+            foreach(Mediafile m in MediafileLijst)
+            {
+                if(m == mediafile)
+                {
+                    m.Like = m.Like +1;
+                }
+            }
+            
         }
+
+
+
+
+
     }
 }

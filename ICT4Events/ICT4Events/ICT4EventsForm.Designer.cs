@@ -96,15 +96,16 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
+            this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
             this.btnAanmakenBeheer = new System.Windows.Forms.Button();
@@ -121,7 +122,13 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+<<<<<<< HEAD
             this.btnLaatZienBeheren = new System.Windows.Forms.Button();
+=======
+            this.btlike = new System.Windows.Forms.Button();
+            this.btreply = new System.Windows.Forms.Button();
+            this.btreport = new System.Windows.Forms.Button();
+>>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -610,6 +617,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btreport);
+            this.groupBox3.Controls.Add(this.btreply);
+            this.groupBox3.Controls.Add(this.btlike);
             this.groupBox3.Controls.Add(this.LbFeed);
             this.groupBox3.Location = new System.Drawing.Point(3, 53);
             this.groupBox3.Name = "groupBox3";
@@ -617,6 +627,7 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Feed";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // LbFeed
             // 
@@ -624,7 +635,7 @@
             this.LbFeed.FormattingEnabled = true;
             this.LbFeed.Location = new System.Drawing.Point(7, 20);
             this.LbFeed.Name = "LbFeed";
-            this.LbFeed.Size = new System.Drawing.Size(558, 459);
+            this.LbFeed.Size = new System.Drawing.Size(558, 420);
             this.LbFeed.TabIndex = 0;
             // 
             // TabAlgemeneinfo
@@ -828,21 +839,32 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.btnZoekExemplaar);
             this.groupBox1.Controls.Add(this.label43);
             this.groupBox1.Controls.Add(this.label42);
-            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.checkedListBox2);
-            this.groupBox1.Controls.Add(this.checkedListBox1);
+            this.groupBox1.Controls.Add(this.clbExemplaren);
+            this.groupBox1.Controls.Add(this.clbExemplaarHuren);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(805, 504);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlenen";
+            // 
+            // btnZoekExemplaar
+            // 
+            this.btnZoekExemplaar.Location = new System.Drawing.Point(188, 29);
+            this.btnZoekExemplaar.Name = "btnZoekExemplaar";
+            this.btnZoekExemplaar.Size = new System.Drawing.Size(67, 23);
+            this.btnZoekExemplaar.TabIndex = 13;
+            this.btnZoekExemplaar.Text = "Zoek";
+            this.btnZoekExemplaar.UseVisualStyleBackColor = true;
+            this.btnZoekExemplaar.Click += new System.EventHandler(this.btnZoekExemplaar_Click);
             // 
             // label43
             // 
@@ -862,12 +884,12 @@
             this.label42.TabIndex = 11;
             this.label42.Text = "ExemplaarID:";
             // 
-            // textBox11
+            // tbExemplaarId
             // 
-            this.textBox11.Location = new System.Drawing.Point(82, 31);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 10;
+            this.tbExemplaarId.Location = new System.Drawing.Point(82, 31);
+            this.tbExemplaarId.Name = "tbExemplaarId";
+            this.tbExemplaarId.Size = new System.Drawing.Size(100, 20);
+            this.tbExemplaarId.TabIndex = 10;
             // 
             // label20
             // 
@@ -905,23 +927,23 @@
             this.button1.Text = "<<";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox2
+            // clbExemplaren
             // 
-            this.checkedListBox2.BackColor = System.Drawing.Color.SeaShell;
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(6, 57);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(793, 169);
-            this.checkedListBox2.TabIndex = 5;
+            this.clbExemplaren.BackColor = System.Drawing.Color.SeaShell;
+            this.clbExemplaren.FormattingEnabled = true;
+            this.clbExemplaren.Location = new System.Drawing.Point(6, 57);
+            this.clbExemplaren.Name = "clbExemplaren";
+            this.clbExemplaren.Size = new System.Drawing.Size(793, 169);
+            this.clbExemplaren.TabIndex = 5;
             // 
-            // checkedListBox1
+            // clbExemplaarHuren
             // 
-            this.checkedListBox1.BackColor = System.Drawing.Color.SeaShell;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(9, 290);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(790, 169);
-            this.checkedListBox1.TabIndex = 4;
+            this.clbExemplaarHuren.BackColor = System.Drawing.Color.SeaShell;
+            this.clbExemplaarHuren.FormattingEnabled = true;
+            this.clbExemplaarHuren.Location = new System.Drawing.Point(9, 290);
+            this.clbExemplaarHuren.Name = "clbExemplaarHuren";
+            this.clbExemplaarHuren.Size = new System.Drawing.Size(790, 169);
+            this.clbExemplaarHuren.TabIndex = 4;
             // 
             // TabBeheren
             // 
@@ -1078,6 +1100,7 @@
             this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
             this.clbGebruikersBeheer.TabIndex = 75;
             // 
+<<<<<<< HEAD
             // btnLaatZienBeheren
             // 
             this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
@@ -1087,6 +1110,35 @@
             this.btnLaatZienBeheren.Text = "Laat zien";
             this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
             this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
+=======
+            // btlike
+            // 
+            this.btlike.Location = new System.Drawing.Point(7, 447);
+            this.btlike.Name = "btlike";
+            this.btlike.Size = new System.Drawing.Size(75, 23);
+            this.btlike.TabIndex = 1;
+            this.btlike.Text = "Like!";
+            this.btlike.UseVisualStyleBackColor = true;
+            this.btlike.Click += new System.EventHandler(this.btlike_Click);
+            // 
+            // btreply
+            // 
+            this.btreply.Location = new System.Drawing.Point(88, 447);
+            this.btreply.Name = "btreply";
+            this.btreply.Size = new System.Drawing.Size(75, 23);
+            this.btreply.TabIndex = 2;
+            this.btreply.Text = "Reply";
+            this.btreply.UseVisualStyleBackColor = true;
+            // 
+            // btreport
+            // 
+            this.btreport.Location = new System.Drawing.Point(169, 447);
+            this.btreport.Name = "btreport";
+            this.btreport.Size = new System.Drawing.Size(75, 23);
+            this.btreport.TabIndex = 3;
+            this.btreport.Text = "Report";
+            this.btreport.UseVisualStyleBackColor = true;
+>>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1159,8 +1211,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox clbExemplaren;
+        private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnAanpassenBeheer;
@@ -1210,7 +1262,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tbExemplaarId;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckedListBox clbReserveringKampeerplaatsen;
         private System.Windows.Forms.CheckedListBox clbReserveringGebruikers;
@@ -1230,7 +1282,14 @@
         private System.Windows.Forms.Label lblReservingsnummer;
         private System.Windows.Forms.Button btnReserveringBetaald;
         private System.Windows.Forms.ListBox listboxReserveringen;
+<<<<<<< HEAD
         private System.Windows.Forms.Button btnLaatZienBeheren;
+=======
+        private System.Windows.Forms.Button btnZoekExemplaar;
+        private System.Windows.Forms.Button btreport;
+        private System.Windows.Forms.Button btreply;
+        private System.Windows.Forms.Button btlike;
+>>>>>>> origin/master
     }
 }
 

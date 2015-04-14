@@ -4,19 +4,30 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using ICT4Events.MateriaalBeheer;
+
 
 namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
+<<<<<<< HEAD
         //private Enum e = new Enum;
 
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
 
+=======
+        GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
+        private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
+>>>>>>> origin/master
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
+        private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
         public ICT4EventsForm()
         {
@@ -27,57 +38,31 @@ namespace ICT4Events
             listboxReserveringen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleReserveringen();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
-            var oneYearAgoToday = DateTime.Now.AddYears(-18);
 
-            /*
-            dtpGeboorteDatum.MaxDate = oneYearAgoToday;
-            for (var i = 1; i < 101; i++)
-            {
-                cbAantalPersonen.Items.Add(i);
-            }
+            Materiaal Beamer = new Materiaal("Beamer",50);
+            Materiaal Laptop = new Materiaal("Laptop",100);
+            Materiaal Hdmi = new Materiaal("HDMI kabel",30);
+            Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
 
-            cbVoorkeursplek.Items.AddRange(new[]
-            {"Lawaai", "Schaduw", "Noodafstand vanaf facaliteiten*", "Rookvrij", "Adults Only Area"});
-            //*Noodafstand houdt in dat het binnen 2 minuten te lopen is vanaf je staplek
-            cbKampeerplaats.Items.AddRange(new[]
+            materiaalbeheer.Exemplaren = new List<Exemplaar>
             {
-                "Comfortplaatsen", "Huurtentjes", "Plaatsen voor eigen tenten", "Stacaravans", "Invalidenaccomodaties",
-                "Bungalows", "Blokhutten", "Bungalinos"
-            });*/
+                new Exemplaar(1, Beamer),
+                new Exemplaar(2, Beamer),
+                new Exemplaar(3, Beamer),
+                new Exemplaar(4, Laptop),
+                new Exemplaar(5, Laptop),
+                new Exemplaar(6, Hdmi),
+                new Exemplaar(7, Hdmi),
+                new Exemplaar(8, Ethernet),
+                new Exemplaar(9, Ethernet)
+            };
+            RefreshExemplaren();
             mediabeheer = new Mediabeheer.Mediabeheer();
+            exemplaren = new List<Exemplaar>();
             RefreshAll();
         }
 
-        private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
-        {
-            var reservatievan = new DateTime();
-            reservatievan = dtpDatumAankomst.Value;
-            dtpDatumVertrek.MinDate = reservatievan;
-            dtpDatumVertrek.Refresh();
-        }
-
-        /*
-        private void btReserveer_Click(object sender, EventArgs e)
-        {
-            if (tbVoornaam.Text == "" || tbAchternaam.Text == "" || tbWoonplaats.Text == "" ||
-                tbPostcodegetal.Text == "" || tbPostcodeletter.Text == "" || tbTelefoonnummer.Text == "" ||
-                tbEmail.Text == "")
-            {
-                MessageBox.Show("Vul alle velden in!");
-            }
-        }
-
-        private void btvoegpersoontoe_Click(object sender, EventArgs e)
-        {
-            if (tbVoornaam.Text == "" || tbAchternaam.Text == "" || tbWoonplaats.Text == "" ||
-                tbPostcodegetal.Text == "" || tbPostcodeletter.Text == "" || tbTelefoonnummer.Text == "" ||
-                tbEmail.Text == "")
-            {
-                MessageBox.Show("Vul alle velden in!");
-            }
-        }
-         */
-
+        //GebruikerBeheer
         private void btnAanmakenBeheer_Click(object sender, EventArgs e)
         {
             if(tbGebruikersnaamBeheer.Text == "" || tbNaamBeheer.Text == "" || tbWachtwoordBeheer.Text == "")
@@ -96,6 +81,7 @@ namespace ICT4Events
             }
         }
 
+        //MediaBeheer
         private void btFilter_Click(object sender, EventArgs e)
         {
 
@@ -159,6 +145,7 @@ namespace ICT4Events
             chbVideo.Checked = false;
         }
 
+        //ReserveringBeheer
         private void btReserveer_Click(object sender, EventArgs e)
         {
             DateTime aankomstDatum = dtpDatumAankomst.Value.Date;
@@ -252,6 +239,7 @@ namespace ICT4Events
             }
         }
 
+<<<<<<< HEAD
         private void btnLaatZienBeheren_Click(object sender, EventArgs e)
         {
             List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
@@ -260,6 +248,60 @@ namespace ICT4Events
                 clbGebruikersBeheer.Items.Add(Temp.ToString());
             }
         }
+=======
+        private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
+        {
+            var reservatievan = new DateTime();
+            reservatievan = dtpDatumAankomst.Value;
+            dtpDatumVertrek.MinDate = reservatievan;
+            dtpDatumVertrek.Refresh();
+        }
+
+        //MateriaaleBheer
+        private void btnZoekExemplaar_Click(object sender, EventArgs e)
+        {
+            clbExemplaren.Items.Clear();
+            foreach (Exemplaar exemplaar in materiaalbeheer.Exemplaren)
+            {
+                if (tbExemplaarId.Text == exemplaar.Id.ToString())
+                {
+                    clbExemplaren.Items.Add(exemplaar.ToString());
+                }
+            }
+        }
+
+        private void RefreshExemplaren()
+        {
+            clbExemplaren.Items.Clear();
+            foreach(Exemplaar e in materiaalbeheer.Exemplaren)
+            {
+                clbExemplaren.Items.Add(e);
+            }
+        }
+
+        private List<Exemplaar> GehuurdeExemplaren()
+        {
+            List<Exemplaar> tempExemplaren = new List<Exemplaar>();
+            foreach (Exemplaar e in clbExemplaren.CheckedItems)
+            {
+                tempExemplaren.Add(e);
+                clbExemplaarHuren.Items.Add(e);
+            }
+            return tempExemplaren;
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btlike_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //EventBeheer
+>>>>>>> origin/master
     }
 }
  
