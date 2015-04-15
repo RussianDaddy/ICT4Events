@@ -98,7 +98,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnTerugplaatsenExemplaren = new System.Windows.Forms.Button();
+            this.btnUitlenen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnVerplaatsExemplaren = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTerugplaatsenExemplaar = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
@@ -820,7 +820,7 @@
             this.TabHuren.Controls.Add(this.label16);
             this.TabHuren.Controls.Add(this.checkBox1);
             this.TabHuren.Controls.Add(this.textBox1);
-            this.TabHuren.Controls.Add(this.btnTerugplaatsenExemplaren);
+            this.TabHuren.Controls.Add(this.btnUitlenen);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
             this.TabHuren.Name = "TabHuren";
@@ -854,15 +854,15 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // btnTerugplaatsenExemplaren
+            // btnUitlenen
             // 
-            this.btnTerugplaatsenExemplaren.Location = new System.Drawing.Point(734, 514);
-            this.btnTerugplaatsenExemplaren.Name = "btnTerugplaatsenExemplaren";
-            this.btnTerugplaatsenExemplaren.Size = new System.Drawing.Size(75, 23);
-            this.btnTerugplaatsenExemplaren.TabIndex = 1;
-            this.btnTerugplaatsenExemplaren.Text = "Uitlenen";
-            this.btnTerugplaatsenExemplaren.UseVisualStyleBackColor = true;
-            this.btnTerugplaatsenExemplaren.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
+            this.btnUitlenen.Location = new System.Drawing.Point(734, 514);
+            this.btnUitlenen.Name = "btnUitlenen";
+            this.btnUitlenen.Size = new System.Drawing.Size(75, 23);
+            this.btnUitlenen.TabIndex = 1;
+            this.btnUitlenen.Text = "Uitlenen";
+            this.btnUitlenen.UseVisualStyleBackColor = true;
+            this.btnUitlenen.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
             // 
             // groupBox1
             // 
@@ -874,7 +874,7 @@
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.btnVerplaatsExemplaren);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnTerugplaatsenExemplaar);
             this.groupBox1.Controls.Add(this.clbExemplaren);
             this.groupBox1.Controls.Add(this.clbExemplaarHuren);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
@@ -947,14 +947,14 @@
             this.btnVerplaatsExemplaren.UseVisualStyleBackColor = true;
             this.btnVerplaatsExemplaren.Click += new System.EventHandler(this.btnVerplaatsExemplaren_Click);
             // 
-            // button1
+            // btnTerugplaatsenExemplaar
             // 
-            this.button1.Location = new System.Drawing.Point(372, 232);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaar.Location = new System.Drawing.Point(372, 232);
+            this.btnTerugplaatsenExemplaar.Name = "btnTerugplaatsenExemplaar";
+            this.btnTerugplaatsenExemplaar.Size = new System.Drawing.Size(67, 23);
+            this.btnTerugplaatsenExemplaar.TabIndex = 6;
+            this.btnTerugplaatsenExemplaar.Text = "<<";
+            this.btnTerugplaatsenExemplaar.UseVisualStyleBackColor = true;
             // 
             // clbExemplaren
             // 
@@ -1211,10 +1211,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnTerugplaatsenExemplaren;
+        private System.Windows.Forms.Button btnUitlenen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVerplaatsExemplaren;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTerugplaatsenExemplaar;
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;

@@ -49,7 +49,6 @@ namespace ICT4Events
             //    new Exemplaar(9, Ethernet)
             //};
 
-            RefreshExemplaren();
             mediabeheer = new Mediabeheer.Mediabeheer();
             exemplaren = new List<Exemplaar>();
             RefreshAll();
@@ -266,12 +265,6 @@ namespace ICT4Events
         {
             clbExemplaren.DataSource = null;
             clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
-            buttonZoekGeklikt++;
-        }
-
-        private void RefreshExemplaren()
-        {
- 
         }
 
         private List<Exemplaar> GehuurdeExemplaren()
@@ -304,10 +297,6 @@ namespace ICT4Events
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
-            if (buttonZoekGeklikt < 1)
-            {
-                clbExemplaarHuren.Items.Clear();
-            }
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
                 clbExemplaarHuren.Items.Add(exemplaar);
