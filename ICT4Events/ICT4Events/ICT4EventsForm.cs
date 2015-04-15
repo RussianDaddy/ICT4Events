@@ -330,6 +330,11 @@ namespace ICT4Events
 
             }
         }
+        
+        private void btnUitlenen_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
@@ -339,9 +344,10 @@ namespace ICT4Events
             }
         }
 
-        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
+        
+
+        private void btnTerugplaatsenExemplaar_Click(object sender, EventArgs e)
         {
-            clbExemplaarHuren.DataSource = null;
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
             {
                 clbExemplaarHuren.Items.Remove(item);

@@ -871,7 +871,7 @@
             this.btnUitlenen.TabIndex = 1;
             this.btnUitlenen.Text = "Uitlenen";
             this.btnUitlenen.UseVisualStyleBackColor = true;
-            this.btnUitlenen.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
+            this.btnUitlenen.Click += new System.EventHandler(this.btnUitlenen_Click);
             // 
             // groupBox1
             // 
@@ -964,6 +964,7 @@
             this.btnTerugplaatsenExemplaar.TabIndex = 6;
             this.btnTerugplaatsenExemplaar.Text = "<<";
             this.btnTerugplaatsenExemplaar.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaar.Click += new System.EventHandler(this.btnTerugplaatsenExemplaar_Click);
             // 
             // clbExemplaren
             // 
