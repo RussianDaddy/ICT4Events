@@ -70,6 +70,39 @@ namespace ICT4Events
                     "Nee");
             }
         }
+        private void lbGebruikersBeheer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnAanpassenBeheer_Click(object sender, EventArgs e)
+        {
+            string gebruiker = lbGebruikersBeheer.SelectedItem.ToString();
+            string email = gebruiker.Split(',')[0];
+            GebruikerBeheer.Gebruiker TempGebruiker = Gebruikerbeheer.GebruikerOpvragen(email);
+            tbGebruikersnaamBeheer.Text = TempGebruiker.Gebruikersnaam;
+            tbNaamBeheer.Text = TempGebruiker.Naam;
+            tbWachtwoordBeheer.Text = TempGebruiker.Wachtwoord;
+        }
+
+        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
+        {
+            lbGebruikersBeheer.Items.Clear();
+            List<GebruikerBeheer.Gebruiker> Gebruiker = new List<GebruikerBeheer.Gebruiker>();
+            if (cbAanwezigBeheer.Checked == true)
+            {
+                Gebruiker = Gebruikerbeheer.LijstAanwezigen(true);
+            }
+            else
+            {
+                Gebruiker = Gebruikerbeheer.LijstAanwezigen(false);
+            }
+            foreach (GebruikerBeheer.Gebruiker Temp in Gebruiker)
+            {
+                lbGebruikersBeheer.Items.Add(Temp.ToString());
+            }
+        }
 
         //MediaBeheer
         private void btFilter_Click(object sender, EventArgs e)
@@ -229,15 +262,6 @@ namespace ICT4Events
             }
         }
 
-        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
-        {
-            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
-            foreach (GebruikerBeheer.Gebruiker Temp in Gebruiker)
-            {
-                lbGebruikersBeheer.Items.Add(Temp.ToString());
-            }
-        }
-
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
@@ -288,6 +312,7 @@ namespace ICT4Events
         {
 
         }
+
 
         //EventBeheer
     }

@@ -8,12 +8,12 @@ namespace ICT4Events.GebruikerBeheer
 {
     class Gebruiker
     {
-        string Gebruikersnaam { get; set; }
-        string Naam { get; set; }
-        string Wachtwoord { get; set; }
-        bool Aanwezig { get; set; }
-        bool Admin { get; set; }
-        int RFID { get; set; }
+        public string Gebruikersnaam { get; set; }
+        public string Naam { get; set; }
+        public string Wachtwoord { get; set; }
+        public bool Aanwezig { get; set; }
+        public bool Admin { get; set; }
+        public int RFID { get; set; }
 
         public Gebruiker(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, int rfid, bool admin)
         {

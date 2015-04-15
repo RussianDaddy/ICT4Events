@@ -125,15 +125,11 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-<<<<<<< HEAD
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
-=======
-            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.btnLaatZienBeheren = new System.Windows.Forms.Button();
-            this.btlike = new System.Windows.Forms.Button();
-            this.btreply = new System.Windows.Forms.Button();
-            this.btreport = new System.Windows.Forms.Button();
->>>>>>> origin/master
+            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -154,6 +150,7 @@
             this.TabHuren.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabBeheren.SuspendLayout();
+            this.BetaalstatusBeheer.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -981,6 +978,7 @@
             // TabBeheren
             // 
             this.TabBeheren.BackColor = System.Drawing.Color.LightGray;
+            this.TabBeheren.Controls.Add(this.cbAanwezigBeheer);
             this.TabBeheren.Controls.Add(this.btnLaatZienBeheren);
             this.TabBeheren.Controls.Add(this.BetaalstatusBeheer);
             this.TabBeheren.Controls.Add(this.btnAanmakenBeheer);
@@ -1006,9 +1004,12 @@
             // 
             // BetaalstatusBeheer
             // 
+            this.BetaalstatusBeheer.Controls.Add(this.comboBox1);
+            this.BetaalstatusBeheer.Controls.Add(this.button5);
+            this.BetaalstatusBeheer.Controls.Add(this.button4);
             this.BetaalstatusBeheer.Location = new System.Drawing.Point(470, 198);
             this.BetaalstatusBeheer.Name = "BetaalstatusBeheer";
-            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 60);
+            this.BetaalstatusBeheer.Size = new System.Drawing.Size(327, 113);
             this.BetaalstatusBeheer.TabIndex = 4;
             this.BetaalstatusBeheer.TabStop = false;
             this.BetaalstatusBeheer.Text = "Betaalstatus";
@@ -1040,6 +1041,7 @@
             this.btnAanpassenBeheer.TabIndex = 0;
             this.btnAanpassenBeheer.Text = "Aanpassen";
             this.btnAanpassenBeheer.UseVisualStyleBackColor = true;
+            this.btnAanpassenBeheer.Click += new System.EventHandler(this.btnAanpassenBeheer_Click);
             // 
             // groupBox4
             // 
@@ -1136,51 +1138,48 @@
             // 
             // lbGebruikersBeheer
             // 
-<<<<<<< HEAD
             this.lbGebruikersBeheer.FormattingEnabled = true;
             this.lbGebruikersBeheer.Location = new System.Drawing.Point(6, 19);
             this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
             this.lbGebruikersBeheer.Size = new System.Drawing.Size(315, 485);
             this.lbGebruikersBeheer.TabIndex = 0;
-=======
-            // btnLaatZienBeheren
+            this.lbGebruikersBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikersBeheer_SelectedIndexChanged);
             // 
-            this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
-            this.btnLaatZienBeheren.Name = "btnLaatZienBeheren";
-            this.btnLaatZienBeheren.Size = new System.Drawing.Size(75, 23);
-            this.btnLaatZienBeheren.TabIndex = 5;
-            this.btnLaatZienBeheren.Text = "Laat zien";
-            this.btnLaatZienBeheren.UseVisualStyleBackColor = true;
-            this.btnLaatZienBeheren.Click += new System.EventHandler(this.btnLaatZienBeheren_Click);
-            //
-            // btlike
+            // cbAanwezigBeheer
             // 
-            this.btlike.Location = new System.Drawing.Point(7, 447);
-            this.btlike.Name = "btlike";
-            this.btlike.Size = new System.Drawing.Size(75, 23);
-            this.btlike.TabIndex = 1;
-            this.btlike.Text = "Like!";
-            this.btlike.UseVisualStyleBackColor = true;
-            this.btlike.Click += new System.EventHandler(this.btlike_Click);
+            this.cbAanwezigBeheer.AutoSize = true;
+            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 114);
+            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
+            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
+            this.cbAanwezigBeheer.TabIndex = 6;
+            this.cbAanwezigBeheer.Text = "Aanwezigen";
+            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
             // 
-            // btreply
+            // button4
             // 
-            this.btreply.Location = new System.Drawing.Point(88, 447);
-            this.btreply.Name = "btreply";
-            this.btreply.Size = new System.Drawing.Size(75, 23);
-            this.btreply.TabIndex = 2;
-            this.btreply.Text = "Reply";
-            this.btreply.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(9, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(123, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Check betaal status";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // btreport
+            // button5
             // 
-            this.btreport.Location = new System.Drawing.Point(169, 447);
-            this.btreport.Name = "btreport";
-            this.btreport.Size = new System.Drawing.Size(75, 23);
-            this.btreport.TabIndex = 3;
-            this.btreport.Text = "Report";
-            this.btreport.UseVisualStyleBackColor = true;
->>>>>>> origin/master
+            this.button5.Location = new System.Drawing.Point(9, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Betaald";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(200, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
             // 
             // ICT4EventsForm
             // 
@@ -1218,6 +1217,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.TabBeheren.ResumeLayout(false);
+            this.TabBeheren.PerformLayout();
+            this.BetaalstatusBeheer.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1328,10 +1329,11 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
-<<<<<<< HEAD
         private System.Windows.Forms.ListBox lbGebruikersBeheer;
-=======
->>>>>>> origin/master
+        private System.Windows.Forms.CheckBox cbAanwezigBeheer;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
 

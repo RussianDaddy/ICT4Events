@@ -40,12 +40,34 @@ namespace ICT4Events.GebruikerBeheer
             }
         }
 
-        public List<Gebruiker> LijstAanwezigen()
+        public List<Gebruiker> LijstAanwezigen(bool aanwezig)
         {
+            string sql;
+            if(aanwezig == true)
+            {
+                sql = "SELECT * FROM GEBRUIKER WHERE AANWEZIG = 1";
+            }
+            else
+            {
+                sql = "SELECT * FROM GEBRUIKER WHERE AANWEZIG = 0";
+            }
             List<Gebruiker> Gebruikers = new List<Gebruiker>();
-            string sql = "SELECT * FROM GEBRUIKER";
             Gebruikers = Database.GetGebruikerList(sql);
             return Gebruikers;
+        }
+
+        public Gebruiker GebruikerOpvragen(string email)
+        {
+            string sql = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + email + "'";
+            List<Gebruiker> Gebruikers = new List<Gebruiker>();
+            Gebruiker Eengebruiker;
+            Gebruikers = Database.GetGebruikerList(sql);
+            foreach(Gebruiker Temp in Gebruikers)
+            {
+                Eengebruiker = Temp;
+                return Eengebruiker;
+            }
+            return null;
         }
     }
 }
