@@ -20,6 +20,7 @@ namespace ICT4Events
         private Mediabeheer.Mediabeheer mediabeheer;
         int buttonZoekGeklikt = 0;
 
+
         public ICT4EventsForm()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace ICT4Events
             clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
+            lbBetaalstatus.Visible = false;
 
             //Materiaal Beamer = new Materiaal("Beamer",50);
             //Materiaal Laptop = new Materiaal("Laptop",100);
@@ -90,25 +92,60 @@ namespace ICT4Events
                     "Nee");
             }
         }
-        private void lbGebruikersBeheer_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void btnWijzigenBeheer_Click(object sender, EventArgs e)
         {
-
+            if (tbGebruikersnaamBeheer.Text == "" || tbNaamBeheer.Text == "" || tbWachtwoordBeheer.Text == "")
+            {
+                MessageBox.Show("Vul alle informatie in.");
+            }
+            else if (cbAdminBeheer.Checked == true)
+            {
+                Gebruikerbeheer.Update(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text,
+                    "Ja");
+                FillLbGebruikerBeheer();
+            }
+            else
+            {
+                Gebruikerbeheer.Update(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text,
+                    "Nee");
+                FillLbGebruikerBeheer();
+            }
         }
-
 
         private void btnAanpassenBeheer_Click(object sender, EventArgs e)
         {
-            string gebruiker = lbGebruikersBeheer.SelectedItem.ToString();
-            string email = gebruiker.Split(',')[0];
-            GebruikerBeheer.Gebruiker TempGebruiker = Gebruikerbeheer.GebruikerOpvragen(email);
-            tbGebruikersnaamBeheer.Text = TempGebruiker.Gebruikersnaam;
-            tbNaamBeheer.Text = TempGebruiker.Naam;
-            tbWachtwoordBeheer.Text = TempGebruiker.Wachtwoord;
+            if (lbGebruikerBeheer.SelectedItem != null)
+            {
+                string gebruiker = lbGebruikerBeheer.SelectedItem.ToString();
+                string email = gebruiker.Split(',')[0];
+                GebruikerBeheer.Gebruiker TempGebruiker = Gebruikerbeheer.GebruikerOpvragen(email);
+                tbGebruikersnaamBeheer.Text = TempGebruiker.Gebruikersnaam;
+                tbNaamBeheer.Text = TempGebruiker.Naam;
+                tbWachtwoordBeheer.Text = TempGebruiker.Wachtwoord;
+                if (TempGebruiker.Admin == true)
+                {
+                    cbAdminBeheer.Checked = true;
+                }
+                else
+                {
+                    cbAdminBeheer.Checked = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd.");
+            }
         }
 
-        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
+        private void btnLaatZienBeheren_Click_1(object sender, EventArgs e)
         {
-            lbGebruikersBeheer.Items.Clear();
+            FillLbGebruikerBeheer();
+        }
+
+        public void FillLbGebruikerBeheer()
+        {
+            lbGebruikerBeheer.Items.Clear();
             List<GebruikerBeheer.Gebruiker> Gebruiker = new List<GebruikerBeheer.Gebruiker>();
             if (cbAanwezigBeheer.Checked == true)
             {
@@ -118,9 +155,70 @@ namespace ICT4Events
             {
                 Gebruiker = Gebruikerbeheer.LijstAanwezigen(false);
             }
-            foreach (GebruikerBeheer.Gebruiker Temp in Gebruiker)
+            if (Gebruiker.Count == 0)
             {
-                lbGebruikersBeheer.Items.Add(Temp.ToString());
+                lbGebruikerBeheer.Items.Add("Geen gebruikers aanwezig");
+            }
+            else
+            {
+                foreach (GebruikerBeheer.Gebruiker Temp in Gebruiker)
+                {
+                    lbGebruikerBeheer.Items.Add(Temp.ToString());
+                }
+            }
+        }
+
+        private void lbGebruikerBeheer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbBetaalstatus.Visible = false;
+            string gebruiker = lbGebruikerBeheer.SelectedItem.ToString();
+            string email = gebruiker.Split(',')[0];
+            cbBetaaldBeheer.Items.Clear();
+            cbBetaaldBeheer.Text = "";
+            List<ReserveringBeheer.Reservering> Reserveringen = new List<ReserveringBeheer.Reservering>();
+            if (lbGebruikerBeheer.SelectedItem == null)
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd.");
+            }
+            else
+            {
+                Reserveringen = Gebruikerbeheer.GebruikerReservering(email);
+
+                foreach(ReserveringBeheer.Reservering Temp in Reserveringen)
+                {
+                    cbBetaaldBeheer.Items.Add(Temp.Nummer);
+                }
+            }
+        }
+
+        private void btnCheckBetaalstatus_Click(object sender, EventArgs e)
+        {
+            if(lbGebruikerBeheer.SelectedItem == null)
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd.");
+            }
+            else if (cbBetaaldBeheer.SelectedItem == null)
+            {
+                MessageBox.Show("Geen reservering geselecteerd.");
+            }
+            else
+            {
+                string gebruiker = lbGebruikerBeheer.SelectedItem.ToString();
+                string email = gebruiker.Split(',')[0];
+                string nummerString = cbBetaaldBeheer.SelectedItem.ToString();
+                int nummerInt = Convert.ToInt32(nummerString);
+                if(Gebruikerbeheer.Betaalstatus(email, nummerInt) == true)
+                {
+                    lbBetaalstatus.Text = "BETAALD";
+                    lbBetaalstatus.ForeColor = System.Drawing.Color.Green;
+                    lbBetaalstatus.Visible = true;
+                }
+                else
+                {
+                    lbBetaalstatus.Visible = true;
+                    lbBetaalstatus.Text = "NIET BETAALD";
+                    lbBetaalstatus.ForeColor = System.Drawing.Color.Red;
+                }
             }
         }
 
@@ -276,18 +374,7 @@ namespace ICT4Events
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
         }
-
-<<<<<<< HEAD
-=======
-        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
-        {
-            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
-            foreach(GebruikerBeheer.Gebruiker Temp in Gebruiker)
-            {
-                clbGebruikersBeheer.Items.Add(Temp.ToString());
-            }
-        }
->>>>>>> origin/master
+      
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
