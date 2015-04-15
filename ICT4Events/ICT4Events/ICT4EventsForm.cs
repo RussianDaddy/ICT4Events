@@ -18,6 +18,7 @@ namespace ICT4Events
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+        int buttonZoekGeklikt = 0;
 
         public ICT4EventsForm()
         {
@@ -268,12 +269,14 @@ namespace ICT4Events
         //MateriaaleBheer
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
-
+            clbExemplaren.DataSource = null;
+            clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+            buttonZoekGeklikt++;
         }
 
         private void RefreshExemplaren()
         {
-
+ 
         }
 
         private List<Exemplaar> GehuurdeExemplaren()
@@ -293,6 +296,23 @@ namespace ICT4Events
         }
 
         private void btlike_Click(object sender, EventArgs e)
+        {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+            string stringId = Selectedtems.Substring(0, 3);
+            int MediafileID = Convert.ToInt32(stringId);
+
+            if(stringId.IndexOf(",") != -1)
+            {
+
+            }
+        }
+
+        private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
         {
 
         }
