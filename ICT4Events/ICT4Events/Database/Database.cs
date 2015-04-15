@@ -162,6 +162,61 @@ namespace ICT4Events.Database
             return Gebruiker;
         }
 
+        public List<Mediabeheer.Mediafile> GetBerichtenList(string sql, List<Mediabeheer.Categorie> categorielijst)
+        {
+            List<Mediabeheer.Mediafile> BerichtenLijst = new List<Mediabeheer.Mediafile>();
+
+            try
+            {
+                openConnection();
+                OracleCommand List = new OracleCommand(sql, connection);
+                OracleDataReader Reader = List.ExecuteReader();
+                OracleDataAdapter Adapter = new OracleDataAdapter(List);
+
+                int Id;
+                string Naam;
+                string Bericht;
+                string Type;
+                string Categorie;
+                string Path;
+                int Like;
+                int Report;
+                string Gebruikersnaam;
+
+                while (Reader.Read())
+                {
+                    Id = Convert.ToInt32(Reader["ID"]);
+                    Naam = Convert.ToString(Reader["Name"]);
+                    Bericht = Convert.ToString(Reader["Bericht"]);
+                    Type = Convert.ToString(Reader["Type"]);
+                    Categorie = Convert.ToString(Reader["Categorie"]);
+                    Path = Convert.ToString(Reader["Path"]);
+                    Like = Convert.ToInt32(Reader["Like"]);
+                    Report = Convert.ToInt32(Reader["Report"]);
+                    Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
+
+                    foreach (Mediabeheer.Categorie c in categorielijst)
+                    {
+                        if (Categorie == c.Naam)
+                        {
+                            BerichtenLijst.Add(new Mediabeheer.Mediafile(Id, Naam, Bericht, Type, c, Path, Like, Report, Gebruikersnaam));
+                        }
+                    }
+                }
+                return BerichtenLijst;
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return BerichtenLijst;
+        }
+
+
         public List<object> GetObjectList(string sql)
         {
             return null;
