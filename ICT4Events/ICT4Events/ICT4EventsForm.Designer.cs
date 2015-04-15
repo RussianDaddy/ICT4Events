@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
@@ -110,6 +111,7 @@
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
+            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
             this.lbBetaalstatus = new System.Windows.Forms.Label();
@@ -133,7 +135,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -999,6 +1001,16 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
+            // cbAanwezigBeheer
+            // 
+            this.cbAanwezigBeheer.AutoSize = true;
+            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 125);
+            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
+            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
+            this.cbAanwezigBeheer.TabIndex = 6;
+            this.cbAanwezigBeheer.Text = "Aanwezigen";
+            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
+            // 
             // btnLaatZienBeheren
             // 
             this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
@@ -1214,15 +1226,10 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
             // 
-            // cbAanwezigBeheer
+            // timer1
             // 
-            this.cbAanwezigBeheer.AutoSize = true;
-            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 125);
-            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
-            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
-            this.cbAanwezigBeheer.TabIndex = 6;
-            this.cbAanwezigBeheer.Text = "Aanwezigen";
-            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
+            this.timer1.Interval = 180000;
+            this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
             // ICT4EventsForm
             // 
@@ -1377,6 +1384,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
