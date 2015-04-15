@@ -326,9 +326,9 @@ namespace ICT4Events
         {
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
-
-            Materiaalbeheer.MateriaalHuren(Convert.ToInt32(textBox1.Text), DateTime.Now, retourDatum,
-                new Gebruiker("Air4Lyfe", "Arie", "Contofonto123", false, 123, false));
+            //Materiaalbeheer.MateriaalHuren(Convert.ToInt32(textBox1.Text), DateTime.Now, retourDatum, )
+            
+        
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
