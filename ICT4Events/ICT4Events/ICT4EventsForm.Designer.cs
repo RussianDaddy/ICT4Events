@@ -126,16 +126,13 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-<<<<<<< HEAD
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
             this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-=======
             this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
             this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
->>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1145,7 +1142,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gebruikers";
             // 
-<<<<<<< HEAD
             // lbGebruikersBeheer
             // 
             this.lbGebruikersBeheer.FormattingEnabled = true;
@@ -1190,7 +1186,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
-=======
             // clbGebruikersBeheer
             // 
             this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
@@ -1204,7 +1199,6 @@
             // 
             this.refreshLijstTimer.Interval = 120000;
             this.refreshLijstTimer.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
->>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1248,7 +1242,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -1355,15 +1348,12 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
-<<<<<<< HEAD
         private System.Windows.Forms.ListBox lbGebruikersBeheer;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-=======
         private System.Windows.Forms.Timer refreshLijstTimer;
->>>>>>> origin/master
     }
 }
 

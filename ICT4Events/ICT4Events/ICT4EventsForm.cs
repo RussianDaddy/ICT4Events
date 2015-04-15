@@ -277,17 +277,6 @@ namespace ICT4Events
             }
         }
 
-<<<<<<< HEAD
-=======
-        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
-        {
-            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
-            foreach(GebruikerBeheer.Gebruiker Temp in Gebruiker)
-            {
-                clbGebruikersBeheer.Items.Add(Temp.ToString());
-            }
-        }
->>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
