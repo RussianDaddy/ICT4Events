@@ -16,30 +16,34 @@ namespace ICT4Events.Mediabeheer
         public List<Mediafile> GetMediafileLijst { get { return MediafileLijst; } set { MediafileLijst = value; } }
         public Mediabeheer()
         {
-            CategorieLijst = new List<Categorie>();
-            MediafileLijst = new List<Mediafile>();
+            CategorieLijst = new List<Categorie>{
+            new Categorie(1, "Sport"),
+            new Categorie(2, "Eten"),
+            new Categorie(3, "Spelen"),
+            new Categorie(4, "Feesten"),
+            new Categorie(5, "Gamen")
+            };
             Categorie Sport = new Categorie(1, "Sport");
-            Categorie Eten = new Categorie(2, "Eten");
-            Categorie Spelen = new Categorie(3, "Spelen");
-            Categorie Feesten = new Categorie(4, "Feesten");
-            Categorie Gamen = new Categorie(5, "Gamen");
-
-
+            Categorie Eten = CategorieLijst[1];
+            Categorie Spelen = CategorieLijst[2];
+            Categorie Feesten = CategorieLijst[3];
+            Categorie Gamen = CategorieLijst[4];
 
             //testdata mediafiles
             MediafileLijst = new List<Mediafile> {
-            new Mediafile(1, "beleg", "We gaan lekker broodjes met.... Beleg eten! kom gezellig een broodje met... Beleg eten", "Foto", Eten, @"C:\...", 8564947, false),
-            new Mediafile(2, "Glijbaan", " ", "Bericht", Spelen, @"C:\...", 8, true),
-            new Mediafile(3, "Basketbal!", " ", "Event", Sport, @"C:\...", 23, false),
-            new Mediafile(4, "Disco!!", " ", "Video", Feesten, @"C:\...", 23, false),
-            new Mediafile(5, "Weer", " ", "Foto", Gamen, @"C:\...", 48, false),
-            new Mediafile(6, "Yu-Gi-Oh TCG"," ", "Bestand", Gamen, @"C:\...", 1223, false)
+            new Mediafile(1, "beleg", "We gaan lekker broodjes met.... Beleg eten! kom gezellig een broodje met... Beleg eten", "Foto", Eten, @"C:\...", 8564947, 0, "wout_kamp@hotmail.com"),
+            new Mediafile(2, "Glijbaan", " ", "Bericht", Spelen, @"C:\...", 8, 11, "wout_kamp@hotmail.com"),
+            new Mediafile(3, "Basketbal!", " ", "Event", Sport, @"C:\...", 23, 5, "wout_kamp@hotmail.com"),
+            new Mediafile(4, "Disco!!", " ", "Video", Feesten, @"C:\...", 23, 3, "wout_kamp@hotmail.com") ,
+            new Mediafile(5, "Weer", " ", "Foto", Gamen, @"C:\...", 48, 8, "wout_kamp@hotmail.com"),
+            new Mediafile(6, "Yu-Gi-Oh TCG"," ", "Bestand", Gamen, @"C:\...", 1223, 1, "wout_kamp@hotmail.com")
             };
 
-            Database.Database database = new Database.Database();
-            //String QueryVulLijst = "";
-            database.openConnection();
-            //database.voerQueryUit();
+
+            //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
+            /*Database.Database database = new Database.Database();
+            string sql = "SELECT * FROM MEDIAFILE";
+            GetMediafileLijst = database.GetBerichtenList(sql, CategorieLijst);*/
 
 
 
@@ -105,18 +109,29 @@ namespace ICT4Events.Mediabeheer
             throw new NotImplementedException();
         }
 
-        public void Liken(Mediafile mediafile)
+        public void Liken(int MediafileId)
         {
-            foreach(Mediafile m in MediafileLijst)
+            foreach (Mediafile m in MediafileLijst)
             {
-                if(m == mediafile)
+                if (m.Id == MediafileId)
                 {
-                    m.Like = m.Like +1;
+                    m.Like = m.Like + 1;
                 }
             }
-            
         }
 
+        public int VraagLikesOp(int MediafileId)
+        {
+            foreach (Mediafile m in MediafileLijst)
+            {
+                if (MediafileId == m.Id)
+                {
+                    return m.Like;
+                }
+
+            }
+            return -1;
+        }
 
 
 

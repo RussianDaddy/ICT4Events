@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
 
 
@@ -19,6 +20,7 @@ namespace ICT4Events
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
         int buttonZoekGeklikt = 0;
+        private string stringId;
 
 
         public ICT4EventsForm()
@@ -261,6 +263,8 @@ namespace ICT4Events
             mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
         }
 
+
+
         public void RefreshAll()
         {
             LbFeed.Items.Clear();
@@ -278,6 +282,25 @@ namespace ICT4Events
             chbEvent.Checked = false;
             chbFoto.Checked = false;
             chbVideo.Checked = false;
+        }
+
+        private void btlike_Click(object sender, EventArgs e)
+        {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+
+            for (int i = 10; i > 0; i--)
+            {
+                stringId = Selectedtems.Substring(0, i);
+                if (stringId.IndexOf("-") == -1)
+                {
+                    stringId = stringId.Substring(0, (i));
+                    MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
+                    i = -1;
+                }
+            }
+            int MediafileID = Convert.ToInt32(stringId);
+            mediabeheer.Liken(MediafileID);
+            RefreshAll();
         }
 
         //ReserveringBeheer
@@ -374,7 +397,11 @@ namespace ICT4Events
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
         }
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
@@ -390,32 +417,20 @@ namespace ICT4Events
             clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
         }
 
-        private List<Exemplaar> GehuurdeExemplaren()
-        {
-            List<Exemplaar> tempExemplaren = new List<Exemplaar>();
-            foreach (Exemplaar e in clbExemplaren.CheckedItems)
-            {
-                tempExemplaren.Add(e);
-                clbExemplaarHuren.Items.Add(e);
-            }
-            return tempExemplaren;
-        }
-
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void btlike_Click(object sender, EventArgs e)
+
+        
+        private void btnUitlenen_Click(object sender, EventArgs e)
         {
-            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-            string stringId = Selectedtems.Substring(0, 3);
-            int MediafileID = Convert.ToInt32(stringId);
-
-            if(stringId.IndexOf(",") != -1)
-            {
-
-            }
+            DateTime uitleenDatum = DateTime.Now;
+            DateTime retourDatum = uitleenDatum.AddDays(3);
+            //Materiaalbeheer.MateriaalHuren(Convert.ToInt32(textBox1.Text), DateTime.Now, retourDatum, )
+            
+        
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
@@ -426,15 +441,13 @@ namespace ICT4Events
             }
         }
 
-        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
+        private void btnTerugplaatsenExemplaar_Click(object sender, EventArgs e)
         {
-            clbExemplaarHuren.DataSource = null;
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
             {
                 clbExemplaarHuren.Items.Remove(item);
             }
         }
-
 
         //EventBeheer
     }

@@ -129,9 +129,19 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.lbGebruikerBeheer = new System.Windows.Forms.ListBox();
             this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
             this.lbBetaalstatus = new System.Windows.Forms.Label();
+=======
+            this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
+            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
+>>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -867,7 +877,7 @@
             this.btnUitlenen.TabIndex = 1;
             this.btnUitlenen.Text = "Uitlenen";
             this.btnUitlenen.UseVisualStyleBackColor = true;
-            this.btnUitlenen.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
+            this.btnUitlenen.Click += new System.EventHandler(this.btnUitlenen_Click);
             // 
             // groupBox1
             // 
@@ -960,6 +970,7 @@
             this.btnTerugplaatsenExemplaar.TabIndex = 6;
             this.btnTerugplaatsenExemplaar.Text = "<<";
             this.btnTerugplaatsenExemplaar.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaar.Click += new System.EventHandler(this.btnTerugplaatsenExemplaar_Click);
             // 
             // clbExemplaren
             // 
@@ -1169,6 +1180,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gebruikers";
             // 
+<<<<<<< HEAD
             // lbGebruikerBeheer
             // 
             this.lbGebruikerBeheer.FormattingEnabled = true;
@@ -1177,11 +1189,66 @@
             this.lbGebruikerBeheer.Size = new System.Drawing.Size(315, 485);
             this.lbGebruikerBeheer.TabIndex = 0;
             this.lbGebruikerBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikerBeheer_SelectedIndexChanged);
+=======
+            // lbGebruikersBeheer
+            // 
+            this.lbGebruikersBeheer.FormattingEnabled = true;
+            this.lbGebruikersBeheer.Location = new System.Drawing.Point(6, 19);
+            this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
+            this.lbGebruikersBeheer.Size = new System.Drawing.Size(315, 485);
+            this.lbGebruikersBeheer.TabIndex = 0;
+            this.lbGebruikersBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikersBeheer_SelectedIndexChanged);
+            // 
+            // cbAanwezigBeheer
+            // 
+            this.cbAanwezigBeheer.AutoSize = true;
+            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 114);
+            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
+            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
+            this.cbAanwezigBeheer.TabIndex = 6;
+            this.cbAanwezigBeheer.Text = "Aanwezigen";
+            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(9, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(123, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Check betaal status";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(9, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Betaald";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(200, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
+            // clbGebruikersBeheer
+            // 
+            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
+            this.clbGebruikersBeheer.FormattingEnabled = true;
+            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
+            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
+            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
+            this.clbGebruikersBeheer.TabIndex = 75;
+>>>>>>> origin/master
             // 
             // refreshLijstTimer
             // 
             this.refreshLijstTimer.Interval = 120000;
             this.refreshLijstTimer.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
+<<<<<<< HEAD
             // 
             // lbBetaalstatus
             // 
@@ -1192,6 +1259,8 @@
             this.lbBetaalstatus.Size = new System.Drawing.Size(73, 25);
             this.lbBetaalstatus.TabIndex = 7;
             this.lbBetaalstatus.Text = "Status";
+=======
+>>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1236,7 +1305,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -1342,12 +1410,21 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
+<<<<<<< HEAD
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.ComboBox cbBetaaldBeheer;
         private System.Windows.Forms.Button btnCheckBetaalstatus;
         private System.Windows.Forms.Timer refreshLijstTimer;
         private System.Windows.Forms.ListBox lbGebruikerBeheer;
         private System.Windows.Forms.Label lbBetaalstatus;
+=======
+        private System.Windows.Forms.ListBox lbGebruikersBeheer;
+        private System.Windows.Forms.CheckBox cbAanwezigBeheer;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Timer refreshLijstTimer;
+>>>>>>> origin/master
     }
 }
 

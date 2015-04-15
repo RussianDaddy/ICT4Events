@@ -18,9 +18,8 @@ namespace ICT4Events.MateriaalBeheer
         {
             try
             {
-                retourdatum = uitleendatum.AddDays(3);
                 string query =
-                    "INSERT INTO Uitlening (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",'" +
+                    "INSERT INTO UITLENING (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",'" +
                     uitleendatum.ToShortDateString() + "','" + retourdatum.ToShortDateString() + "','" + gebruiker.GetGebruikersnaam() + "')";
                 database.Insert(query);
                 return true;
@@ -30,7 +29,6 @@ namespace ICT4Events.MateriaalBeheer
             {
                 return false;
             }
-            //Uitlening uitlening = new Uitlening(id, uitleenDatum, retourDatum, exemplaar, gebruiker);
         }
 
         public void UitgevenRFID(Gebruiker gebruiker, int rfid)
@@ -71,6 +69,5 @@ namespace ICT4Events.MateriaalBeheer
                 return null;
             }
         }
-
     }
 }
