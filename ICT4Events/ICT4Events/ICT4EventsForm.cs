@@ -19,6 +19,7 @@ namespace ICT4Events
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
         int buttonZoekGeklikt = 0;
+        private string stringId;
 
         public ICT4EventsForm()
         {
@@ -163,6 +164,8 @@ namespace ICT4Events
             mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
         }
 
+
+
         public void RefreshAll()
         {
             LbFeed.Items.Clear();
@@ -180,6 +183,25 @@ namespace ICT4Events
             chbEvent.Checked = false;
             chbFoto.Checked = false;
             chbVideo.Checked = false;
+        }
+
+        private void btlike_Click(object sender, EventArgs e)
+        {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+
+            for (int i = 10; i > 0; i--)
+            {
+                stringId = Selectedtems.Substring(0, i);
+                if (stringId.IndexOf("-") == -1)
+                {
+                    stringId = stringId.Substring(0, (i));
+                    MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
+                    i = -1;
+                }
+            }
+            int MediafileID = Convert.ToInt32(stringId);
+            mediabeheer.Liken(MediafileID);
+            RefreshAll();
         }
 
         //ReserveringBeheer
@@ -308,17 +330,7 @@ namespace ICT4Events
 
         }
 
-        private void btlike_Click(object sender, EventArgs e)
-        {
-            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-            string stringId = Selectedtems.Substring(0, 3);
-            int MediafileID = Convert.ToInt32(stringId);
 
-            if(stringId.IndexOf(",") != -1)
-            {
-
-            }
-        }
         
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
