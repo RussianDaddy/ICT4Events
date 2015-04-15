@@ -98,7 +98,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnTerugplaatsenExemplaren = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnVerplaatsExemplaren = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
@@ -820,7 +820,7 @@
             this.TabHuren.Controls.Add(this.label16);
             this.TabHuren.Controls.Add(this.checkBox1);
             this.TabHuren.Controls.Add(this.textBox1);
-            this.TabHuren.Controls.Add(this.button3);
+            this.TabHuren.Controls.Add(this.btnTerugplaatsenExemplaren);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
             this.TabHuren.Name = "TabHuren";
@@ -854,14 +854,15 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // button3
+            // btnTerugplaatsenExemplaren
             // 
-            this.button3.Location = new System.Drawing.Point(734, 514);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Uitlenen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaren.Location = new System.Drawing.Point(734, 514);
+            this.btnTerugplaatsenExemplaren.Name = "btnTerugplaatsenExemplaren";
+            this.btnTerugplaatsenExemplaren.Size = new System.Drawing.Size(75, 23);
+            this.btnTerugplaatsenExemplaren.TabIndex = 1;
+            this.btnTerugplaatsenExemplaren.Text = "Uitlenen";
+            this.btnTerugplaatsenExemplaren.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaren.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
             // 
             // groupBox1
             // 
@@ -872,7 +873,7 @@
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnVerplaatsExemplaren);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.clbExemplaren);
             this.groupBox1.Controls.Add(this.clbExemplaarHuren);
@@ -936,14 +937,15 @@
             this.label17.TabIndex = 8;
             this.label17.Text = "Uitlening";
             // 
-            // button2
+            // btnVerplaatsExemplaren
             // 
-            this.button2.Location = new System.Drawing.Point(372, 261);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVerplaatsExemplaren.Location = new System.Drawing.Point(372, 261);
+            this.btnVerplaatsExemplaren.Name = "btnVerplaatsExemplaren";
+            this.btnVerplaatsExemplaren.Size = new System.Drawing.Size(67, 23);
+            this.btnVerplaatsExemplaren.TabIndex = 7;
+            this.btnVerplaatsExemplaren.Text = ">>";
+            this.btnVerplaatsExemplaren.UseVisualStyleBackColor = true;
+            this.btnVerplaatsExemplaren.Click += new System.EventHandler(this.btnVerplaatsExemplaren_Click);
             // 
             // button1
             // 
@@ -1209,9 +1211,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTerugplaatsenExemplaren;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnVerplaatsExemplaren;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;

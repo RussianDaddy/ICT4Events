@@ -38,7 +38,7 @@ namespace ICT4Events.MateriaalBeheer
 
         }
 
-        public static List<string> AlleExemplaren()
+        public List<string> AlleExemplaren()
         {
             string query = "SELECT e.ID, m.Borg, m.Soort, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
             DataTable exemplaren = database.voerQueryUit(query);

@@ -18,6 +18,7 @@ namespace ICT4Events
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+        int buttonZoekGeklikt = 0;
 
         public ICT4EventsForm()
         {
@@ -26,6 +27,7 @@ namespace ICT4Events
             clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AllePlaatsen();
             clbReserveringGebruikers.DataSource = reserveringBeheer.AlleGebruikers();
             listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
+            clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
 
@@ -99,32 +101,26 @@ namespace ICT4Events
             if (chbBericht.Checked)
             {
                 searchstring += " Bericht";
-                //tempSoortListBericht = mediabeheer.GetSearchedSoort("Bericht");
             }
             if (chbBestand.Checked)
             {
                 searchstring += " Bestand";
-                //tempSoortListBestand = mediabeheer.GetSearchedSoort("Bestand");
             }
             if (chbEvent.Checked)
             {
                 searchstring += " Event";
-                //tempSoortListEvent = mediabeheer.GetSearchedSoort("Event");
             }
             if (chbFoto.Checked)
             {
                 searchstring += " Foto";
-                //tempSoortListFoto = mediabeheer.GetSearchedSoort("Foto");
             }
             if (chbVideo.Checked)
             {
                 searchstring += " Video";
-                //tempSoortListVideo = mediabeheer.GetSearchedSoort("Video");
             }
 
             tempSoortList = mediabeheer.GetSearchedSoort(searchstring);
 
-            //Test van methode (later een foreach die alle categoriën waarop gesorteerd is uitleest en vervolgens alle berichten met categorie.categorie die in de lijst staan in een lijst zet en vervolgens al deze berichten in de lbFeed zet
             foreach (Mediabeheer.Mediafile m in tempSoortList)
             {
                 LbFeed.Items.Add(m.ToString());
@@ -265,15 +261,17 @@ namespace ICT4Events
             dtpDatumVertrek.Refresh();
         }
 
-        //MateriaaleBheer
+        //MateriaalBheer
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
-
+            clbExemplaren.DataSource = null;
+            clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+            buttonZoekGeklikt++;
         }
 
         private void RefreshExemplaren()
         {
-
+ 
         }
 
         private List<Exemplaar> GehuurdeExemplaren()
@@ -294,7 +292,35 @@ namespace ICT4Events
 
         private void btlike_Click(object sender, EventArgs e)
         {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+            string stringId = Selectedtems.Substring(0, 3);
+            int MediafileID = Convert.ToInt32(stringId);
 
+            if(stringId.IndexOf(",") != -1)
+            {
+
+            }
+        }
+
+        private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
+        {
+            if (buttonZoekGeklikt < 1)
+            {
+                clbExemplaarHuren.Items.Clear();
+            }
+            foreach (string exemplaar in clbExemplaren.CheckedItems)
+            {
+                clbExemplaarHuren.Items.Add(exemplaar);
+            }
+        }
+
+        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
+        {
+            clbExemplaarHuren.DataSource = null;
+            foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
+            {
+                clbExemplaarHuren.Items.Remove(item);
+            }
         }
 
         //EventBeheer
