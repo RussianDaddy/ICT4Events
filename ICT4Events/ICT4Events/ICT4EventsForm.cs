@@ -397,11 +397,6 @@ namespace ICT4Events
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
         }
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();

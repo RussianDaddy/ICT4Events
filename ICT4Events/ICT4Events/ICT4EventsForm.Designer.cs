@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
@@ -111,9 +110,9 @@
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
-            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
+            this.lbBetaalstatus = new System.Windows.Forms.Label();
             this.cbBetaaldBeheer = new System.Windows.Forms.ComboBox();
             this.btnCheckBetaalstatus = new System.Windows.Forms.Button();
             this.btnAanmakenBeheer = new System.Windows.Forms.Button();
@@ -129,19 +128,12 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-<<<<<<< HEAD
             this.lbGebruikerBeheer = new System.Windows.Forms.ListBox();
-            this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
-            this.lbBetaalstatus = new System.Windows.Forms.Label();
-=======
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
-            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
-            this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
->>>>>>> origin/master
+            this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1007,16 +999,6 @@
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
             // 
-            // cbAanwezigBeheer
-            // 
-            this.cbAanwezigBeheer.AutoSize = true;
-            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 114);
-            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
-            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
-            this.cbAanwezigBeheer.TabIndex = 6;
-            this.cbAanwezigBeheer.Text = "Aanwezigen";
-            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
-            // 
             // btnLaatZienBeheren
             // 
             this.btnLaatZienBeheren.Location = new System.Drawing.Point(368, 79);
@@ -1038,6 +1020,16 @@
             this.BetaalstatusBeheer.TabIndex = 4;
             this.BetaalstatusBeheer.TabStop = false;
             this.BetaalstatusBeheer.Text = "Betaalstatus";
+            // 
+            // lbBetaalstatus
+            // 
+            this.lbBetaalstatus.AutoSize = true;
+            this.lbBetaalstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBetaalstatus.Location = new System.Drawing.Point(6, 54);
+            this.lbBetaalstatus.Name = "lbBetaalstatus";
+            this.lbBetaalstatus.Size = new System.Drawing.Size(73, 25);
+            this.lbBetaalstatus.TabIndex = 7;
+            this.lbBetaalstatus.Text = "Status";
             // 
             // cbBetaaldBeheer
             // 
@@ -1180,7 +1172,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gebruikers";
             // 
-<<<<<<< HEAD
             // lbGebruikerBeheer
             // 
             this.lbGebruikerBeheer.FormattingEnabled = true;
@@ -1189,25 +1180,13 @@
             this.lbGebruikerBeheer.Size = new System.Drawing.Size(315, 485);
             this.lbGebruikerBeheer.TabIndex = 0;
             this.lbGebruikerBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikerBeheer_SelectedIndexChanged);
-=======
+            // 
             // lbGebruikersBeheer
             // 
-            this.lbGebruikersBeheer.FormattingEnabled = true;
-            this.lbGebruikersBeheer.Location = new System.Drawing.Point(6, 19);
+            this.lbGebruikersBeheer.Location = new System.Drawing.Point(0, 0);
             this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
-            this.lbGebruikersBeheer.Size = new System.Drawing.Size(315, 485);
+            this.lbGebruikersBeheer.Size = new System.Drawing.Size(120, 96);
             this.lbGebruikersBeheer.TabIndex = 0;
-            this.lbGebruikersBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikersBeheer_SelectedIndexChanged);
-            // 
-            // cbAanwezigBeheer
-            // 
-            this.cbAanwezigBeheer.AutoSize = true;
-            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 114);
-            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
-            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
-            this.cbAanwezigBeheer.TabIndex = 6;
-            this.cbAanwezigBeheer.Text = "Aanwezigen";
-            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -1234,33 +1213,16 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
-            // clbGebruikersBeheer
             // 
-            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
-            this.clbGebruikersBeheer.FormattingEnabled = true;
-            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
-            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
-            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
-            this.clbGebruikersBeheer.TabIndex = 75;
->>>>>>> origin/master
+            // cbAanwezigBeheer
             // 
-            // refreshLijstTimer
-            // 
-            this.refreshLijstTimer.Interval = 120000;
-            this.refreshLijstTimer.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
-<<<<<<< HEAD
-            // 
-            // lbBetaalstatus
-            // 
-            this.lbBetaalstatus.AutoSize = true;
-            this.lbBetaalstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBetaalstatus.Location = new System.Drawing.Point(6, 54);
-            this.lbBetaalstatus.Name = "lbBetaalstatus";
-            this.lbBetaalstatus.Size = new System.Drawing.Size(73, 25);
-            this.lbBetaalstatus.TabIndex = 7;
-            this.lbBetaalstatus.Text = "Status";
-=======
->>>>>>> origin/master
+            this.cbAanwezigBeheer.AutoSize = true;
+            this.cbAanwezigBeheer.Location = new System.Drawing.Point(368, 125);
+            this.cbAanwezigBeheer.Name = "cbAanwezigBeheer";
+            this.cbAanwezigBeheer.Size = new System.Drawing.Size(84, 17);
+            this.cbAanwezigBeheer.TabIndex = 6;
+            this.cbAanwezigBeheer.Text = "Aanwezigen";
+            this.cbAanwezigBeheer.UseVisualStyleBackColor = true;
             // 
             // ICT4EventsForm
             // 
@@ -1305,6 +1267,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -1355,11 +1318,6 @@
         private System.Windows.Forms.CheckBox chbFoto;
         private System.Windows.Forms.CheckBox chbBericht;
         private System.Windows.Forms.CheckBox chbVideo;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
@@ -1410,21 +1368,15 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
-<<<<<<< HEAD
-        private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.ComboBox cbBetaaldBeheer;
         private System.Windows.Forms.Button btnCheckBetaalstatus;
-        private System.Windows.Forms.Timer refreshLijstTimer;
         private System.Windows.Forms.ListBox lbGebruikerBeheer;
         private System.Windows.Forms.Label lbBetaalstatus;
-=======
         private System.Windows.Forms.ListBox lbGebruikersBeheer;
-        private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Timer refreshLijstTimer;
->>>>>>> origin/master
+        private System.Windows.Forms.CheckBox cbAanwezigBeheer;
     }
 }
 

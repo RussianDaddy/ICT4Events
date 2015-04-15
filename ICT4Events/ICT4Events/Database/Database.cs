@@ -161,9 +161,48 @@ namespace ICT4Events.Database
             }
             return Gebruiker;
         }
-<<<<<<< HEAD
         public List<ReserveringBeheer.Reservering> GetReserveringen(string sql)
-=======
+        {
+            List<ReserveringBeheer.Reservering> Reserveringen = new List<ReserveringBeheer.Reservering>();
+            try
+            {
+                openConnection();
+                OracleCommand List = new OracleCommand(sql, connection);
+                OracleDataReader Reader = List.ExecuteReader();
+                OracleDataAdapter Adapter = new OracleDataAdapter(List);
+
+                int Nummer;
+                DateTime AankomstDatum;
+                DateTime VertrekDatum;
+                int Betaald;
+
+                while(Reader.Read())
+                {
+                    Nummer = Convert.ToInt32(Reader["NUMMER"]);
+                    AankomstDatum = Convert.ToDateTime(Reader["AANKOMSTDATUM"]);
+                    VertrekDatum = Convert.ToDateTime(Reader["VERTREKDATUM"]);
+                    Betaald = Convert.ToInt32(Reader["BETAALD"]);
+
+                    if(Betaald == 0)
+                    {
+                        Reserveringen.Add(new ReserveringBeheer.Reservering(Nummer, AankomstDatum, VertrekDatum, false));
+                    }
+                    else
+                    {
+                        Reserveringen.Add(new ReserveringBeheer.Reservering(Nummer, AankomstDatum, VertrekDatum, true));
+                    }
+                }
+            }
+            catch(OracleException exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return Reserveringen;
+        }
 
         public List<Mediabeheer.Mediafile> GetBerichtenList(string sql, List<Mediabeheer.Categorie> categorielijst)
         {
@@ -217,51 +256,6 @@ namespace ICT4Events.Database
                 connection.Close();
             }
             return BerichtenLijst;
-        }
-
-
-        public List<object> GetObjectList(string sql)
->>>>>>> origin/master
-        {
-            List<ReserveringBeheer.Reservering> Reserveringen = new List<ReserveringBeheer.Reservering>();
-            try
-            {
-                openConnection();
-                OracleCommand List = new OracleCommand(sql, connection);
-                OracleDataReader Reader = List.ExecuteReader();
-                OracleDataAdapter Adapter = new OracleDataAdapter(List);
-
-                int Nummer;
-                DateTime AankomstDatum;
-                DateTime VertrekDatum;
-                int Betaald;
-
-                while(Reader.Read())
-                {
-                    Nummer = Convert.ToInt32(Reader["NUMMER"]);
-                    AankomstDatum = Convert.ToDateTime(Reader["AANKOMSTDATUM"]);
-                    VertrekDatum = Convert.ToDateTime(Reader["VERTREKDATUM"]);
-                    Betaald = Convert.ToInt32(Reader["BETAALD"]);
-
-                    if(Betaald == 0)
-                    {
-                        Reserveringen.Add(new ReserveringBeheer.Reservering(Nummer, AankomstDatum, VertrekDatum, false));
-                    }
-                    else
-                    {
-                        Reserveringen.Add(new ReserveringBeheer.Reservering(Nummer, AankomstDatum, VertrekDatum, true));
-                    }
-                }
-            }
-            catch(OracleException exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return Reserveringen;
-        }
+        } 
     }
 }
