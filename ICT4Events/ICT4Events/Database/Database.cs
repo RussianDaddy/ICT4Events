@@ -119,14 +119,14 @@ namespace ICT4Events.Database
                     Aanwezig = Convert.ToInt32(Reader["AANWEZIG"]);
                     try
                     {
-                        RFID = Convert.ToInt32(Reader["RFID nummer"]);
+                        RFID = Convert.ToInt32(Reader["RFID"]);
                     }
                     catch(InvalidCastException)
                     {
                         RFID = 00000;
                     }
 
-                    if (AdminCheck == "Ja")
+                    if (AdminCheck == "1")
                     {
                         if (Aanwezig == 0)
                         {
