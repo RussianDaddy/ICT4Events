@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
 
 
@@ -314,17 +315,6 @@ namespace ICT4Events
             clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
         }
 
-        private List<Exemplaar> GehuurdeExemplaren()
-        {
-            List<Exemplaar> tempExemplaren = new List<Exemplaar>();
-            foreach (Exemplaar e in clbExemplaren.CheckedItems)
-            {
-                tempExemplaren.Add(e);
-                clbExemplaarHuren.Items.Add(e);
-            }
-            return tempExemplaren;
-        }
-
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
@@ -334,7 +324,11 @@ namespace ICT4Events
         
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
+            DateTime uitleenDatum = DateTime.Now;
+            DateTime retourDatum = uitleenDatum.AddDays(3);
 
+            Materiaalbeheer.MateriaalHuren(Convert.ToInt32(textBox1.Text), DateTime.Now, retourDatum,
+                new Gebruiker("Air4Lyfe", "Arie", "Contofonto123", false, 123, false));
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
@@ -345,8 +339,6 @@ namespace ICT4Events
             }
         }
 
-        
-
         private void btnTerugplaatsenExemplaar_Click(object sender, EventArgs e)
         {
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
@@ -354,7 +346,6 @@ namespace ICT4Events
                 clbExemplaarHuren.Items.Remove(item);
             }
         }
-
 
         //EventBeheer
     }
