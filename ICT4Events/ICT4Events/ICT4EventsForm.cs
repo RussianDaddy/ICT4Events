@@ -11,20 +11,23 @@ namespace ICT4Events
 {
     public partial class ICT4EventsForm : Form
     {
+        ReserveringBeheer.ReserveringBeheer reserveringBeheer = new ReserveringBeheer.ReserveringBeheer();
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
         private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
+        int buttonZoekGeklikt = 0;
 
         public ICT4EventsForm()
         {
             InitializeComponent();
             rbtnAllePlaasten.Checked = true;
-            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
-            clbReserveringGebruikers.DataSource = ReserveringBeheer.ReserveringBeheer.AlleGebruikers();
-            listboxReserveringen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleReserveringen();
+            clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AllePlaatsen();
+            clbReserveringGebruikers.DataSource = reserveringBeheer.AlleGebruikers();
+            listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
+            clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
 
@@ -46,10 +49,27 @@ namespace ICT4Events
             //    new Exemplaar(9, Ethernet)
             //};
 
-            RefreshExemplaren();
             mediabeheer = new Mediabeheer.Mediabeheer();
             exemplaren = new List<Exemplaar>();
             RefreshAll();
+        }
+
+        private void refreshLijstTimer_Tick(object sender, EventArgs e)
+        {
+            if (rbtnAllePlaasten.Checked)
+            {
+                clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AllePlaatsen();
+            }
+            else if (rbtnSpecifiekePlaatsen.Checked)
+            {
+                clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleSpecifiekePlaatsen();
+            }
+            else if (rbtnVrijePlaatsen.Checked)
+            {
+                clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleVrijePlaatsen();
+            }
+            clbReserveringGebruikers.DataSource = reserveringBeheer.AlleGebruikers();
+            listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
         }
 
         //GebruikerBeheer
@@ -113,32 +133,26 @@ namespace ICT4Events
             if (chbBericht.Checked)
             {
                 searchstring += " Bericht";
-                //tempSoortListBericht = mediabeheer.GetSearchedSoort("Bericht");
             }
             if (chbBestand.Checked)
             {
                 searchstring += " Bestand";
-                //tempSoortListBestand = mediabeheer.GetSearchedSoort("Bestand");
             }
             if (chbEvent.Checked)
             {
                 searchstring += " Event";
-                //tempSoortListEvent = mediabeheer.GetSearchedSoort("Event");
             }
             if (chbFoto.Checked)
             {
                 searchstring += " Foto";
-                //tempSoortListFoto = mediabeheer.GetSearchedSoort("Foto");
             }
             if (chbVideo.Checked)
             {
                 searchstring += " Video";
-                //tempSoortListVideo = mediabeheer.GetSearchedSoort("Video");
             }
 
             tempSoortList = mediabeheer.GetSearchedSoort(searchstring);
 
-            //Test van methode (later een foreach die alle categoriën waarop gesorteerd is uitleest en vervolgens alle berichten met categorie.categorie die in de lijst staan in een lijst zet en vervolgens al deze berichten in de lbFeed zet
             foreach (Mediabeheer.Mediafile m in tempSoortList)
             {
                 LbFeed.Items.Add(m.ToString());
@@ -197,17 +211,17 @@ namespace ICT4Events
             string hoofdboeker = gebruikersnamen.First();
             if (aantalPersonen > gebruikersnamen.Count)
             {
-                if (ReserveringBeheer.ReserveringBeheer.Reserveren(hoofdboeker, aankomstDatum, vertrekdatum, betaald))
+                if (reserveringBeheer.Reserveren(hoofdboeker, aankomstDatum, vertrekdatum, betaald))
                 {
                     gebruikersnamen.Remove(hoofdboeker);
                     MessageBox.Show("Reservering Toegevoegd");
-                    string reserveringsNummer = ReserveringBeheer.ReserveringBeheer.VindReserveringNummer(hoofdboeker,
+                    string reserveringsNummer = reserveringBeheer.VindReserveringNummer(hoofdboeker,
                         aankomstDatum, vertrekdatum);
                     if (gebruikersnamen.Count > 0)
                     {
                         foreach (String medereiziger in gebruikersnamen)
                         {
-                            if (ReserveringBeheer.ReserveringBeheer.VoegMedereizigerToe(medereiziger, reserveringsNummer))
+                            if (reserveringBeheer.VoegMedereizigerToe(medereiziger, reserveringsNummer))
                             {
                                 MessageBox.Show("Medereiziger: " + medereiziger + " toegevoegd aan reservering: " +
                                                 reserveringsNummer);
@@ -216,7 +230,7 @@ namespace ICT4Events
                     }
                     foreach (var verblijfplaats in kampeerPlaatsen)
                     {
-                        if (ReserveringBeheer.ReserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
+                        if (reserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
                             verblijfplaats))
                         {
                             MessageBox.Show("Verblijfplaats: " + verblijfplaats + " toegevoegd aan reservering: " +
@@ -230,21 +244,22 @@ namespace ICT4Events
                 MessageBox.Show(
                     "Er zijn meer personen geselecteerd, dan er daadwerkelijk verblijven kan. Selecteer minder gebruikers of meer kampeerplaatsen.");
             }
+            listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
         }
 
         private void rbtnAllePlaasten_CheckedChanged(object sender, EventArgs e)
         {
-            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AllePlaatsen();
+            clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AllePlaatsen();
         }
 
         private void rbtnSpecifiekePlaatsen_CheckedChanged(object sender, EventArgs e)
         {
-            clbReserveringKampeerplaatsen.DataSource = ReserveringBeheer.ReserveringBeheer.AlleSpecifiekePlaatsen();
+            clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleSpecifiekePlaatsen();
         }
 
         private void rbtnVrijePlaatsen_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleVrijePlaatsen();
         }
 
         private void btnReserveringBetaald_Click(object sender, EventArgs e)
@@ -252,7 +267,7 @@ namespace ICT4Events
             string reservering = listboxReserveringen.SelectedItem.ToString();
             reservering = reservering.Substring(8);
             reservering = reservering.Substring(0, reservering.IndexOf(" Naam:"));
-            if(ReserveringBeheer.ReserveringBeheer.UpdateBetaling(reservering))
+            if(reserveringBeheer.UpdateBetaling(reservering))
             {
                 MessageBox.Show("Reservering: " + reservering + " is betaald");
             }
@@ -262,6 +277,17 @@ namespace ICT4Events
             }
         }
 
+<<<<<<< HEAD
+=======
+        private void btnLaatZienBeheren_Click(object sender, EventArgs e)
+        {
+            List<GebruikerBeheer.Gebruiker> Gebruiker = Gebruikerbeheer.LijstAanwezigen();
+            foreach(GebruikerBeheer.Gebruiker Temp in Gebruiker)
+            {
+                clbGebruikersBeheer.Items.Add(Temp.ToString());
+            }
+        }
+>>>>>>> origin/master
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
             var reservatievan = new DateTime();
@@ -270,26 +296,11 @@ namespace ICT4Events
             dtpDatumVertrek.Refresh();
         }
 
-        //MateriaaleBheer
+        //MateriaalBheer
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
-            clbExemplaren.Items.Clear();
-            foreach (Exemplaar exemplaar in materiaalbeheer.Exemplaren)
-            {
-                if (tbExemplaarId.Text == exemplaar.Id.ToString())
-                {
-                    clbExemplaren.Items.Add(exemplaar.ToString());
-                }
-            }
-        }
-
-        private void RefreshExemplaren()
-        {
-            clbExemplaren.Items.Clear();
-            foreach(Exemplaar e in materiaalbeheer.Exemplaren)
-            {
-                clbExemplaren.Items.Add(e);
-            }
+            clbExemplaren.DataSource = null;
+            clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
         }
 
         private List<Exemplaar> GehuurdeExemplaren()
@@ -310,7 +321,31 @@ namespace ICT4Events
 
         private void btlike_Click(object sender, EventArgs e)
         {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+            string stringId = Selectedtems.Substring(0, 3);
+            int MediafileID = Convert.ToInt32(stringId);
 
+            if(stringId.IndexOf(",") != -1)
+            {
+
+            }
+        }
+
+        private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
+        {
+            foreach (string exemplaar in clbExemplaren.CheckedItems)
+            {
+                clbExemplaarHuren.Items.Add(exemplaar);
+            }
+        }
+
+        private void btnTerugplaatsenExemplaren_Click(object sender, EventArgs e)
+        {
+            clbExemplaarHuren.DataSource = null;
+            foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
+            {
+                clbExemplaarHuren.Items.Remove(item);
+            }
         }
 
 

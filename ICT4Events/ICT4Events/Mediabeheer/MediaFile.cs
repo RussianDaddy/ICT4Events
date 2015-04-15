@@ -9,7 +9,7 @@ namespace ICT4Events.Mediabeheer
     public class Mediafile
     {
         private string stringding;
-        public Mediafile(int Id, String Naam, String Type, Categorie categorie, String Path, int Like, bool Report)
+        public Mediafile(int Id, String Naam, String Bericht, String Type, Categorie categorie, String Path, int Like, bool Report)
         {
             this.Id = Id;
             this.Naam = Naam;

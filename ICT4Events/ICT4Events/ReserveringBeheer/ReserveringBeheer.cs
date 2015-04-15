@@ -11,7 +11,7 @@ namespace ICT4Events.ReserveringBeheer
     {
         static Database.Database database = new Database.Database();
 
-        public static bool Reserveren(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum,  int betaald)
+        public bool Reserveren(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum,  int betaald)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public static bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
+        public  bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public static bool VoegMedereizigerToe(string medereizigerGebruikersnaam, string reserveringsNummer)
+        public bool VoegMedereizigerToe(string medereizigerGebruikersnaam, string reserveringsNummer)
         {
             try
             {
@@ -60,12 +60,12 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public static bool UpdateBetaling(string reserveringsnummer)
+        public  bool UpdateBetaling(string reserveringsnummer)
         {
             try
             {
                 string queryUpdate = "UPDATE Reservering SET Betaald = '1' WHERE Nummer= '" + reserveringsnummer + "'";
-                database.voerQueryUit(queryUpdate);
+                database.Insert(queryUpdate);
                 return true;
             }
             catch (Exception)
@@ -74,7 +74,7 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public static string VindReserveringNummer(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum)
+        public string VindReserveringNummer(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum)
         {
             try
             {
@@ -99,22 +99,35 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public static List<string> AllePlaatsen()
+        public List<string> AllePlaatsen()
         {
             string query = "SELECT * FROM KAMPEERPLAATS";
             DataTable kampeerplaatsen = database.voerQueryUit(query);
-            List<String> stringlist= new List<string>();
+            List<string> stringlist= new List<string>();
             foreach (DataRow dr in kampeerplaatsen.Rows)
             {
                 stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Aantal Personen: " + dr[2]);
             }
             return stringlist;
         }
-        public static List<string> AlleSpecifiekePlaatsen()
+        public List<string> AlleSpecifiekePlaatsen()
         {
             string query = "SELECT * FROM Kampeerplaats k WHERE k.eigenschappen IS NOT NULL";
+            DataTable specifiekeKampeerplaatsen = database.voerQueryUit(query);
+            List<string> stringlist = new List<string>();
+            foreach (DataRow dr in specifiekeKampeerplaatsen.Rows)
+            {
+                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Eigenschappen: " + dr[3] + " Aantal Personen: " + dr[2]);
+            }
+            return stringlist;
+        }
+
+        public List<string> AlleVrijePlaatsen()
+        {
+            string query =
+                "SELECT k.NUMMER,k.SOORT, k.AANTALPERSONEN FROM KAMPEERPLAATS k LEFT JOIN RESERVERING_KAMPEERPLAATS rk ON k.NUMMER = rk.KAMPEERPLAATSNUMMER JOIN RESERVERING r ON r.NUMMER = rk.RESERVERINGNUMMER AND (SELECT TO_DATE(TO_CHAR (SYSDATE, 'dd-mm-yyyy HH24:MI:SS'), 'dd-mm-yyyy HH24:MI:SS') FROM DUAL) NOT BETWEEN r.AANKOMSTDATUM AND r.VERTREKDATUM";
             DataTable vrijeKampeerplaatsen = database.voerQueryUit(query);
-            List<String> stringlist = new List<string>();
+            List<string> stringlist = new List<string>();
             foreach (DataRow dr in vrijeKampeerplaatsen.Rows)
             {
                 stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Eigenschappen: " + dr[3] + " Aantal Personen: " + dr[2]);
@@ -122,26 +135,11 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
-        public static List<string> AlleVrijePlaatsen()
-        {
-            //Waar de datum van vandaag is NIET tussen de aankomstdatum en vertrekdatum
-            /*
-             *  SELECT k.NUMMER,k.SOORT, k.EIGENSCHAPPEN, k."Aantal personen"
-                FROM KAMPEERPLAATS k, reservering r, RESERVERING_KAMPEERPLAATS rk
-                WHERE rk.KAMPEERPLAATSNUMMER = k.NUMMER
-                AND rk.RESERVERINGNUMMER = r.NUMMER
-                AND (SELECT TO_CHAR
-                (SYSDATE, 'DD-MM-YYYY HH24:MI:SS') "NOW"
-                FROM DUAL) NOT BETWEEN r.AANKOMSTDATUM AND r.VERTREKDATUM;
-             */
-            throw new NotImplementedException();
-        }
-
-        public static List<string> AlleGebruikers()
+        public List<string> AlleGebruikers()
         {
             string query = "SELECT g.gebruikersnaam, g.naam FROM GEBRUIKER g";
             DataTable gebruikers = database.voerQueryUit(query);
-            List<String> stringlist = new List<string>();
+            List<string> stringlist = new List<string>();
             foreach (DataRow dr in gebruikers.Rows)
             {
                 stringlist.Add("Gebruiker: " + dr[0] + " Naam: " + dr[1]);
@@ -149,11 +147,11 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
-        public static List<string> AlleReserveringen()
+        public List<string> AlleReserveringen()
         {
             string query = "SELECT r.nummer, r.gebruikergebruikersnaam FROM Reservering r";
             DataTable reserveringen = database.voerQueryUit(query);
-            List<String> stringlist = new List<string>();
+            List<string> stringlist = new List<string>();
             foreach (DataRow dr in reserveringen.Rows)
             {
                 stringlist.Add("Nummer: " + dr[0] + " Naam: " + dr[1]);

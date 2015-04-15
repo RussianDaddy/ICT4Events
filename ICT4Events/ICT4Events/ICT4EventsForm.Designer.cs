@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
@@ -97,7 +98,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnUitlenen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
@@ -105,8 +106,8 @@
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVerplaatsExemplaren = new System.Windows.Forms.Button();
+            this.btnTerugplaatsenExemplaar = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
@@ -125,11 +126,16 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
             this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+=======
+            this.clbGebruikersBeheer = new System.Windows.Forms.CheckedListBox();
+            this.refreshLijstTimer = new System.Windows.Forms.Timer(this.components);
+>>>>>>> origin/master
             this.tabControl1.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -823,7 +829,7 @@
             this.TabHuren.Controls.Add(this.label16);
             this.TabHuren.Controls.Add(this.checkBox1);
             this.TabHuren.Controls.Add(this.textBox1);
-            this.TabHuren.Controls.Add(this.button3);
+            this.TabHuren.Controls.Add(this.btnUitlenen);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
             this.TabHuren.Name = "TabHuren";
@@ -857,14 +863,15 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // button3
+            // btnUitlenen
             // 
-            this.button3.Location = new System.Drawing.Point(734, 514);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Uitlenen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUitlenen.Location = new System.Drawing.Point(734, 514);
+            this.btnUitlenen.Name = "btnUitlenen";
+            this.btnUitlenen.Size = new System.Drawing.Size(75, 23);
+            this.btnUitlenen.TabIndex = 1;
+            this.btnUitlenen.Text = "Uitlenen";
+            this.btnUitlenen.UseVisualStyleBackColor = true;
+            this.btnUitlenen.Click += new System.EventHandler(this.btnTerugplaatsenExemplaren_Click);
             // 
             // groupBox1
             // 
@@ -875,8 +882,8 @@
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnVerplaatsExemplaren);
+            this.groupBox1.Controls.Add(this.btnTerugplaatsenExemplaar);
             this.groupBox1.Controls.Add(this.clbExemplaren);
             this.groupBox1.Controls.Add(this.clbExemplaarHuren);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
@@ -939,23 +946,24 @@
             this.label17.TabIndex = 8;
             this.label17.Text = "Uitlening";
             // 
-            // button2
+            // btnVerplaatsExemplaren
             // 
-            this.button2.Location = new System.Drawing.Point(372, 261);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVerplaatsExemplaren.Location = new System.Drawing.Point(372, 261);
+            this.btnVerplaatsExemplaren.Name = "btnVerplaatsExemplaren";
+            this.btnVerplaatsExemplaren.Size = new System.Drawing.Size(67, 23);
+            this.btnVerplaatsExemplaren.TabIndex = 7;
+            this.btnVerplaatsExemplaren.Text = ">>";
+            this.btnVerplaatsExemplaren.UseVisualStyleBackColor = true;
+            this.btnVerplaatsExemplaren.Click += new System.EventHandler(this.btnVerplaatsExemplaren_Click);
             // 
-            // button1
+            // btnTerugplaatsenExemplaar
             // 
-            this.button1.Location = new System.Drawing.Point(372, 232);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTerugplaatsenExemplaar.Location = new System.Drawing.Point(372, 232);
+            this.btnTerugplaatsenExemplaar.Name = "btnTerugplaatsenExemplaar";
+            this.btnTerugplaatsenExemplaar.Size = new System.Drawing.Size(67, 23);
+            this.btnTerugplaatsenExemplaar.TabIndex = 6;
+            this.btnTerugplaatsenExemplaar.Text = "<<";
+            this.btnTerugplaatsenExemplaar.UseVisualStyleBackColor = true;
             // 
             // clbExemplaren
             // 
@@ -1128,7 +1136,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbGebruikersBeheer);
+            this.groupBox2.Controls.Add(this.clbGebruikersBeheer);
             this.groupBox2.Location = new System.Drawing.Point(12, 15);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(327, 509);
@@ -1136,6 +1144,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gebruikers";
             // 
+<<<<<<< HEAD
             // lbGebruikersBeheer
             // 
             this.lbGebruikersBeheer.FormattingEnabled = true;
@@ -1180,6 +1189,21 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
+=======
+            // clbGebruikersBeheer
+            // 
+            this.clbGebruikersBeheer.BackColor = System.Drawing.Color.SeaShell;
+            this.clbGebruikersBeheer.FormattingEnabled = true;
+            this.clbGebruikersBeheer.Location = new System.Drawing.Point(6, 17);
+            this.clbGebruikersBeheer.Name = "clbGebruikersBeheer";
+            this.clbGebruikersBeheer.Size = new System.Drawing.Size(315, 484);
+            this.clbGebruikersBeheer.TabIndex = 75;
+            // 
+            // refreshLijstTimer
+            // 
+            this.refreshLijstTimer.Interval = 120000;
+            this.refreshLijstTimer.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
+>>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1250,10 +1274,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnUitlenen;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVerplaatsExemplaren;
+        private System.Windows.Forms.Button btnTerugplaatsenExemplaar;
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;
@@ -1265,6 +1289,7 @@
         private System.Windows.Forms.TextBox tbGebruikersnaamBeheer;
         private System.Windows.Forms.TextBox tbNaamBeheer;
         private System.Windows.Forms.Button btnWijzigenBeheer;
+        private System.Windows.Forms.CheckedListBox clbGebruikersBeheer;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox gbsoort;
@@ -1329,11 +1354,15 @@
         private System.Windows.Forms.Button btreport;
         private System.Windows.Forms.Button btreply;
         private System.Windows.Forms.Button btlike;
+<<<<<<< HEAD
         private System.Windows.Forms.ListBox lbGebruikersBeheer;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+=======
+        private System.Windows.Forms.Timer refreshLijstTimer;
+>>>>>>> origin/master
     }
 }
 
