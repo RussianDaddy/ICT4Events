@@ -21,7 +21,7 @@ namespace ICT4Events
         private Mediabeheer.Mediabeheer mediabeheer;
         int buttonZoekGeklikt = 0;
         private string stringId;
-        private int idTeller = 2;
+        private int idTeller = 10;
 
         public ICT4EventsForm()
         {
@@ -496,22 +496,24 @@ namespace ICT4Events
 
         }
 
-
-        
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
             string checkedGebruikersnaam = lbGasten.SelectedItem.ToString();
             checkedGebruikersnaam = checkedGebruikersnaam.Substring(0, checkedGebruikersnaam.IndexOf(" - Naam:"));
-            
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
-            
+            string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
+            materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
+            materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
 
-            if(Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
-            {
-                idTeller++;
-                MessageBox.Show("Uitlening toegevoegd.");
-            }
+                if (materiaalbeheer.UpdateUitleningId(Convert.ToInt32(materiaalId), idTeller))
+                {
+                    if (Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
+                    {
+                        idTeller++;
+                        MessageBox.Show("Uitlening toegevoegd.");
+                    }
+                }
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)

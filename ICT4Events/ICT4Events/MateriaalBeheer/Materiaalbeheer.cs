@@ -69,9 +69,23 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
+        public bool UpdateUitleningId(int exemplaarId, int uitleningId)
+        {
+            try
+            {
+                string queryUpdate = "UPDATE Exemplaar SET UitleningId = " + uitleningId + " WHERE ID = " + exemplaarId;
+                database.Insert(queryUpdate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public List<string> AlleGasten()
         {
-            string query = "SELECT gebruikersnaam, naam FROM Gebruiker WHERE admincheck = 'Nee'";
+            string query = "SELECT gebruikersnaam, naam FROM Gebruiker";
             DataTable gekozenGebruikersnaam = database.voerQueryUit(query);
             List<string> stringList = new List<string>();
             foreach (DataRow dr in gekozenGebruikersnaam.Rows)
