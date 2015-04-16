@@ -342,6 +342,10 @@ namespace ICT4Events
                 }
                 
             }
+                        else
+            {
+                MessageBox.Show("Selecteer een Mediafile om te bekijken")
+            }
             
         }
 
@@ -370,6 +374,10 @@ namespace ICT4Events
                 }
                 
                 
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een Mediafile om te reporten!")
             }
             
         }
