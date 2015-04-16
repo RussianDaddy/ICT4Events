@@ -650,6 +650,7 @@
             this.btreport.TabIndex = 3;
             this.btreport.Text = "Report";
             this.btreport.UseVisualStyleBackColor = true;
+            this.btreport.Click += new System.EventHandler(this.btreport_Click);
             // 
             // btreply
             // 
@@ -659,6 +660,7 @@
             this.btreply.TabIndex = 2;
             this.btreply.Text = "Reply";
             this.btreply.UseVisualStyleBackColor = true;
+            this.btreply.Click += new System.EventHandler(this.btreply_Click);
             // 
             // btlike
             // 

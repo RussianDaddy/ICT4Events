@@ -80,8 +80,17 @@ namespace ICT4Events.Mediabeheer
             //Code voor het apart uploaden naar database ( format: "bericht-Datum-Mediafile-gebruiker")
         }
 
-        public void MediafileRapporteren()
+        public bool MediafileRapporteren(int stringId)
         {
+            foreach (Mediafile m in GetMediafileLijst)
+            {
+                if (m.Id == Convert.ToInt32(stringId))
+                {
+                    m.Report++;
+                    return true;
+                }
+            }
+            return false;
             //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
 
         }

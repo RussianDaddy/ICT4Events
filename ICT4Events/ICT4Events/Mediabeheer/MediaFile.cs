@@ -38,8 +38,9 @@ namespace ICT4Events.Mediabeheer
         }
         public string WholeString()
         {
-            return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Bericht:" + Bericht +" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + + " - Aantal Likes: " + Like + " - Aantal malen gereport: " + Report;
-        }
+            string output = string.Format(Id + " - " + Gebruikersnaam + "{0}{0}Titel: " + Naam + "{0}{0}Bericht: " + Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path +*/ + "{0}{0}Aantal Likes: " + Like /*+ " - Aantal malen gereport: " + Report*/, Environment.NewLine);
+            return output;
+            }
 
 
     }

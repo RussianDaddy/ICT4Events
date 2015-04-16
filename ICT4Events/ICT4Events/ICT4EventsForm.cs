@@ -317,8 +317,70 @@ namespace ICT4Events
 
         private void btviewpost_Click(object sender, EventArgs e)
         {
+            string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+            
+            if (LbFeed.SelectedItem != null)
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        
+                            foreach(Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
+                            {
+                                if(m.Id == Convert.ToInt32(stringId))
+                                {
+                                    MessageBox.Show(m.WholeString());
+                                }
+                            }
+                        
+                        
+                        i = -1;
+                    }
+                }
+                
+            }
+            
+        }
+
+        private void btreport_Click(object sender, EventArgs e)
+        {
+        string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+            
+            if (LbFeed.SelectedItem != null)
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        if(mediabeheer.MediafileRapporteren(Convert.ToInt32(stringId)))
+                        {
+                            MessageBox.Show("U heeft bericht met ID " + stringId + " Gereport");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Er is iets fout gegaan bij het rapporteren van het mediafile! Probeer het opnieuw!");
+                        }                        
+                        i = -1;
+                    }
+                }
+                
+                
+            }
+            
+        }
+
+        private void btreply_Click(object sender, EventArgs e)
+        {
 
         }
+
+
+
 
         //ReserveringBeheer
         private void btReserveer_Click(object sender, EventArgs e)
@@ -484,6 +546,9 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabHuren);
             }
         }
+
+
+
 
 
 
