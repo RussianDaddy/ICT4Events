@@ -484,6 +484,7 @@
             this.btPost.TabIndex = 4;
             this.btPost.Text = "Post";
             this.btPost.UseVisualStyleBackColor = true;
+            this.btPost.Click += new System.EventHandler(this.btPost_Click);
             // 
             // tbBericht
             // 
@@ -1256,6 +1257,7 @@
             this.btBrowse.TabIndex = 6;
             this.btBrowse.Text = "Browse";
             this.btBrowse.UseVisualStyleBackColor = true;
+            this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
             // 
             // chbBerichtAanmaken
             // 

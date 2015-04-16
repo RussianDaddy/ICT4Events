@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
-
+using System.IO;
 
 namespace ICT4Events
 {
@@ -344,7 +344,7 @@ namespace ICT4Events
             }
                         else
             {
-                MessageBox.Show("Selecteer een Mediafile om te bekijken")
+                MessageBox.Show("Selecteer een Mediafile om te bekijken");
             }
             
         }
@@ -377,7 +377,7 @@ namespace ICT4Events
             }
             else
             {
-                MessageBox.Show("Selecteer een Mediafile om te reporten!")
+                MessageBox.Show("Selecteer een Mediafile om te reporten!");
             }
             
         }
@@ -386,6 +386,18 @@ namespace ICT4Events
         {
 
         }
+
+        private void btPost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btBrowse_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
 
 
 
@@ -556,6 +568,8 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabHuren);
             }
         }
+
+
 
 
 
