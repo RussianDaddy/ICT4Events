@@ -38,7 +38,7 @@ namespace ICT4Events.Mediabeheer
         }
         public string WholeString()
         {
-            return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Bericht:" + Bericht +" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + + " - Aantal Likes: " + Like + " - Aantal malen gereport: " + Report;
+            return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Bericht:" + Bericht +" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + " - Aantal Likes: " + Like + " - Aantal malen gereport: " + Report;
         }
 
 
