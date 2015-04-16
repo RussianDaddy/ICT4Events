@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ICT4EventsForm));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabICT4Events = new System.Windows.Forms.TabControl();
             this.TabInloggen = new System.Windows.Forms.TabPage();
             this.gbInloggen = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btInloggen = new System.Windows.Forms.Button();
-            this.tbWachtwoord = new System.Windows.Forms.TextBox();
-            this.tbGebruikersnaam = new System.Windows.Forms.TextBox();
+            this.tbWachtwoordInloggen = new System.Windows.Forms.TextBox();
+            this.tbGebruikersnaamInloggen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblGebruikersnaam = new System.Windows.Forms.Label();
-            this.TebReserveren = new System.Windows.Forms.TabPage();
+            this.TabReserveren = new System.Windows.Forms.TabPage();
             this.gbReserveren = new System.Windows.Forms.GroupBox();
             this.listboxReserveringen = new System.Windows.Forms.ListBox();
             this.gbBetaling = new System.Windows.Forms.GroupBox();
@@ -136,11 +136,11 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tabControl1.SuspendLayout();
+            this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.TebReserveren.SuspendLayout();
+            this.TabReserveren.SuspendLayout();
             this.gbReserveren.SuspendLayout();
             this.gbBetaling.SuspendLayout();
             this.TabFeed.SuspendLayout();
@@ -161,19 +161,19 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabICT4Events
             // 
-            this.tabControl1.Controls.Add(this.TabInloggen);
-            this.tabControl1.Controls.Add(this.TebReserveren);
-            this.tabControl1.Controls.Add(this.TabFeed);
-            this.tabControl1.Controls.Add(this.TabAlgemeneinfo);
-            this.tabControl1.Controls.Add(this.TabHuren);
-            this.tabControl1.Controls.Add(this.TabBeheren);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(820, 568);
-            this.tabControl1.TabIndex = 0;
+            this.tabICT4Events.Controls.Add(this.TabInloggen);
+            this.tabICT4Events.Controls.Add(this.TabReserveren);
+            this.tabICT4Events.Controls.Add(this.TabFeed);
+            this.tabICT4Events.Controls.Add(this.TabAlgemeneinfo);
+            this.tabICT4Events.Controls.Add(this.TabHuren);
+            this.tabICT4Events.Controls.Add(this.TabBeheren);
+            this.tabICT4Events.Location = new System.Drawing.Point(13, 13);
+            this.tabICT4Events.Name = "tabICT4Events";
+            this.tabICT4Events.SelectedIndex = 0;
+            this.tabICT4Events.Size = new System.Drawing.Size(820, 568);
+            this.tabICT4Events.TabIndex = 0;
             // 
             // TabInloggen
             // 
@@ -194,8 +194,8 @@
             this.gbInloggen.BackColor = System.Drawing.Color.SeaShell;
             this.gbInloggen.Controls.Add(this.pictureBox1);
             this.gbInloggen.Controls.Add(this.btInloggen);
-            this.gbInloggen.Controls.Add(this.tbWachtwoord);
-            this.gbInloggen.Controls.Add(this.tbGebruikersnaam);
+            this.gbInloggen.Controls.Add(this.tbWachtwoordInloggen);
+            this.gbInloggen.Controls.Add(this.tbGebruikersnaamInloggen);
             this.gbInloggen.Controls.Add(this.label2);
             this.gbInloggen.Controls.Add(this.lblGebruikersnaam);
             this.gbInloggen.Location = new System.Drawing.Point(287, 112);
@@ -223,21 +223,22 @@
             this.btInloggen.TabIndex = 8;
             this.btInloggen.Text = "Inloggen";
             this.btInloggen.UseVisualStyleBackColor = false;
+            this.btInloggen.Click += new System.EventHandler(this.btInloggen_Click);
             // 
-            // tbWachtwoord
+            // tbWachtwoordInloggen
             // 
-            this.tbWachtwoord.Location = new System.Drawing.Point(99, 163);
-            this.tbWachtwoord.Name = "tbWachtwoord";
-            this.tbWachtwoord.PasswordChar = '*';
-            this.tbWachtwoord.Size = new System.Drawing.Size(154, 20);
-            this.tbWachtwoord.TabIndex = 7;
+            this.tbWachtwoordInloggen.Location = new System.Drawing.Point(99, 163);
+            this.tbWachtwoordInloggen.Name = "tbWachtwoordInloggen";
+            this.tbWachtwoordInloggen.PasswordChar = '*';
+            this.tbWachtwoordInloggen.Size = new System.Drawing.Size(154, 20);
+            this.tbWachtwoordInloggen.TabIndex = 7;
             // 
-            // tbGebruikersnaam
+            // tbGebruikersnaamInloggen
             // 
-            this.tbGebruikersnaam.Location = new System.Drawing.Point(99, 133);
-            this.tbGebruikersnaam.Name = "tbGebruikersnaam";
-            this.tbGebruikersnaam.Size = new System.Drawing.Size(154, 20);
-            this.tbGebruikersnaam.TabIndex = 6;
+            this.tbGebruikersnaamInloggen.Location = new System.Drawing.Point(99, 133);
+            this.tbGebruikersnaamInloggen.Name = "tbGebruikersnaamInloggen";
+            this.tbGebruikersnaamInloggen.Size = new System.Drawing.Size(154, 20);
+            this.tbGebruikersnaamInloggen.TabIndex = 6;
             // 
             // label2
             // 
@@ -257,16 +258,16 @@
             this.lblGebruikersnaam.TabIndex = 4;
             this.lblGebruikersnaam.Text = "Gebruikersnaam:";
             // 
-            // TebReserveren
+            // TabReserveren
             // 
-            this.TebReserveren.BackColor = System.Drawing.Color.LightGray;
-            this.TebReserveren.Controls.Add(this.gbReserveren);
-            this.TebReserveren.Location = new System.Drawing.Point(4, 22);
-            this.TebReserveren.Name = "TebReserveren";
-            this.TebReserveren.Padding = new System.Windows.Forms.Padding(3);
-            this.TebReserveren.Size = new System.Drawing.Size(812, 542);
-            this.TebReserveren.TabIndex = 1;
-            this.TebReserveren.Text = "Reserveren";
+            this.TabReserveren.BackColor = System.Drawing.Color.LightGray;
+            this.TabReserveren.Controls.Add(this.gbReserveren);
+            this.TabReserveren.Location = new System.Drawing.Point(4, 22);
+            this.TabReserveren.Name = "TabReserveren";
+            this.TabReserveren.Padding = new System.Windows.Forms.Padding(3);
+            this.TabReserveren.Size = new System.Drawing.Size(812, 542);
+            this.TabReserveren.TabIndex = 1;
+            this.TabReserveren.Text = "Reserveren";
             // 
             // gbReserveren
             // 
@@ -1236,15 +1237,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 593);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabICT4Events);
             this.Name = "ICT4EventsForm";
             this.Text = "ICT4Events";
-            this.tabControl1.ResumeLayout(false);
+            this.tabICT4Events.ResumeLayout(false);
             this.TabInloggen.ResumeLayout(false);
             this.gbInloggen.ResumeLayout(false);
             this.gbInloggen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.TebReserveren.ResumeLayout(false);
+            this.TabReserveren.ResumeLayout(false);
             this.gbReserveren.ResumeLayout(false);
             this.gbReserveren.PerformLayout();
             this.gbBetaling.ResumeLayout(false);
@@ -1279,16 +1280,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabICT4Events;
         private System.Windows.Forms.TabPage TabInloggen;
-        private System.Windows.Forms.TabPage TebReserveren;
+        private System.Windows.Forms.TabPage TabReserveren;
         private System.Windows.Forms.TabPage TabFeed;
         private System.Windows.Forms.TabPage TabAlgemeneinfo;
         private System.Windows.Forms.TabPage TabHuren;
         private System.Windows.Forms.TabPage TabBeheren;
         private System.Windows.Forms.GroupBox gbInloggen;
-        private System.Windows.Forms.TextBox tbWachtwoord;
-        private System.Windows.Forms.TextBox tbGebruikersnaam;
+        private System.Windows.Forms.TextBox tbWachtwoordInloggen;
+        private System.Windows.Forms.TextBox tbGebruikersnaamInloggen;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblGebruikersnaam;
         private System.Windows.Forms.Button btInloggen;

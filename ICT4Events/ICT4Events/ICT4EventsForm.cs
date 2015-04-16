@@ -34,7 +34,10 @@ namespace ICT4Events
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             lbBetaalstatus.Visible = false;
-
+            tabICT4Events.TabPages.Remove(TabReserveren);
+            tabICT4Events.TabPages.Remove(TabFeed);
+            tabICT4Events.TabPages.Remove(TabHuren);
+            tabICT4Events.TabPages.Remove(TabBeheren);
             //Materiaal Beamer = new Materiaal("Beamer",50);
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
@@ -441,6 +444,23 @@ namespace ICT4Events
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
             {
                 clbExemplaarHuren.Items.Remove(item);
+            }
+        }
+
+        private void btInloggen_Click(object sender, EventArgs e)
+        {
+            if(Gebruikerbeheer.Inloggen(tbGebruikersnaamInloggen.Text, tbWachtwoordInloggen.Text) == true)
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabReserveren);
+                tabICT4Events.TabPages.Add(TabHuren);
+                tabICT4Events.TabPages.Add(TabBeheren);
+                tabICT4Events.TabPages.Remove(TabInloggen);
+            }
+            else
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabHuren);
             }
         }
 

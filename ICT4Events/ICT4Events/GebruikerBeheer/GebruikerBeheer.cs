@@ -10,9 +10,34 @@ namespace ICT4Events.GebruikerBeheer
     class GebruikerBeheer
     {
         Database.Database Database = new Database.Database();
-        public void Inloggen(string gebruikersnaam, string wachtwoord)
+        public bool Inloggen(string gebruikersnaam, string wachtwoord)
         {
-
+            string sqlGegevens = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
+            bool admin = false;
+            List<Gebruiker> Gebruiker = new List<Gebruiker>();
+            Gebruiker = Database.GetGebruikerList(sqlGegevens);
+            if(Gebruiker.Count != 0)
+            {
+                foreach(Gebruiker Temp in Gebruiker)
+                {
+                    if (Temp.Wachtwoord == wachtwoord)
+                    {
+                        if (Temp.Admin == true)
+                        {
+                            admin = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wachtwoord is incorrect.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gebruikersnaam is incorrect");
+            }
+            return admin;
         }
 
         public void Update(string email, string naam, string wachtwoord, string admin)
