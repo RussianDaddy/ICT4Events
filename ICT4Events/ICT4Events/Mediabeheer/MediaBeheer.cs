@@ -30,20 +30,20 @@ namespace ICT4Events.Mediabeheer
             Categorie Gamen = CategorieLijst[4];
 
             //testdata mediafiles
-            MediafileLijst = new List<Mediafile> {
+            /*MediafileLijst = new List<Mediafile> {
             new Mediafile(1, "beleg", "We gaan lekker broodjes met.... Beleg eten! kom gezellig een broodje met... Beleg eten", "Foto", Eten, @"C:\...", 8564947, 0, "wout_kamp@hotmail.com"),
             new Mediafile(2, "Glijbaan", " ", "Bericht", Spelen, @"C:\...", 8, 11, "wout_kamp@hotmail.com"),
             new Mediafile(3, "Basketbal!", " ", "Event", Sport, @"C:\...", 23, 5, "wout_kamp@hotmail.com"),
             new Mediafile(4, "Disco!!", " ", "Video", Feesten, @"C:\...", 23, 3, "wout_kamp@hotmail.com") ,
             new Mediafile(5, "Weer", " ", "Foto", Gamen, @"C:\...", 48, 8, "wout_kamp@hotmail.com"),
             new Mediafile(6, "Yu-Gi-Oh TCG"," ", "Bestand", Gamen, @"C:\...", 1223, 1, "wout_kamp@hotmail.com")
-            };
+            };*/
 
 
             //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
-            /*Database.Database database = new Database.Database();
+            Database.Database database = new Database.Database();
             string sql = "SELECT * FROM MEDIAFILE";
-            GetMediafileLijst = database.GetBerichtenList(sql, CategorieLijst);*/
+            GetMediafileLijst = database.GetBerichtenList(sql, CategorieLijst);
 
 
 

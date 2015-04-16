@@ -292,20 +292,27 @@ namespace ICT4Events
         private void btlike_Click(object sender, EventArgs e)
         {
             string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-
-            for (int i = 10; i > 0; i--)
+            if(LbFeed.SelectedItem != null)
             {
-                stringId = Selectedtems.Substring(0, i);
-                if (stringId.IndexOf("-") == -1)
+                for (int i = 10; i > 0; i--)
                 {
-                    stringId = stringId.Substring(0, (i));
-                    MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
-                    i = -1;
+                    stringId = Selectedtems.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
+                        i = -1;
+                    }
                 }
+                int MediafileID = Convert.ToInt32(stringId);
+                mediabeheer.Liken(MediafileID);
+                RefreshAll();
             }
-            int MediafileID = Convert.ToInt32(stringId);
-            mediabeheer.Liken(MediafileID);
-            RefreshAll();
+            else
+            {
+                MessageBox.Show("Selecteer eerste een bericht om te liken!");
+            }
+            
         }
 
         //ReserveringBeheer
