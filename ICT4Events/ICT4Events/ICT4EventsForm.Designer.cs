@@ -97,9 +97,9 @@
             this.TabHuren = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnUitlenen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbGasten = new System.Windows.Forms.ListBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
@@ -829,7 +829,6 @@
             this.TabHuren.BackColor = System.Drawing.Color.LightGray;
             this.TabHuren.Controls.Add(this.label16);
             this.TabHuren.Controls.Add(this.checkBox1);
-            this.TabHuren.Controls.Add(this.textBox1);
             this.TabHuren.Controls.Add(this.btnUitlenen);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
@@ -857,13 +856,6 @@
             this.checkBox1.Text = "Betaald?";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(45, 516);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            // 
             // btnUitlenen
             // 
             this.btnUitlenen.Location = new System.Drawing.Point(734, 514);
@@ -877,6 +869,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.lbGasten);
             this.groupBox1.Controls.Add(this.btnZoekExemplaar);
             this.groupBox1.Controls.Add(this.label43);
             this.groupBox1.Controls.Add(this.label42);
@@ -893,6 +886,14 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlenen";
+            // 
+            // lbGasten
+            // 
+            this.lbGasten.FormattingEnabled = true;
+            this.lbGasten.Location = new System.Drawing.Point(491, 9);
+            this.lbGasten.Name = "lbGasten";
+            this.lbGasten.Size = new System.Drawing.Size(308, 43);
+            this.lbGasten.TabIndex = 14;
             // 
             // btnZoekExemplaar
             // 
@@ -941,7 +942,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(439, 18);
+            this.label17.Location = new System.Drawing.Point(424, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(48, 13);
             this.label17.TabIndex = 8;
@@ -1301,7 +1302,6 @@
         private System.Windows.Forms.Button btReserveer;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnUitlenen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVerplaatsExemplaren;
@@ -1386,6 +1386,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListBox lbGasten;
     }
 }
 
