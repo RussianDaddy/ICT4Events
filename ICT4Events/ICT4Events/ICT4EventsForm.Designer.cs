@@ -136,6 +136,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btviewpost = new System.Windows.Forms.Button();
+            this.btdownloadfile = new System.Windows.Forms.Button();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -626,6 +628,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btdownloadfile);
+            this.groupBox3.Controls.Add(this.btviewpost);
             this.groupBox3.Controls.Add(this.btreport);
             this.groupBox3.Controls.Add(this.btreply);
             this.groupBox3.Controls.Add(this.btlike);
@@ -1233,6 +1237,25 @@
             this.timer1.Interval = 180000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
+            // btviewpost
+            // 
+            this.btviewpost.Location = new System.Drawing.Point(250, 447);
+            this.btviewpost.Name = "btviewpost";
+            this.btviewpost.Size = new System.Drawing.Size(75, 23);
+            this.btviewpost.TabIndex = 4;
+            this.btviewpost.Text = "View Post!";
+            this.btviewpost.UseVisualStyleBackColor = true;
+            this.btviewpost.Click += new System.EventHandler(this.btviewpost_Click);
+            // 
+            // btdownloadfile
+            // 
+            this.btdownloadfile.Location = new System.Drawing.Point(331, 447);
+            this.btdownloadfile.Name = "btdownloadfile";
+            this.btdownloadfile.Size = new System.Drawing.Size(104, 23);
+            this.btdownloadfile.TabIndex = 5;
+            this.btdownloadfile.Text = "Download file!";
+            this.btdownloadfile.UseVisualStyleBackColor = true;
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1387,6 +1410,8 @@
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ListBox lbGasten;
+        private System.Windows.Forms.Button btdownloadfile;
+        private System.Windows.Forms.Button btviewpost;
     }
 }
 

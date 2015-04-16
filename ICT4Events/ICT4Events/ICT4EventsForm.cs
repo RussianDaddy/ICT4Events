@@ -315,6 +315,11 @@ namespace ICT4Events
             
         }
 
+        private void btviewpost_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //ReserveringBeheer
         private void btReserveer_Click(object sender, EventArgs e)
         {
@@ -479,6 +484,8 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabHuren);
             }
         }
+
+
 
         //EventBeheer
     }
