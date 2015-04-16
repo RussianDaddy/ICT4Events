@@ -143,6 +143,8 @@
             this.chbBestandAanmaken = new System.Windows.Forms.CheckBox();
             this.chbEventAanmaken = new System.Windows.Forms.CheckBox();
             this.tbTitel = new System.Windows.Forms.TextBox();
+            this.cbCategorieAanmaken = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -459,6 +461,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Controls.Add(this.cbCategorieAanmaken);
             this.groupBox8.Controls.Add(this.tbTitel);
             this.groupBox8.Controls.Add(this.chbEventAanmaken);
             this.groupBox8.Controls.Add(this.chbBestandAanmaken);
@@ -478,7 +482,7 @@
             // 
             // btPost
             // 
-            this.btPost.Location = new System.Drawing.Point(528, 104);
+            this.btPost.Location = new System.Drawing.Point(528, 97);
             this.btPost.Name = "btPost";
             this.btPost.Size = new System.Drawing.Size(37, 21);
             this.btPost.TabIndex = 4;
@@ -1317,6 +1321,23 @@
             this.tbTitel.TabIndex = 12;
             this.tbTitel.Text = "Titel...";
             // 
+            // cbCategorieAanmaken
+            // 
+            this.cbCategorieAanmaken.FormattingEnabled = true;
+            this.cbCategorieAanmaken.Location = new System.Drawing.Point(455, 44);
+            this.cbCategorieAanmaken.Name = "cbCategorieAanmaken";
+            this.cbCategorieAanmaken.Size = new System.Drawing.Size(110, 21);
+            this.cbCategorieAanmaken.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(455, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Selecteer de categorie:";
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1478,6 +1499,8 @@
         private System.Windows.Forms.CheckBox chbBerichtAanmaken;
         private System.Windows.Forms.Button btBrowse;
         private System.Windows.Forms.TextBox tbTitel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbCategorieAanmaken;
     }
 }
 

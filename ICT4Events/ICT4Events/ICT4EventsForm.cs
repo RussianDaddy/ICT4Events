@@ -22,6 +22,8 @@ namespace ICT4Events
         int buttonZoekGeklikt = 0;
         private string stringId;
         private int idTeller = 10;
+        private string path;
+        private string loggedinuser;
 
         public ICT4EventsForm()
         {
@@ -44,6 +46,8 @@ namespace ICT4Events
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
             //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
+
+
 
             //materiaalbeheer.Exemplaren = new List<Exemplaar>
             //{
@@ -277,6 +281,9 @@ namespace ICT4Events
             {
                 LbFeed.Items.Add(m.ToString());
             }
+
+        
+
         }
 
         private void btShowAll_Click(object sender, EventArgs e)
@@ -389,11 +396,34 @@ namespace ICT4Events
 
         private void btPost_Click(object sender, EventArgs e)
         {
+            string username;
+            int lastid = GetlatestID();
+            /*if(chbBericht.Checked)
+                {
+                    Mediabeheer.Mediafile = new Mediabeheer.Mediafile(lastid + 1, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), "Bericht", Convert.ToString(cbCategorieAanmaken.Text), Convert.ToString(tbPath.Text), 0, 0, username);
+                }*/
+        }
+
+        private int GetlatestID()
+        {
+            tempSoortList = mediabeheer.GetMediafileLijst;
+            int aantalberichten = tempSoortList.Count;
+            Mediabeheer.Mediafile lastmediafile = tempSoortList[aantalberichten - 1];
+            int lastid = lastmediafile.Id;
+            return lastid;
 
         }
 
         private void btBrowse_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.ShowDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                path = openFileDialog1.FileName;
+                tbPath.Text = path;
+            }
 
 
         }
@@ -561,6 +591,7 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabHuren);
                 tabICT4Events.TabPages.Add(TabBeheren);
                 tabICT4Events.TabPages.Remove(TabInloggen);
+                loggedinuser = tbGebruikersnaamInloggen.Text;
             }
             else
             {
