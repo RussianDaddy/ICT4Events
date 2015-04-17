@@ -60,7 +60,6 @@ namespace ICT4Events.Database
             }
             catch (OracleException)
             {
-                MessageBox.Show("Deze gebruiker bestaat al.");
                 return false;
             }
             finally
