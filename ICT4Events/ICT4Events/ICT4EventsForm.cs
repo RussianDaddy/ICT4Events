@@ -14,14 +14,14 @@ namespace ICT4Events
     {
         ReserveringBeheer.ReserveringBeheer reserveringBeheer = new ReserveringBeheer.ReserveringBeheer();
         GebruikerBeheer.GebruikerBeheer Gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
-        private MateriaalBeheer.Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
+        private Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
-        int buttonZoekGeklikt = 0;
+        
         private string stringId;
-        private int idTeller = 10;
+        private int idTeller = 2;
         private string path;
         private string loggedinuser;
 
@@ -552,18 +552,24 @@ namespace ICT4Events
             checkedGebruikersnaam = checkedGebruikersnaam.Substring(0, checkedGebruikersnaam.IndexOf(" - Naam:"));
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
-            string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
-            materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
-            materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
+            //string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
+            //materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
+            //materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
 
-                if (materiaalbeheer.UpdateUitleningId(Convert.ToInt32(materiaalId), idTeller))
-                {
-                    if (Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
+                if (Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
                     {
-                        idTeller++;
+                        foreach (string s in clbExemplaarHuren.SelectedItems)
+                        {
+                            string id = s.Substring(3, s.Length - 4);
+                            id = id.Substring(0, id.IndexOf(" - Borg:"));
+                            materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), idTeller);
+                        }
                         MessageBox.Show("Uitlening toegevoegd.");
                     }
-                }
+
+            List<string> exemplaren = new List<string>();
+            
+            
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
@@ -599,14 +605,6 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabHuren);
             }
         }
-
-
-
-
-
-
-
-
         //EventBeheer
     }
 }
