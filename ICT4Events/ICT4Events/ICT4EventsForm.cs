@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Phidgets.Events;
+using System.Threading;
 using Phidgets;
 using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
@@ -37,6 +38,17 @@ namespace ICT4Events
             listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
             clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
             lbGasten.DataSource = materiaalbeheer.AlleGasten();
+
+            //RFID
+            rfid = new RFID();
+            rfid.open();//Opent de verbinding
+            rfid.Attach += new AttachEventHandler(rfid_Attach);//kijkt of de Reader verbonden is
+            rfid.Detach += new DetachEventHandler(rfid_Detach);
+            rfid.Tag += new TagEventHandler(rfid_Tag);//scant de rfid tag
+            lbRfidStatus.Text = "RFID not Connected!";
+            lbRfidStatus.ForeColor = System.Drawing.Color.Red;
+            tmRFIDTextboxClear.Stop();
+            //
 
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
@@ -71,6 +83,27 @@ namespace ICT4Events
             RefreshAll();
         }
 
+        //RFID Methods
+        private void rfid_Attach(object sender, AttachEventArgs e)
+        {
+            RFID attached = (RFID)sender;
+            rfid.Antenna = true;
+            lbRfidStatus.Text = "RFID Connected!";
+            lbRfidStatus.ForeColor = System.Drawing.Color.Black;
+        }
+        private void rfid_Tag(object sender, TagEventArgs e)
+        {
+            tbRFIDnummBeheer.Text = e.Tag;
+            rfid.LED = true;
+            Thread.Sleep(100);
+            rfid.LED = false;
+        }
+        private void rfid_Detach(object sender, DetachEventArgs e)
+        {
+            RFID detached = (RFID)sender;
+            lbRfidStatus.Text = "RFID not Connected!";
+            lbRfidStatus.ForeColor = System.Drawing.Color.Red;
+        }
         private void refreshLijstTimer_Tick(object sender, EventArgs e)
         {
             if (rbtnAllePlaasten.Checked)
@@ -106,6 +139,32 @@ namespace ICT4Events
                 Gebruikerbeheer.Registreren(tbGebruikersnaamBeheer.Text, tbNaamBeheer.Text, tbWachtwoordBeheer.Text, 0,
                     "Nee");
             }
+        }
+
+        private void tbRFIDnummBeheer_TextChanged(object sender, EventArgs e)
+        {
+            if (tbRFIDnummBeheer.Text != "")
+            {
+                if (Gebruikerbeheer.Aanwezig(tbRFIDnummBeheer.Text) == true)
+                {
+                    pnIncheckBeheer.BackColor = System.Drawing.Color.Green;
+                    tmRFIDTextboxClear.Start();
+                }
+                else
+                {
+                    pnIncheckBeheer.BackColor = System.Drawing.Color.Red;
+                    tmRFIDTextboxClear.Start();
+                }
+            }
+            FillLbGebruikerBeheer();
+            
+        }
+
+        private void tmRFIDTextboxClear_Tick(object sender, EventArgs e)
+        {
+            tbRFIDnummBeheer.Text = "";
+            pnIncheckBeheer.BackColor = System.Drawing.Color.LightGray;
+            tmRFIDTextboxClear.Stop();
         }
 
         private void btnWijzigenBeheer_Click(object sender, EventArgs e)
@@ -185,24 +244,25 @@ namespace ICT4Events
 
         private void lbGebruikerBeheer_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string email = "";
+            string gebruiker = "";
             lbBetaalstatus.Visible = false;
-            string gebruiker = lbGebruikerBeheer.SelectedItem.ToString();
-            string email = gebruiker.Split(',')[0];
+            try
+            {
+                lbGebruikerBeheer.SelectedItem.ToString();
+                email = gebruiker.Split(',')[0];
+            }
+            catch(NullReferenceException)
+            {
+
+            }
             cbBetaaldBeheer.Items.Clear();
             cbBetaaldBeheer.Text = "";
             List<ReserveringBeheer.Reservering> Reserveringen = new List<ReserveringBeheer.Reservering>();
-            if (lbGebruikerBeheer.SelectedItem == null)
+            Reserveringen = Gebruikerbeheer.GebruikerReservering(email);
+            foreach(ReserveringBeheer.Reservering Temp in Reserveringen)
             {
-                MessageBox.Show("Geen gebruiker geselecteerd.");
-            }
-            else
-            {
-                Reserveringen = Gebruikerbeheer.GebruikerReservering(email);
-
-                foreach(ReserveringBeheer.Reservering Temp in Reserveringen)
-                {
-                    cbBetaaldBeheer.Items.Add(Temp.Nummer);
-                }
+                cbBetaaldBeheer.Items.Add(Temp.Nummer);
             }
         }
 
@@ -627,6 +687,7 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabBeheren);
             tabICT4Events.TabPages.Add(TabInloggen);
         }
+
         //EventBeheer
     }
 }

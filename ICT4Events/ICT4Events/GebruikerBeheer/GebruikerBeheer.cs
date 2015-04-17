@@ -162,5 +162,38 @@ namespace ICT4Events.GebruikerBeheer
             }
             return ReturnStatus;
         }
+        public bool Aanwezig(string RFID)
+        {
+            bool Check = false;
+            List<Gebruiker> gebruiker = new List<Gebruiker>();
+            string sql = ("SELECT * FROM GEBRUIKER WHERE RFID = '" + RFID + "'");
+            gebruiker = Database.GetGebruikerList(sql);
+            if(gebruiker.Count == 0)
+            {
+                Check = false;
+            }
+            else
+            {
+                foreach(Gebruiker TempGebruiker in gebruiker)
+                {
+                    if (TempGebruiker.RFID == RFID)
+                    {
+                        if (TempGebruiker.Aanwezig == false)
+                        {
+                            string sqlUpdate = ("UPDATE GEBRUIKER SET AANWEZIG = 1 WHERE RFID = '" + RFID + "'");
+                            Database.Insert(sqlUpdate);
+                            Check = true;
+                        }
+                        else
+                        {
+                            string sqlUpdate = ("UPDATE GEBRUIKER SET AANWEZIG = 0 WHERE RFID = '" + RFID + "'");
+                            Database.Insert(sqlUpdate);
+                            Check = true;
+                        }
+                    }
+                }
+            }
+            return Check;
+        }
     }
 }

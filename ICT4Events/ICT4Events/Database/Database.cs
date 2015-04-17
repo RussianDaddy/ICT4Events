@@ -107,7 +107,7 @@ namespace ICT4Events.Database
                 string Naam;
                 string Wachtwoord;
                 int Aanwezig;
-                int RFID;
+                string RFID;
                 string AdminCheck;
 
                 while (Reader.Read())
@@ -119,11 +119,11 @@ namespace ICT4Events.Database
                     Aanwezig = Convert.ToInt32(Reader["AANWEZIG"]);
                     try
                     {
-                        RFID = Convert.ToInt32(Reader["RFID"]);
+                        RFID = Convert.ToString(Reader["RFID"]);
                     }
                     catch(InvalidCastException)
                     {
-                        RFID = 00000;
+                        RFID = "00000";
                     }
 
                     if (AdminCheck == "1")
@@ -233,7 +233,7 @@ namespace ICT4Events.Database
                     Type = Convert.ToString(Reader["Type"]);
                     Categorie = Convert.ToString(Reader["Categorie"]);
                     Path = Convert.ToString(Reader["Path"]);
-                    Like = Convert.ToInt32(Reader["Like"]);
+                    Like = Convert.ToInt32(Reader["VindIkLeuk"]);
                     Report = Convert.ToInt32(Reader["Report"]);
                     Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
 

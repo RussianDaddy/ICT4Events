@@ -120,6 +120,10 @@
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
             this.clbExemplaarHuren = new System.Windows.Forms.CheckedListBox();
             this.TabBeheren = new System.Windows.Forms.TabPage();
+            this.gbInchecken = new System.Windows.Forms.GroupBox();
+            this.pnIncheckBeheer = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbRFIDnummBeheer = new System.Windows.Forms.TextBox();
             this.cbAanwezigBeheer = new System.Windows.Forms.CheckBox();
             this.btnLaatZienBeheren = new System.Windows.Forms.Button();
             this.BetaalstatusBeheer = new System.Windows.Forms.GroupBox();
@@ -149,6 +153,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbRfidStatus = new System.Windows.Forms.Label();
+            this.tmRFIDTextboxClear = new System.Windows.Forms.Timer(this.components);
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -169,6 +175,7 @@
             this.TabHuren.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabBeheren.SuspendLayout();
+            this.gbInchecken.SuspendLayout();
             this.BetaalstatusBeheer.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1102,6 +1109,7 @@
             // TabBeheren
             // 
             this.TabBeheren.BackColor = System.Drawing.Color.LightGray;
+            this.TabBeheren.Controls.Add(this.gbInchecken);
             this.TabBeheren.Controls.Add(this.cbAanwezigBeheer);
             this.TabBeheren.Controls.Add(this.btnLaatZienBeheren);
             this.TabBeheren.Controls.Add(this.BetaalstatusBeheer);
@@ -1115,6 +1123,44 @@
             this.TabBeheren.Size = new System.Drawing.Size(812, 542);
             this.TabBeheren.TabIndex = 5;
             this.TabBeheren.Text = "Beheren";
+            // 
+            // gbInchecken
+            // 
+            this.gbInchecken.Controls.Add(this.lbRfidStatus);
+            this.gbInchecken.Controls.Add(this.pnIncheckBeheer);
+            this.gbInchecken.Controls.Add(this.label4);
+            this.gbInchecken.Controls.Add(this.tbRFIDnummBeheer);
+            this.gbInchecken.Location = new System.Drawing.Point(470, 295);
+            this.gbInchecken.Name = "gbInchecken";
+            this.gbInchecken.Size = new System.Drawing.Size(327, 160);
+            this.gbInchecken.TabIndex = 7;
+            this.gbInchecken.TabStop = false;
+            this.gbInchecken.Text = "Inchecken";
+            // 
+            // pnIncheckBeheer
+            // 
+            this.pnIncheckBeheer.Location = new System.Drawing.Point(11, 66);
+            this.pnIncheckBeheer.Name = "pnIncheckBeheer";
+            this.pnIncheckBeheer.Size = new System.Drawing.Size(298, 45);
+            this.pnIncheckBeheer.TabIndex = 75;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 74;
+            this.label4.Text = "RFID Nummer:";
+            // 
+            // tbRFIDnummBeheer
+            // 
+            this.tbRFIDnummBeheer.Location = new System.Drawing.Point(144, 31);
+            this.tbRFIDnummBeheer.Name = "tbRFIDnummBeheer";
+            this.tbRFIDnummBeheer.ReadOnly = true;
+            this.tbRFIDnummBeheer.Size = new System.Drawing.Size(165, 20);
+            this.tbRFIDnummBeheer.TabIndex = 0;
+            this.tbRFIDnummBeheer.TextChanged += new System.EventHandler(this.tbRFIDnummBeheer_TextChanged);
             // 
             // cbAanwezigBeheer
             // 
@@ -1390,6 +1436,20 @@
             this.timer1.Interval = 180000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
+            // lbRfidStatus
+            // 
+            this.lbRfidStatus.AutoSize = true;
+            this.lbRfidStatus.Location = new System.Drawing.Point(11, 128);
+            this.lbRfidStatus.Name = "lbRfidStatus";
+            this.lbRfidStatus.Size = new System.Drawing.Size(78, 13);
+            this.lbRfidStatus.TabIndex = 76;
+            this.lbRfidStatus.Text = "RFID STATUS";
+            // 
+            // tmRFIDTextboxClear
+            // 
+            this.tmRFIDTextboxClear.Interval = 2000;
+            this.tmRFIDTextboxClear.Tick += new System.EventHandler(this.tmRFIDTextboxClear_Tick);
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1427,6 +1487,8 @@
             this.groupBox1.PerformLayout();
             this.TabBeheren.ResumeLayout(false);
             this.TabBeheren.PerformLayout();
+            this.gbInchecken.ResumeLayout(false);
+            this.gbInchecken.PerformLayout();
             this.BetaalstatusBeheer.ResumeLayout(false);
             this.BetaalstatusBeheer.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1560,6 +1622,12 @@
         private System.Windows.Forms.TextBox tbTitel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbCategorieAanmaken;
+        private System.Windows.Forms.GroupBox gbInchecken;
+        private System.Windows.Forms.Panel pnIncheckBeheer;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbRFIDnummBeheer;
+        private System.Windows.Forms.Label lbRfidStatus;
+        private System.Windows.Forms.Timer tmRFIDTextboxClear;
     }
 }
 

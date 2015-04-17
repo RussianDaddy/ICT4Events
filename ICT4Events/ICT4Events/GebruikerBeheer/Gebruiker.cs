@@ -13,9 +13,9 @@ namespace ICT4Events.GebruikerBeheer
         public string Wachtwoord { get; set; }
         public bool Aanwezig { get; set; }
         public bool Admin { get; set; }
-        public int RFID { get; set; }
+        public string RFID { get; set; }
 
-        public Gebruiker(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, int rfid, bool admin)
+        public Gebruiker(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, string rfid, bool admin)
         {
             this.Gebruikersnaam = gebruikersnaam;
             this.Naam = naam;
@@ -32,7 +32,7 @@ namespace ICT4Events.GebruikerBeheer
 
         public override string ToString()
         {
-            return Gebruikersnaam + ", " + Naam + ", " + Wachtwoord + ", " + Convert.ToString(Aanwezig) + ", " + Convert.ToString(Admin) + ", " + Convert.ToString(RFID);
+            return Gebruikersnaam + ", " + Naam + ", " + Wachtwoord + ", " + Convert.ToString(Aanwezig) + ", " + Convert.ToString(Admin) + ", " + RFID;
         }
     }
 }
