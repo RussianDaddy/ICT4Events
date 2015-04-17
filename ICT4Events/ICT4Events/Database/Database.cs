@@ -233,7 +233,7 @@ namespace ICT4Events.Database
                     Type = Convert.ToString(Reader["Type"]);
                     Categorie = Convert.ToString(Reader["Categorie"]);
                     Path = Convert.ToString(Reader["Path"]);
-                    Like = Convert.ToInt32(Reader["VindIkLeuk"]);
+                    Like = Convert.ToInt32(Reader["Like"]);
                     Report = Convert.ToInt32(Reader["Report"]);
                     Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
 
