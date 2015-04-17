@@ -10,10 +10,10 @@ namespace ICT4Events.GebruikerBeheer
     class GebruikerBeheer
     {
         Database.Database Database = new Database.Database();
-        public bool Inloggen(string gebruikersnaam, string wachtwoord)
+        public string Inloggen(string gebruikersnaam, string wachtwoord)
         {
             string sqlGegevens = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
-            bool admin = false;
+            string returns = "";
             List<Gebruiker> Gebruiker = new List<Gebruiker>();
             Gebruiker = Database.GetGebruikerList(sqlGegevens);
             if(Gebruiker.Count != 0)
@@ -24,40 +24,57 @@ namespace ICT4Events.GebruikerBeheer
                     {
                         if (Temp.Admin == true)
                         {
-                            admin = true;
+                            returns = "Admin";
+                        }
+                        else
+                        {
+                            returns = "Gast";
                         }
                     }
                     else
                     {
                         MessageBox.Show("Wachtwoord is incorrect.");
+                        returns = "Error";
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Gebruikersnaam is incorrect");
+                returns = "Error";
             }
-            return admin;
+            return returns;
+
         }
 
         public void Update(string email, string naam, string wachtwoord, string admin)
         {
-            string sqlGebruiker = "UPDATE GEBRUIKER SET GEBRUIKERSNAAM = '" + email + "', NAAM = '" + naam + "', WACHTWOORD = '" + wachtwoord + "', ADMINCHECK = '" + admin + "' WHERE GEBRUIKERSNAAM = '" + email + "'";
+            string sqlGebruiker = "";
             if(admin == "Ja")
             {
+                sqlGebruiker = "UPDATE GEBRUIKER SET GEBRUIKERSNAAM = '" + email + "', NAAM = '" + naam + "', WACHTWOORD = '" + wachtwoord + "', ADMINCHECK = 1 WHERE GEBRUIKERSNAAM = '" + email + "'";
                 string sqlAdmin = "UPDATE ADMIN SET GEBRUIKERGEBRUIKERSNAAM = '" + email + "' WHERE GEBRUIKERGEBRUIKERSNAAM = '" + email + "'";
+                string sqlRemove = "DELETE FROM GAST WHERE GEBRUIKERGEBRUIKERSNAAM = '" + email + "'";
+                string sqlInsert = "INSERT INTO ADMIN(GEBRUIKERGEBRUIKERSNAAM) VALUES('" + email + "')";
                 if (Database.Insert(sqlGebruiker) == true)
                 {
                     Database.Insert(sqlAdmin);
+                    Database.Insert(sqlRemove);
+                    Database.Insert(sqlInsert);
                     MessageBox.Show("Admin is aangepast.");
                 }
             }
             else
             {
+                sqlGebruiker = "UPDATE GEBRUIKER SET GEBRUIKERSNAAM = '" + email + "', NAAM = '" + naam + "', WACHTWOORD = '" + wachtwoord + "', ADMINCHECK = 0 WHERE GEBRUIKERSNAAM = '" + email + "'";
                 string sqlGast = "UPDATE GAST SET GEBRUIKERGEBRUIKERSNAAM = '" + email + "' WHERE GEBRUIKERGEBRUIKERSNAAM = '" + email + "'";
+                string sqlRemove = "DELETE FROM ADMIN WHERE GEBRUIKERGEBRUIKERSNAAM = '" + email + "'";
+                string sqlInsert = "INSERT INTO GAST(GEBRUIKERGEBRUIKERSNAAM) VALUES('" + email + "')";
                 if (Database.Insert(sqlGebruiker) == true)
                 {
                     Database.Insert(sqlGast);
+                    Database.Insert(sqlRemove);
+                    Database.Insert(sqlInsert);
                     MessageBox.Show("Gast is aangepast.");
                 }
             }
