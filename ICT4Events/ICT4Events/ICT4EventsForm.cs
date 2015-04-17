@@ -94,6 +94,7 @@ namespace ICT4Events
         private void rfid_Tag(object sender, TagEventArgs e)
         {
             tbRFIDnummBeheer.Text = e.Tag;
+            tbRFIDMBeheer.Text = e.Tag;
             rfid.LED = true;
             Thread.Sleep(100);
             rfid.LED = false;
@@ -606,12 +607,16 @@ namespace ICT4Events
 
         private void btnKoppelMateriaalBeheer_Click(object sender, EventArgs e)
         {
+            if(tbRFIDMBeheer.Text == "" || tbGebruikersnaamMBeheer.Text == "")
+            {
+                MessageBox.Show("Vul geldige informatie in.");
+            }
+            else
+            {
+                materiaalbeheer.UitgevenRFID(tbGebruikersnaamMBeheer.Text, tbRFIDMBeheer.Text);
+                MessageBox.Show("RFID is gekoppeld.");
 
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void btnUitlenen_Click(object sender, EventArgs e)
@@ -672,7 +677,6 @@ namespace ICT4Events
             else if (Check == "Gast")
             {
                 tabICT4Events.TabPages.Add(TabFeed);
-                tabICT4Events.TabPages.Add(TabHuren);
                 tabICT4Events.TabPages.Add(TabUitloggen);
                 tabICT4Events.TabPages.Remove(TabInloggen);
             }

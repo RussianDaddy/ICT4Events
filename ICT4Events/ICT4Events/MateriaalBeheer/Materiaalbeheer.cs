@@ -11,7 +11,7 @@ namespace ICT4Events.MateriaalBeheer
 {
     class Materiaalbeheer
     {
-    //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
+        //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
         static Database.Database database = new Database.Database();
 
         public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, string gebruikersnaam)
@@ -32,16 +32,31 @@ namespace ICT4Events.MateriaalBeheer
 
         public bool UitgevenRFID(string gebruikersnaam, string rfid)
         {
+            bool Check = false;
+            List<Gebruiker> Gebruikers = new List<Gebruiker>();
+            string sqlGebruiker = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
+            Gebruikers = database.GetGebruikerList(sqlGebruiker);
             try
             {
-                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
-                database.Insert(queryUpdate);
-                return true;
+                foreach (Gebruiker TempGebruiker in Gebruikers)
+                {
+                    if (TempGebruiker.RFID != "null")
+                    {
+                        string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
+                        database.Insert(queryUpdate);
+                        Check = true;
+                    }
+                    else
+                    {
+                        Check = false;
+                    }
+                }
             }
             catch (Exception)
             {
-                return false;
+                Check = false;
             }
+            return Check;
         }
 
         public List<string> AlleExemplaren()
@@ -116,3 +131,4 @@ namespace ICT4Events.MateriaalBeheer
             return stringList;
         }
     }
+}

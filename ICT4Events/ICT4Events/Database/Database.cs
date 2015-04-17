@@ -123,7 +123,7 @@ namespace ICT4Events.Database
                     }
                     catch(InvalidCastException)
                     {
-                        RFID = "00000";
+                        RFID = "";
                     }
 
                     if (AdminCheck == "1")
