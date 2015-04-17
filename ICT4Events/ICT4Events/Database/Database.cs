@@ -60,7 +60,7 @@ namespace ICT4Events.Database
             }
             catch (OracleException)
             {
-                MessageBox.Show("Er is een fout opgetreden in je query");
+                MessageBox.Show("Deze gebruiker bestaat al.");
                 return false;
             }
             finally
@@ -233,7 +233,7 @@ namespace ICT4Events.Database
                     Type = Convert.ToString(Reader["Type"]);
                     Categorie = Convert.ToString(Reader["Categorie"]);
                     Path = Convert.ToString(Reader["Path"]);
-                    Like = Convert.ToInt32(Reader["VindIkLeuk"]);
+                    Like = Convert.ToInt32(Reader["Like"]);
                     Report = Convert.ToInt32(Reader["Report"]);
                     Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
 
@@ -256,52 +256,6 @@ namespace ICT4Events.Database
                 connection.Close();
             }
             return BerichtenLijst;
-        }
-
-        public List<Mediabeheer.Categorie> GetCategorieLijst(string sql, int check)
-        {
-            List<Mediabeheer.Categorie> CategorieLijst = new List<Mediabeheer.Categorie>();
-
-            try
-            {
-                openConnection();
-                OracleCommand List = new OracleCommand(sql, connection);
-                OracleDataReader Reader = List.ExecuteReader();
-                OracleDataAdapter Adapter = new OracleDataAdapter(List);
-
-                int Id;
-                string Naam;
-                int MediafileID;
-                string SuperCategorie;
-
-                while (Reader.Read())
-                {
-                    Id = Convert.ToInt32(Reader["ID"]);
-                    Naam = Convert.ToString(Reader["Naam"]);
-                    MediafileID = Convert.ToInt32(Reader["MediafileID"]);
-                    SuperCategorie = Convert.ToString(Reader["SuperCategorieID"]);
-                    if (check == 0)
-                    {
-                            CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
-
-                    }
-                    if(check == 1)
-                    {
-                        CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam, MediafileID, SuperCategorie));
-                    }
-
-                }
-                return CategorieLijst;
-            }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return CategorieLijst;
-        }
+        } 
     }
 }

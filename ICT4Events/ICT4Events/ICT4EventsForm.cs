@@ -28,7 +28,6 @@ namespace ICT4Events
         private int idTeller = 2;
         private string path;
         private string loggedinuser;
-        private int LastID;
 
         public ICT4EventsForm()
         {
@@ -345,10 +344,6 @@ namespace ICT4Events
             {
                 LbFeed.Items.Add(m.ToString());
             }
-            foreach (Mediabeheer.Categorie c in mediabeheer.GetCategorieLijst)
-            {
-                cbCategorieAanmaken.Items.Add(c.ToString());
-            }
 
         
 
@@ -464,51 +459,12 @@ namespace ICT4Events
 
         private void btPost_Click(object sender, EventArgs e)
         {
-            string soort;
-            if (chbBerichtAanmaken.Checked)
-            {
-                soort= " Bericht";
-            }
-            else if (chbBestandAanmaken.Checked)
-            {
-                soort = " Bestand";
-            }
-            else if (chbEventAanmaken.Checked)
-            {
-                soort = " Event";
-            }
-            else if (chbFotoAanmaken.Checked)
-            {
-                soort = " Foto";
-            }
-            else if (chbVideoAanmaken.Checked)
-            {
-                soort = " Video";
-            }
-            else
-            {
-                soort = "1";
-            }
-            if(soort == "1")
-            {
-                MessageBox.Show("Selecteer eensoort post");
-            }
-            else
-            {
-                LastID = GetlatestID();
-                //Mediabeheer.Mediafile = new Mediabeheer.Mediafile(lastid + 1, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), "Bericht", Convert.ToString(cbCategorieAanmaken.Text), Convert.ToString(tbPath.Text), 0, 0, loggedinuser);*/
-                string categorie = cbCategorieAanmaken.Text;
-                if(mediabeheer.BerichtPlaatsen(LastID + 1, loggedinuser, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), Convert.ToString(soort), categorie, tbPath.Text, 0, 0) == true)
+            string username;
+            int lastid = GetlatestID();
+            /*if(chbBericht.Checked)
                 {
-                    MessageBox.Show("Het bericht is succesfull gepost!");
-                }
-                else
-                {
-                    MessageBox.Show("Er is iets misgegaan bij het posten van uw bericht, probeer het opnieuw!");
-                }
-            }
-            mediabeheer.Update();
-            RefreshAll();
+                    Mediabeheer.Mediafile = new Mediabeheer.Mediafile(lastid + 1, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), "Bericht", Convert.ToString(cbCategorieAanmaken.Text), Convert.ToString(tbPath.Text), 0, 0, username);
+                }*/
         }
 
         private int GetlatestID()
