@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace ICT4Events.Mediabeheer
 {
@@ -12,22 +14,25 @@ namespace ICT4Events.Mediabeheer
         private List<Mediafile> searchedSoortLijst = new List<Mediafile>();
         private List<Mediafile> MediafileLijst;
         private List<Reactie> reactielijst;
+        private Database.Database database = new Database.Database();
         public List<Mediafile> SearchedSoortLijst { get { return searchedSoortLijst; } set { searchedSoortLijst = value; } }
         public List<Mediafile> GetMediafileLijst { get { return MediafileLijst; } set { MediafileLijst = value; } }
+
+        public List<Categorie> GetCategorieLijst { get { return CategorieLijst; } set { CategorieLijst = value; } }
         public Mediabeheer()
         {
-            CategorieLijst = new List<Categorie>{
+            /*GetCategorieLijst = new List<Categorie>{
             new Categorie(1, "Sport"),
             new Categorie(2, "Eten"),
             new Categorie(3, "Spelen"),
             new Categorie(4, "Feesten"),
             new Categorie(5, "Gamen")
             };
-            Categorie Sport = new Categorie(1, "Sport");
+            Categorie Sport = CategorieLijst[0];
             Categorie Eten = CategorieLijst[1];
             Categorie Spelen = CategorieLijst[2];
             Categorie Feesten = CategorieLijst[3];
-            Categorie Gamen = CategorieLijst[4];
+            Categorie Gamen = CategorieLijst[4];*/
 
             //testdata mediafiles
             /*MediafileLijst = new List<Mediafile> {
@@ -39,18 +44,20 @@ namespace ICT4Events.Mediabeheer
             new Mediafile(6, "Yu-Gi-Oh TCG"," ", "Bestand", Gamen, @"C:\...", 1223, 1, "wout_kamp@hotmail.com")
             };*/
 
-
-            //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
-            Database.Database database = new Database.Database();
-            string sql = "SELECT * FROM MEDIAFILE";
-            GetMediafileLijst = database.GetBerichtenList(sql, CategorieLijst);
-
-
-
+            Update();
 
 
         }
 
+        public void Update()
+        {
+            string sqlGetMediafile = "SELECT * FROM CATEGORIE";
+            GetCategorieLijst = database.GetCategorieLijst(sqlGetMediafile, 0);
+
+            //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
+            string sqlGetCategorie = "SELECT * FROM MEDIAFILE";
+            GetMediafileLijst = database.GetBerichtenList(sqlGetCategorie, CategorieLijst);
+        }
         public void DownloadenMedia(int Id)
         {
             //Code voor het downloaden van media vanag de server
@@ -74,10 +81,37 @@ namespace ICT4Events.Mediabeheer
             return SearchedSoortLijst;
 
         }
-        public bool BerichtPlaatsen(Mediafile mediafile, String Bericht, DateTime Datum/*,Gebruiker gebruiker*/)
+        public bool BerichtPlaatsen(int MediafileId, string Gebruiker, string Titel, string Bericht, string soort, string categories , string Path, int Likes, int Report)
         {
-            throw new NotImplementedException();
-            //Code voor het apart uploaden naar database ( format: "bericht-Datum-Mediafile-gebruiker")
+            
+            try
+            {
+                Categorie categorie = ReturnCategorie(categories);
+                Mediafile mediaffile = new Mediafile(MediafileId, Titel, Bericht, soort, categorie, Path, Likes, Report, Gebruiker);
+                int unicode = 34;
+                char character = (char)unicode;
+                string text = character.ToString();
+
+                string queryInsert =
+                    "INSERT INTO MEDIAFILE (ID, Name, Bericht, Type, Categorie, Path, VindIkLeuk, Report, GebruikerGebruikersnaam) VALUES('" +
+                    MediafileId + "','" + Titel + "','" + Bericht + "','" + soort + "','" + categorie.Naam + "','" + Path + "','" + Likes + "','" + Report + "','" + Gebruiker + "')";
+                if(database.Insert(queryInsert) == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            Update();
+
         }
 
         public bool MediafileRapporteren(int stringId)
@@ -98,6 +132,18 @@ namespace ICT4Events.Mediabeheer
         public void BerichtRapporteren()
         {
             //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
+        }
+
+        public Categorie ReturnCategorie(string cat)
+        {
+            foreach(Categorie c in GetCategorieLijst)
+            {
+                if(c.Naam == cat)
+                {
+                    return c;
+                }
+            }
+            return null;
         }
 
         public List<Mediafile> ZoekFiles(String MediaFileNaam)
@@ -141,6 +187,9 @@ namespace ICT4Events.Mediabeheer
             }
             return -1;
         }
+
+
+
 
 
 
