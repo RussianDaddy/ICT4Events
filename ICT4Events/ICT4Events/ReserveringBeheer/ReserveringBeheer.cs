@@ -49,7 +49,7 @@ namespace ICT4Events.ReserveringBeheer
         {
             try
             {
-                string queryInsert = "INSERT INTO Medereiziger (GastGebruikersnaam, ReserveringNummer) VALUES('" +
+                string queryInsert = "INSERT INTO Medereiziger (GebruikerGebruikersnaam, ReserveringNummer) VALUES('" +
                                      medereizigerGebruikersnaam + "','" + reserveringsNummer + "')";
                 database.Insert(queryInsert);
                 return true;
