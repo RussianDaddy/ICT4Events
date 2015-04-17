@@ -712,6 +712,7 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabBeheren);
                 tabICT4Events.TabPages.Remove(TabInloggen);
                 tabICT4Events.TabPages.Add(TabUitloggen);
+                loggedinuser = tbGebruikersnaamInloggen.Text;
             }
             else if (Check == "Gast")
             {

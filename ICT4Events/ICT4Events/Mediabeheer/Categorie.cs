@@ -13,8 +13,21 @@ namespace ICT4Events.Mediabeheer
             this.Id = Id;
             this.Naam = Naam;
         }
+        public Categorie(int Id, String Naam, int MediafileID, String SuperCategorie)
+        {
+            this.Id = Id;
+            this.Naam = Naam;
+            this.MediafileID = MediafileID;
+            this.SuperCategorie = SuperCategorie;
+        }
+        public int MediafileID { get; set; }
+        public String SuperCategorie { get; set; }
 
         public int Id { get; set; }
-        public String Naam { get; set; }
-    }
+        public String Naam { get; set; } 
+        public override string ToString()
+        {
+            return Naam;
+        }
+    }      
 }

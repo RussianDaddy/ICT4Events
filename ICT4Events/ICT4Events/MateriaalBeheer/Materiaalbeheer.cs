@@ -9,10 +9,10 @@ using ICT4Events.GebruikerBeheer;
 
 namespace ICT4Events.MateriaalBeheer
 {
-    class Materiaalbeheer
+    internal class Materiaalbeheer
     {
-    //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
-        static Database.Database database = new Database.Database();
+        //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
+        private static Database.Database database = new Database.Database();
 
         public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, string gebruikersnaam)
         {
@@ -20,7 +20,8 @@ namespace ICT4Events.MateriaalBeheer
             {
                 string query =
                     "INSERT INTO UITLENING (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",TO_DATE('" +
-                    uitleendatum.ToShortDateString() + "','DD/MM/YYYY')," + "TO_DATE('" + retourdatum.ToShortDateString() + "','DD/MM/YYYY'),'" + gebruikersnaam + "')";
+                    uitleendatum.ToShortDateString() + "','DD/MM/YYYY')," + "TO_DATE('" +
+                    retourdatum.ToShortDateString() + "','DD/MM/YYYY'),'" + gebruikersnaam + "')";
                 database.Insert(query);
                 return true;
             }
@@ -34,7 +35,8 @@ namespace ICT4Events.MateriaalBeheer
         {
             try
             {
-                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
+                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" +
+                                     gebruikersnaam + "'";
                 database.Insert(queryUpdate);
                 return true;
             }
@@ -46,7 +48,8 @@ namespace ICT4Events.MateriaalBeheer
 
         public List<string> AlleExemplaren()
         {
-            string query = "SELECT e.ID, m.Borg, m.Soort, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
+            string query =
+                "SELECT e.ID, m.Borg, m.Soort, Opmerkingen FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID";
             DataTable exemplaren = database.voerQueryUit(query);
             List<string> stringList = new List<string>();
             foreach (DataRow dr in exemplaren.Rows)
@@ -116,3 +119,4 @@ namespace ICT4Events.MateriaalBeheer
             return stringList;
         }
     }
+}
