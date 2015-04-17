@@ -14,17 +14,16 @@ namespace ICT4Events.MateriaalBeheer
     //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
         static Database.Database database = new Database.Database();
 
-        public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, Gebruiker gebruiker)
+        public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, string gebruikersnaam)
         {
             try
             {
                 string query =
-                    "INSERT INTO UITLENING (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",'" +
-                    uitleendatum.ToShortDateString() + "','" + retourdatum.ToShortDateString() + "','" + gebruiker.GetGebruikersnaam() + "')";
+                    "INSERT INTO UITLENING (ID, Uitleendatum, Retourdatum, Gebruikersnaam) VALUES(" + id + ",TO_DATE('" +
+                    uitleendatum.ToShortDateString() + "','DD/MM/YYYY')," + "TO_DATE('" + retourdatum.ToShortDateString() + "','DD/MM/YYYY'),'" + gebruikersnaam + "')";
                 database.Insert(query);
                 return true;
             }
-
             catch (Exception)
             {
                 return false;
@@ -68,6 +67,32 @@ namespace ICT4Events.MateriaalBeheer
                 MessageBox.Show("Materiaal ID kon niet gevonden worden.");
                 return null;
             }
+        }
+
+        public bool UpdateUitleningId(int exemplaarId, int uitleningId)
+        {
+            try
+            {
+                string queryUpdate = "UPDATE Exemplaar SET UitleningId = " + uitleningId + " WHERE ID = " + exemplaarId;
+                database.Insert(queryUpdate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public List<string> AlleGasten()
+        {
+            string query = "SELECT gebruikersnaam, naam FROM Gebruiker";
+            DataTable gekozenGebruikersnaam = database.voerQueryUit(query);
+            List<string> stringList = new List<string>();
+            foreach (DataRow dr in gekozenGebruikersnaam.Rows)
+            {
+                stringList.Add(dr[0] + " - Naam: " + dr[1]);
+            }
+            return stringList;
         }
     }
 }

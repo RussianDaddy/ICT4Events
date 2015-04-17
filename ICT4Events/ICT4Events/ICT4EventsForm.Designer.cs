@@ -58,11 +58,8 @@
             this.lblAankomstDatum = new System.Windows.Forms.Label();
             this.TabFeed = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.btPost = new System.Windows.Forms.Button();
+            this.tbBericht = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -75,6 +72,8 @@
             this.chbBericht = new System.Windows.Forms.CheckBox();
             this.chbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btdownloadfile = new System.Windows.Forms.Button();
+            this.btviewpost = new System.Windows.Forms.Button();
             this.btreport = new System.Windows.Forms.Button();
             this.btreply = new System.Windows.Forms.Button();
             this.btlike = new System.Windows.Forms.Button();
@@ -97,9 +96,9 @@
             this.TabHuren = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnUitlenen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbGasten = new System.Windows.Forms.ListBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
@@ -136,10 +135,23 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+<<<<<<< HEAD
             this.TabUitloggen = new System.Windows.Forms.TabPage();
             this.gbUitloggen = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnUitloggen = new System.Windows.Forms.Button();
+=======
+            this.tbPath = new System.Windows.Forms.TextBox();
+            this.btBrowse = new System.Windows.Forms.Button();
+            this.chbBerichtAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbVideoAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbFotoAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbBestandAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbEventAanmaken = new System.Windows.Forms.CheckBox();
+            this.tbTitel = new System.Windows.Forms.TextBox();
+            this.cbCategorieAanmaken = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+>>>>>>> origin/master
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -460,61 +472,42 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.button9);
-            this.groupBox8.Controls.Add(this.button8);
-            this.groupBox8.Controls.Add(this.button7);
-            this.groupBox8.Controls.Add(this.button6);
-            this.groupBox8.Controls.Add(this.textBox10);
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Controls.Add(this.cbCategorieAanmaken);
+            this.groupBox8.Controls.Add(this.tbTitel);
+            this.groupBox8.Controls.Add(this.chbEventAanmaken);
+            this.groupBox8.Controls.Add(this.chbBestandAanmaken);
+            this.groupBox8.Controls.Add(this.chbFotoAanmaken);
+            this.groupBox8.Controls.Add(this.chbVideoAanmaken);
+            this.groupBox8.Controls.Add(this.chbBerichtAanmaken);
+            this.groupBox8.Controls.Add(this.btBrowse);
+            this.groupBox8.Controls.Add(this.tbPath);
+            this.groupBox8.Controls.Add(this.btPost);
+            this.groupBox8.Controls.Add(this.tbBericht);
             this.groupBox8.Location = new System.Drawing.Point(3, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(571, 40);
+            this.groupBox8.Size = new System.Drawing.Size(571, 130);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Post";
             // 
-            // button9
+            // btPost
             // 
-            this.button9.Location = new System.Drawing.Point(528, 14);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(37, 21);
-            this.button9.TabIndex = 4;
-            this.button9.Text = "Post";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btPost.Location = new System.Drawing.Point(528, 97);
+            this.btPost.Name = "btPost";
+            this.btPost.Size = new System.Drawing.Size(37, 21);
+            this.btPost.TabIndex = 4;
+            this.btPost.Text = "Post";
+            this.btPost.UseVisualStyleBackColor = true;
+            this.btPost.Click += new System.EventHandler(this.btPost_Click);
             // 
-            // button8
+            // tbBericht
             // 
-            this.button8.Location = new System.Drawing.Point(506, 14);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(22, 21);
-            this.button8.TabIndex = 3;
-            this.button8.Text = "Aud";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(480, 14);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(20, 21);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Vid";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(454, 14);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(20, 21);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Pic";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(6, 14);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(442, 20);
-            this.textBox10.TabIndex = 0;
-            this.textBox10.Text = "Post...";
+            this.tbBericht.Location = new System.Drawing.Point(6, 45);
+            this.tbBericht.Name = "tbBericht";
+            this.tbBericht.Size = new System.Drawing.Size(442, 20);
+            this.tbBericht.TabIndex = 0;
+            this.tbBericht.Text = "Bericht...";
             // 
             // groupBox5
             // 
@@ -634,39 +627,62 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btdownloadfile);
+            this.groupBox3.Controls.Add(this.btviewpost);
             this.groupBox3.Controls.Add(this.btreport);
             this.groupBox3.Controls.Add(this.btreply);
             this.groupBox3.Controls.Add(this.btlike);
             this.groupBox3.Controls.Add(this.LbFeed);
-            this.groupBox3.Location = new System.Drawing.Point(3, 53);
+            this.groupBox3.Location = new System.Drawing.Point(3, 139);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(571, 483);
+            this.groupBox3.Size = new System.Drawing.Size(571, 397);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Feed";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // btdownloadfile
+            // 
+            this.btdownloadfile.Location = new System.Drawing.Point(330, 368);
+            this.btdownloadfile.Name = "btdownloadfile";
+            this.btdownloadfile.Size = new System.Drawing.Size(104, 23);
+            this.btdownloadfile.TabIndex = 5;
+            this.btdownloadfile.Text = "Download file!";
+            this.btdownloadfile.UseVisualStyleBackColor = true;
+            // 
+            // btviewpost
+            // 
+            this.btviewpost.Location = new System.Drawing.Point(249, 368);
+            this.btviewpost.Name = "btviewpost";
+            this.btviewpost.Size = new System.Drawing.Size(75, 23);
+            this.btviewpost.TabIndex = 4;
+            this.btviewpost.Text = "View Post!";
+            this.btviewpost.UseVisualStyleBackColor = true;
+            this.btviewpost.Click += new System.EventHandler(this.btviewpost_Click);
+            // 
             // btreport
             // 
-            this.btreport.Location = new System.Drawing.Point(169, 447);
+            this.btreport.Location = new System.Drawing.Point(168, 368);
             this.btreport.Name = "btreport";
             this.btreport.Size = new System.Drawing.Size(75, 23);
             this.btreport.TabIndex = 3;
             this.btreport.Text = "Report";
             this.btreport.UseVisualStyleBackColor = true;
+            this.btreport.Click += new System.EventHandler(this.btreport_Click);
             // 
             // btreply
             // 
-            this.btreply.Location = new System.Drawing.Point(88, 447);
+            this.btreply.Location = new System.Drawing.Point(87, 368);
             this.btreply.Name = "btreply";
             this.btreply.Size = new System.Drawing.Size(75, 23);
             this.btreply.TabIndex = 2;
             this.btreply.Text = "Reply";
             this.btreply.UseVisualStyleBackColor = true;
+            this.btreply.Click += new System.EventHandler(this.btreply_Click);
             // 
             // btlike
             // 
-            this.btlike.Location = new System.Drawing.Point(7, 447);
+            this.btlike.Location = new System.Drawing.Point(6, 368);
             this.btlike.Name = "btlike";
             this.btlike.Size = new System.Drawing.Size(75, 23);
             this.btlike.TabIndex = 1;
@@ -680,7 +696,7 @@
             this.LbFeed.FormattingEnabled = true;
             this.LbFeed.Location = new System.Drawing.Point(7, 20);
             this.LbFeed.Name = "LbFeed";
-            this.LbFeed.Size = new System.Drawing.Size(558, 420);
+            this.LbFeed.Size = new System.Drawing.Size(558, 342);
             this.LbFeed.TabIndex = 0;
             // 
             // TabAlgemeneinfo
@@ -837,7 +853,6 @@
             this.TabHuren.BackColor = System.Drawing.Color.LightGray;
             this.TabHuren.Controls.Add(this.label16);
             this.TabHuren.Controls.Add(this.checkBox1);
-            this.TabHuren.Controls.Add(this.textBox1);
             this.TabHuren.Controls.Add(this.btnUitlenen);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
@@ -865,13 +880,6 @@
             this.checkBox1.Text = "Betaald?";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(45, 516);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            // 
             // btnUitlenen
             // 
             this.btnUitlenen.Location = new System.Drawing.Point(734, 514);
@@ -885,6 +893,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.lbGasten);
             this.groupBox1.Controls.Add(this.btnZoekExemplaar);
             this.groupBox1.Controls.Add(this.label43);
             this.groupBox1.Controls.Add(this.label42);
@@ -901,6 +910,14 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlenen";
+            // 
+            // lbGasten
+            // 
+            this.lbGasten.FormattingEnabled = true;
+            this.lbGasten.Location = new System.Drawing.Point(491, 9);
+            this.lbGasten.Name = "lbGasten";
+            this.lbGasten.Size = new System.Drawing.Size(308, 43);
+            this.lbGasten.TabIndex = 14;
             // 
             // btnZoekExemplaar
             // 
@@ -949,7 +966,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(439, 18);
+            this.label17.Location = new System.Drawing.Point(424, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(48, 13);
             this.label17.TabIndex = 8;
@@ -1240,6 +1257,7 @@
             this.timer1.Interval = 180000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
+<<<<<<< HEAD
             // TabUitloggen
             // 
             this.TabUitloggen.BackColor = System.Drawing.Color.LightGray;
@@ -1283,6 +1301,99 @@
             this.btnUitloggen.Text = "Uitloggen";
             this.btnUitloggen.UseVisualStyleBackColor = false;
             this.btnUitloggen.Click += new System.EventHandler(this.btnUitloggen_Click);
+=======
+            // tbPath
+            // 
+            this.tbPath.Location = new System.Drawing.Point(6, 71);
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(442, 20);
+            this.tbPath.TabIndex = 5;
+            // 
+            // btBrowse
+            // 
+            this.btBrowse.Location = new System.Drawing.Point(453, 71);
+            this.btBrowse.Name = "btBrowse";
+            this.btBrowse.Size = new System.Drawing.Size(59, 21);
+            this.btBrowse.TabIndex = 6;
+            this.btBrowse.Text = "Browse";
+            this.btBrowse.UseVisualStyleBackColor = true;
+            this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
+            // 
+            // chbBerichtAanmaken
+            // 
+            this.chbBerichtAanmaken.AutoSize = true;
+            this.chbBerichtAanmaken.Location = new System.Drawing.Point(7, 97);
+            this.chbBerichtAanmaken.Name = "chbBerichtAanmaken";
+            this.chbBerichtAanmaken.Size = new System.Drawing.Size(59, 17);
+            this.chbBerichtAanmaken.TabIndex = 7;
+            this.chbBerichtAanmaken.Text = "Bericht";
+            this.chbBerichtAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbVideoAanmaken
+            // 
+            this.chbVideoAanmaken.AutoSize = true;
+            this.chbVideoAanmaken.Location = new System.Drawing.Point(87, 97);
+            this.chbVideoAanmaken.Name = "chbVideoAanmaken";
+            this.chbVideoAanmaken.Size = new System.Drawing.Size(53, 17);
+            this.chbVideoAanmaken.TabIndex = 8;
+            this.chbVideoAanmaken.Text = "Video";
+            this.chbVideoAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbFotoAanmaken
+            // 
+            this.chbFotoAanmaken.AutoSize = true;
+            this.chbFotoAanmaken.Location = new System.Drawing.Point(168, 97);
+            this.chbFotoAanmaken.Name = "chbFotoAanmaken";
+            this.chbFotoAanmaken.Size = new System.Drawing.Size(47, 17);
+            this.chbFotoAanmaken.TabIndex = 9;
+            this.chbFotoAanmaken.Text = "Foto";
+            this.chbFotoAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbBestandAanmaken
+            // 
+            this.chbBestandAanmaken.AutoSize = true;
+            this.chbBestandAanmaken.Location = new System.Drawing.Point(249, 97);
+            this.chbBestandAanmaken.Name = "chbBestandAanmaken";
+            this.chbBestandAanmaken.Size = new System.Drawing.Size(65, 17);
+            this.chbBestandAanmaken.TabIndex = 10;
+            this.chbBestandAanmaken.Text = "Bestand";
+            this.chbBestandAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbEventAanmaken
+            // 
+            this.chbEventAanmaken.AutoSize = true;
+            this.chbEventAanmaken.Location = new System.Drawing.Point(330, 97);
+            this.chbEventAanmaken.Name = "chbEventAanmaken";
+            this.chbEventAanmaken.Size = new System.Drawing.Size(59, 17);
+            this.chbEventAanmaken.TabIndex = 11;
+            this.chbEventAanmaken.Text = "Events";
+            this.chbEventAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // tbTitel
+            // 
+            this.tbTitel.Location = new System.Drawing.Point(7, 19);
+            this.tbTitel.Name = "tbTitel";
+            this.tbTitel.Size = new System.Drawing.Size(442, 20);
+            this.tbTitel.TabIndex = 12;
+            this.tbTitel.Text = "Titel...";
+            // 
+            // cbCategorieAanmaken
+            // 
+            this.cbCategorieAanmaken.FormattingEnabled = true;
+            this.cbCategorieAanmaken.Location = new System.Drawing.Point(455, 44);
+            this.cbCategorieAanmaken.Name = "cbCategorieAanmaken";
+            this.cbCategorieAanmaken.Size = new System.Drawing.Size(110, 21);
+            this.cbCategorieAanmaken.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(455, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Selecteer de categorie:";
+>>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1356,7 +1467,6 @@
         private System.Windows.Forms.Button btReserveer;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnUitlenen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVerplaatsExemplaren;
@@ -1382,11 +1492,8 @@
         private System.Windows.Forms.CheckBox chbBericht;
         private System.Windows.Forms.CheckBox chbVideo;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button btPost;
+        private System.Windows.Forms.TextBox tbBericht;
         private System.Windows.Forms.Button btFilter;
         private System.Windows.Forms.CheckBox chbEvent;
         private System.Windows.Forms.ListBox LbFeed;
@@ -1441,10 +1548,26 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.Timer timer1;
+<<<<<<< HEAD
         private System.Windows.Forms.TabPage TabUitloggen;
         private System.Windows.Forms.GroupBox gbUitloggen;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnUitloggen;
+=======
+        private System.Windows.Forms.ListBox lbGasten;
+        private System.Windows.Forms.Button btdownloadfile;
+        private System.Windows.Forms.Button btviewpost;
+        private System.Windows.Forms.TextBox tbPath;
+        private System.Windows.Forms.CheckBox chbEventAanmaken;
+        private System.Windows.Forms.CheckBox chbBestandAanmaken;
+        private System.Windows.Forms.CheckBox chbFotoAanmaken;
+        private System.Windows.Forms.CheckBox chbVideoAanmaken;
+        private System.Windows.Forms.CheckBox chbBerichtAanmaken;
+        private System.Windows.Forms.Button btBrowse;
+        private System.Windows.Forms.TextBox tbTitel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbCategorieAanmaken;
+>>>>>>> origin/master
     }
 }
 

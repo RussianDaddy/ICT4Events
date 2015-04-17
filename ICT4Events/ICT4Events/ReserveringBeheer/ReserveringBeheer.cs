@@ -28,7 +28,7 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public  bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
+        public bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
         {
             try
             {

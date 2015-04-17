@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
-
+using System.IO;
 
 namespace ICT4Events
 {
@@ -21,7 +21,9 @@ namespace ICT4Events
         private Mediabeheer.Mediabeheer mediabeheer;
         int buttonZoekGeklikt = 0;
         private string stringId;
-
+        private int idTeller = 10;
+        private string path;
+        private string loggedinuser;
 
         public ICT4EventsForm()
         {
@@ -31,6 +33,8 @@ namespace ICT4Events
             clbReserveringGebruikers.DataSource = reserveringBeheer.AlleGebruikers();
             listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
             clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
+            lbGasten.DataSource = materiaalbeheer.AlleGasten();
+
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
             lbBetaalstatus.Visible = false;
@@ -43,6 +47,8 @@ namespace ICT4Events
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
             //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
+
+
 
             //materiaalbeheer.Exemplaren = new List<Exemplaar>
             //{
@@ -312,6 +318,9 @@ namespace ICT4Events
             {
                 LbFeed.Items.Add(m.ToString());
             }
+
+        
+
         }
 
         private void btShowAll_Click(object sender, EventArgs e)
@@ -327,21 +336,138 @@ namespace ICT4Events
         private void btlike_Click(object sender, EventArgs e)
         {
             string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-
-            for (int i = 10; i > 0; i--)
+            if(LbFeed.SelectedItem != null)
             {
-                stringId = Selectedtems.Substring(0, i);
-                if (stringId.IndexOf("-") == -1)
+                for (int i = 10; i > 0; i--)
                 {
-                    stringId = stringId.Substring(0, (i));
-                    MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
-                    i = -1;
+                    stringId = Selectedtems.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
+                        i = -1;
+                    }
                 }
+                int MediafileID = Convert.ToInt32(stringId);
+                mediabeheer.Liken(MediafileID);
+                RefreshAll();
             }
-            int MediafileID = Convert.ToInt32(stringId);
-            mediabeheer.Liken(MediafileID);
-            RefreshAll();
+            else
+            {
+                MessageBox.Show("Selecteer eerste een bericht om te liken!");
+            }
+            
         }
+
+        private void btviewpost_Click(object sender, EventArgs e)
+        {
+            string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+            
+            if (LbFeed.SelectedItem != null)
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        
+                            foreach(Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
+                            {
+                                if(m.Id == Convert.ToInt32(stringId))
+                                {
+                                    MessageBox.Show(m.WholeString());
+                                }
+                            }
+                        
+                        
+                        i = -1;
+                    }
+                }
+                
+            }
+                        else
+            {
+                MessageBox.Show("Selecteer een Mediafile om te bekijken");
+            }
+            
+        }
+
+        private void btreport_Click(object sender, EventArgs e)
+        {
+        string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+            
+            if (LbFeed.SelectedItem != null)
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        if(mediabeheer.MediafileRapporteren(Convert.ToInt32(stringId)))
+                        {
+                            MessageBox.Show("U heeft bericht met ID " + stringId + " Gereport");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Er is iets fout gegaan bij het rapporteren van het mediafile! Probeer het opnieuw!");
+                        }                        
+                        i = -1;
+                    }
+                }
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een Mediafile om te reporten!");
+            }
+            
+        }
+
+        private void btreply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btPost_Click(object sender, EventArgs e)
+        {
+            string username;
+            int lastid = GetlatestID();
+            /*if(chbBericht.Checked)
+                {
+                    Mediabeheer.Mediafile = new Mediabeheer.Mediafile(lastid + 1, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), "Bericht", Convert.ToString(cbCategorieAanmaken.Text), Convert.ToString(tbPath.Text), 0, 0, username);
+                }*/
+        }
+
+        private int GetlatestID()
+        {
+            tempSoortList = mediabeheer.GetMediafileLijst;
+            int aantalberichten = tempSoortList.Count;
+            Mediabeheer.Mediafile lastmediafile = tempSoortList[aantalberichten - 1];
+            int lastid = lastmediafile.Id;
+            return lastid;
+
+        }
+
+        private void btBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.ShowDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                path = openFileDialog1.FileName;
+                tbPath.Text = path;
+            }
+
+
+        }
+
+
+
+
 
         //ReserveringBeheer
         private void btReserveer_Click(object sender, EventArgs e)
@@ -457,15 +583,24 @@ namespace ICT4Events
 
         }
 
-
-        
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
+            string checkedGebruikersnaam = lbGasten.SelectedItem.ToString();
+            checkedGebruikersnaam = checkedGebruikersnaam.Substring(0, checkedGebruikersnaam.IndexOf(" - Naam:"));
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
-            //Materiaalbeheer.MateriaalHuren(Convert.ToInt32(textBox1.Text), DateTime.Now, retourDatum, )
-            
-        
+            string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
+            materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
+            materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
+
+                if (materiaalbeheer.UpdateUitleningId(Convert.ToInt32(materiaalId), idTeller))
+                {
+                    if (Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
+                    {
+                        idTeller++;
+                        MessageBox.Show("Uitlening toegevoegd.");
+                    }
+                }
         }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
@@ -484,6 +619,34 @@ namespace ICT4Events
             }
         }
 
+<<<<<<< HEAD
+=======
+        private void btInloggen_Click(object sender, EventArgs e)
+        {
+            if(Gebruikerbeheer.Inloggen(tbGebruikersnaamInloggen.Text, tbWachtwoordInloggen.Text) == true)
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabReserveren);
+                tabICT4Events.TabPages.Add(TabHuren);
+                tabICT4Events.TabPages.Add(TabBeheren);
+                tabICT4Events.TabPages.Remove(TabInloggen);
+                loggedinuser = tbGebruikersnaamInloggen.Text;
+            }
+            else
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabHuren);
+            }
+        }
+
+
+
+
+
+
+
+
+>>>>>>> origin/master
         //EventBeheer
     }
 }

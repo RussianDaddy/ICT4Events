@@ -13,6 +13,7 @@ namespace ICT4Events.Mediabeheer
         {
             this.Id = Id;
             this.Naam = Naam;
+            this.Bericht = Bericht;
             this.Type = Type;
             this.categorie = categorie;
             this.Path = Path;
@@ -23,6 +24,7 @@ namespace ICT4Events.Mediabeheer
 
         public int Id { get; set; }
         public String Naam { get; set; }
+        public String Bericht { get; set; }
         public String Type { get; set; }
         public Categorie categorie { get; set; }
         public String Path { get; set; }
@@ -32,9 +34,13 @@ namespace ICT4Events.Mediabeheer
 
         public override string ToString()
         {
-            return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + " - Aantal Likes: " + Like + " - Aantal malen gereport: " + Report;
+            return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Bericht:" + Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path +*/ + " - Aantal Likes: " + Like /*+ " - Aantal malen gereport: " + Report*/;
         }
-
+        public string WholeString()
+        {
+            string output = string.Format(Id + " - " + Gebruikersnaam + "{0}{0}Titel: " + Naam + "{0}{0}Bericht: " + Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path +*/ + "{0}{0}Aantal Likes: " + Like /*+ " - Aantal malen gereport: " + Report*/, Environment.NewLine);
+            return output;
+            }
 
     }
 }
