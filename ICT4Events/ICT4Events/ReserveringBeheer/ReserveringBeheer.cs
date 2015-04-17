@@ -7,10 +7,21 @@ using Oracle.DataAccess.Client;
 
 namespace ICT4Events.ReserveringBeheer
 {
+    /// <summary>
+    /// In deze klasse vindt de communicatie plaats tussen de tab Reserveren en de database. In de klasse worden de gegevens opgevraagd en toegevoegd aan de database
+    /// </summary>
     class ReserveringBeheer
     {
         static Database.Database database = new Database.Database();
 
+        /// <summary>
+        /// Er wordt m.b.v. een inert query een nieuwe reservering aan de database toegevoegd
+        /// </summary>
+        /// <param name="gebruikersnaam"> Dit is de gebruikersnaam waarop de reservering komt te staan </param>
+        /// <param name="aankomstDatum"> Dit is de datum waarop de persoon/personen aankomen op het terrein</param>
+        /// <param name="vertrekDatum"> Dit is de datum waarop de persoon/personen vertrekken van het terrein</param>
+        /// <param name="betaald"> Aan de hand van dit nummer (0 of 1) wordt in de database opgeslagen of de reservering al betaald is </param>
+        /// <returns> Een bool om te controleren dat het toevoegen daadwerkelijk is gelukt </returns>
         public bool Reserveren(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum,  int betaald)
         {
             try
@@ -28,6 +39,15 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
+        /// <summary>
+        /// Aan de hand van de gebruikersnama, aankomstdatum en vertrekdatum wordt het reserveringsnummer gezocht.
+        /// Met dit reserveringsnummer wordt de kampeerplaats gekoppeld door deze gegevens in de database op te slaan.
+        /// </summary>
+        /// <param name="gebruikersnaam"> Dit is de gebruikersnaam waarop de reservering komt te staan </param>
+        /// <param name="aankomstDatum"> Dit is de datum waarop de persoon/personen aankomen op het terrein</param>
+        /// <param name="vertrekDatum"> Dit is de datum waarop de persoon/personen vertrekken van het terrein</param>
+        /// <param name="kampeerplaatsnummer"> Dit is het nummer van de kampeerplaats die gekoppeld moet worden aan het reserveringsnummer </param>
+        /// <returns> Een bool om te controleren dat het toevoegen daadwerkelijk is gelukt </returns>
         public bool KoppelKampeerplaats(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum, string kampeerplaatsnummer)
         {
             try
@@ -45,6 +65,12 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
+        /// <summary>
+        /// Als er meerdere gebruikers zijn aangevinkt, wordt iedere gebruiker (met uitzondering van de hoofdboeker) opgeslagen in de database met zijn/haar gebruikersnaam en reserveringsnummer
+        /// </summary>
+        /// <param name="medereizigerGebruikersnaam"> De gebruikersnaam van de medereiziger </param>
+        /// <param name="reserveringsNummer"> Het reserveringsnummer van de reservering van de hoofdboeker </param>
+        /// <returns> Een bool om te controleren dat het toevoegen daadwerkelijk is gelukt </returns>
         public bool VoegMedereizigerToe(string medereizigerGebruikersnaam, string reserveringsNummer)
         {
             try
@@ -60,7 +86,12 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
-        public  bool UpdateBetaling(string reserveringsnummer)
+        /// <summary>
+        /// Met behulp van de reserveringsnummer wordt de betaalstatus van deze reservering bijgewerkt naar betaald
+        /// </summary>
+        /// <param name="reserveringsnummer"> Het reserveringsnummer van de reservering die betaald is </param>
+        /// <returns> Een bool om te controleren dat het updaten daadwerkelijk is gelukt </returns>
+        public bool UpdateBetaling(string reserveringsnummer)
         {
             try
             {
@@ -74,6 +105,13 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
+        /// <summary>
+        /// Met behulp van de gebruikersnaam, aankomstdatum en vertrekdatum wordt het reserveringsnummer opgezocht
+        /// </summary>
+        /// <param name="gebruikersnaam"> Dit is de gebruikersnaam waarop de reservering komt te staan </param>
+        /// <param name="aankomstDatum"> Dit is de datum waarop de persoon/personen aankomen op het terrein</param>
+        /// <param name="vertrekDatum"> Dit is de datum waarop de persoon/personen vertrekken van het terrein</param>
+        /// <returns> Het reserveringnummer of als deze niet gevonden kan worden een messageBox </returns>
         public string VindReserveringNummer(string gebruikersnaam, DateTime aankomstDatum, DateTime vertrekDatum)
         {
             try
@@ -99,6 +137,10 @@ namespace ICT4Events.ReserveringBeheer
             }
         }
 
+        /// <summary>
+        /// Deze methode maakt een lijst van alle kampeerplaatsen uit de database
+        /// </summary>
+        /// <returns> De lijst van alle kampeerplaatsen </returns>
         public List<string> AllePlaatsen()
         {
             string query = "SELECT * FROM KAMPEERPLAATS";
@@ -110,6 +152,11 @@ namespace ICT4Events.ReserveringBeheer
             }
             return stringlist;
         }
+
+        /// <summary>
+        /// Deze methode maakt een lijst van alle kampeerplaatsen uit de database waar de eigenschappen van zijn ingevuld
+        /// </summary>
+        /// <returns> De lijst van kampeerplaatsen met eigenschappen </returns>
         public List<string> AlleSpecifiekePlaatsen()
         {
             string query = "SELECT * FROM Kampeerplaats k WHERE k.eigenschappen IS NOT NULL";
@@ -122,6 +169,10 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
+        /// <summary>
+        /// Deze methode maakt een lijst van alle kampeerplaatsen waarvan de vertrekdatum in het verleden ligt
+        /// </summary>
+        /// <returns> De lijst van kampeerplaatsen die vrij zijn gekomen </returns>
         public List<string> AlleVrijePlaatsen()
         {
             string query =
@@ -135,6 +186,10 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
+        /// <summary>
+        /// Deze methode maakt een lijst van alle gebruikers uit de database
+        /// </summary>
+        /// <returns> De lijst met alle gebruikers </returns>
         public List<string> AlleGebruikers()
         {
             string query = "SELECT g.gebruikersnaam, g.naam FROM GEBRUIKER g";
@@ -147,6 +202,10 @@ namespace ICT4Events.ReserveringBeheer
             return stringlist;
         }
 
+        /// <summary>
+        /// Deze methode maakt een lijst van alle reserveringen uit de database
+        /// </summary>
+        /// <returns> De lijst met alle reserveringen </returns>
         public List<string> AlleReserveringen()
         {
             string query = "SELECT r.nummer, r.gebruikergebruikersnaam FROM Reservering r";
