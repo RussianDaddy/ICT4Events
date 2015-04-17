@@ -466,23 +466,23 @@ namespace ICT4Events
         private void btPost_Click(object sender, EventArgs e)
         {
             string soort;
-            if (chbBerichtAanmaken.Checked)
+            if (rbBerichtAanmaken.Checked)
             {
                 soort= " Bericht";
             }
-            else if (chbBestandAanmaken.Checked)
+            else if (rbBestandAanmaken.Checked)
             {
                 soort = " Bestand";
             }
-            else if (chbEventAanmaken.Checked)
+            else if (rbEventAanmaken.Checked)
             {
                 soort = " Event";
             }
-            else if (chbFotoAanmaken.Checked)
+            else if (rbFotoAanmaken.Checked)
             {
                 soort = " Foto";
             }
-            else if (chbVideoAanmaken.Checked)
+            else if (rbVideoAanmaken.Checked)
             {
                 soort = " Video";
             }
