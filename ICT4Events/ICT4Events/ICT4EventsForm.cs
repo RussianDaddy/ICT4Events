@@ -616,33 +616,32 @@ namespace ICT4Events
             checkedGebruikersnaam = checkedGebruikersnaam.Substring(0, checkedGebruikersnaam.IndexOf(" - Naam:"));
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
-            //string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
-            //materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
-            //materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
-            
+
             int maxId = Convert.ToInt32(Materiaalbeheer.AlleUitleningen().Max()) + 1;
+            List<string> gevinkteExemplaren = new List<string>();
 
-                if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
-                    {
-                        foreach (string s in clbExemplaarHuren.SelectedItems)
-                        {
-                            string id = s.Substring(3, s.Length - 4);
-                            id = id.Substring(0, id.IndexOf(" - Borg:"));
-                            materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), maxId);
-                        }
-                        MessageBox.Show("Uitlening toegevoegd.");
-                    }
-
-            List<string> exemplaren = new List<string>();
-            
-            
+            if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
+            {
+                foreach (string s in clbExemplaarHuren.CheckedItems)
+                {
+                    string id = s.Substring(3, s.Length - 4);
+                    id = id.Substring(0, id.IndexOf(" - Borg:"));
+                    materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), maxId);
+                }
+                MessageBox.Show("Uitlening toegevoegd.");
+            }
         }
+
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
                 clbExemplaarHuren.Items.Add(exemplaar);
+            }
+            foreach (int i in clbExemplaren.CheckedIndices)
+            {
+                clbExemplaren.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
