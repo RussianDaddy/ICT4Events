@@ -110,7 +110,6 @@ namespace ICT4Events.Mediabeheer
 
                 return false;
             }
-            Update();
 
         }
 

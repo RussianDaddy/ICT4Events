@@ -41,13 +41,7 @@ namespace ICT4Events.MateriaalBeheer
             string sqlGebruiker = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
             Gebruikers = database.GetGebruikerList(sqlGebruiker);
             try
-            {
-
-                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" +
-                                     gebruikersnaam + "'";
-                database.Insert(queryUpdate);
-                return true;
-
+            {  
                 foreach (Gebruiker TempGebruiker in Gebruikers)
                 {
                     if (TempGebruiker.RFID != "null")
