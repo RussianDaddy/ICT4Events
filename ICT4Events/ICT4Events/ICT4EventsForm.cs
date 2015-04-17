@@ -38,6 +38,7 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabFeed);
             tabICT4Events.TabPages.Remove(TabHuren);
             tabICT4Events.TabPages.Remove(TabBeheren);
+            tabICT4Events.TabPages.Remove(TabUitloggen);
             //Materiaal Beamer = new Materiaal("Beamer",50);
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
@@ -226,6 +227,42 @@ namespace ICT4Events
                 }
             }
         }
+
+        private void btInloggen_Click(object sender, EventArgs e)
+        {
+            string Check = Gebruikerbeheer.Inloggen(tbGebruikersnaamInloggen.Text, tbWachtwoordInloggen.Text);
+            if (Check == "Admin")
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabReserveren);
+                tabICT4Events.TabPages.Add(TabHuren);
+                tabICT4Events.TabPages.Add(TabBeheren);
+                tabICT4Events.TabPages.Remove(TabInloggen);
+                tabICT4Events.TabPages.Add(TabUitloggen);
+            }
+            else if(Check == "Gast")
+            {
+                tabICT4Events.TabPages.Add(TabFeed);
+                tabICT4Events.TabPages.Add(TabHuren);
+                tabICT4Events.TabPages.Add(TabUitloggen);
+                tabICT4Events.TabPages.Remove(TabInloggen);
+            }
+            else if(Check == "Error")
+            {
+
+            }
+        }
+
+        private void btnUitloggen_Click(object sender, EventArgs e)
+        {
+            tabICT4Events.TabPages.Remove(TabFeed);
+            tabICT4Events.TabPages.Remove(TabReserveren);
+            tabICT4Events.TabPages.Remove(TabHuren);
+            tabICT4Events.TabPages.Remove(TabUitloggen);
+            tabICT4Events.TabPages.Remove(TabBeheren);
+            tabICT4Events.TabPages.Add(TabInloggen);
+        }
+
 
         //MediaBeheer
         private void btFilter_Click(object sender, EventArgs e)
@@ -444,23 +481,6 @@ namespace ICT4Events
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
             {
                 clbExemplaarHuren.Items.Remove(item);
-            }
-        }
-
-        private void btInloggen_Click(object sender, EventArgs e)
-        {
-            if(Gebruikerbeheer.Inloggen(tbGebruikersnaamInloggen.Text, tbWachtwoordInloggen.Text) == true)
-            {
-                tabICT4Events.TabPages.Add(TabFeed);
-                tabICT4Events.TabPages.Add(TabReserveren);
-                tabICT4Events.TabPages.Add(TabHuren);
-                tabICT4Events.TabPages.Add(TabBeheren);
-                tabICT4Events.TabPages.Remove(TabInloggen);
-            }
-            else
-            {
-                tabICT4Events.TabPages.Add(TabFeed);
-                tabICT4Events.TabPages.Add(TabHuren);
             }
         }
 

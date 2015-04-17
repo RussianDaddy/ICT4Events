@@ -136,6 +136,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TabUitloggen = new System.Windows.Forms.TabPage();
+            this.gbUitloggen = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnUitloggen = new System.Windows.Forms.Button();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -159,6 +163,9 @@
             this.BetaalstatusBeheer.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.TabUitloggen.SuspendLayout();
+            this.gbUitloggen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabICT4Events
@@ -169,6 +176,7 @@
             this.tabICT4Events.Controls.Add(this.TabAlgemeneinfo);
             this.tabICT4Events.Controls.Add(this.TabHuren);
             this.tabICT4Events.Controls.Add(this.TabBeheren);
+            this.tabICT4Events.Controls.Add(this.TabUitloggen);
             this.tabICT4Events.Location = new System.Drawing.Point(13, 13);
             this.tabICT4Events.Name = "tabICT4Events";
             this.tabICT4Events.SelectedIndex = 0;
@@ -1232,6 +1240,50 @@
             this.timer1.Interval = 180000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
+            // TabUitloggen
+            // 
+            this.TabUitloggen.BackColor = System.Drawing.Color.LightGray;
+            this.TabUitloggen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabUitloggen.Controls.Add(this.gbUitloggen);
+            this.TabUitloggen.Location = new System.Drawing.Point(4, 22);
+            this.TabUitloggen.Name = "TabUitloggen";
+            this.TabUitloggen.Padding = new System.Windows.Forms.Padding(3);
+            this.TabUitloggen.Size = new System.Drawing.Size(812, 542);
+            this.TabUitloggen.TabIndex = 6;
+            this.TabUitloggen.Text = "Uitloggen";
+            // 
+            // gbUitloggen
+            // 
+            this.gbUitloggen.BackColor = System.Drawing.Color.SeaShell;
+            this.gbUitloggen.Controls.Add(this.pictureBox4);
+            this.gbUitloggen.Controls.Add(this.btnUitloggen);
+            this.gbUitloggen.Location = new System.Drawing.Point(277, 162);
+            this.gbUitloggen.Name = "gbUitloggen";
+            this.gbUitloggen.Size = new System.Drawing.Size(259, 218);
+            this.gbUitloggen.TabIndex = 5;
+            this.gbUitloggen.TabStop = false;
+            this.gbUitloggen.Text = "Uitloggen";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(45, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(173, 106);
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // btnUitloggen
+            // 
+            this.btnUitloggen.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.btnUitloggen.Location = new System.Drawing.Point(45, 144);
+            this.btnUitloggen.Name = "btnUitloggen";
+            this.btnUitloggen.Size = new System.Drawing.Size(173, 28);
+            this.btnUitloggen.TabIndex = 8;
+            this.btnUitloggen.Text = "Uitloggen";
+            this.btnUitloggen.UseVisualStyleBackColor = false;
+            this.btnUitloggen.Click += new System.EventHandler(this.btnUitloggen_Click);
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1274,6 +1326,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.TabUitloggen.ResumeLayout(false);
+            this.gbUitloggen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1386,6 +1441,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TabPage TabUitloggen;
+        private System.Windows.Forms.GroupBox gbUitloggen;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button btnUitloggen;
     }
 }
 
