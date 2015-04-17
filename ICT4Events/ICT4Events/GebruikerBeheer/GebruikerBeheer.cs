@@ -93,6 +93,10 @@ namespace ICT4Events.GebruikerBeheer
                     Database.Insert(sqlAdmin);
                     MessageBox.Show("Admin is toegevoegd.");
                 }
+                else
+                {
+                    MessageBox.Show("Gebruiker bestaat al.");
+                }
             }
             else
             {
@@ -101,6 +105,10 @@ namespace ICT4Events.GebruikerBeheer
                 {
                     Database.Insert(sqlGast);
                     MessageBox.Show("Gast is toegevoegd.");
+                }
+                else
+                {
+                    MessageBox.Show("Gebruiker bestaat al.");
                 }
             }
         }
