@@ -56,6 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\app\client\Robin\product\12.1.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="Phidget21.NET1.1">
+      <HintPath>..\..\..\..\..\..\Downloads\Phidget21-windevel_2.1.8.20150326\phidget21-windevel\Phidget21.NET1.1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />

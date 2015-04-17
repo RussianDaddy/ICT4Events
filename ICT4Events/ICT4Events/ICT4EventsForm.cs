@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Phidgets.Events;
+using Phidgets;
 using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
 using System.IO;
@@ -23,6 +25,7 @@ namespace ICT4Events
         private string stringId;
         private int idTeller = 2;
         private string path;
+        RFID rfid;
         private string loggedinuser;
 
         public ICT4EventsForm()
