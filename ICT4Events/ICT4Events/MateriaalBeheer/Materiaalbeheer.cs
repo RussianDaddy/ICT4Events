@@ -30,9 +30,18 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
-        public void UitgevenRFID(Gebruiker gebruiker, int rfid)
+        public bool UitgevenRFID(string gebruikersnaam, string rfid)
         {
-
+            try
+            {
+                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
+                database.Insert(queryUpdate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public List<string> AlleExemplaren()
@@ -107,4 +116,3 @@ namespace ICT4Events.MateriaalBeheer
             return stringList;
         }
     }
-}
