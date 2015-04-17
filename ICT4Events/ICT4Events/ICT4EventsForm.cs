@@ -157,7 +157,6 @@ namespace ICT4Events
                 }
             }
             FillLbGebruikerBeheer();
-            
         }
 
         private void tmRFIDTextboxClear_Tick(object sender, EventArgs e)
@@ -603,6 +602,11 @@ namespace ICT4Events
         {
             clbExemplaren.DataSource = null;
             clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+        }
+
+        private void btnKoppelMateriaalBeheer_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
