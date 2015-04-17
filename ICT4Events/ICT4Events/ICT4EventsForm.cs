@@ -618,35 +618,6 @@ namespace ICT4Events
                 clbExemplaarHuren.Items.Remove(item);
             }
         }
-
-<<<<<<< HEAD
-=======
-        private void btInloggen_Click(object sender, EventArgs e)
-        {
-            if(Gebruikerbeheer.Inloggen(tbGebruikersnaamInloggen.Text, tbWachtwoordInloggen.Text) == true)
-            {
-                tabICT4Events.TabPages.Add(TabFeed);
-                tabICT4Events.TabPages.Add(TabReserveren);
-                tabICT4Events.TabPages.Add(TabHuren);
-                tabICT4Events.TabPages.Add(TabBeheren);
-                tabICT4Events.TabPages.Remove(TabInloggen);
-                loggedinuser = tbGebruikersnaamInloggen.Text;
-            }
-            else
-            {
-                tabICT4Events.TabPages.Add(TabFeed);
-                tabICT4Events.TabPages.Add(TabHuren);
-            }
-        }
-
-
-
-
-
-
-
-
->>>>>>> origin/master
         //EventBeheer
     }
 }

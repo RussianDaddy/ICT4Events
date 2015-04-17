@@ -135,12 +135,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-<<<<<<< HEAD
             this.TabUitloggen = new System.Windows.Forms.TabPage();
             this.gbUitloggen = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnUitloggen = new System.Windows.Forms.Button();
-=======
             this.tbPath = new System.Windows.Forms.TextBox();
             this.btBrowse = new System.Windows.Forms.Button();
             this.chbBerichtAanmaken = new System.Windows.Forms.CheckBox();
@@ -151,7 +149,6 @@
             this.tbTitel = new System.Windows.Forms.TextBox();
             this.cbCategorieAanmaken = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
->>>>>>> origin/master
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1257,7 +1254,6 @@
             this.timer1.Interval = 180000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
-<<<<<<< HEAD
             // TabUitloggen
             // 
             this.TabUitloggen.BackColor = System.Drawing.Color.LightGray;
@@ -1301,7 +1297,6 @@
             this.btnUitloggen.Text = "Uitloggen";
             this.btnUitloggen.UseVisualStyleBackColor = false;
             this.btnUitloggen.Click += new System.EventHandler(this.btnUitloggen_Click);
-=======
             // tbPath
             // 
             this.tbPath.Location = new System.Drawing.Point(6, 71);
@@ -1393,7 +1388,6 @@
             this.label3.Size = new System.Drawing.Size(117, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Selecteer de categorie:";
->>>>>>> origin/master
             // 
             // ICT4EventsForm
             // 
@@ -1548,12 +1542,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox cbAanwezigBeheer;
         private System.Windows.Forms.Timer timer1;
-<<<<<<< HEAD
         private System.Windows.Forms.TabPage TabUitloggen;
         private System.Windows.Forms.GroupBox gbUitloggen;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnUitloggen;
-=======
         private System.Windows.Forms.ListBox lbGasten;
         private System.Windows.Forms.Button btdownloadfile;
         private System.Windows.Forms.Button btviewpost;
@@ -1567,7 +1559,6 @@
         private System.Windows.Forms.TextBox tbTitel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbCategorieAanmaken;
->>>>>>> origin/master
     }
 }
 
