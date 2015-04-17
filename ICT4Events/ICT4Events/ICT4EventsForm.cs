@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using Phidgets.Events;
-using Phidgets;
+//using Phidgets.Events;
+//using Phidgets;
 using ICT4Events.GebruikerBeheer;
 using ICT4Events.MateriaalBeheer;
 using System.IO;
@@ -25,7 +25,7 @@ namespace ICT4Events
         private string stringId;
         private int idTeller = 2;
         private string path;
-        RFID rfid;
+        //RFID rfid;
         private string loggedinuser;
 
         public ICT4EventsForm()
@@ -562,27 +562,27 @@ namespace ICT4Events
             
             int maxId = Convert.ToInt32(Materiaalbeheer.AlleUitleningen().Max()) + 1;
 
-                if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
-                    {
-                        foreach (string s in clbExemplaarHuren.SelectedItems)
-                        {
+            if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
+            { 
+                foreach (string s in clbExemplaarHuren.CheckedItems)
+                {
                             string id = s.Substring(3, s.Length - 4);
                             id = id.Substring(0, id.IndexOf(" - Borg:"));
                             materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), maxId);
-                        }
-                        MessageBox.Show("Uitlening toegevoegd.");
-                    }
-
-            List<string> exemplaren = new List<string>();
-            
-            
-        }
+                }
+                MessageBox.Show("Uitlening toegevoegd.");
+            }
+     }
 
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
                 clbExemplaarHuren.Items.Add(exemplaar);
+            }
+            foreach (int i in clbExemplaren.CheckedIndices)
+            {
+                clbExemplaren.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
