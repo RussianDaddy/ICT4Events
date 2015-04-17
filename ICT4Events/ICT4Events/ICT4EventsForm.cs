@@ -492,12 +492,15 @@ namespace ICT4Events
             }
             if(soort == "1")
             {
-                MessageBox.Show("Selecteer eensoort post");
+                MessageBox.Show("Selecteer een soort post!");
+            }
+            else if(cbCategorieAanmaken.Text == "")
+            {
+                MessageBox.Show("Selecteer eerst een categorie!");
             }
             else
             {
                 LastID = GetlatestID();
-                //Mediabeheer.Mediafile = new Mediabeheer.Mediafile(lastid + 1, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), "Bericht", Convert.ToString(cbCategorieAanmaken.Text), Convert.ToString(tbPath.Text), 0, 0, loggedinuser);*/
                 string categorie = cbCategorieAanmaken.Text;
                 if (mediabeheer.BerichtPlaatsen(LastID + 1, loggedinuser, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), Convert.ToString(soort), categorie, tbPath.Text, 0, 0) == true)
                 {
@@ -724,6 +727,7 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabFeed);
                 tabICT4Events.TabPages.Add(TabUitloggen);
                 tabICT4Events.TabPages.Remove(TabInloggen);
+                loggedinuser = tbGebruikersnaamInloggen.Text;
             }
             else if (Check == "Error")
             {

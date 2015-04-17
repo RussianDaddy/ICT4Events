@@ -218,11 +218,12 @@ namespace ICT4Events.Database
                 string Naam;
                 string Bericht;
                 string Type;
-                string Categorie;
+                //string Categorie;
                 string Path;
                 int Like;
                 int Report;
                 string Gebruikersnaam;
+                int CategorieID;
 
                 while (Reader.Read())
                 {
@@ -230,15 +231,16 @@ namespace ICT4Events.Database
                     Naam = Convert.ToString(Reader["Name"]);
                     Bericht = Convert.ToString(Reader["Bericht"]);
                     Type = Convert.ToString(Reader["Type"]);
-                    Categorie = Convert.ToString(Reader["Categorie"]);
+                    //Categorie = Convert.ToString(Reader["Categorie"]);
                     Path = Convert.ToString(Reader["Path"]);
                     Like = Convert.ToInt32(Reader["VindIkLeuk"]);
                     Report = Convert.ToInt32(Reader["Report"]);
                     Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
+                    CategorieID = Convert.ToInt32(Reader["CategorieID"]);
 
                     foreach (Mediabeheer.Categorie c in categorielijst)
                     {
-                        if (Categorie == c.Naam)
+                        if (CategorieID == c.Id)
                         {
                             BerichtenLijst.Add(new Mediabeheer.Mediafile(Id, Naam, Bericht, Type, c, Path, Like, Report, Gebruikersnaam));
                         }
@@ -276,17 +278,17 @@ namespace ICT4Events.Database
                 {
                     Id = Convert.ToInt32(Reader["ID"]);
                     Naam = Convert.ToString(Reader["Naam"]);
-                    MediafileID = Convert.ToInt32(Reader["MediafileID"]);
-                    SuperCategorie = Convert.ToString(Reader["SuperCategorieID"]);
-                    if (check == 0)
-                    {
-                            CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
+                    //MediafileID = Convert.ToInt32(Reader["MediafileID"]);
+                    //SuperCategorie = Convert.ToString(Reader["SuperCategorieID"]);
+                    /*if (check == 0)
+                    {*/
+                    CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
 
-                    }
-                    if(check == 1)
+                   // }
+                    /*if(check == 1)
                     {
-                        CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam, MediafileID, SuperCategorie));
-                    }
+                        CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
+                    }*/
 
                 }
                 return CategorieLijst;

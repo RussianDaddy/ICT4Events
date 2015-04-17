@@ -88,13 +88,9 @@ namespace ICT4Events.Mediabeheer
             {
                 Categorie categorie = ReturnCategorie(categories);
                 Mediafile mediaffile = new Mediafile(MediafileId, Titel, Bericht, soort, categorie, Path, Likes, Report, Gebruiker);
-                int unicode = 34;
-                char character = (char)unicode;
-                string text = character.ToString();
-
                 string queryInsert =
-                    "INSERT INTO MEDIAFILE (ID, Name, Bericht, Type, Categorie, Path, VindIkLeuk, Report, GebruikerGebruikersnaam) VALUES('" +
-                    MediafileId + "','" + Titel + "','" + Bericht + "','" + soort + "','" + categorie.Naam + "','" + Path + "','" + Likes + "','" + Report + "','" + Gebruiker + "')";
+                    "INSERT INTO MEDIAFILE (ID, Name, Bericht, Type, Path, VindIkLeuk, Report, GebruikerGebruikersnaam, CategorieID) VALUES('" +
+                    MediafileId + "','" + Titel + "','" + Bericht + "','" + soort + "','" + Path + "','" + Likes + "','" + Report + "','" + Gebruiker + "', " + categorie.Id + ")";
                 if (database.Insert(queryInsert) == true)
                 {
                     return true;
@@ -110,19 +106,24 @@ namespace ICT4Events.Mediabeheer
 
                 return false;
             }
+            
 
         }
 
         public bool MediafileRapporteren(int stringId)
         {
+            Mediafile f = null;
             foreach (Mediafile m in GetMediafileLijst)
             {
                 if (m.Id == Convert.ToInt32(stringId))
                 {
                     m.Report++;
+                    f = m;
+                    UpdateLRNaarDb(f);
                     return true;
                 }
             }
+            
             return false;
             //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
 
@@ -165,13 +166,16 @@ namespace ICT4Events.Mediabeheer
 
         public void Liken(int MediafileId)
         {
+            Mediafile f = null ;
             foreach (Mediafile m in MediafileLijst)
             {
                 if (m.Id == MediafileId)
                 {
                     m.Like = m.Like + 1;
+                    f = m;
                 }
             }
+            UpdateLRNaarDb(f);
         }
 
         public int VraagLikesOp(int MediafileId)
@@ -185,6 +189,18 @@ namespace ICT4Events.Mediabeheer
 
             }
             return -1;
+        }
+
+        public void UpdateLRNaarDb(Mediafile f)
+        {
+            foreach(Mediafile m in GetMediafileLijst)
+            {
+                if(m.Id == f.Id)
+                {
+                    String updateSql = "UPDATE MEDIAFILE SET VindIkLeuk  = '" + f.Like + "', Report = '" + f.Report + "'WHERE ID = '" + f.Id + "'";
+                    database.Insert(updateSql);
+                }
+            }  
         }
 
 
