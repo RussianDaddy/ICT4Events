@@ -42,6 +42,7 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabFeed);
             tabICT4Events.TabPages.Remove(TabHuren);
             tabICT4Events.TabPages.Remove(TabBeheren);
+            tabICT4Events.TabPages.Remove(TabUitloggen);
             //Materiaal Beamer = new Materiaal("Beamer",50);
             //Materiaal Laptop = new Materiaal("Laptop",100);
             //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
@@ -555,14 +556,16 @@ namespace ICT4Events
             //string materiaalId = clbExemplaarHuren.SelectedItem.ToString();
             //materiaalId = materiaalId.Substring(3, materiaalId.Length - 4);
             //materiaalId = materiaalId.Substring(0, materiaalId.IndexOf(" - Borg:"));
+            
+            int maxId = Convert.ToInt32(Materiaalbeheer.AlleUitleningen().Max()) + 1;
 
-                if (Materiaalbeheer.MateriaalHuren(idTeller, DateTime.Now, retourDatum, checkedGebruikersnaam))
+                if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
                     {
                         foreach (string s in clbExemplaarHuren.SelectedItems)
                         {
                             string id = s.Substring(3, s.Length - 4);
                             id = id.Substring(0, id.IndexOf(" - Borg:"));
-                            materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), idTeller);
+                            materiaalbeheer.UpdateUitleningId(Convert.ToInt32(id), maxId);
                         }
                         MessageBox.Show("Uitlening toegevoegd.");
                     }
@@ -604,6 +607,11 @@ namespace ICT4Events
                 tabICT4Events.TabPages.Add(TabFeed);
                 tabICT4Events.TabPages.Add(TabHuren);
             }
+        }
+
+        private void btnUitloggen_Click(object sender, EventArgs e)
+        {
+
         }
         //EventBeheer
     }

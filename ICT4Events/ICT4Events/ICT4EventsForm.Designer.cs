@@ -58,6 +58,16 @@
             this.lblAankomstDatum = new System.Windows.Forms.Label();
             this.TabFeed = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbCategorieAanmaken = new System.Windows.Forms.ComboBox();
+            this.tbTitel = new System.Windows.Forms.TextBox();
+            this.chbEventAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbBestandAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbFotoAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbVideoAanmaken = new System.Windows.Forms.CheckBox();
+            this.chbBerichtAanmaken = new System.Windows.Forms.CheckBox();
+            this.btBrowse = new System.Windows.Forms.Button();
+            this.tbPath = new System.Windows.Forms.TextBox();
             this.btPost = new System.Windows.Forms.Button();
             this.tbBericht = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -130,25 +140,15 @@
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbGebruikerBeheer = new System.Windows.Forms.ListBox();
+            this.TabUitloggen = new System.Windows.Forms.TabPage();
+            this.gbUitloggen = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnUitloggen = new System.Windows.Forms.Button();
             this.lbGebruikersBeheer = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.TabUitloggen = new System.Windows.Forms.TabPage();
-            this.gbUitloggen = new System.Windows.Forms.GroupBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnUitloggen = new System.Windows.Forms.Button();
-            this.tbPath = new System.Windows.Forms.TextBox();
-            this.btBrowse = new System.Windows.Forms.Button();
-            this.chbBerichtAanmaken = new System.Windows.Forms.CheckBox();
-            this.chbVideoAanmaken = new System.Windows.Forms.CheckBox();
-            this.chbFotoAanmaken = new System.Windows.Forms.CheckBox();
-            this.chbBestandAanmaken = new System.Windows.Forms.CheckBox();
-            this.chbEventAanmaken = new System.Windows.Forms.CheckBox();
-            this.tbTitel = new System.Windows.Forms.TextBox();
-            this.cbCategorieAanmaken = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -487,6 +487,98 @@
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Post";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(455, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Selecteer de categorie:";
+            // 
+            // cbCategorieAanmaken
+            // 
+            this.cbCategorieAanmaken.FormattingEnabled = true;
+            this.cbCategorieAanmaken.Location = new System.Drawing.Point(455, 44);
+            this.cbCategorieAanmaken.Name = "cbCategorieAanmaken";
+            this.cbCategorieAanmaken.Size = new System.Drawing.Size(110, 21);
+            this.cbCategorieAanmaken.TabIndex = 13;
+            // 
+            // tbTitel
+            // 
+            this.tbTitel.Location = new System.Drawing.Point(7, 19);
+            this.tbTitel.Name = "tbTitel";
+            this.tbTitel.Size = new System.Drawing.Size(442, 20);
+            this.tbTitel.TabIndex = 12;
+            this.tbTitel.Text = "Titel...";
+            // 
+            // chbEventAanmaken
+            // 
+            this.chbEventAanmaken.AutoSize = true;
+            this.chbEventAanmaken.Location = new System.Drawing.Point(330, 97);
+            this.chbEventAanmaken.Name = "chbEventAanmaken";
+            this.chbEventAanmaken.Size = new System.Drawing.Size(59, 17);
+            this.chbEventAanmaken.TabIndex = 11;
+            this.chbEventAanmaken.Text = "Events";
+            this.chbEventAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbBestandAanmaken
+            // 
+            this.chbBestandAanmaken.AutoSize = true;
+            this.chbBestandAanmaken.Location = new System.Drawing.Point(249, 97);
+            this.chbBestandAanmaken.Name = "chbBestandAanmaken";
+            this.chbBestandAanmaken.Size = new System.Drawing.Size(65, 17);
+            this.chbBestandAanmaken.TabIndex = 10;
+            this.chbBestandAanmaken.Text = "Bestand";
+            this.chbBestandAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbFotoAanmaken
+            // 
+            this.chbFotoAanmaken.AutoSize = true;
+            this.chbFotoAanmaken.Location = new System.Drawing.Point(168, 97);
+            this.chbFotoAanmaken.Name = "chbFotoAanmaken";
+            this.chbFotoAanmaken.Size = new System.Drawing.Size(47, 17);
+            this.chbFotoAanmaken.TabIndex = 9;
+            this.chbFotoAanmaken.Text = "Foto";
+            this.chbFotoAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbVideoAanmaken
+            // 
+            this.chbVideoAanmaken.AutoSize = true;
+            this.chbVideoAanmaken.Location = new System.Drawing.Point(87, 97);
+            this.chbVideoAanmaken.Name = "chbVideoAanmaken";
+            this.chbVideoAanmaken.Size = new System.Drawing.Size(53, 17);
+            this.chbVideoAanmaken.TabIndex = 8;
+            this.chbVideoAanmaken.Text = "Video";
+            this.chbVideoAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // chbBerichtAanmaken
+            // 
+            this.chbBerichtAanmaken.AutoSize = true;
+            this.chbBerichtAanmaken.Location = new System.Drawing.Point(7, 97);
+            this.chbBerichtAanmaken.Name = "chbBerichtAanmaken";
+            this.chbBerichtAanmaken.Size = new System.Drawing.Size(59, 17);
+            this.chbBerichtAanmaken.TabIndex = 7;
+            this.chbBerichtAanmaken.Text = "Bericht";
+            this.chbBerichtAanmaken.UseVisualStyleBackColor = true;
+            // 
+            // btBrowse
+            // 
+            this.btBrowse.Location = new System.Drawing.Point(453, 71);
+            this.btBrowse.Name = "btBrowse";
+            this.btBrowse.Size = new System.Drawing.Size(59, 21);
+            this.btBrowse.TabIndex = 6;
+            this.btBrowse.Text = "Browse";
+            this.btBrowse.UseVisualStyleBackColor = true;
+            this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
+            // 
+            // tbPath
+            // 
+            this.tbPath.Location = new System.Drawing.Point(6, 71);
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(442, 20);
+            this.tbPath.TabIndex = 5;
             // 
             // btPost
             // 
@@ -1216,44 +1308,6 @@
             this.lbGebruikerBeheer.TabIndex = 0;
             this.lbGebruikerBeheer.SelectedIndexChanged += new System.EventHandler(this.lbGebruikerBeheer_SelectedIndexChanged);
             // 
-            // lbGebruikersBeheer
-            // 
-            this.lbGebruikersBeheer.Location = new System.Drawing.Point(0, 0);
-            this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
-            this.lbGebruikersBeheer.Size = new System.Drawing.Size(120, 96);
-            this.lbGebruikersBeheer.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(9, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Check betaal status";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(9, 48);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Betaald";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(200, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 180000;
-            this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
-            // 
             // TabUitloggen
             // 
             this.TabUitloggen.BackColor = System.Drawing.Color.LightGray;
@@ -1297,97 +1351,44 @@
             this.btnUitloggen.Text = "Uitloggen";
             this.btnUitloggen.UseVisualStyleBackColor = false;
             this.btnUitloggen.Click += new System.EventHandler(this.btnUitloggen_Click);
-            // tbPath
             // 
-            this.tbPath.Location = new System.Drawing.Point(6, 71);
-            this.tbPath.Name = "tbPath";
-            this.tbPath.Size = new System.Drawing.Size(442, 20);
-            this.tbPath.TabIndex = 5;
+            // lbGebruikersBeheer
             // 
-            // btBrowse
+            this.lbGebruikersBeheer.Location = new System.Drawing.Point(0, 0);
+            this.lbGebruikersBeheer.Name = "lbGebruikersBeheer";
+            this.lbGebruikersBeheer.Size = new System.Drawing.Size(120, 96);
+            this.lbGebruikersBeheer.TabIndex = 0;
             // 
-            this.btBrowse.Location = new System.Drawing.Point(453, 71);
-            this.btBrowse.Name = "btBrowse";
-            this.btBrowse.Size = new System.Drawing.Size(59, 21);
-            this.btBrowse.TabIndex = 6;
-            this.btBrowse.Text = "Browse";
-            this.btBrowse.UseVisualStyleBackColor = true;
-            this.btBrowse.Click += new System.EventHandler(this.btBrowse_Click);
+            // button4
             // 
-            // chbBerichtAanmaken
+            this.button4.Location = new System.Drawing.Point(9, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(123, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Check betaal status";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            this.chbBerichtAanmaken.AutoSize = true;
-            this.chbBerichtAanmaken.Location = new System.Drawing.Point(7, 97);
-            this.chbBerichtAanmaken.Name = "chbBerichtAanmaken";
-            this.chbBerichtAanmaken.Size = new System.Drawing.Size(59, 17);
-            this.chbBerichtAanmaken.TabIndex = 7;
-            this.chbBerichtAanmaken.Text = "Bericht";
-            this.chbBerichtAanmaken.UseVisualStyleBackColor = true;
+            // button5
             // 
-            // chbVideoAanmaken
+            this.button5.Location = new System.Drawing.Point(9, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Betaald";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            this.chbVideoAanmaken.AutoSize = true;
-            this.chbVideoAanmaken.Location = new System.Drawing.Point(87, 97);
-            this.chbVideoAanmaken.Name = "chbVideoAanmaken";
-            this.chbVideoAanmaken.Size = new System.Drawing.Size(53, 17);
-            this.chbVideoAanmaken.TabIndex = 8;
-            this.chbVideoAanmaken.Text = "Video";
-            this.chbVideoAanmaken.UseVisualStyleBackColor = true;
+            // comboBox1
             // 
-            // chbFotoAanmaken
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(200, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
             // 
-            this.chbFotoAanmaken.AutoSize = true;
-            this.chbFotoAanmaken.Location = new System.Drawing.Point(168, 97);
-            this.chbFotoAanmaken.Name = "chbFotoAanmaken";
-            this.chbFotoAanmaken.Size = new System.Drawing.Size(47, 17);
-            this.chbFotoAanmaken.TabIndex = 9;
-            this.chbFotoAanmaken.Text = "Foto";
-            this.chbFotoAanmaken.UseVisualStyleBackColor = true;
+            // timer1
             // 
-            // chbBestandAanmaken
-            // 
-            this.chbBestandAanmaken.AutoSize = true;
-            this.chbBestandAanmaken.Location = new System.Drawing.Point(249, 97);
-            this.chbBestandAanmaken.Name = "chbBestandAanmaken";
-            this.chbBestandAanmaken.Size = new System.Drawing.Size(65, 17);
-            this.chbBestandAanmaken.TabIndex = 10;
-            this.chbBestandAanmaken.Text = "Bestand";
-            this.chbBestandAanmaken.UseVisualStyleBackColor = true;
-            // 
-            // chbEventAanmaken
-            // 
-            this.chbEventAanmaken.AutoSize = true;
-            this.chbEventAanmaken.Location = new System.Drawing.Point(330, 97);
-            this.chbEventAanmaken.Name = "chbEventAanmaken";
-            this.chbEventAanmaken.Size = new System.Drawing.Size(59, 17);
-            this.chbEventAanmaken.TabIndex = 11;
-            this.chbEventAanmaken.Text = "Events";
-            this.chbEventAanmaken.UseVisualStyleBackColor = true;
-            // 
-            // tbTitel
-            // 
-            this.tbTitel.Location = new System.Drawing.Point(7, 19);
-            this.tbTitel.Name = "tbTitel";
-            this.tbTitel.Size = new System.Drawing.Size(442, 20);
-            this.tbTitel.TabIndex = 12;
-            this.tbTitel.Text = "Titel...";
-            // 
-            // cbCategorieAanmaken
-            // 
-            this.cbCategorieAanmaken.FormattingEnabled = true;
-            this.cbCategorieAanmaken.Location = new System.Drawing.Point(455, 44);
-            this.cbCategorieAanmaken.Name = "cbCategorieAanmaken";
-            this.cbCategorieAanmaken.Size = new System.Drawing.Size(110, 21);
-            this.cbCategorieAanmaken.TabIndex = 13;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(455, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Selecteer de categorie:";
+            this.timer1.Interval = 180000;
+            this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
             // ICT4EventsForm
             // 

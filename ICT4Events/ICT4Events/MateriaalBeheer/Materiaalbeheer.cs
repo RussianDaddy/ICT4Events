@@ -94,5 +94,17 @@ namespace ICT4Events.MateriaalBeheer
             }
             return stringList;
         }
+
+        public static List<string> AlleUitleningen()
+        {
+            string query = "SELECT ID FROM Uitlening";
+            DataTable uitlening = database.voerQueryUit(query);
+            List<string> stringList = new List<string>();
+            foreach (DataRow dr in uitlening.Rows)
+            {
+                stringList.Add(dr[0] + "");
+            }
+            return stringList;
+        }
     }
 }
