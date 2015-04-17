@@ -460,7 +460,28 @@ namespace ICT4Events
 
         private void btreply_Click(object sender, EventArgs e)
         {
+            /*string replyItem = Convert.ToString(LbFeed.SelectedItem);
+            if (LbFeed.SelectedItem != null)
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = replyItem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
 
+                        MessageBox.Show("Bericht liken");
+                        i = -1;
+                    }
+                }
+                int MediafileID = Convert.ToInt32(stringId);
+                mediabeheer.Liken(MediafileID);
+                RefreshAll();
+            }
+            else
+            {
+                MessageBox.Show("Selecteer eerste een bericht om te liken!");
+            }*/
         }
 
         private void btPost_Click(object sender, EventArgs e)
