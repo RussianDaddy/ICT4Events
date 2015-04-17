@@ -12,11 +12,10 @@ namespace ICT4Events.MateriaalBeheer
     internal class Materiaalbeheer
     {
         //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
-<<<<<<< HEAD
+
         private static Database.Database database = new Database.Database();
-=======
-        static Database.Database database = new Database.Database();
->>>>>>> origin/master
+
+
 
         public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, string gebruikersnaam)
         {
@@ -43,12 +42,12 @@ namespace ICT4Events.MateriaalBeheer
             Gebruikers = database.GetGebruikerList(sqlGebruiker);
             try
             {
-<<<<<<< HEAD
+
                 string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" +
                                      gebruikersnaam + "'";
                 database.Insert(queryUpdate);
                 return true;
-=======
+
                 foreach (Gebruiker TempGebruiker in Gebruikers)
                 {
                     if (TempGebruiker.RFID != "null")
@@ -62,7 +61,7 @@ namespace ICT4Events.MateriaalBeheer
                         Check = false;
                     }
                 }
->>>>>>> origin/master
+
             }
             catch (Exception)
             {
