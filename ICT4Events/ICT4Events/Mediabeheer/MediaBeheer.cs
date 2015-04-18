@@ -19,6 +19,7 @@ namespace ICT4Events.Mediabeheer
         public List<Mediafile> GetMediafileLijst { get { return MediafileLijst; } set { MediafileLijst = value; } }
 
         public List<Categorie> GetCategorieLijst { get { return CategorieLijst; } set { CategorieLijst = value; } }
+        public List<Reactie> GetReactieLijst { get{ return reactielijst; } set{reactielijst = value; }  }
         public Mediabeheer()
         {
             /*GetCategorieLijst = new List<Categorie>{
@@ -57,6 +58,9 @@ namespace ICT4Events.Mediabeheer
             //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
             string sqlGetCategorie = "SELECT * FROM MEDIAFILE";
             GetMediafileLijst = database.GetBerichtenList(sqlGetCategorie, CategorieLijst);
+
+            String sqlGetReactie = "SELECT * FROM REACTIE";
+            GetReactieLijst = database.GetReactieLijst(sqlGetReactie);
         }
         public void DownloadenMedia(int Id)
         {
@@ -125,13 +129,13 @@ namespace ICT4Events.Mediabeheer
             }
             
             return false;
-            //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
+            //berichten hebben een berichtenid nodig. zo kunnen we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
 
         }
 
         public void BerichtRapporteren()
         {
-            //berichten hebben een berichtenid nodig. zo kunnne we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
+            //berichten hebben een berichtenid nodig. zo kunnen we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
         }
 
         public Categorie ReturnCategorie(string cat)
@@ -203,6 +207,31 @@ namespace ICT4Events.Mediabeheer
             }  
         }
 
+        public bool ReactiePlaatsen(int ID, int MediafileId, string Bericht, string Gebruiker)
+        {
+            try
+            {
+                Reactie Reply = new Reactie(ID, Bericht, Gebruiker, MediafileId);
+                string queryInsert =
+                    "INSERT INTO Reactie (MediafileID, GebruikerGebruikersnaam, Bericht, Datum) VALUES('" +
+                    MediafileId + "','" + Bericht + "','" + Gebruiker + "','" + Bericht + "', null)";
+                if (database.Insert(queryInsert) == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
+        }
 
 
 

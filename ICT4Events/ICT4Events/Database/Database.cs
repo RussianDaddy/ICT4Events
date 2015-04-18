@@ -271,8 +271,8 @@ namespace ICT4Events.Database
 
                 int Id;
                 string Naam;
-                int MediafileID;
-                string SuperCategorie;
+                //int MediafileID;
+                //string SuperCategorie;
 
                 while (Reader.Read())
                 {
@@ -303,5 +303,44 @@ namespace ICT4Events.Database
             }
             return CategorieLijst;
         }
+
+        public List<Mediabeheer.Reactie> GetReactieLijst(string sql)
+        {
+            List<Mediabeheer.Reactie> ReactieLijst = new List<Mediabeheer.Reactie>();
+
+            try
+            {
+                openConnection();
+                OracleCommand List = new OracleCommand(sql, connection);
+                OracleDataReader Reader = List.ExecuteReader();
+                OracleDataAdapter Adapter = new OracleDataAdapter(List);
+
+                int Id;
+                string Bericht;
+                string Gebruikersnaam;
+                int MediafileId;
+
+                while (Reader.Read())
+                {
+                    Id = Convert.ToInt32(Reader["ID"]);
+                    MediafileId = Convert.ToInt32(Reader["MediefileID"]);
+                    Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
+                    Bericht = Convert.ToString(Reader["Bericht"]);
+
+                    ReactieLijst.Add(new Mediabeheer.Reactie(Id, Bericht, Gebruikersnaam, MediafileId));
+                    
+                }
+                return ReactieLijst;
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ReactieLijst;
+        } 
     }
 }

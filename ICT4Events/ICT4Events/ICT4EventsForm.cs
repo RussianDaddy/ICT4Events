@@ -346,6 +346,11 @@ namespace ICT4Events
             {
                 LbFeed.Items.Add(m.ToString());
             }
+            LbFeed.Items.Add("Reacties op posts...");
+            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+            {
+                LbFeed.Items.Add(r.ToString());
+            }
             foreach (Mediabeheer.Categorie c in mediabeheer.GetCategorieLijst)
             {
                 cbCategorieAanmaken.Items.Add(c.ToString());
@@ -409,21 +414,23 @@ namespace ICT4Events
                                 if(m.Id == Convert.ToInt32(stringId))
                                 {
                                     MessageBox.Show(m.WholeString());
+                                    //int check
                                 }
                             }
-                        
-                        
+                            //if int check =1 check nieuw string id van reacties en foreach Reactie in GetReactielijst show r.wholestring
                         i = -1;
                     }
                 }
                 
             }
-                        else
+            else
             {
                 MessageBox.Show("Selecteer een Mediafile om te bekijken");
             }
             
         }
+
+
 
         private void btreport_Click(object sender, EventArgs e)
         {
@@ -460,8 +467,9 @@ namespace ICT4Events
 
         private void btreply_Click(object sender, EventArgs e)
         {
-            /*string replyItem = Convert.ToString(LbFeed.SelectedItem);
-            if (LbFeed.SelectedItem != null)
+            string replyItem = Convert.ToString(LbFeed.SelectedItem);
+            string CheckisMediafile = replyItem.Substring(0, 3);
+            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea")
             {
                 for (int i = 10; i > 0; i--)
                 {
@@ -469,19 +477,26 @@ namespace ICT4Events
                     if (stringId.IndexOf("-") == -1)
                     {
                         stringId = stringId.Substring(0, (i));
-
-                        MessageBox.Show("Bericht liken");
                         i = -1;
                     }
                 }
-                int MediafileID = Convert.ToInt32(stringId);
-                mediabeheer.Liken(MediafileID);
-                RefreshAll();
+                int maxreactieid = 0;
+                foreach(Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+                {
+                    if(r.ID > maxreactieid)
+                    {
+                        maxreactieid = r.ID;
+                    } 
+                }
+            int MediafileID = Convert.ToInt32(stringId);
+            int ReactieId = maxreactieid = 1;
+            mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser);
+            RefreshAll();
             }
             else
             {
                 MessageBox.Show("Selecteer eerste een bericht om te liken!");
-            }*/
+            }
         }
 
         private void btPost_Click(object sender, EventArgs e)
