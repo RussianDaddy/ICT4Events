@@ -15,6 +15,7 @@ namespace ICT4Events.Mediabeheer
         private List<Mediafile> MediafileLijst;
         private List<Reactie> reactielijst;
         private Database.Database database = new Database.Database();
+        string WholeString;
         public List<Mediafile> SearchedSoortLijst { get { return searchedSoortLijst; } set { searchedSoortLijst = value; } }
         public List<Mediafile> GetMediafileLijst { get { return MediafileLijst; } set { MediafileLijst = value; } }
 
@@ -53,13 +54,16 @@ namespace ICT4Events.Mediabeheer
         public void Update()
         {
             string sqlGetMediafile = "SELECT * FROM CATEGORIE";
+            GetCategorieLijst = null;
             GetCategorieLijst = database.GetCategorieLijst(sqlGetMediafile, 0);
 
             //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
             string sqlGetCategorie = "SELECT * FROM MEDIAFILE";
+            GetMediafileLijst = null;
             GetMediafileLijst = database.GetBerichtenList(sqlGetCategorie, CategorieLijst);
 
             String sqlGetReactie = "SELECT * FROM REACTIE";
+            GetReactieLijst = null;
             GetReactieLijst = database.GetReactieLijst(sqlGetReactie);
         }
         public void DownloadenMedia(int Id)
@@ -230,6 +234,28 @@ namespace ICT4Events.Mediabeheer
                 return false;
             }
             
+        }
+
+        public string GetWholeReactieString(int ID, int MediaID)
+        {
+            Mediafile Media = null;
+            foreach(Mediafile m in GetMediafileLijst)
+            {
+                if(m.Id == MediaID)
+                {
+                    Media = m;
+                }
+            }
+            foreach(Reactie R in GetReactieLijst)
+            {
+                if(R.ID == ID)
+                {
+                    WholeString = R.WholeString(Media);
+                }
+               
+                
+            }
+            return WholeString;
         }
 
 

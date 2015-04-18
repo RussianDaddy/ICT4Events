@@ -26,10 +26,12 @@ namespace ICT4Events
 
         string CheckisMediafile;
         private string stringId;
+        private string sstringId;
         private int idTeller = 2;
         private string path;
         private string loggedinuser;
         private int LastID;
+        private string GetMediaId;
 
         public ICT4EventsForm()
         {
@@ -374,7 +376,7 @@ namespace ICT4Events
         private void btlike_Click(object sender, EventArgs e)
         {
             string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-            if(LbFeed.SelectedItem != null)
+            if (LbFeed.SelectedItem != null && Selectedtems.Substring(0, 3) != "Rea" && Selectedtems.Substring(0, 3) != "ID:")
             {
                 for (int i = 10; i > 0; i--)
                 {
@@ -392,7 +394,7 @@ namespace ICT4Events
             }
             else
             {
-                MessageBox.Show("Selecteer eerste een bericht om te liken!");
+                MessageBox.Show("Selecteer eerst een bericht om te liken!");
             }
             
         }
@@ -400,8 +402,8 @@ namespace ICT4Events
         private void btviewpost_Click(object sender, EventArgs e)
         {
             string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
-            
-            if (LbFeed.SelectedItem != null)
+
+            if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea")
             {
                 for (int i = 10; i > 0; i--)
                 {
@@ -409,15 +411,43 @@ namespace ICT4Events
                     if (stringId.IndexOf("-") == -1)
                     {
                         stringId = stringId.Substring(0, (i));
-                        
-                            foreach(Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
+                        if(Selectedtem.Substring(0, 4) == "ID: " )
+                        {
+                            int RID = Convert.ToInt32(stringId.Substring(4,stringId.Length - 4));
+                            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
                             {
-                                if(m.Id == Convert.ToInt32(stringId))
+                                if (r.ID == Convert.ToInt32(RID))
+                                {
+                                    //26
+                                    for (int y = 10; y > 0; y--)
+                                    {
+                                        sstringId = Selectedtem.Substring(Selectedtem.IndexOf("d"), y);
+                                        if(sstringId.IndexOf(",") == -1)
+                                        {
+                                            string grg = Selectedtem.Substring(3, y-3);
+                                            GetMediaId = grg.Substring(1,  grg.Length - 1);
+                                            y = -1;
+                                        }
+                                        
+                                        
+                                    }
+                                    MessageBox.Show(mediabeheer.GetWholeReactieString(RID, Convert.ToInt32(GetMediaId)));
+                                    //int check
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
+                            {
+                                if (m.Id == Convert.ToInt32(stringId))
                                 {
                                     MessageBox.Show(m.WholeString());
                                     //int check
                                 }
                             }
+                        }
+                            
                             //if int check =1 check nieuw string id van reacties en foreach Reactie in GetReactielijst show r.wholestring
                         i = -1;
                     }
@@ -436,8 +466,8 @@ namespace ICT4Events
         private void btreport_Click(object sender, EventArgs e)
         {
         string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
-            
-            if (LbFeed.SelectedItem != null)
+
+        if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea" && Selectedtem.Substring(0, 3) != "ID:")
             {
                 for (int i = 10; i > 0; i--)
                 {
@@ -455,13 +485,11 @@ namespace ICT4Events
                         }                        
                         i = -1;
                     }
-                }
-                
-                
+                }  
             }
             else
             {
-                MessageBox.Show("Selecteer een Mediafile om te reporten!");
+                MessageBox.Show("Selecteer een origineel mediafile om te reporten!");
             }
             
         }
@@ -470,7 +498,7 @@ namespace ICT4Events
         {
             string replyItem = Convert.ToString(LbFeed.SelectedItem);
             CheckisMediafile = replyItem.Substring(0, 3);
-            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea")
+            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
             {
                 for (int i = 10; i > 0; i--)
                 {
@@ -497,14 +525,17 @@ namespace ICT4Events
             }
             else{
                 MessageBox.Show("Je reactie is succesvol gepost!");
+                //mediabeheer.Update();
                 RefreshAll();
             }
             
             }
             else
             {
-                MessageBox.Show("Selecteer eerste een bericht om te liken!");
+                MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
             }
+            mediabeheer.Update();
+            RefreshAll();
         }
 
         private void btPost_Click(object sender, EventArgs e)

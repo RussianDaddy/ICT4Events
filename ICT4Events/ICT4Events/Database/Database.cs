@@ -323,7 +323,7 @@ namespace ICT4Events.Database
                 while (Reader.Read())
                 {
                     Id = Convert.ToInt32(Reader["ID"]);
-                    MediafileId = Convert.ToInt32(Reader["MediefileID"]);
+                    MediafileId = Convert.ToInt32(Reader["MediafileID"]);
                     Gebruikersnaam = Convert.ToString(Reader["GebruikerGebruikersnaam"]);
                     Bericht = Convert.ToString(Reader["Bericht"]);
 

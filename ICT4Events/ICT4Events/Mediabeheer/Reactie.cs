@@ -29,11 +29,16 @@ namespace ICT4Events.Mediabeheer
         public int Berichtid { get; set; }
         public String Gebruiker { get; set; }
 
-        public string ToString()
+        public override string ToString()
         {
-            return "Id: " + ID + " - Reactie op bericht met id: " + Berichtid + " - Door: " + Gebruiker + " - Bericht: " + Bericht; 
+            return "ID: " + ID + " - Reactie op bericht met id: " + Berichtid + " ,- Door: " + Gebruiker + " - Bericht: " + Bericht; 
         }
 
+        public string WholeString(Mediafile M)
+        {
+            string output = string.Format(Gebruiker + " Reageerde op: {0}" + Berichtid + " - Titel: " + M.Naam + "{0}{0}Bericht: {0}" + M.Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + */+ "{0}{0}Aantal Likes: " + M.Like + /*" - Aantal malen gereport: " + Report*/ "{0}Origineel gepost door: " + M.Gebruikersnaam + "{0}{0}Reactie: {0}" + Bericht,  Environment.NewLine);
+            return output;
+        }
 
 
     }
