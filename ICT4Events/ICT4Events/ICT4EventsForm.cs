@@ -23,7 +23,8 @@ namespace ICT4Events
         private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
         RFID rfid;
-        
+
+        string CheckisMediafile;
         private string stringId;
         private int idTeller = 2;
         private string path;
@@ -468,7 +469,7 @@ namespace ICT4Events
         private void btreply_Click(object sender, EventArgs e)
         {
             string replyItem = Convert.ToString(LbFeed.SelectedItem);
-            string CheckisMediafile = replyItem.Substring(0, 3);
+            CheckisMediafile = replyItem.Substring(0, 3);
             if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea")
             {
                 for (int i = 10; i > 0; i--)
@@ -489,9 +490,16 @@ namespace ICT4Events
                     } 
                 }
             int MediafileID = Convert.ToInt32(stringId);
-            int ReactieId = maxreactieid = 1;
-            mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser);
-            RefreshAll();
+            int ReactieId = maxreactieid + 1;
+            if(!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
+            {
+                MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
+            }
+            else{
+                MessageBox.Show("Je reactie is succesvol gepost!");
+                RefreshAll();
+            }
+            
             }
             else
             {

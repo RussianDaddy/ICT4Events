@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Events.Mediabeheer
 {
-    class Reactie
+    public class Reactie
     {
         public Reactie(String Bericht, DateTime Datum, int Berichtid)
         {

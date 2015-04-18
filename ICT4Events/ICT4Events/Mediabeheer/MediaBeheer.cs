@@ -213,8 +213,7 @@ namespace ICT4Events.Mediabeheer
             {
                 Reactie Reply = new Reactie(ID, Bericht, Gebruiker, MediafileId);
                 string queryInsert =
-                    "INSERT INTO Reactie (MediafileID, GebruikerGebruikersnaam, Bericht, Datum) VALUES('" +
-                    MediafileId + "','" + Bericht + "','" + Gebruiker + "','" + Bericht + "', null)";
+                    "INSERT INTO Reactie (ID, MediafileID, GebruikerGebruikersnaam, Bericht, Datum) VALUES('" + ID + "','" + MediafileId + "','" + Gebruiker + "','" + Bericht + "', null)";
                 if (database.Insert(queryInsert) == true)
                 {
                     return true;
