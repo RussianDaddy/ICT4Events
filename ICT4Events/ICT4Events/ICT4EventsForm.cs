@@ -32,6 +32,7 @@ namespace ICT4Events
         private string loggedinuser;
         private int LastID;
         private string GetMediaId;
+        private int CheckReply;
 
         public ICT4EventsForm()
         {
@@ -494,7 +495,7 @@ namespace ICT4Events
             
         }
 
-        private void btreply_Click(object sender, EventArgs e)
+        /*private void btreply_Click(object sender, EventArgs e)
         {
             string replyItem = Convert.ToString(LbFeed.SelectedItem);
             CheckisMediafile = replyItem.Substring(0, 3);
@@ -536,58 +537,116 @@ namespace ICT4Events
             }
             mediabeheer.Update();
             RefreshAll();
-        }
+        }*/
 
         private void btPost_Click(object sender, EventArgs e)
         {
-            string soort;
-            if (rbBerichtAanmaken.Checked)
-            {
-                soort= " Bericht";
-            }
-            else if (rbBestandAanmaken.Checked)
-            {
-                soort = " Bestand";
-            }
-            else if (rbEventAanmaken.Checked)
-            {
-                soort = " Event";
-            }
-            else if (rbFotoAanmaken.Checked)
-            {
-                soort = " Foto";
-            }
-            else if (rbVideoAanmaken.Checked)
-            {
-                soort = " Video";
-            }
-            else
-            {
-                soort = "1";
-            }
-            if(soort == "1")
-            {
-                MessageBox.Show("Selecteer een soort post!");
-            }
-            else if(cbCategorieAanmaken.Text == "")
-            {
-                MessageBox.Show("Selecteer eerst een categorie!");
-            }
-            else
-            {
-                LastID = GetlatestID();
-                string categorie = cbCategorieAanmaken.Text;
-                if (mediabeheer.BerichtPlaatsen(LastID + 1, loggedinuser, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), Convert.ToString(soort), categorie, tbPath.Text, 0, 0) == true)
+            if(rbReply.Checked)
                 {
-                    MessageBox.Show("Het bericht is succesfull gepost!");
+                    string replyItem = Convert.ToString(LbFeed.SelectedItem);
+                    if(LbFeed.SelectedItem != null)
+                    {
+                       
+                        CheckisMediafile = replyItem.Substring(0, 3);
+                    }
+                    else
+                    {
+                        MessageBox.Show("selecteer een bericht!");
+                    }
+                    
+                    if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
+                    {
+                        for (int i = 10; i > 0; i--)
+                        {
+                            stringId = replyItem.Substring(0, i);
+                            if (stringId.IndexOf("-") == -1)
+                            {
+                                stringId = stringId.Substring(0, (i));
+                                i = -1;
+                            }
+                        }
+                        int maxreactieid = 0;
+                        foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+                        {
+                            if (r.ID > maxreactieid)
+                            {
+                                maxreactieid = r.ID;
+                            }
+                        }
+                        int MediafileID = Convert.ToInt32(stringId);
+                        int ReactieId = maxreactieid + 1;
+                        if (!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
+                        {
+                            MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Je reactie is succesvol gepost!");
+                            //mediabeheer.Update();
+                            RefreshAll();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
+                    }
+                    mediabeheer.Update();
+                    RefreshAll();
+                }
+
+            else
+            {
+                string soort;
+                if (rbBerichtAanmaken.Checked)
+                {
+                    soort = " Bericht";
+                }
+                else if (rbBestandAanmaken.Checked)
+                {
+                    soort = " Bestand";
+                }
+                else if (rbEventAanmaken.Checked)
+                {
+                    soort = " Event";
+                }
+                else if (rbFotoAanmaken.Checked)
+                {
+                    soort = " Foto";
+                }
+                else if (rbVideoAanmaken.Checked)
+                {
+                    soort = " Video";
                 }
                 else
                 {
-                    MessageBox.Show("Er is iets misgegaan bij het posten van uw bericht, probeer het opnieuw!");
+                    soort = "1";
                 }
+                if (soort == "1")
+                {
+                    MessageBox.Show("Selecteer een soort post!");
+                }
+                else if (cbCategorieAanmaken.Text == "")
+                {
+                    MessageBox.Show("Selecteer eerst een categorie!");
+                }
+                else
+                {
+                    LastID = GetlatestID();
+                    string categorie = cbCategorieAanmaken.Text;
+                    if (mediabeheer.BerichtPlaatsen(LastID + 1, loggedinuser, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), Convert.ToString(soort), categorie, tbPath.Text, 0, 0) == true)
+                    {
+                        MessageBox.Show("Het bericht is succesfull gepost!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Er is iets misgegaan bij het posten van uw bericht, probeer het opnieuw!");
+                    }
+                }
+                mediabeheer.Update();
+                RefreshAll();
             }
-            mediabeheer.Update();
-            RefreshAll();
+           
         }
 
         private int GetlatestID()
@@ -610,14 +669,7 @@ namespace ICT4Events
                 path = openFileDialog1.FileName;
                 tbPath.Text = path;
             }
-
-
         }
-
-
-
-
-
         //ReserveringBeheer
         private void btReserveer_Click(object sender, EventArgs e)
         {
@@ -818,6 +870,53 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabBeheren);
             tabICT4Events.TabPages.Add(TabInloggen);
         }
+
+        private void rbReply_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbReply.Checked)
+            {
+                tbTitel.Enabled = false;
+                tbPath.Enabled = false;
+                cbCategorieAanmaken.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
+            }
+        }
+
+        private void rbEventAanmaken_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbEventAanmaken.Checked)
+            {
+                tbPath.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
+            }
+        }
+
+        private void rbBerichtAanmaken_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbBerichtAanmaken.Checked)
+            {
+                tbPath.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
+            }
+        }
+
+
+
 
         //EventBeheer
     }

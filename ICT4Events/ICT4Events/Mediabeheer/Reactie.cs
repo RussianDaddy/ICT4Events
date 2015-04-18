@@ -36,7 +36,7 @@ namespace ICT4Events.Mediabeheer
 
         public string WholeString(Mediafile M)
         {
-            string output = string.Format(Gebruiker + " Reageerde op: {0}" + Berichtid + " - Titel: " + M.Naam + "{0}{0}Bericht: {0}" + M.Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + */+ "{0}{0}Aantal Likes: " + M.Like + /*" - Aantal malen gereport: " + Report*/ "{0}Origineel gepost door: " + M.Gebruikersnaam + "{0}{0}Reactie: {0}" + Bericht,  Environment.NewLine);
+            string output = string.Format(Gebruiker + " Reageerde op: {0}" + Berichtid + " - Titel: " + M.Naam + "{0}{0}Bericht: " + M.Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path + */+ "{0}{0}Aantal Likes: " + M.Like + /*" - Aantal malen gereport: " + Report*/ "{0}Origineel gepost door: " + M.Gebruikersnaam + "{0}{0}Reactie: {0}" + Bericht,  Environment.NewLine);
             return output;
         }
 
