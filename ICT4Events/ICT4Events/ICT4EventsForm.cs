@@ -303,298 +303,60 @@ namespace ICT4Events
         }
 
         //MediaBeheer
-        private void btFilter_Click(object sender, EventArgs e)
-        {
-
-            searchstring = "";
-            LbFeed.Items.Clear();
-            if (chbBericht.Checked)
-            {
-                searchstring += " Bericht";
-            }
-            if (chbBestand.Checked)
-            {
-                searchstring += " Bestand";
-            }
-            if (chbEvent.Checked)
-            {
-                searchstring += " Event";
-            }
-            if (chbFoto.Checked)
-            {
-                searchstring += " Foto";
-            }
-            if (chbVideo.Checked)
-            {
-                searchstring += " Video";
-            }
-
-            tempSoortList = mediabeheer.GetSearchedSoort(searchstring);
-
-            foreach (Mediabeheer.Mediafile m in tempSoortList)
-            {
-                LbFeed.Items.Add(m.ToString());
-            }
-
-            tempSoortList = null;
-            mediabeheer.SearchedSoortLijst = null;
-            mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
-        }
-
-
-
-        public void RefreshAll()
-        {
-            LbFeed.Items.Clear();
-            foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
-            {
-                LbFeed.Items.Add(m.ToString());
-            }
-            LbFeed.Items.Add("Reacties op posts...");
-            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
-            {
-                LbFeed.Items.Add(r.ToString());
-            }
-            foreach (Mediabeheer.Categorie c in mediabeheer.GetCategorieLijst)
-            {
-                cbCategorieAanmaken.Items.Add(c.ToString());
-            }
-
-        
-
-        }
-
-        private void btShowAll_Click(object sender, EventArgs e)
-        {
-            RefreshAll();
-            chbBericht.Checked = false;
-            chbBestand.Checked = false;
-            chbEvent.Checked = false;
-            chbFoto.Checked = false;
-            chbVideo.Checked = false;
-        }
-
-        private void btlike_Click(object sender, EventArgs e)
-        {
-            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
-            if (LbFeed.SelectedItem != null && Selectedtems.Substring(0, 3) != "Rea" && Selectedtems.Substring(0, 3) != "ID:")
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    stringId = Selectedtems.Substring(0, i);
-                    if (stringId.IndexOf("-") == -1)
-                    {
-                        stringId = stringId.Substring(0, (i));
-                        MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
-                        i = -1;
-                    }
-                }
-                int MediafileID = Convert.ToInt32(stringId);
-                mediabeheer.Liken(MediafileID);
-                RefreshAll();
-            }
-            else
-            {
-                MessageBox.Show("Selecteer eerst een bericht om te liken!");
-            }
-            
-        }
-
-        private void btviewpost_Click(object sender, EventArgs e)
-        {
-            string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
-
-            if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea")
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    stringId = Selectedtem.Substring(0, i);
-                    if (stringId.IndexOf("-") == -1)
-                    {
-                        stringId = stringId.Substring(0, (i));
-                        if(Selectedtem.Substring(0, 4) == "ID: " )
-                        {
-                            int RID = Convert.ToInt32(stringId.Substring(4,stringId.Length - 4));
-                            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
-                            {
-                                if (r.ID == Convert.ToInt32(RID))
-                                {
-                                    //26
-                                    for (int y = 10; y > 0; y--)
-                                    {
-                                        sstringId = Selectedtem.Substring(Selectedtem.IndexOf("d"), y);
-                                        if(sstringId.IndexOf(",") == -1)
-                                        {
-                                            string grg = Selectedtem.Substring(3, y-3);
-                                            GetMediaId = grg.Substring(1,  grg.Length - 1);
-                                            y = -1;
-                                        }
-                                        
-                                        
-                                    }
-                                    MessageBox.Show(mediabeheer.GetWholeReactieString(RID, Convert.ToInt32(GetMediaId)));
-                                    //int check
-                                }
-                            }
-                        }
-                        else
-                        {
-                            foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
-                            {
-                                if (m.Id == Convert.ToInt32(stringId))
-                                {
-                                    MessageBox.Show(m.WholeString());
-                                    //int check
-                                }
-                            }
-                        }
-                            
-                            //if int check =1 check nieuw string id van reacties en foreach Reactie in GetReactielijst show r.wholestring
-                        i = -1;
-                    }
-                }
-                
-            }
-            else
-            {
-                MessageBox.Show("Selecteer een Mediafile om te bekijken");
-            }
-            
-        }
-
-
-
-        private void btreport_Click(object sender, EventArgs e)
-        {
-        string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
-
-        if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea" && Selectedtem.Substring(0, 3) != "ID:")
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    stringId = Selectedtem.Substring(0, i);
-                    if (stringId.IndexOf("-") == -1)
-                    {
-                        stringId = stringId.Substring(0, (i));
-                        if(mediabeheer.MediafileRapporteren(Convert.ToInt32(stringId)))
-                        {
-                            MessageBox.Show("U heeft bericht met ID " + stringId + " Gereport");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Er is iets fout gegaan bij het rapporteren van het mediafile! Probeer het opnieuw!");
-                        }                        
-                        i = -1;
-                    }
-                }  
-            }
-            else
-            {
-                MessageBox.Show("Selecteer een origineel mediafile om te reporten!");
-            }
-            
-        }
-
-        /*private void btreply_Click(object sender, EventArgs e)
-        {
-            string replyItem = Convert.ToString(LbFeed.SelectedItem);
-            CheckisMediafile = replyItem.Substring(0, 3);
-            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    stringId = replyItem.Substring(0, i);
-                    if (stringId.IndexOf("-") == -1)
-                    {
-                        stringId = stringId.Substring(0, (i));
-                        i = -1;
-                    }
-                }
-                int maxreactieid = 0;
-                foreach(Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
-                {
-                    if(r.ID > maxreactieid)
-                    {
-                        maxreactieid = r.ID;
-                    } 
-                }
-            int MediafileID = Convert.ToInt32(stringId);
-            int ReactieId = maxreactieid + 1;
-            if(!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
-            {
-                MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
-            }
-            else{
-                MessageBox.Show("Je reactie is succesvol gepost!");
-                //mediabeheer.Update();
-                RefreshAll();
-            }
-            
-            }
-            else
-            {
-                MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
-            }
-            mediabeheer.Update();
-            RefreshAll();
-        }*/
-
         private void btPost_Click(object sender, EventArgs e)
         {
-            if(rbReply.Checked)
+            if (rbReply.Checked)
+            {
+                string replyItem = Convert.ToString(LbFeed.SelectedItem);
+                if (LbFeed.SelectedItem != null)
                 {
-                    string replyItem = Convert.ToString(LbFeed.SelectedItem);
-                    if(LbFeed.SelectedItem != null)
-                    {
-                       
-                        CheckisMediafile = replyItem.Substring(0, 3);
-                    }
-                    else
-                    {
-                        MessageBox.Show("selecteer een bericht!");
-                    }
-                    
-                    if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
-                    {
-                        for (int i = 10; i > 0; i--)
-                        {
-                            stringId = replyItem.Substring(0, i);
-                            if (stringId.IndexOf("-") == -1)
-                            {
-                                stringId = stringId.Substring(0, (i));
-                                i = -1;
-                            }
-                        }
-                        int maxreactieid = 0;
-                        foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
-                        {
-                            if (r.ID > maxreactieid)
-                            {
-                                maxreactieid = r.ID;
-                            }
-                        }
-                        int MediafileID = Convert.ToInt32(stringId);
-                        int ReactieId = maxreactieid + 1;
-                        if (!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
-                        {
-                            MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Je reactie is succesvol gepost!");
-                            //mediabeheer.Update();
-                            RefreshAll();
-                        }
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
-                    }
-                    mediabeheer.Update();
-                    RefreshAll();
+                    CheckisMediafile = replyItem.Substring(0, 3);
+                }
+                else
+                {
+                    MessageBox.Show("selecteer een bericht!");
                 }
 
+                if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
+                {
+                    for (int i = 10; i > 0; i--)
+                    {
+                        stringId = replyItem.Substring(0, i);
+                        if (stringId.IndexOf("-") == -1)
+                        {
+                            stringId = stringId.Substring(0, (i));
+                            i = -1;
+                        }
+                    }
+                    int maxreactieid = 0;
+                    foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+                    {
+                        if (r.ID > maxreactieid)
+                        {
+                            maxreactieid = r.ID;
+                        }
+                    }
+                    int MediafileID = Convert.ToInt32(stringId);
+                    int ReactieId = maxreactieid + 1;
+                    if (!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
+                    {
+                        MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Je reactie is succesvol gepost!");
+                        //mediabeheer.Update();
+                        RefreshAll();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
+                }
+                mediabeheer.Update();
+                RefreshAll();
+            }
             else
             {
                 string soort;
@@ -646,9 +408,170 @@ namespace ICT4Events
                 mediabeheer.Update();
                 RefreshAll();
             }
-           
         }
+        private void btviewpost_Click(object sender, EventArgs e)
+        {
+            string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+            if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea")
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        if (Selectedtem.Substring(0, 4) == "ID: ")
+                        {
+                            int RID = Convert.ToInt32(stringId.Substring(4, stringId.Length - 4));
+                            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+                            {
+                                if (r.ID == Convert.ToInt32(RID))
+                                {
+                                    //26
+                                    for (int y = 10; y > 0; y--)
+                                    {
+                                        sstringId = Selectedtem.Substring(Selectedtem.IndexOf("d"), y);
+                                        if (sstringId.IndexOf(",") == -1)
+                                        {
+                                            string grg = Selectedtem.Substring(3, y - 3);
+                                            GetMediaId = grg.Substring(1, grg.Length - 1);
+                                            y = -1;
+                                        }
+                                    }
+                                    MessageBox.Show(mediabeheer.GetWholeReactieString(RID, Convert.ToInt32(GetMediaId)));
+                                    //int check
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
+                            {
+                                if (m.Id == Convert.ToInt32(stringId))
+                                {
+                                    MessageBox.Show(m.WholeString());
+                                    //int check
+                                }
+                            }
+                        }
+                        //if int check =1 check nieuw string id van reacties en foreach Reactie in GetReactielijst show r.wholestring
+                        i = -1;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een Mediafile om te bekijken");
+            }
+        }
+        private void btlike_Click(object sender, EventArgs e)
+        {
+            string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
+            if (LbFeed.SelectedItem != null && Selectedtems.Substring(0, 3) != "Rea" && Selectedtems.Substring(0, 3) != "ID:")
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtems.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        MessageBox.Show("U heeft de post met ID " + stringId + " geliked");
+                        i = -1;
+                    }
+                }
+                int MediafileID = Convert.ToInt32(stringId);
+                mediabeheer.Liken(MediafileID);
+                RefreshAll();
+            }
+            else
+            {
+                MessageBox.Show("Selecteer eerst een bericht om te liken!");
+            }
 
+        }
+        private void btreport_Click(object sender, EventArgs e)
+        {
+            string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
+
+            if (LbFeed.SelectedItem != null && Selectedtem.Substring(0, 3) != "Rea" && Selectedtem.Substring(0, 3) != "ID:")
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = Selectedtem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        if (mediabeheer.MediafileRapporteren(Convert.ToInt32(stringId)))
+                        {
+                            MessageBox.Show("U heeft bericht met ID " + stringId + " Gereport");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Er is iets fout gegaan bij het rapporteren van het mediafile! Probeer het opnieuw!");
+                        }
+                        i = -1;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een origineel mediafile om te reporten!");
+            }
+
+        }
+        private void btFilter_Click(object sender, EventArgs e)
+        {
+            searchstring = "";
+            LbFeed.Items.Clear();
+            if (chbBericht.Checked)
+            {
+                searchstring += " Bericht";
+            }
+            if (chbBestand.Checked)
+            {
+                searchstring += " Bestand";
+            }
+            if (chbEvent.Checked)
+            {
+                searchstring += " Event";
+            }
+            if (chbFoto.Checked)
+            {
+                searchstring += " Foto";
+            }
+            if (chbVideo.Checked)
+            {
+                searchstring += " Video";
+            }
+            tempSoortList = mediabeheer.Filteren(searchstring);
+            foreach (Mediabeheer.Mediafile m in tempSoortList)
+            {
+                LbFeed.Items.Add(m.ToString());
+            }
+            tempSoortList = null;
+            mediabeheer.SearchedSoortLijst = null;
+            mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
+        }
+        private void btShowAll_Click(object sender, EventArgs e)
+        {
+            RefreshAll();
+            chbBericht.Checked = false;
+            chbBestand.Checked = false;
+            chbEvent.Checked = false;
+            chbFoto.Checked = false;
+            chbVideo.Checked = false;
+        }
+        private void btBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1.ShowDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                path = openFileDialog1.FileName;
+                tbPath.Text = path;
+            }
+        }
         private int GetlatestID()
         {
             tempSoortList = mediabeheer.GetMediafileLijst;
@@ -656,18 +579,106 @@ namespace ICT4Events
             Mediabeheer.Mediafile lastmediafile = tempSoortList[aantalberichten - 1];
             int lastid = lastmediafile.Id;
             return lastid;
-
         }
-
-        private void btBrowse_Click(object sender, EventArgs e)
+        public void RefreshAll()
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.ShowDialog();
-            DialogResult result = openFileDialog1.ShowDialog();
-            if(result == DialogResult.OK)
+            LbFeed.Items.Clear();
+            foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
             {
-                path = openFileDialog1.FileName;
-                tbPath.Text = path;
+                LbFeed.Items.Add(m.ToString());
+            }
+            LbFeed.Items.Add("Reacties op posts...");
+            foreach (Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+            {
+                LbFeed.Items.Add(r.ToString());
+            }
+            foreach (Mediabeheer.Categorie c in mediabeheer.GetCategorieLijst)
+            {
+                cbCategorieAanmaken.Items.Add(c.ToString());
+            }
+        }
+        /*private void btreply_Click(object sender, EventArgs e)
+        {
+            string replyItem = Convert.ToString(LbFeed.SelectedItem);
+            CheckisMediafile = replyItem.Substring(0, 3);
+            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
+            {
+                for (int i = 10; i > 0; i--)
+                {
+                    stringId = replyItem.Substring(0, i);
+                    if (stringId.IndexOf("-") == -1)
+                    {
+                        stringId = stringId.Substring(0, (i));
+                        i = -1;
+                    }
+                }
+                int maxreactieid = 0;
+                foreach(Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
+                {
+                    if(r.ID > maxreactieid)
+                    {
+                        maxreactieid = r.ID;
+                    } 
+                }
+            int MediafileID = Convert.ToInt32(stringId);
+            int ReactieId = maxreactieid + 1;
+            if(!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
+            {
+                MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
+            }
+            else{
+                MessageBox.Show("Je reactie is succesvol gepost!");
+                //mediabeheer.Update();
+                RefreshAll();
+            }
+            
+            }
+            else
+            {
+                MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
+            }
+            mediabeheer.Update();
+            RefreshAll();
+        }*/
+        private void rbReply_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbReply.Checked)
+            {
+                tbTitel.Enabled = false;
+                tbPath.Enabled = false;
+                cbCategorieAanmaken.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
+            }
+        }
+        private void rbEventAanmaken_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbEventAanmaken.Checked)
+            {
+                tbPath.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
+            }
+        }
+        private void rbBerichtAanmaken_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbBerichtAanmaken.Checked)
+            {
+                tbPath.Enabled = false;
+            }
+            else
+            {
+                tbTitel.Enabled = true;
+                tbPath.Enabled = true;
+                cbCategorieAanmaken.Enabled = true;
             }
         }
         //ReserveringBeheer
@@ -871,49 +882,7 @@ namespace ICT4Events
             tabICT4Events.TabPages.Add(TabInloggen);
         }
 
-        private void rbReply_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbReply.Checked)
-            {
-                tbTitel.Enabled = false;
-                tbPath.Enabled = false;
-                cbCategorieAanmaken.Enabled = false;
-            }
-            else
-            {
-                tbTitel.Enabled = true;
-                tbPath.Enabled = true;
-                cbCategorieAanmaken.Enabled = true;
-            }
-        }
 
-        private void rbEventAanmaken_CheckedChanged(object sender, EventArgs e)
-        {
-            if(rbEventAanmaken.Checked)
-            {
-                tbPath.Enabled = false;
-            }
-            else
-            {
-                tbTitel.Enabled = true;
-                tbPath.Enabled = true;
-                cbCategorieAanmaken.Enabled = true;
-            }
-        }
-
-        private void rbBerichtAanmaken_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbBerichtAanmaken.Checked)
-            {
-                tbPath.Enabled = false;
-            }
-            else
-            {
-                tbTitel.Enabled = true;
-                tbPath.Enabled = true;
-                cbCategorieAanmaken.Enabled = true;
-            }
-        }
 
 
 

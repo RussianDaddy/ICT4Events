@@ -22,7 +22,6 @@ namespace ICT4Events.Mediabeheer
         }
         public int MediafileID { get; set; }
         public String SuperCategorie { get; set; }*/
-
         public int Id { get; set; }
         public String Naam { get; set; } 
         public override string ToString()
