@@ -759,12 +759,14 @@ namespace ICT4Events
                 tbTitel.Enabled = false;
                 tbPath.Enabled = false;
                 cbCategorieAanmaken.Enabled = false;
+                btBrowse.Enabled = false;
             }
             else
             {
                 tbTitel.Enabled = true;
                 tbPath.Enabled = true;
                 cbCategorieAanmaken.Enabled = true;
+                btBrowse.Enabled = true;
             }
         }
         /// <summary>
@@ -777,12 +779,14 @@ namespace ICT4Events
             if (rbEventAanmaken.Checked)
             {
                 tbPath.Enabled = false;
+                btBrowse.Enabled = false;
             }
             else
             {
                 tbTitel.Enabled = true;
                 tbPath.Enabled = true;
                 cbCategorieAanmaken.Enabled = true;
+                btBrowse.Enabled = true;
             }
         }
         /// <summary>
@@ -795,12 +799,14 @@ namespace ICT4Events
             if (rbBerichtAanmaken.Checked)
             {
                 tbPath.Enabled = false;
+                btBrowse.Enabled = false;
             }
             else
             {
                 tbTitel.Enabled = true;
                 tbPath.Enabled = true;
                 cbCategorieAanmaken.Enabled = true;
+                btBrowse.Enabled = true;
             }
         }
         //ReserveringBeheer
