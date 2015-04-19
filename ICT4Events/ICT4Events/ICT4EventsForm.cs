@@ -936,6 +936,21 @@ namespace ICT4Events
                 }
         }
 
+        /// <summary>
+        /// Berekent de totale borg in de list box met exemplaren die verhuurd gaan worden.
+        /// </summary>
+        private void btnTotaleBorg_Click(object sender, EventArgs e)
+        {
+            int totaleBorg = 0;
+            foreach (string s in clbExemplaarHuren.Items)
+            {
+                string id = s.Substring(3, s.Length - 4);
+                id = id.Substring(0, id.IndexOf(" - Borg:"));
+                totaleBorg += Materiaalbeheer.GetTotaleBorg(id).Sum(x => Convert.ToInt32(x));
+            }
+            lblBorg.Text = "\u20AC" + totaleBorg;
+        }
+
         private void btnKoppelMateriaalBeheer_Click(object sender, EventArgs e)
         {
             if(tbRFIDMBeheer.Text == "" || tbGebruikersnaamMBeheer.Text == "")
@@ -962,7 +977,6 @@ namespace ICT4Events
             DateTime retourDatum = uitleenDatum.AddDays(3);
 
             int maxId = Convert.ToInt32(Materiaalbeheer.AlleUitleningen().Max()) + 1;
-            List<string> gevinkteExemplaren = new List<string>();
 
             if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
             {
@@ -1061,6 +1075,8 @@ namespace ICT4Events
         {
 
         }
+
+        
 
 
 

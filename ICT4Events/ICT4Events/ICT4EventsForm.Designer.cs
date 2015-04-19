@@ -1512,6 +1512,7 @@
             this.btnTotaleBorg.TabIndex = 15;
             this.btnTotaleBorg.Text = "Bereken Borg";
             this.btnTotaleBorg.UseVisualStyleBackColor = true;
+            this.btnTotaleBorg.Click += new System.EventHandler(this.btnTotaleBorg_Click);
             // 
             // ICT4EventsForm
             // 

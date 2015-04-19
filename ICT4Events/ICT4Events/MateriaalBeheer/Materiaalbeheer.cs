@@ -113,9 +113,14 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
-        public static List<string> GetTotaleBorg()
+
+        /// <summary>
+        /// Return de borg met als parameter het exemplaar ID.
+        /// </summary>
+        public static List<string> GetTotaleBorg(string id)
         {
-            string query = "SELECT Borg FROM Materiaal m";
+            string query = "SELECT m.Borg FROM Exemplaar e, Materiaal m WHERE m.ID = e.MateriaalID AND e.ID = " +
+                    id;
             DataTable materiaalZoeken = database.voerQueryUit(query);
             List<string> stringList = new List<string>();
             foreach (DataRow dr in materiaalZoeken.Rows)
