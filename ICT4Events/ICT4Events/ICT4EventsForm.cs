@@ -41,7 +41,6 @@ namespace ICT4Events
             clbReserveringGebruikers.DataSource = reserveringBeheer.AlleGebruikers();
             listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
             clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
-            lbGasten.DataSource = materiaalbeheer.AlleGasten();
 
             //RFID
             rfid = new RFID();
