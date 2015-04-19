@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Events.GebruikerBeheer
 {
+    //Met deze klasse worden admins aangemaakt, de klasse overerft de gebruiker klasse
     class Admin : Gebruiker
     {
        

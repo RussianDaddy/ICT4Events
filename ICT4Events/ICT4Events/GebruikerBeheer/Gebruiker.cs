@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Events.GebruikerBeheer
 {
+    //Met de klasse worden gebruikers aangemaakt in het systeem
     class Gebruiker
     {
         public string Gebruikersnaam { get; set; }
@@ -15,6 +16,7 @@ namespace ICT4Events.GebruikerBeheer
         public bool Admin { get; set; }
         public string RFID { get; set; }
 
+        //De constructor
         public Gebruiker(string gebruikersnaam, string naam, string wachtwoord, bool aanwezig, string rfid, bool admin)
         {
             this.Gebruikersnaam = gebruikersnaam;
@@ -25,6 +27,7 @@ namespace ICT4Events.GebruikerBeheer
             this.Admin = admin;
         }
 
+        //Getter van de gebruikersnaam
         public string GetGebruikersnaam()
         {
             return Gebruikersnaam;

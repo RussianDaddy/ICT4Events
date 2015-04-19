@@ -22,6 +22,7 @@ namespace ICT4Events.Mediabeheer
 
         public List<Categorie> GetCategorieLijst { get { return CategorieLijst; } set { CategorieLijst = value; } }
         public List<Reactie> GetReactieLijst { get{ return reactielijst; } set{reactielijst = value; }  }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -29,6 +30,7 @@ namespace ICT4Events.Mediabeheer
         {
             Update();
         }
+
         /// <summary>
         /// Maakt een MediaFile object aan en voegt deze via de Databaseklasse toe aan de database
         /// </summary>
@@ -65,6 +67,7 @@ namespace ICT4Events.Mediabeheer
                 return false;
             }
         }
+
         /// <summary>
         /// Maakt een Reactie object aan met de meegekregen parameters
         /// </summary>
@@ -95,6 +98,7 @@ namespace ICT4Events.Mediabeheer
                 return false;
             }
         }
+
         /// <summary>
         /// zoekt in de lijsten naar het object met een id dat overeenkomt met het meegekregen id en hoogt de like counter van dit object op met 1, roept vervolgens de UpdateLRNaarDb methode aan
         /// </summary>
@@ -112,6 +116,7 @@ namespace ICT4Events.Mediabeheer
             }
             UpdateLRNaarDb(f);
         }
+
         /// <summary>
         /// zoekt in de lijsten naar het object met een id dat overeenkomt met het meegekregen id en hoogt de report counter van dit object op met 1, roept vervolgens de UpdateLRNaarDb methode aan
         /// </summary>
@@ -132,30 +137,14 @@ namespace ICT4Events.Mediabeheer
             }
             return false;
         }
-        /// <summary>
-        /// zoekt berichten met de titel die overeenkomt met de meegekregen naam
-        /// </summary>
-        /// <param name="MediaFileNaam">Naam van de te zoeken mediafiles</param>
-        /// <returns>lijst met de gevonden mediafiles</returns>
-        public List<Mediafile> ZoekFiles(String MediaFileNaam)
-        {
-            List<Mediafile> SearchedMediafileLijst = new List<Mediafile>();
-            foreach (Mediafile m in MediafileLijst)
-            {
-                if (m.Naam == MediaFileNaam)
-                {
-                    SearchedMediafileLijst.Add(m);
-                }
-            }
-            return SearchedMediafileLijst;
-        }
+
         /// <summary>
         /// download de bestanden naar uw computer
         /// </summary>
         /// <param name="Id"></param>
         public bool DownloadenMedia(string bronFile, string bestandsnaam)
         {
-            //Code voor het downloaden van media vanag de server
+            //Code voor het downloaden van media vanaf de server
             string doelPath = @"C:\Users\Public\ICT4Events";
             string doelBestand = Path.Combine(doelPath, bestandsnaam);
             if (!Directory.Exists(doelPath))
@@ -172,6 +161,7 @@ namespace ICT4Events.Mediabeheer
                 return false;
             }
         }
+
         /// <summary>
         /// upload het bestand vanaf uw computer naar de server
         /// </summary>
@@ -195,6 +185,7 @@ namespace ICT4Events.Mediabeheer
                     break;
             }
         }
+
         /// <summary>
         /// Filters alle berichten die voldoen aan de toegepaste filters 
         /// </summary>
@@ -211,6 +202,7 @@ namespace ICT4Events.Mediabeheer
             }
             return SearchedSoortLijst;
         }
+
         /// <summary>
         /// returned de categorie die overeenkomt met de meegestuurde naam
         /// </summary>
@@ -227,6 +219,7 @@ namespace ICT4Events.Mediabeheer
             }
             return null;
         }
+
         /// <summary>
         /// stuurt een update naar de database waardoor het aantal likes en aantal reports ook in de database wordt vastgelegd
         /// </summary>
@@ -242,6 +235,7 @@ namespace ICT4Events.Mediabeheer
                 }
             }
         }
+
         /// <summary>
         /// returned de gehele string van een reactie, deze string wordt vervolgens getoont in de messagebox
         /// </summary>
@@ -267,6 +261,7 @@ namespace ICT4Events.Mediabeheer
             }
             return WholeString;
         }
+
         /// <summary>
         /// zet alle gegevens uit de database opnieuw in de lijsten
         /// </summary>
@@ -276,46 +271,13 @@ namespace ICT4Events.Mediabeheer
             GetCategorieLijst = null;
             GetCategorieLijst = database.GetCategorieLijst(sqlGetMediafile, 0);
 
-            //Uncommenten zodra database.Reader.read() != null  (Reader leest geen rijen uit Mediafile tabel)
             string sqlGetCategorie = "SELECT * FROM MEDIAFILE";
             GetMediafileLijst = null;
             GetMediafileLijst = database.GetBerichtenList(sqlGetCategorie, CategorieLijst);
 
-            String sqlGetReactie = "SELECT * FROM REACTIE";
+            string sqlGetReactie = "SELECT * FROM REACTIE";
             GetReactieLijst = null;
             GetReactieLijst = database.GetReactieLijst(sqlGetReactie);
         }
-        /// <summary>
-        /// hoogt de report counter van een reactie op met 1
-        /// </summary>
-        public void BerichtRapporteren()
-        {
-            //berichten hebben een berichtenid nodig. zo kunnen we ze binnen de listbox identificeren. pas dan kun je bepaalde berichten liken en reageren op de desbetreffende berichten
-        }
-        /*public int VraagLikesOp(int MediafileId)
-        {
-            foreach (Mediafile m in MediafileLijst)
-            {
-                if (MediafileId == m.Id)
-                {
-                    return m.Like;
-                }
-
-            }
-            return -1;
-        }*/
-
-        /*public List<Mediafile> GetSearchedSoort(String searchstring)
-        {
-
-            foreach (Mediafile m in MediafileLijst)
-            {
-                if (searchstring.IndexOf(m.Type) != -1)
-                {
-                    SearchedSoortLijst.Add(m);
-                }
-            }
-            return SearchedSoortLijst;
-        }*/
     }
 }

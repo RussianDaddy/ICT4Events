@@ -11,8 +11,6 @@ namespace ICT4Events.MateriaalBeheer
 {
     internal class Materiaalbeheer
     {
-        //private Gebruiker Harold = new Gast("RussianDaddy", "Harold", "Egelhoorntje96", false, 1, false);
-
         private static Database.Database database = new Database.Database();
 
         /// <summary>

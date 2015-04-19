@@ -89,7 +89,7 @@
             this.btlike = new System.Windows.Forms.Button();
             this.LbFeed = new System.Windows.Forms.ListBox();
             this.TabAlgemeneinfo = new System.Windows.Forms.TabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.gpAlgemeneInfo = new System.Windows.Forms.GroupBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -171,7 +171,7 @@
             this.gbsoort.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.TabAlgemeneinfo.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.gpAlgemeneInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.TabHuren.SuspendLayout();
@@ -809,34 +809,34 @@
             // TabAlgemeneinfo
             // 
             this.TabAlgemeneinfo.BackColor = System.Drawing.Color.LightGray;
-            this.TabAlgemeneinfo.Controls.Add(this.groupBox9);
+            this.TabAlgemeneinfo.Controls.Add(this.gpAlgemeneInfo);
             this.TabAlgemeneinfo.Location = new System.Drawing.Point(4, 22);
             this.TabAlgemeneinfo.Name = "TabAlgemeneinfo";
             this.TabAlgemeneinfo.Size = new System.Drawing.Size(812, 542);
             this.TabAlgemeneinfo.TabIndex = 3;
             this.TabAlgemeneinfo.Text = "Algemene Info";
             // 
-            // groupBox9
+            // gpAlgemeneInfo
             // 
-            this.groupBox9.Controls.Add(this.label38);
-            this.groupBox9.Controls.Add(this.label39);
-            this.groupBox9.Controls.Add(this.label40);
-            this.groupBox9.Controls.Add(this.label41);
-            this.groupBox9.Controls.Add(this.label37);
-            this.groupBox9.Controls.Add(this.label36);
-            this.groupBox9.Controls.Add(this.label35);
-            this.groupBox9.Controls.Add(this.pictureBox3);
-            this.groupBox9.Controls.Add(this.label34);
-            this.groupBox9.Controls.Add(this.label33);
-            this.groupBox9.Controls.Add(this.label32);
-            this.groupBox9.Controls.Add(this.pictureBox2);
-            this.groupBox9.Controls.Add(this.label31);
-            this.groupBox9.Location = new System.Drawing.Point(4, 4);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(805, 535);
-            this.groupBox9.TabIndex = 0;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "groupBox9";
+            this.gpAlgemeneInfo.Controls.Add(this.label38);
+            this.gpAlgemeneInfo.Controls.Add(this.label39);
+            this.gpAlgemeneInfo.Controls.Add(this.label40);
+            this.gpAlgemeneInfo.Controls.Add(this.label41);
+            this.gpAlgemeneInfo.Controls.Add(this.label37);
+            this.gpAlgemeneInfo.Controls.Add(this.label36);
+            this.gpAlgemeneInfo.Controls.Add(this.label35);
+            this.gpAlgemeneInfo.Controls.Add(this.pictureBox3);
+            this.gpAlgemeneInfo.Controls.Add(this.label34);
+            this.gpAlgemeneInfo.Controls.Add(this.label33);
+            this.gpAlgemeneInfo.Controls.Add(this.label32);
+            this.gpAlgemeneInfo.Controls.Add(this.pictureBox2);
+            this.gpAlgemeneInfo.Controls.Add(this.label31);
+            this.gpAlgemeneInfo.Location = new System.Drawing.Point(4, 4);
+            this.gpAlgemeneInfo.Name = "gpAlgemeneInfo";
+            this.gpAlgemeneInfo.Size = new System.Drawing.Size(805, 535);
+            this.gpAlgemeneInfo.TabIndex = 0;
+            this.gpAlgemeneInfo.TabStop = false;
+            this.gpAlgemeneInfo.Text = "groupBox9";
             // 
             // label38
             // 
@@ -1489,7 +1489,6 @@
             this.Controls.Add(this.tabICT4Events);
             this.Name = "ICT4EventsForm";
             this.Text = "ICT4Events";
-            this.Load += new System.EventHandler(this.ICT4EventsForm_Load);
             this.tabICT4Events.ResumeLayout(false);
             this.TabInloggen.ResumeLayout(false);
             this.gbInloggen.ResumeLayout(false);
@@ -1509,8 +1508,8 @@
             this.gbsoort.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.TabAlgemeneinfo.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.gpAlgemeneInfo.ResumeLayout(false);
+            this.gpAlgemeneInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.TabHuren.ResumeLayout(false);
@@ -1585,7 +1584,7 @@
         private System.Windows.Forms.CheckBox chbEvent;
         private System.Windows.Forms.ListBox LbFeed;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox gpAlgemeneInfo;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.PictureBox pictureBox2;

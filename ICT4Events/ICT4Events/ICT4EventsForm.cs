@@ -20,18 +20,15 @@ namespace ICT4Events
         private Materiaalbeheer materiaalbeheer = new Materiaalbeheer();
         private List<Mediabeheer.Mediafile> tempSoortList;
         private string searchstring;
-        private List<Exemplaar> exemplaren; 
         private Mediabeheer.Mediabeheer mediabeheer;
         RFID rfid;
 
         string CheckisMediafile;
         private string stringId;
         private string sstringId;
-        private string path;
         private string loggedinuser;
         private int LastID;
         private string GetMediaId;
-        private int CheckReply;
 
         public ICT4EventsForm()
         {
@@ -51,7 +48,6 @@ namespace ICT4Events
             lbRfidStatus.Text = "RFID not Connected!";
             lbRfidStatus.ForeColor = System.Drawing.Color.Red;
             tmRFIDTextboxClear.Stop();
-            //
 
             dtpDatumAankomst.MinDate = DateTime.Today;
             dtpDatumVertrek.MinDate = DateTime.Today;
@@ -67,6 +63,7 @@ namespace ICT4Events
         }
 
         //RFID Methods
+        //Controleert of de RFID scanner is gekoppeld
         private void rfid_Attach(object sender, AttachEventArgs e)
         {
             RFID attached = (RFID)sender;
@@ -74,6 +71,8 @@ namespace ICT4Events
             lbRfidStatus.Text = "RFID Connected!";
             lbRfidStatus.ForeColor = System.Drawing.Color.Black;
         }
+
+        //Leest het nummer van de RFID tag uit en vult deze in, in een textbox
         private void rfid_Tag(object sender, TagEventArgs e)
         {
             if (tabICT4Events.SelectedTab == tabICT4Events.TabPages["TabBeheren"])
@@ -88,12 +87,16 @@ namespace ICT4Events
             Thread.Sleep(100);
             rfid.LED = false;
         }
+
+        //Controleert of de RFID scanner wordt losgekoppeld
         private void rfid_Detach(object sender, DetachEventArgs e)
         {
             RFID detached = (RFID)sender;
             lbRfidStatus.Text = "RFID not Connected!";
             lbRfidStatus.ForeColor = System.Drawing.Color.Red;
         }
+
+        //Een timer de verschillende lijsten in het systeem om de 3 minuten ververst. Hierdoor wordt nieuwe data ingeladen
         private void refreshLijstTimer_Tick(object sender, EventArgs e)
         {
             if (rbtnAllePlaasten.Checked)
@@ -113,6 +116,7 @@ namespace ICT4Events
         }
 
         //GebruikerBeheer
+        //Met de ingevulde gegevens in het form wordt een nieuwe gebruiker aangemaakt
         private void btnAanmakenBeheer_Click(object sender, EventArgs e)
         {
             if(tbGebruikersnaamBeheer.Text == "" || tbNaamBeheer.Text == "" || tbWachtwoordBeheer.Text == "")
@@ -131,6 +135,7 @@ namespace ICT4Events
             }
         }
 
+        //Zodra er in de textbox voor het RFID nummer text wordt gewijzigd, wordt er meteen gecontroleerd of deze gebruiker toegang heeft tot het terrein
         private void tbRFIDnummBeheer_TextChanged(object sender, EventArgs e)
         {
             if (tbRFIDnummBeheer.Text != "")
@@ -149,6 +154,7 @@ namespace ICT4Events
             FillLbGebruikerBeheer();
         }
 
+        //Een timer die de textbox voor het RFID na een bepaalde tijd leeghaald
         private void tmRFIDTextboxClear_Tick(object sender, EventArgs e)
         {
             tbRFIDnummBeheer.Text = "";
@@ -156,6 +162,7 @@ namespace ICT4Events
             tmRFIDTextboxClear.Stop();
         }
 
+        //Als er op de knop wijzigen geklikt wordt, worden de nieuwe gegevens van de gebruiker uit de textboxen gehaald en gewijzigd in de databse
         private void btnWijzigenBeheer_Click(object sender, EventArgs e)
         {
             if (tbGebruikersnaamBeheer.Text == "" || tbNaamBeheer.Text == "" || tbWachtwoordBeheer.Text == "")
@@ -176,6 +183,7 @@ namespace ICT4Events
             }
         }
 
+        //Methode die de huidige gegevens van de selecteerde gebruiker in de lijst ophaald uit de database
         private void btnAanpassenBeheer_Click(object sender, EventArgs e)
         {
             if (lbGebruikerBeheer.SelectedItem != null)
@@ -201,11 +209,13 @@ namespace ICT4Events
             }
         }
 
+        //Als het op de button Laat Zien wordt geklikt wordt de methode FilllbGebruikerBeheer aangeroepen
         private void btnLaatZienBeheren_Click_1(object sender, EventArgs e)
         {
             FillLbGebruikerBeheer();
         }
 
+        //Vult de lijst met de gebruikersgegevens uit de database of met gegevens van alle aanwezige op het terrein
         public void FillLbGebruikerBeheer()
         {
             lbGebruikerBeheer.Items.Clear();
@@ -231,6 +241,7 @@ namespace ICT4Events
             }
         }
 
+        //Controleert of de index verandert van de lijst met gebruikers
         private void lbGebruikerBeheer_SelectedIndexChanged(object sender, EventArgs e)
         {
             string email = "";
@@ -255,6 +266,7 @@ namespace ICT4Events
             }
         }
 
+        //Controleerd de betaling van de geselecteerde gebruiker in de lijst. Als de gebruiker betaald heeft verschijnt er BETAALD en wordt deze teskt groen
         private void btnCheckBetaalstatus_Click(object sender, EventArgs e)
         {
             if(lbGebruikerBeheer.SelectedItem == null)
@@ -337,7 +349,6 @@ namespace ICT4Events
                     else
                     {
                         MessageBox.Show("Je reactie is succesvol gepost!");
-                        //mediabeheer.Update();
                         RefreshAll();
                     }
                 }
@@ -400,6 +411,7 @@ namespace ICT4Events
                 RefreshAll();
             }
         }
+
         /// <summary>
         /// De knop view post maakt het mogelijk om de post die geselcteerd is in de listbox te bekijken in een overzichtelijke messagebox. hier wordt alle informatie in gezet zoals wie het heeft geschreven, hoeveel likes het heeft en wat de titel is. 
         /// Dit kan ook met reacties op posts. hierbij krijg je dan het originele bericht te zien met al zijn informatie, maar je krijgt ook de reactie te zien. Id's worden bepaald door middel van substrings ( vandaar de vele if's en de for loops)
@@ -424,7 +436,6 @@ namespace ICT4Events
                             {
                                 if (r.ID == Convert.ToInt32(RID))
                                 {
-                                    //26
                                     for (int y = 10; y > 0; y--)
                                     {
                                         sstringId = Selectedtem.Substring(Selectedtem.IndexOf("d"), y);
@@ -436,7 +447,6 @@ namespace ICT4Events
                                         }
                                     }
                                     MessageBox.Show(mediabeheer.GetWholeReactieString(RID, Convert.ToInt32(GetMediaId)));
-                                    //int check
                                 }
                             }
                         }
@@ -447,11 +457,9 @@ namespace ICT4Events
                                 if (m.Id == Convert.ToInt32(stringId))
                                 {
                                     MessageBox.Show(m.WholeString());
-                                    //int check
                                 }
                             }
                         }
-                        //if int check =1 check nieuw string id van reacties en foreach Reactie in GetReactielijst show r.wholestring
                         i = -1;
                     }
                 }
@@ -461,6 +469,7 @@ namespace ICT4Events
                 MessageBox.Show("Selecteer een Mediafile om te bekijken");
             }
         }
+
         /// <summary>
         /// wanneer er op de knop like wordt geklikt wordt er eerst bepaald welk bericht is geselecteerd. Als het een origineel Mediafile is dan is het mogelijk om deze te liken. 
         /// het desbetreffende mediaid wordt meegestuurd naar MediaBeheer en hier wordt de likecounte voor dit object opgehoogd.
@@ -492,6 +501,7 @@ namespace ICT4Events
             }
 
         }
+
         /// <summary>
         /// Wanneer je op report klikt wordt er bepaald welk item er is geselecteerd en vervolgens wordt de id doorgestuurd naar MediaBeheer.
         /// Hier wordt de report counter opgehoogt.
@@ -526,8 +536,8 @@ namespace ICT4Events
             {
                 MessageBox.Show("Selecteer een origineel mediafile om te reporten!");
             }
-
         }
+
         /// <summary>
         /// Als er op de filter knop wordt gedrukt wordt er gecontroleerd welke checkboxen met soorten berichten zijn aangevinkt, en vervolgens word er een string gestuurd naar MediaBeheer.
         /// In deze string staan achter elkaar alle Soorten in tekst. Als er berichten zijn met dit soort als attribuut eworden deze berichten weer gegeven.
@@ -536,7 +546,8 @@ namespace ICT4Events
         /// <param name="e"></param>
         private void btFilter_Click(object sender, EventArgs e)
         {
-            if(chbBericht.Checked == false && chbBestand.Checked == false && chbEvent.Checked == false && chbFoto.Checked == false && chbVideo.Checked == false )
+            if (chbBericht.Checked == false && chbBestand.Checked == false && chbEvent.Checked == false &&
+                chbFoto.Checked == false && chbVideo.Checked == false)
             {
                 LbFeed.Items.Clear();
                 foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
@@ -583,8 +594,8 @@ namespace ICT4Events
                 mediabeheer.SearchedSoortLijst = null;
                 mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
             }
-            }
-            
+        }
+
         /// <summary>
         /// Deze knop heft alle toegepaste filters weer op zodat alle berichten worden laten zien.
         /// </summary>
@@ -599,6 +610,7 @@ namespace ICT4Events
             chbFoto.Checked = false;
             chbVideo.Checked = false;
         }
+
         /// <summary>
         /// Deze knop laat je een bestand op je computer selecteren en haalt het pad op zodat de file uiteindelijk gestuurd kan worden naar de server
         /// </summary>
@@ -634,6 +646,7 @@ namespace ICT4Events
                 }
             }
         }
+
         /// <summary>
         /// Maakt het mogelijk om een bestand wat op de servers is geupload te downloaden
         /// </summary>
@@ -656,6 +669,7 @@ namespace ICT4Events
                 }
             }
         }
+
         /// <summary>
         /// Deze methode haalt de laatste Id op van de mediafiles zodat er bij het posten een object aangemaakt kan worden met 1 hoger (auto increment)
         /// </summary>
@@ -668,6 +682,7 @@ namespace ICT4Events
             int lastid = lastmediafile.Id;
             return lastid;
         }
+
         /// <summary>
         /// Deze methode haalt de feed en comboboxen leeg en vult ze opnieuw met de meest recente gegevens uit de lijsten (die zijn bijgewerkt uit de database)
         /// </summary>
@@ -689,49 +704,7 @@ namespace ICT4Events
                 cbCategorieAanmaken.Items.Add(c.ToString());
             }
         }
-        /*private void btreply_Click(object sender, EventArgs e)
-        {
-            string replyItem = Convert.ToString(LbFeed.SelectedItem);
-            CheckisMediafile = replyItem.Substring(0, 3);
-            if (LbFeed.SelectedItem != null && CheckisMediafile != "Rea" && replyItem.Substring(0, 3) != "ID:")
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    stringId = replyItem.Substring(0, i);
-                    if (stringId.IndexOf("-") == -1)
-                    {
-                        stringId = stringId.Substring(0, (i));
-                        i = -1;
-                    }
-                }
-                int maxreactieid = 0;
-                foreach(Mediabeheer.Reactie r in mediabeheer.GetReactieLijst)
-                {
-                    if(r.ID > maxreactieid)
-                    {
-                        maxreactieid = r.ID;
-                    } 
-                }
-            int MediafileID = Convert.ToInt32(stringId);
-            int ReactieId = maxreactieid + 1;
-            if(!mediabeheer.ReactiePlaatsen(ReactieId, MediafileID, tbBericht.Text, loggedinuser))
-            {
-                MessageBox.Show("Er is iets fout gegaan bij het plaatsen van je reactie, probeer het opnieuw!");
-            }
-            else{
-                MessageBox.Show("Je reactie is succesvol gepost!");
-                //mediabeheer.Update();
-                RefreshAll();
-            }
-            
-            }
-            else
-            {
-                MessageBox.Show("Selecteer eerst een origineel bericht om op te reageren");
-            }
-            mediabeheer.Update();
-            RefreshAll();
-        }*/
+
         /// <summary>
         /// Disabled Titel textbox pad textbox en de combobox voor het selecteren van een categorie wanneer dit niet van toepassing is bij het geselecteerde soort.
         /// </summary>
@@ -754,6 +727,7 @@ namespace ICT4Events
                 btBrowse.Enabled = true;
             }
         }
+
         /// <summary>
         /// Disabled pad textbox wanneer dit niet van toepassing is bij het geselecteerde soort.
         /// </summary>
@@ -774,6 +748,7 @@ namespace ICT4Events
                 btBrowse.Enabled = true;
             }
         }
+
         /// <summary>
         /// Disabled pad textbox wanneer dit niet van toepassing is bij het geselecteerde soort.
         /// </summary>
@@ -806,7 +781,7 @@ namespace ICT4Events
             DateTime aankomstDatum = dtpDatumAankomst.Value.Date; //de aankomstdatum is de waarde uit de DateTimePicker
             DateTime vertrekdatum = dtpDatumVertrek.Value.Date; //de vertrekdatum is de waarde uit de DateTimePicker
             int betaald = 0;
-            //controleer of de checkbox Betaald is aangevinkt
+            //controleert of de checkbox Betaald is aangevinkt
             if (cbBetaald.Checked)
             {
                 betaald = 1;
@@ -915,7 +890,6 @@ namespace ICT4Events
         }
 
         //MateriaalBheer
-
         /// <summary>
         /// Kijkt of het ingevuld ID gelijk is aan het ID van het materiaal in de database.
         /// </summary>
@@ -1058,6 +1032,7 @@ namespace ICT4Events
 
             }
         }
+
         private void btnUitloggen_Click(object sender, EventArgs e)
         {
             tabICT4Events.TabPages.Remove(TabFeed);
@@ -1067,22 +1042,6 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabBeheren);
             tabICT4Events.TabPages.Add(TabInloggen);
         }
-
-        private void ICT4EventsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-
-
-
-
-
-
-
-        //EventBeheer
     }
 }
  

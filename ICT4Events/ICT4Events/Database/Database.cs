@@ -230,7 +230,6 @@ namespace ICT4Events.Database
                 string Naam;
                 string Bericht;
                 string Type;
-                //string Categorie;
                 string Path;
                 int Like;
                 int Report;
@@ -243,7 +242,6 @@ namespace ICT4Events.Database
                     Naam = Convert.ToString(Reader["Name"]);
                     Bericht = Convert.ToString(Reader["Bericht"]);
                     Type = Convert.ToString(Reader["Type"]);
-                    //Categorie = Convert.ToString(Reader["Categorie"]);
                     Path = Convert.ToString(Reader["Path"]);
                     Like = Convert.ToInt32(Reader["VindIkLeuk"]);
                     Report = Convert.ToInt32(Reader["Report"]);
@@ -290,25 +288,11 @@ namespace ICT4Events.Database
 
                 int Id;
                 string Naam;
-                //int MediafileID;
-                //string SuperCategorie;
-
                 while (Reader.Read())
                 {
                     Id = Convert.ToInt32(Reader["ID"]);
                     Naam = Convert.ToString(Reader["Naam"]);
-                    //MediafileID = Convert.ToInt32(Reader["MediafileID"]);
-                    //SuperCategorie = Convert.ToString(Reader["SuperCategorieID"]);
-                    /*if (check == 0)
-                    {*/
                     CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
-
-                   // }
-                    /*if(check == 1)
-                    {
-                        CategorieLijst.Add(new Mediabeheer.Categorie(Id, Naam));
-                    }*/
-
                 }
                 return CategorieLijst;
             }

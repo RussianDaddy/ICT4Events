@@ -7,9 +7,13 @@ using System.Windows.Forms;
 
 namespace ICT4Events.GebruikerBeheer
 {
+    //Deze klasse voert de actie tussen het tabblad beheren in het form en de database
     class GebruikerBeheer
     {
         Database.Database Database = new Database.Database();
+
+        //De methode regelt het inloggen in het systeem. Het wachtwoord wordt opgezocht m.b.v. de gebruikersnaam en wordt vergeleken met het ingevoerde wachtwoord
+        //Als het wachtwoord correct is wordt er gekeken of de gebruiker een gast of een admin is
         public string Inloggen(string gebruikersnaam, string wachtwoord)
         {
             string sqlGegevens = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
@@ -47,6 +51,7 @@ namespace ICT4Events.GebruikerBeheer
 
         }
 
+        //Met deze methode kunnen de gegevens van de gebruiker gewijzigd worden in de database
         public void Update(string email, string naam, string wachtwoord, string admin)
         {
             string sqlGebruiker = "";
@@ -113,6 +118,7 @@ namespace ICT4Events.GebruikerBeheer
             }
         }
 
+        //Er wordt een lijst gemaakt met alle gebruiker die als aanwezig staan geregistreerd in de database
         public List<Gebruiker> LijstAanwezigen(bool aanwezig)
         {
             string sql;
@@ -129,6 +135,7 @@ namespace ICT4Events.GebruikerBeheer
             return Gebruikers;
         }
 
+        //Aan de hand van het emailadres worden de gebruikergegevens opgevraagd uit de database
         public Gebruiker GebruikerOpvragen(string email)
         {
             string sql = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + email + "'";
@@ -143,6 +150,7 @@ namespace ICT4Events.GebruikerBeheer
             return null;
         }
 
+        //Aan de hand van het emailadres van de gebruiker wordt de reservering van de gebruiker opgevraagd
         public List<ReserveringBeheer.Reservering> GebruikerReservering(string email)
         {
             string sqlReservering = "SELECT * FROM RESERVERING WHERE GEBRUIKERGEBRUIKERSNAAM = '" + email + "'";
@@ -151,6 +159,7 @@ namespace ICT4Events.GebruikerBeheer
             return Reserveringen;
         }
 
+        //De status van de betaling worden opgevraagd uit de database m.b.v. het emailadres en het reserveringnummer van de gebruiker
         public bool Betaalstatus(string Email, int ReserveringNummer)
         {
             string sqlBetaalstatus = "SELECT * FROM RESERVERING WHERE GEBRUIKERGEBRUIKERSNAAM = '" + Email + "' AND NUMMER = " + ReserveringNummer;
@@ -170,6 +179,8 @@ namespace ICT4Events.GebruikerBeheer
             }
             return ReturnStatus;
         }
+
+        //Deze methode wordt gebruikt als toegangsysteem. Aan de hand van het RFID van de gebruiker, wordt bij deze gebruiker de aanwezigheid gewijzigd
         public bool Aanwezig(string RFID)
         {
             bool Check = false;

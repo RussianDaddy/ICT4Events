@@ -8,16 +8,9 @@ namespace ICT4Events.Mediabeheer
 {
     public class Reactie
     {
-        public Reactie(String Bericht, DateTime Datum, int Berichtid)
-        {
-            this.Bericht = Bericht;
-            this.Datum = Datum;
-            this.Berichtid = Berichtid;
-        }
         public Reactie(int Id, String Bericht, String Gebruiker, int Berichtid)
         {
             this.Bericht = Bericht;
-            //this.Datum = Datum;
             this.Berichtid = Berichtid;
             this.Gebruiker = Gebruiker;
             this.ID = Id;
@@ -27,6 +20,7 @@ namespace ICT4Events.Mediabeheer
         public DateTime Datum { get; set; }
         public int Berichtid { get; set; }
         public String Gebruiker { get; set; }
+
         /// <summary>
         /// returned de string van dit die wordt getoond in de listbox
         /// </summary>
@@ -35,6 +29,7 @@ namespace ICT4Events.Mediabeheer
         {
             return "ID: " + ID + " - Reactie op bericht met id: " + Berichtid + " ,- Door: " + Gebruiker + " - Bericht: " + Bericht; 
         }
+
         /// <summary>
         /// returned de string van dit die wordt getoond in de listbox
         /// </summary>
