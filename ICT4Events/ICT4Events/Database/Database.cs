@@ -18,6 +18,7 @@ namespace ICT4Events.Database
         OracleConnection connection;
         String connectionString = "User Id=system;Password=P@ssw0rd;Data Source=//192.168.20.22/xe;";
 
+        //Deze methode opent de connectie met de database aan het hand van de gegevens in de connectionString
         public void openConnection()
         {
             connection = new OracleConnection();
@@ -25,6 +26,7 @@ namespace ICT4Events.Database
             connection.Open();
         }
 
+        //Er wordt een query uitgevoert en de data wordt opgeslagen in een datatable
         public DataTable voerQueryUit(String query)
         {
             openConnection();
@@ -48,6 +50,7 @@ namespace ICT4Events.Database
             return null;
         }
 
+        //Er wordt een insert query gedaan in de database
         public bool Insert(string sql)
         {
             try
@@ -91,6 +94,7 @@ namespace ICT4Events.Database
             }
         }
 
+        //Alle gebruikers worden opgevraagd aan de hand van de sql query en de data wordt opgeslagen in een lijst. Voor iedere gebruiker wordt een object aangemaakt
         public List<GebruikerBeheer.Gebruiker> GetGebruikerList(string sql)
         {
             List<GebruikerBeheer.Gebruiker> Gebruiker = new List<GebruikerBeheer.Gebruiker>();
@@ -160,6 +164,8 @@ namespace ICT4Events.Database
             }
             return Gebruiker;
         }
+
+        //Alle reserveringen worden opgevraagd aan de hand van de sql query en de data wordt opgeslagen in een lijst. Voor iedere reservering wordt een object aangemaakt
         public List<ReserveringBeheer.Reservering> GetReserveringen(string sql)
         {
             List<ReserveringBeheer.Reservering> Reserveringen = new List<ReserveringBeheer.Reservering>();
@@ -202,6 +208,7 @@ namespace ICT4Events.Database
             }
             return Reserveringen;
         }
+
         /// <summary>
         /// Geeft een lijst waarin alle berichten staan uit de database
         /// </summary>
@@ -263,6 +270,7 @@ namespace ICT4Events.Database
             }
             return BerichtenLijst;
         } 
+
         /// <summary>
         /// geeft een lijst met alle categoriën bekend in de database
         /// </summary>
@@ -314,6 +322,7 @@ namespace ICT4Events.Database
             }
             return CategorieLijst;
         }
+
         /// <summary>
         /// Geeft een lijst met alle Reacties die bekend zijn in de database
         /// </summary>
