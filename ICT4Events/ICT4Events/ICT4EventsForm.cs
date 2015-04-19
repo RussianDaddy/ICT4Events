@@ -404,7 +404,7 @@ namespace ICT4Events
                     string categorie = cbCategorieAanmaken.Text;
                     if (mediabeheer.BerichtPlaatsen(LastID + 1, loggedinuser, Convert.ToString(tbTitel.Text), Convert.ToString(tbBericht.Text), Convert.ToString(soort), categorie, tbPath.Text, 0, 0) == true)
                     {
-                        MessageBox.Show("Het bericht is succesfull gepost!");
+                        MessageBox.Show("Het bericht is succesvol gepost!");
                     }
                     else
                     {
@@ -551,40 +551,55 @@ namespace ICT4Events
         /// <param name="e"></param>
         private void btFilter_Click(object sender, EventArgs e)
         {
-            searchstring = "";
-            LbFeed.Items.Clear();
-            if (chbBericht.Checked)
+            if(chbBericht.Checked == false && chbBestand.Checked == false && chbEvent.Checked == false && chbFoto.Checked == false && chbVideo.Checked == false )
             {
-                searchstring += " Bericht";
-            }
-            if (chbBestand.Checked)
-            {
-                searchstring += " Bestand";
-            }
-            if (chbEvent.Checked)
-            {
-                searchstring += " Event";
-            }
-            if (chbFoto.Checked)
-            {
-                searchstring += " Foto";
-            }
-            if (chbVideo.Checked)
-            {
-                searchstring += " Video";
-            }
-            tempSoortList = mediabeheer.Filteren(searchstring);
-            foreach (Mediabeheer.Mediafile m in tempSoortList)
-            {
-                if(m.Report == 0)
+                LbFeed.Items.Clear();
+                foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
                 {
-                    LbFeed.Items.Add(m.ToString());
+                    if (m.Report == 0)
+                    {
+                        LbFeed.Items.Add(m.ToString());
+                    }
                 }
             }
-            tempSoortList = null;
-            mediabeheer.SearchedSoortLijst = null;
-            mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
-        }
+            else
+            {
+                LbFeed.Items.Clear();
+                searchstring = "";
+                if (chbBericht.Checked)
+                {
+                    searchstring += " Bericht";
+                }
+                if (chbBestand.Checked)
+                {
+                    searchstring += " Bestand";
+                }
+                if (chbEvent.Checked)
+                {
+                    searchstring += " Event";
+                }
+                if (chbFoto.Checked)
+                {
+                    searchstring += " Foto";
+                }
+                if (chbVideo.Checked)
+                {
+                    searchstring += " Video";
+                }
+                tempSoortList = mediabeheer.Filteren(searchstring);
+                foreach (Mediabeheer.Mediafile m in tempSoortList)
+                {
+                    if (m.Report == 0)
+                    {
+                        LbFeed.Items.Add(m.ToString());
+                    }
+                }
+                tempSoortList = null;
+                mediabeheer.SearchedSoortLijst = null;
+                mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
+            }
+            }
+            
         /// <summary>
         /// Deze knop heft alle toegepaste filters weer op zodat alle berichten worden laten zien.
         /// </summary>
@@ -620,14 +635,17 @@ namespace ICT4Events
                 if (extenion.Equals(".jpg") || extenion.Equals(".JPG") || extenion.Equals(".jpeg") || extenion.Equals(".gif") || extenion.Equals(".png"))
                 {
                     mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 1);
+                    MessageBox.Show("Uw Afbeelding is succesvol geupload naar de server!");
                 }
                 if (extenion.Equals(".wmv") || extenion.Equals(".mp4"))
                 {
                     mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 2);
+                    MessageBox.Show("Uw Video is succesvol geupload naar de server!");
                 }
                 if (extenion.Equals(".txt"))
                 {
                     mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 3);
+                    MessageBox.Show("Uw Bestand is succesvol geupload naar de server!");
                 }
             }
         }
