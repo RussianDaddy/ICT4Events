@@ -809,16 +809,24 @@ namespace ICT4Events
                 btBrowse.Enabled = true;
             }
         }
+
         //ReserveringBeheer
+        /// <summary>
+        /// Dit is de methode die aangeroepen wordt al er op de knop Reserveer wordt geklikt, de reservering wordt uiteindelijk in de database opgeslagen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btReserveer_Click(object sender, EventArgs e)
         {
-            DateTime aankomstDatum = dtpDatumAankomst.Value.Date;
-            DateTime vertrekdatum = dtpDatumVertrek.Value.Date;
+            DateTime aankomstDatum = dtpDatumAankomst.Value.Date; //de aankomstdatum is de waarde uit de DateTimePicker
+            DateTime vertrekdatum = dtpDatumVertrek.Value.Date; //de vertrekdatum is de waarde uit de DateTimePicker
             int betaald = 0;
+            //controleer of de checkbox Betaald is aangevinkt
             if (cbBetaald.Checked)
             {
                 betaald = 1;
             }
+            //Alle kampeerplaatsnummers van de aangevinkte plaatsen worden in een lijst geplaatst. En het aantal personen kan kan verblijven in deze plaatsen wordt opgeslagen in aantalpersonen
             List<String> kampeerPlaatsen = new List<string>();
             int aantalPersonen = 0;
             foreach (String kampeerplaats in clbReserveringKampeerplaatsen.CheckedItems)
@@ -828,6 +836,7 @@ namespace ICT4Events
                 kampeerplaatsNummer = kampeerplaatsNummer.Substring(0, kampeerplaatsNummer.IndexOf(" Soort:"));
                 kampeerPlaatsen.Add(kampeerplaatsNummer);
             }
+            //Alle gebruikersnamen van de aangevinkte gebruikers worden in een lijst geplaatst.
             List<String> gebruikersnamen = new List<string>();
             foreach (String gegevens in clbReserveringGebruikers.CheckedItems)
             {
@@ -835,7 +844,7 @@ namespace ICT4Events
                 gebruikersnaam = gebruikersnaam.Substring(0, gebruikersnaam.IndexOf(" Naam:"));
                 gebruikersnamen.Add(gebruikersnaam);
             }
-            string hoofdboeker = gebruikersnamen.First();
+            string hoofdboeker = gebruikersnamen.First(); //De eerste gebruikersnaam in de lijst wordt de hoofdboeker
             if (aantalPersonen > gebruikersnamen.Count)
             {
                 if (reserveringBeheer.Reserveren(hoofdboeker, aankomstDatum, vertrekdatum, betaald))
@@ -844,6 +853,7 @@ namespace ICT4Events
                     MessageBox.Show("Reservering Toegevoegd");
                     string reserveringsNummer = reserveringBeheer.VindReserveringNummer(hoofdboeker,
                         aankomstDatum, vertrekdatum);
+                    //Als er na de hoofdboeker nog steeds gebruikersnamen is de lijst voorkomen, worden deze toegevoegd als medereiziger
                     if (gebruikersnamen.Count > 0)
                     {
                         foreach (String medereiziger in gebruikersnamen)
@@ -855,6 +865,7 @@ namespace ICT4Events
                             }
                         }
                     }
+                    //Alle kampeerplaatsen worden toegevoegd aan de reservering
                     foreach (var verblijfplaats in kampeerPlaatsen)
                     {
                         if (reserveringBeheer.KoppelKampeerplaats(hoofdboeker, aankomstDatum, vertrekdatum,
@@ -874,26 +885,31 @@ namespace ICT4Events
             listboxReserveringen.DataSource = reserveringBeheer.AlleReserveringen();
         }
 
+        //Als de radiobutton Alle Kampeerplaatsen wordt geselecteerd worden alle kampeerplaatsen opgevraagd
         private void rbtnAllePlaasten_CheckedChanged(object sender, EventArgs e)
         {
             clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AllePlaatsen();
         }
 
+        //Als de radiobutton Specifieke Kampeerplaatsen wordt geselecteerd worden alle kampeerplaatsen met eigenschappen opgevraagd
         private void rbtnSpecifiekePlaatsen_CheckedChanged(object sender, EventArgs e)
         {
             clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleSpecifiekePlaatsen();
         }
 
+        //Als de radiobutton Vrije Kampeerplaasten wordt geselecteerd wordt geselecteerd worden alle kamperplaatsen opgevraagd waar de vertrekdatum in het verleden ligt
         private void rbtnVrijePlaatsen_CheckedChanged(object sender, EventArgs e)
         {
             clbReserveringKampeerplaatsen.DataSource = reserveringBeheer.AlleVrijePlaatsen();
         }
 
+        //Deze methode wordt aangeroepen als er op de button Betaald wordt geklikt
         private void btnReserveringBetaald_Click(object sender, EventArgs e)
         {
-            string reservering = listboxReserveringen.SelectedItem.ToString();
+            string reservering = listboxReserveringen.SelectedItem.ToString(); //De selecteerde reservering uit de lijst wordt opgeslagen
             reservering = reservering.Substring(8);
             reservering = reservering.Substring(0, reservering.IndexOf(" Naam:"));
+            //In de database wordt de betaling bijgewerkt aan de hand van het reserveringsnummer
             if(reserveringBeheer.UpdateBetaling(reservering))
             {
                 MessageBox.Show("Reservering: " + reservering + " is betaald");
@@ -903,9 +919,11 @@ namespace ICT4Events
                 MessageBox.Show("Betaling kan niet worden gewijzigd");
             }
         }
+
+        //Als de datum in de DateTimePicker vna de aankomstdatum veranderd wordt dat de minimum datum van de vertrekdatum
         private void dtpDatumVan_ValueChanged(object sender, EventArgs e)
         {
-            var reservatievan = new DateTime();
+            DateTime reservatievan;
             reservatievan = dtpDatumAankomst.Value;
             dtpDatumVertrek.MinDate = reservatievan;
             dtpDatumVertrek.Refresh();
