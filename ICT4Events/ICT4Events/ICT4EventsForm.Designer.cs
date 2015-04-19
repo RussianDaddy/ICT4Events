@@ -1090,9 +1090,9 @@
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(6, 34);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(70, 13);
+            this.label42.Size = new System.Drawing.Size(67, 13);
             this.label42.TabIndex = 11;
-            this.label42.Text = "ExemplaarID:";
+            this.label42.Text = "Materiaal ID:";
             // 
             // tbExemplaarId
             // 

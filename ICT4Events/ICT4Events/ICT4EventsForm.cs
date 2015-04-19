@@ -889,13 +889,16 @@ namespace ICT4Events
 
         //MateriaalBheer
 
+        /// <summary>
+        /// Kijkt of het ingevuld ID gelijk is aan het ID van het materiaal in de database.
+        /// </summary>
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
             
                 int maxId = Convert.ToInt32(Materiaalbeheer.GetMaxExemplaar().Max());
                 if (tbExemplaarId.Text == "")
                 {
-                    MessageBox.Show("Er is niets ingevuld.");
+                    clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
                 }
                 else if (Convert.ToInt32(tbExemplaarId.Text) <=  maxId)
                 {
@@ -963,6 +966,9 @@ namespace ICT4Events
             
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
+                string borg = exemplaar.Substring(15);
+                borg = borg.Substring(0, exemplaar.IndexOf(" - Soort:"));
+                
                     if (!stringList.Contains(exemplaar))
                     {   
                         clbExemplaarHuren.Items.Add(exemplaar);
