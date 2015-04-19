@@ -908,6 +908,7 @@ namespace ICT4Events
                 else
                 {
                     MessageBox.Show("Het ID wat je hebt ingevuld bestaat niet");
+                    clbExemplaren.DataSource = materiaalbeheer.AlleExemplaren();
                 }
         }
 
@@ -963,12 +964,13 @@ namespace ICT4Events
             {
                 stringList.Add(exemplaarH);
             }
-            
+            //List<string> stringLijst = new List<string>();
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
-                string borg = exemplaar.Substring(15);
-                borg = borg.Substring(0, exemplaar.IndexOf(" - Soort:"));
-                
+                //string borg = exemplaar.Substring(15);
+                //borg = borg.Substring(0, exemplaar.IndexOf(" - Soort:"));
+                //stringList.Add(borg);
+
                     if (!stringList.Contains(exemplaar))
                     {   
                         clbExemplaarHuren.Items.Add(exemplaar);
