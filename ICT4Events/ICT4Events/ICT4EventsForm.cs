@@ -995,14 +995,12 @@ namespace ICT4Events
         /// </summary>
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
-            string checkedGebruikersnaam = lbGasten.SelectedItem.ToString();
-            checkedGebruikersnaam = checkedGebruikersnaam.Substring(0, checkedGebruikersnaam.IndexOf(" - Naam:"));
             DateTime uitleenDatum = DateTime.Now;
             DateTime retourDatum = uitleenDatum.AddDays(3);
 
             int maxId = Convert.ToInt32(Materiaalbeheer.AlleUitleningen().Max()) + 1;
-
-            if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, checkedGebruikersnaam))
+            
+            if (Materiaalbeheer.MateriaalHuren(maxId, DateTime.Now, retourDatum, tbGebruikersnaamMBeheer.Text))
             {
                 foreach (string s in clbExemplaarHuren.CheckedItems)
                 {
@@ -1026,13 +1024,9 @@ namespace ICT4Events
             {
                 stringList.Add(exemplaarH);
             }
-            //List<string> stringLijst = new List<string>();
+
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
-                //string borg = exemplaar.Substring(15);
-                //borg = borg.Substring(0, exemplaar.IndexOf(" - Soort:"));
-                //stringList.Add(borg);
-
                     if (!stringList.Contains(exemplaar))
                     {   
                         clbExemplaarHuren.Items.Add(exemplaar);

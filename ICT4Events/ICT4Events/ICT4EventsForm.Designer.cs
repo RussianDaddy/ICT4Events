@@ -109,16 +109,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbRFIDMBeheer = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnUitlenen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbGasten = new System.Windows.Forms.ListBox();
+            this.btnTotaleBorg = new System.Windows.Forms.Button();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
             this.lblBorg = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.btnVerplaatsExemplaren = new System.Windows.Forms.Button();
             this.btnTerugplaatsenExemplaar = new System.Windows.Forms.Button();
             this.clbExemplaren = new System.Windows.Forms.CheckedListBox();
@@ -159,7 +157,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tmRFIDTextboxClear = new System.Windows.Forms.Timer(this.components);
-            this.btnTotaleBorg = new System.Windows.Forms.Button();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -966,7 +963,6 @@
             this.TabHuren.Controls.Add(this.label5);
             this.TabHuren.Controls.Add(this.tbRFIDMBeheer);
             this.TabHuren.Controls.Add(this.label16);
-            this.TabHuren.Controls.Add(this.checkBox1);
             this.TabHuren.Controls.Add(this.btnUitlenen);
             this.TabHuren.Controls.Add(this.groupBox1);
             this.TabHuren.Location = new System.Drawing.Point(4, 22);
@@ -1018,16 +1014,6 @@
             this.label16.TabIndex = 8;
             this.label16.Text = "RFID:";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(644, 518);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(68, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Betaald?";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // btnUitlenen
             // 
             this.btnUitlenen.Location = new System.Drawing.Point(734, 514);
@@ -1042,13 +1028,11 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
             this.groupBox1.Controls.Add(this.btnTotaleBorg);
-            this.groupBox1.Controls.Add(this.lbGasten);
             this.groupBox1.Controls.Add(this.btnZoekExemplaar);
             this.groupBox1.Controls.Add(this.lblBorg);
             this.groupBox1.Controls.Add(this.label42);
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.btnVerplaatsExemplaren);
             this.groupBox1.Controls.Add(this.btnTerugplaatsenExemplaar);
             this.groupBox1.Controls.Add(this.clbExemplaren);
@@ -1060,13 +1044,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uitlenen";
             // 
-            // lbGasten
+            // btnTotaleBorg
             // 
-            this.lbGasten.FormattingEnabled = true;
-            this.lbGasten.Location = new System.Drawing.Point(491, 9);
-            this.lbGasten.Name = "lbGasten";
-            this.lbGasten.Size = new System.Drawing.Size(308, 43);
-            this.lbGasten.TabIndex = 14;
+            this.btnTotaleBorg.Location = new System.Drawing.Point(9, 471);
+            this.btnTotaleBorg.Name = "btnTotaleBorg";
+            this.btnTotaleBorg.Size = new System.Drawing.Size(82, 23);
+            this.btnTotaleBorg.TabIndex = 15;
+            this.btnTotaleBorg.Text = "Bereken Borg";
+            this.btnTotaleBorg.UseVisualStyleBackColor = true;
+            this.btnTotaleBorg.Click += new System.EventHandler(this.btnTotaleBorg_Click);
             // 
             // btnZoekExemplaar
             // 
@@ -1111,15 +1097,6 @@
             this.label20.Size = new System.Drawing.Size(56, 13);
             this.label20.TabIndex = 9;
             this.label20.Text = "Producten";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(424, 18);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(48, 13);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "Uitlening";
             // 
             // btnVerplaatsExemplaren
             // 
@@ -1504,16 +1481,6 @@
             this.tmRFIDTextboxClear.Interval = 2000;
             this.tmRFIDTextboxClear.Tick += new System.EventHandler(this.tmRFIDTextboxClear_Tick);
             // 
-            // btnTotaleBorg
-            // 
-            this.btnTotaleBorg.Location = new System.Drawing.Point(9, 471);
-            this.btnTotaleBorg.Name = "btnTotaleBorg";
-            this.btnTotaleBorg.Size = new System.Drawing.Size(82, 23);
-            this.btnTotaleBorg.TabIndex = 15;
-            this.btnTotaleBorg.Text = "Bereken Borg";
-            this.btnTotaleBorg.UseVisualStyleBackColor = true;
-            this.btnTotaleBorg.Click += new System.EventHandler(this.btnTotaleBorg_Click);
-            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1588,7 +1555,6 @@
         private System.Windows.Forms.Label lblAankomstDatum;
         private System.Windows.Forms.Button btReserveer;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btnUitlenen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVerplaatsExemplaren;
@@ -1596,7 +1562,6 @@
         private System.Windows.Forms.CheckedListBox clbExemplaren;
         private System.Windows.Forms.CheckedListBox clbExemplaarHuren;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnAanpassenBeheer;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1673,7 +1638,6 @@
         private System.Windows.Forms.GroupBox gbUitloggen;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnUitloggen;
-        private System.Windows.Forms.ListBox lbGasten;
         private System.Windows.Forms.Button btdownloadfile;
         private System.Windows.Forms.Button btviewpost;
         private System.Windows.Forms.TextBox tbPath;
