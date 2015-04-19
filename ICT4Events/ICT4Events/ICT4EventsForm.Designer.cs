@@ -836,7 +836,7 @@
             this.gpAlgemeneInfo.Size = new System.Drawing.Size(805, 535);
             this.gpAlgemeneInfo.TabIndex = 0;
             this.gpAlgemeneInfo.TabStop = false;
-            this.gpAlgemeneInfo.Text = "groupBox9";
+            this.gpAlgemeneInfo.Text = "Algemene Info";
             // 
             // label38
             // 
@@ -1069,9 +1069,8 @@
             this.lblBorg.AutoSize = true;
             this.lblBorg.Location = new System.Drawing.Point(97, 476);
             this.lblBorg.Name = "lblBorg";
-            this.lblBorg.Size = new System.Drawing.Size(41, 13);
+            this.lblBorg.Size = new System.Drawing.Size(0, 13);
             this.lblBorg.TabIndex = 12;
-            this.lblBorg.Text = "label43";
             // 
             // label42
             // 
