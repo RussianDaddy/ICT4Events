@@ -181,7 +181,7 @@ namespace ICT4Events.ReserveringBeheer
             List<string> stringlist = new List<string>();
             foreach (DataRow dr in vrijeKampeerplaatsen.Rows)
             {
-                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1] + " Eigenschappen: " + dr[3] + " Aantal Personen: " + dr[2]);
+                stringlist.Add("Nummer: " + dr[0] + " Soort: " + dr[1]  + " Aantal Personen: " + dr[2]);
             }
             return stringlist;
         }
