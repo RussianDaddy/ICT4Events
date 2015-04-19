@@ -97,8 +97,14 @@ namespace ICT4Events
         }
         private void rfid_Tag(object sender, TagEventArgs e)
         {
-            tbRFIDnummBeheer.Text = e.Tag;
-            tbRFIDMBeheer.Text = e.Tag;
+            if (tabICT4Events.SelectedTab == tabICT4Events.TabPages["TabBeheren"])
+            {
+                tbRFIDnummBeheer.Text = e.Tag;
+            }
+            else if (tabICT4Events.SelectedTab == tabICT4Events.TabPages["TabHuren"])
+            {
+                tbRFIDMBeheer.Text = e.Tag;
+            }
             rfid.LED = true;
             Thread.Sleep(100);
             rfid.LED = false;
