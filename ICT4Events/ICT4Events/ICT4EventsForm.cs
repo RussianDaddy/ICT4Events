@@ -576,7 +576,10 @@ namespace ICT4Events
             tempSoortList = mediabeheer.Filteren(searchstring);
             foreach (Mediabeheer.Mediafile m in tempSoortList)
             {
-                LbFeed.Items.Add(m.ToString());
+                if(m.Report == 0)
+                {
+                    LbFeed.Items.Add(m.ToString());
+                }
             }
             tempSoortList = null;
             mediabeheer.SearchedSoortLijst = null;
