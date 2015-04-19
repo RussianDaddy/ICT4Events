@@ -61,28 +61,8 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabHuren);
             tabICT4Events.TabPages.Remove(TabBeheren);
             tabICT4Events.TabPages.Remove(TabUitloggen);
-            //Materiaal Beamer = new Materiaal("Beamer",50);
-            //Materiaal Laptop = new Materiaal("Laptop",100);
-            //Materiaal Hdmi = new Materiaal("HDMI kabel",30);
-            //Materiaal Ethernet = new Materiaal("Ethernet kabel",30);
-
-
-
-            //materiaalbeheer.Exemplaren = new List<Exemplaar>
-            //{
-            //    new Exemplaar(1, Beamer),
-            //    new Exemplaar(2, Beamer),
-            //    new Exemplaar(3, Beamer),
-            //    new Exemplaar(4, Laptop),
-            //    new Exemplaar(5, Laptop),
-            //    new Exemplaar(6, Hdmi),
-            //    new Exemplaar(7, Hdmi),
-            //    new Exemplaar(8, Ethernet),
-            //    new Exemplaar(9, Ethernet)
-            //};
 
             mediabeheer = new Mediabeheer.Mediabeheer();
-            exemplaren = new List<Exemplaar>();
             RefreshAll();
         }
 
