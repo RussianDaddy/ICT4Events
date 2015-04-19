@@ -202,7 +202,12 @@ namespace ICT4Events.Database
             }
             return Reserveringen;
         }
-
+        /// <summary>
+        /// Geeft een lijst waarin alle berichten staan uit de database
+        /// </summary>
+        /// <param name="sql">Het Sql Statement die uitgevoerd moet worden (select statement)</param>
+        /// <param name="categorielijst">Lijst metCategoriën</param>
+        /// <returns>Lijst met alle berichten uit de database</returns>
         public List<Mediabeheer.Mediafile> GetBerichtenList(string sql, List<Mediabeheer.Categorie> categorielijst)
         {
             List<Mediabeheer.Mediafile> BerichtenLijst = new List<Mediabeheer.Mediafile>();
@@ -258,6 +263,12 @@ namespace ICT4Events.Database
             }
             return BerichtenLijst;
         } 
+        /// <summary>
+        /// geeft een lijst met alle categoriën bekend in de database
+        /// </summary>
+        /// <param name="sql">Het Sql Statement die uitgevoerd moet worden (select statement)</param>
+        /// <param name="check">~~</param>
+        /// <returns>Lijst met alle bekende categoriën</returns>
         public List<Mediabeheer.Categorie> GetCategorieLijst(string sql, int check)
         {
             List<Mediabeheer.Categorie> CategorieLijst = new List<Mediabeheer.Categorie>();
@@ -303,7 +314,11 @@ namespace ICT4Events.Database
             }
             return CategorieLijst;
         }
-
+        /// <summary>
+        /// Geeft een lijst met alle Reacties die bekend zijn in de database
+        /// </summary>
+        /// <param name="sql">Het Sql Statement die uitgevoerd moet worden (select statement)</param>
+        /// <returns>de lijst met all reacties die bekend zijn in de database</returns>
         public List<Mediabeheer.Reactie> GetReactieLijst(string sql)
         {
             List<Mediabeheer.Reactie> ReactieLijst = new List<Mediabeheer.Reactie>();

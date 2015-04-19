@@ -303,6 +303,13 @@ namespace ICT4Events
         }
 
         //MediaBeheer
+        /// <summary>
+        /// Als er op de knop Post wordt geklikt, wordt er gekeken of er sprake is van een Mediafile (een originele post) of een reactie (een post op een mediafile).
+        /// vervolgens worden er in beide gevallen de juiste data uitgelezen uit de velden en meegegeven aan de methodes in MediaBeheer. Het id van de post wordt automatisch bepaald zodat er geen conflicten  kunnen komen.
+        /// Als er niet voldaan wordt aan de juiste requirements worden er duidelijke messages gegevens die instructies geven wat te doen om de actie succesvol af te ronden.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btPost_Click(object sender, EventArgs e)
         {
             if (rbReply.Checked)
@@ -409,6 +416,12 @@ namespace ICT4Events
                 RefreshAll();
             }
         }
+        /// <summary>
+        /// De knop view post maakt het mogelijk om de post die geselcteerd is in de listbox te bekijken in een overzichtelijke messagebox. hier wordt alle informatie in gezet zoals wie het heeft geschreven, hoeveel likes het heeft en wat de titel is. 
+        /// Dit kan ook met reacties op posts. hierbij krijg je dan het originele bericht te zien met al zijn informatie, maar je krijgt ook de reactie te zien. Id's worden bepaald door middel van substrings ( vandaar de vele if's en de for loops)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btviewpost_Click(object sender, EventArgs e)
         {
             string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
@@ -464,6 +477,12 @@ namespace ICT4Events
                 MessageBox.Show("Selecteer een Mediafile om te bekijken");
             }
         }
+        /// <summary>
+        /// wanneer er op de knop like wordt geklikt wordt er eerst bepaald welk bericht is geselecteerd. Als het een origineel Mediafile is dan is het mogelijk om deze te liken. 
+        /// het desbetreffende mediaid wordt meegestuurd naar MediaBeheer en hier wordt de likecounte voor dit object opgehoogd.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btlike_Click(object sender, EventArgs e)
         {
             string Selectedtems = Convert.ToString(LbFeed.SelectedItem);
@@ -489,6 +508,12 @@ namespace ICT4Events
             }
 
         }
+        /// <summary>
+        /// Wanneer je op report klikt wordt er bepaald welk item er is geselecteerd en vervolgens wordt de id doorgestuurd naar MediaBeheer.
+        /// Hier wordt de report counter opgehoogt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btreport_Click(object sender, EventArgs e)
         {
             string Selectedtem = Convert.ToString(LbFeed.SelectedItem);
@@ -519,6 +544,12 @@ namespace ICT4Events
             }
 
         }
+        /// <summary>
+        /// Als er op de filter knop wordt gedrukt wordt er gecontroleerd welke checkboxen met soorten berichten zijn aangevinkt, en vervolgens word er een string gestuurd naar MediaBeheer.
+        /// In deze string staan achter elkaar alle Soorten in tekst. Als er berichten zijn met dit soort als attribuut eworden deze berichten weer gegeven.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btFilter_Click(object sender, EventArgs e)
         {
             searchstring = "";
@@ -552,6 +583,11 @@ namespace ICT4Events
             mediabeheer.SearchedSoortLijst = null;
             mediabeheer.SearchedSoortLijst = new List<Mediabeheer.Mediafile>();
         }
+        /// <summary>
+        /// Deze knop heft alle toegepaste filters weer op zodat alle berichten worden laten zien.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btShowAll_Click(object sender, EventArgs e)
         {
             RefreshAll();
@@ -561,6 +597,11 @@ namespace ICT4Events
             chbFoto.Checked = false;
             chbVideo.Checked = false;
         }
+        /// <summary>
+        /// Deze knop laat je een bestand op je computer selecteren en haalt het pad op zodat de file uiteindelijk gestuurd kan worden naar de server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btBrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -572,6 +613,10 @@ namespace ICT4Events
                 tbPath.Text = path;
             }
         }
+        /// <summary>
+        /// Deze methode haalt de laatste Id op van de mediafiles zodat er bij het posten een object aangemaakt kan worden met 1 hoger (auto increment)
+        /// </summary>
+        /// <returns></returns>
         private int GetlatestID()
         {
             tempSoortList = mediabeheer.GetMediafileLijst;
@@ -580,6 +625,9 @@ namespace ICT4Events
             int lastid = lastmediafile.Id;
             return lastid;
         }
+        /// <summary>
+        /// Deze methode haalt de feed en comboboxen leeg en vult ze opnieuw met de meest recente gegevens uit de lijsten (die zijn bijgewerkt uit de database)
+        /// </summary>
         public void RefreshAll()
         {
             LbFeed.Items.Clear();
@@ -592,6 +640,7 @@ namespace ICT4Events
             {
                 LbFeed.Items.Add(r.ToString());
             }
+            cbCategorieAanmaken.Items.Clear();
             foreach (Mediabeheer.Categorie c in mediabeheer.GetCategorieLijst)
             {
                 cbCategorieAanmaken.Items.Add(c.ToString());
@@ -640,6 +689,11 @@ namespace ICT4Events
             mediabeheer.Update();
             RefreshAll();
         }*/
+        /// <summary>
+        /// Disabled Titel textbox pad textbox en de combobox voor het selecteren van een categorie wanneer dit niet van toepassing is bij het geselecteerde soort.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbReply_CheckedChanged(object sender, EventArgs e)
         {
             if (rbReply.Checked)
@@ -655,6 +709,11 @@ namespace ICT4Events
                 cbCategorieAanmaken.Enabled = true;
             }
         }
+        /// <summary>
+        /// Disabled pad textbox wanneer dit niet van toepassing is bij het geselecteerde soort.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbEventAanmaken_CheckedChanged(object sender, EventArgs e)
         {
             if (rbEventAanmaken.Checked)
@@ -668,6 +727,11 @@ namespace ICT4Events
                 cbCategorieAanmaken.Enabled = true;
             }
         }
+        /// <summary>
+        /// Disabled pad textbox wanneer dit niet van toepassing is bij het geselecteerde soort.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbBerichtAanmaken_CheckedChanged(object sender, EventArgs e)
         {
             if (rbBerichtAanmaken.Checked)

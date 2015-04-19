@@ -29,10 +29,18 @@ namespace ICT4Events.Mediabeheer
         public int Like { get; set; }
         public int Report { get; set; }
         public String Gebruikersnaam { get; set; }
+        /// <summary>
+        /// returned de string die wordt getoond in de listbox
+        /// </summary>
+        /// <returns>de string waarin alle gegevens worden gegeven van dit object</returns>
         public override string ToString()
         {
             return Id + " - " + Gebruikersnaam + " - Titel: " + Naam + " - Bericht:" + Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path +*/ + " - Aantal Likes: " + Like /*+ " - Aantal malen gereport: " + Report*/;
         }
+        /// <summary>
+        /// returned de string van dit object die wordt getoont in de messagebox popup
+        /// </summary>
+        /// <returns>de string van dit object die wordt getoont in de messagebox popup</returns>
         public string WholeString()
         {
             string output = string.Format(Id + " - " + Gebruikersnaam + "{0}{0}Titel: " + Naam + "{0}{0}Bericht: " + Bericht /*+" - Soort: " + Type + " - Categorie " + categorie.Naam + " - URL: " + Path +*/ + "{0}{0}Aantal Likes: " + Like /*+ " - Aantal malen gereport: " + Report*/, Environment.NewLine);
