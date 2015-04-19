@@ -1051,6 +1051,11 @@ namespace ICT4Events
             tabICT4Events.TabPages.Add(TabInloggen);
         }
 
+        private void ICT4EventsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

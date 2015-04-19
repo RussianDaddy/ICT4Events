@@ -114,7 +114,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbGasten = new System.Windows.Forms.ListBox();
             this.btnZoekExemplaar = new System.Windows.Forms.Button();
-            this.label43 = new System.Windows.Forms.Label();
+            this.lblBorg = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.tbExemplaarId = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -159,6 +159,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tmRFIDTextboxClear = new System.Windows.Forms.Timer(this.components);
+            this.btnTotaleBorg = new System.Windows.Forms.Button();
             this.tabICT4Events.SuspendLayout();
             this.TabInloggen.SuspendLayout();
             this.gbInloggen.SuspendLayout();
@@ -1040,9 +1041,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.btnTotaleBorg);
             this.groupBox1.Controls.Add(this.lbGasten);
             this.groupBox1.Controls.Add(this.btnZoekExemplaar);
-            this.groupBox1.Controls.Add(this.label43);
+            this.groupBox1.Controls.Add(this.lblBorg);
             this.groupBox1.Controls.Add(this.label42);
             this.groupBox1.Controls.Add(this.tbExemplaarId);
             this.groupBox1.Controls.Add(this.label20);
@@ -1076,14 +1078,14 @@
             this.btnZoekExemplaar.UseVisualStyleBackColor = true;
             this.btnZoekExemplaar.Click += new System.EventHandler(this.btnZoekExemplaar_Click);
             // 
-            // label43
+            // lblBorg
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(6, 473);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 13);
-            this.label43.TabIndex = 12;
-            this.label43.Text = "label43";
+            this.lblBorg.AutoSize = true;
+            this.lblBorg.Location = new System.Drawing.Point(97, 476);
+            this.lblBorg.Name = "lblBorg";
+            this.lblBorg.Size = new System.Drawing.Size(41, 13);
+            this.lblBorg.TabIndex = 12;
+            this.lblBorg.Text = "label43";
             // 
             // label42
             // 
@@ -1502,6 +1504,15 @@
             this.tmRFIDTextboxClear.Interval = 2000;
             this.tmRFIDTextboxClear.Tick += new System.EventHandler(this.tmRFIDTextboxClear_Tick);
             // 
+            // btnTotaleBorg
+            // 
+            this.btnTotaleBorg.Location = new System.Drawing.Point(9, 471);
+            this.btnTotaleBorg.Name = "btnTotaleBorg";
+            this.btnTotaleBorg.Size = new System.Drawing.Size(82, 23);
+            this.btnTotaleBorg.TabIndex = 15;
+            this.btnTotaleBorg.Text = "Bereken Borg";
+            this.btnTotaleBorg.UseVisualStyleBackColor = true;
+            // 
             // ICT4EventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1510,6 +1521,7 @@
             this.Controls.Add(this.tabICT4Events);
             this.Name = "ICT4EventsForm";
             this.Text = "ICT4Events";
+            this.Load += new System.EventHandler(this.ICT4EventsForm_Load);
             this.tabICT4Events.ResumeLayout(false);
             this.TabInloggen.ResumeLayout(false);
             this.gbInloggen.ResumeLayout(false);
@@ -1623,7 +1635,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox tbExemplaarId;
-        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label lblBorg;
         private System.Windows.Forms.CheckedListBox clbReserveringKampeerplaatsen;
         private System.Windows.Forms.CheckedListBox clbReserveringGebruikers;
         private System.Windows.Forms.Button btnAanmakenBeheer;
@@ -1684,6 +1696,7 @@
         private System.Windows.Forms.RadioButton rbVideoAanmaken;
         private System.Windows.Forms.RadioButton rbBerichtAanmaken;
         private System.Windows.Forms.RadioButton rbReply;
+        private System.Windows.Forms.Button btnTotaleBorg;
     }
 }
 

@@ -113,6 +113,18 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
+        public static List<string> GetTotaleBorg()
+        {
+            string query = "SELECT Borg FROM Materiaal m";
+            DataTable materiaalZoeken = database.voerQueryUit(query);
+            List<string> stringList = new List<string>();
+            foreach (DataRow dr in materiaalZoeken.Rows)
+            {
+                stringList.Add(dr[0] + "");
+            }
+            return stringList;
+        }
+
         public static List<string> GetMaxExemplaar()
         {
             string query = "SELECT ID FROM Materiaal m";
