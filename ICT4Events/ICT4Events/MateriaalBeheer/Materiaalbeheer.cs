@@ -15,8 +15,10 @@ namespace ICT4Events.MateriaalBeheer
 
         private static Database.Database database = new Database.Database();
 
-
-
+        /// <summary>
+        /// Insert de query met id, uitleendatum, retourdatum en gebruikersnaam in de 
+        /// database.
+        /// </summary>
         public static bool MateriaalHuren(int id, DateTime uitleendatum, DateTime retourdatum, string gebruikersnaam)
         {
             try
@@ -34,6 +36,9 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool UitgevenRFID(string gebruikersnaam, string rfid)
         {
             bool Check = false;
@@ -64,6 +69,10 @@ namespace ICT4Events.MateriaalBeheer
             return Check;
         }
 
+        /// <summary>
+        /// Gebruikt een SELECT statement om exemplaar en materiaal te koppelen.
+        /// Vervolgens laat het het ExemplaarId, borg, de soort zien.
+        /// </summary>
         public List<string> AlleExemplaren()
         {
             string query =
@@ -77,6 +86,11 @@ namespace ICT4Events.MateriaalBeheer
             return stringList;
         }
 
+        /// <summary>
+        /// Gebruikt een SELECT statement om exemplaar en materiaal te koppelen.
+        /// Vervolgens laat het het ExemplaarId, borg, de soort zien.
+        /// De parameter is het Id van het exemplaar.
+        /// </summary>
         public static List<string> ZoekMateriaal(string id)
         {
             try
@@ -99,6 +113,22 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
+        public static List<string> GetMaxExemplaar()
+        {
+            string query = "SELECT ID FROM Materiaal m";
+            DataTable materiaalZoeken = database.voerQueryUit(query);
+            List<string> stringList = new List<string>();
+            foreach (DataRow dr in materiaalZoeken.Rows)
+            {
+                stringList.Add(dr[0] + "");
+            }
+            return stringList;
+        }
+
+        /// <summary>
+        /// Gebruikt een update statement waarbij een exemplaar -en uitleningId
+        /// wordt meegegeven.
+        /// </summary>
         public bool UpdateUitleningId(int exemplaarId, int uitleningId)
         {
             try
@@ -113,6 +143,9 @@ namespace ICT4Events.MateriaalBeheer
             }
         }
 
+        /// <summary>
+        /// Laat een lijst van alle gebruikers uit de database zien.
+        /// </summary>
         public List<string> AlleGasten()
         {
             string query = "SELECT gebruikersnaam, naam FROM Gebruiker";
@@ -124,7 +157,10 @@ namespace ICT4Events.MateriaalBeheer
             }
             return stringList;
         }
-
+        /// <summary>
+        /// Haalt alle uitleningen uit de database en geeft hierbij het ID van 
+        /// deze uitlening.
+        /// </summary>
         public static List<string> AlleUitleningen()
         {
             string query = "SELECT ID FROM Uitlening";

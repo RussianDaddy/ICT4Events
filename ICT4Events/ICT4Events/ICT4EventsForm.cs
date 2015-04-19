@@ -27,7 +27,6 @@ namespace ICT4Events
         string CheckisMediafile;
         private string stringId;
         private string sstringId;
-        private int idTeller = 2;
         private string path;
         private string loggedinuser;
         private int LastID;
@@ -886,10 +885,24 @@ namespace ICT4Events
         }
 
         //MateriaalBheer
+
         private void btnZoekExemplaar_Click(object sender, EventArgs e)
         {
-            clbExemplaren.DataSource = null;
-            clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+            
+                int maxId = Convert.ToInt32(Materiaalbeheer.GetMaxExemplaar().Max());
+                if (tbExemplaarId.Text == "")
+                {
+                    MessageBox.Show("Er is niets ingevuld.");
+                }
+                else if (Convert.ToInt32(tbExemplaarId.Text) <=  maxId)
+                {
+                    clbExemplaren.DataSource = null;
+                    clbExemplaren.DataSource = Materiaalbeheer.ZoekMateriaal(tbExemplaarId.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Het ID wat je hebt ingevuld bestaat niet");
+                }
         }
 
         private void btnKoppelMateriaalBeheer_Click(object sender, EventArgs e)
@@ -902,10 +915,14 @@ namespace ICT4Events
             {
                 materiaalbeheer.UitgevenRFID(tbGebruikersnaamMBeheer.Text, tbRFIDMBeheer.Text);
                 MessageBox.Show("RFID is gekoppeld.");
-
             }
         }
 
+        /// <summary>
+        /// Gebruikt het volgende uitleningId en update voor elk gecheckte item in de 
+        /// checked list box. De datum is het moment dat er op de knop wordt gedrukt. 
+        /// De retourdatum is drie dagen daarna.
+        /// </summary>
         private void btnUitlenen_Click(object sender, EventArgs e)
         {
             string checkedGebruikersnaam = lbGasten.SelectedItem.ToString();
@@ -928,19 +945,40 @@ namespace ICT4Events
             }
         }
 
-
+        /// <summary>
+        /// Elk aangevinkt exemplaar in de list box met exemplaren wordt ook in de lijst
+        /// met exemplaren die verhuurd worden gezet. Als het exemplaar al in de lijst staat
+        /// krijgt de gebruiker een error.
+        /// </summary>
         private void btnVerplaatsExemplaren_Click(object sender, EventArgs e)
         {
+            List<string> stringList = new List<string>();
+            foreach (string exemplaarH in clbExemplaarHuren.Items)
+            {
+                stringList.Add(exemplaarH);
+            }
+            
             foreach (string exemplaar in clbExemplaren.CheckedItems)
             {
-                clbExemplaarHuren.Items.Add(exemplaar);
+                    if (!stringList.Contains(exemplaar))
+                    {   
+                        clbExemplaarHuren.Items.Add(exemplaar);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Dit exemplaar staat al in de lijst van de exemplaren die verhuurd worden.");
+                    }
             }
+
             foreach (int i in clbExemplaren.CheckedIndices)
             {
                 clbExemplaren.SetItemCheckState(i, CheckState.Unchecked);
             }
         }
 
+        /// <summary>
+        /// Verwijdert elk aangevinkt exemplaar uit de lijst.
+        /// </summary>
         private void btnTerugplaatsenExemplaar_Click(object sender, EventArgs e)
         {
             foreach (string item in clbExemplaarHuren.CheckedItems.OfType<string>().ToList())
