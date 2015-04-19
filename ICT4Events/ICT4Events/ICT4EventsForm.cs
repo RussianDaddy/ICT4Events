@@ -604,13 +604,51 @@ namespace ICT4Events
         /// <param name="e"></param>
         private void btBrowse_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.ShowDialog();
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter =
+                "jpg image (*.jpg)|*.jpg|jpeg image (*.jpeg)|*.jpeg|gif image (*.gif)|*.gif|png image (*.png)|*.png|wmv video (*.wmv)|*.wmv|mp4 video (*.mp4)|*.mp4|txt files (*.txt)|*.txt";
+            openFileDialog.Title = "Upload een mediafile";
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK & openFileDialog.FileName != "")
             {
-                path = openFileDialog1.FileName;
-                tbPath.Text = path;
+                string bestandPath = openFileDialog.FileName;
+                string extenion = Path.GetExtension(openFileDialog.FileName);
+                string bestandsnaam = openFileDialog.SafeFileName;
+                if (extenion.Equals(".jpg") || extenion.Equals(".JPG") || extenion.Equals(".jpeg") || extenion.Equals(".gif") || extenion.Equals(".png"))
+                {
+                    mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 1);
+                }
+                if (extenion.Equals(".wmv") || extenion.Equals(".mp4"))
+                {
+                    mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 2);
+                }
+                if (extenion.Equals(".txt"))
+                {
+                    mediabeheer.UploadenMedia(bestandPath, bestandsnaam, 3);
+                }
+            }
+        }
+        /// <summary>
+        /// Maakt het mogelijk om een bestand wat op de servers is geupload te downloaden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btdownloadfile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Download een mediafile";
+            openFileDialog.Filter =
+                "jpg image (*.jpg)|*.jpg|jpeg image (*.jpeg)|*.jpeg|gif image (*.gif)|*.gif|png image (*.png)|*.png|wmv video (*.wmv)|*.wmv|mp4 video (*.mp4)|*.mp4|txt files (*.txt)|*.txt";
+            openFileDialog.InitialDirectory = @"\\SRV2\";
+            if (openFileDialog.ShowDialog() == DialogResult.OK & openFileDialog.FileName != "")
+            {
+                string bestandPath = openFileDialog.FileName;
+                string bestandsnaam = openFileDialog.SafeFileName;
+                if (mediabeheer.DownloadenMedia(bestandPath, bestandsnaam))
+                {
+                    MessageBox.Show("Bestand is opgeslagen in: " + @"C:\Users\Public\ICT4Events");
+                }
             }
         }
         /// <summary>
@@ -945,6 +983,8 @@ namespace ICT4Events
             tabICT4Events.TabPages.Remove(TabBeheren);
             tabICT4Events.TabPages.Add(TabInloggen);
         }
+
+
 
 
 

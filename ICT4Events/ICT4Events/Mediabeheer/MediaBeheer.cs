@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Data;
+using System.IO;
 
 namespace ICT4Events.Mediabeheer
 {
@@ -152,9 +153,24 @@ namespace ICT4Events.Mediabeheer
         /// download de bestanden naar uw computer
         /// </summary>
         /// <param name="Id"></param>
-        public void DownloadenMedia(int Id)
+        public bool DownloadenMedia(string bronFile, string bestandsnaam)
         {
             //Code voor het downloaden van media vanag de server
+            string doelPath = @"C:\Users\Public\ICT4Events";
+            string doelBestand = Path.Combine(doelPath, bestandsnaam);
+            if (!Directory.Exists(doelPath))
+            {
+                Directory.CreateDirectory(doelPath);
+            }
+            try
+            {
+                File.Copy(bronFile, doelBestand, true);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         /// <summary>
         /// upload het bestand vanaf uw computer naar de server
@@ -163,9 +179,21 @@ namespace ICT4Events.Mediabeheer
         /// <param name="Type"></param>
         /// <param name="Path"></param>
         /// <param name="categorie"></param>
-        public void UploadenMedia(String Naam, String Type, String Path, Categorie categorie/*Gebruiker gebuiker*/)
+        public void UploadenMedia(string bronPath, string bestandsnaam, int type)
         {
             //Code voor het uploaden van media naar de server
+            switch (type)
+            {
+                case 1:
+                    File.Copy(bronPath, @"\\SRV2\Foto\" + bestandsnaam);
+                    break;
+                case 2:
+                    File.Copy(bronPath, @"\\SRV2\Video\" + bestandsnaam);
+                    break;
+                case 3:
+                    File.Copy(bronPath, @"\\SRV2\Bestanden\" + bestandsnaam);
+                    break;
+            }
         }
         /// <summary>
         /// Filters alle berichten die voldoen aan de toegepaste filters 

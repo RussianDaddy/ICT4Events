@@ -767,6 +767,7 @@
             this.btdownloadfile.TabIndex = 5;
             this.btdownloadfile.Text = "Download file!";
             this.btdownloadfile.UseVisualStyleBackColor = true;
+            this.btdownloadfile.Click += new System.EventHandler(this.btdownloadfile_Click);
             // 
             // btviewpost
             // 
