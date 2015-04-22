@@ -935,10 +935,13 @@ namespace ICT4Events
             {
                 MessageBox.Show("Vul geldige informatie in.");
             }
+            else if(materiaalbeheer.UitgevenRFID(tbGebruikersnaamMBeheer.Text, tbRFIDMBeheer.Text))
+            {
+                MessageBox.Show("RFID is gekoppeld.");
+            }
             else
             {
-                materiaalbeheer.UitgevenRFID(tbGebruikersnaamMBeheer.Text, tbRFIDMBeheer.Text);
-                MessageBox.Show("RFID is gekoppeld.");
+                MessageBox.Show("Koppelen is niet gelukt.");
             }
         }
 

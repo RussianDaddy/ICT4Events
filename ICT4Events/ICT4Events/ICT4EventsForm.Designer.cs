@@ -1472,7 +1472,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 180000;
+            this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.refreshLijstTimer_Tick);
             // 
             // tmRFIDTextboxClear

@@ -12,6 +12,7 @@ namespace ICT4Events.MateriaalBeheer
     internal class Materiaalbeheer
     {
         private static Database.Database database = new Database.Database();
+        private GebruikerBeheer.GebruikerBeheer gebruikerbeheer = new GebruikerBeheer.GebruikerBeheer();
 
         /// <summary>
         /// Insert de query met id, uitleendatum, retourdatum en gebruikersnaam in de 
@@ -39,32 +40,37 @@ namespace ICT4Events.MateriaalBeheer
         /// </summary>
         public bool UitgevenRFID(string gebruikersnaam, string rfid)
         {
-            bool Check = false;
             List<Gebruiker> Gebruikers = new List<Gebruiker>();
-            string sqlGebruiker = "SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM = '" + gebruikersnaam + "'";
+            string sqlGebruiker = "SELECT * FROM GEBRUIKER";
             Gebruikers = database.GetGebruikerList(sqlGebruiker);
             try
             {  
                 foreach (Gebruiker TempGebruiker in Gebruikers)
                 {
-                    if (TempGebruiker.RFID != "null")
+                    if (TempGebruiker.RFID != rfid)
                     {
-                        string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
-                        database.Insert(queryUpdate);
-                        Check = true;
-                    }
-                    else
-                    {
-                        Check = false;
+                        if (TempGebruiker.Gebruikersnaam == gebruikersnaam)
+                        {
+                            if (TempGebruiker.RFID != "null")
+                            {
+                                string queryUpdate = "UPDATE Gebruiker SET RFID = '" + rfid + "' WHERE gebruikersnaam = '" + gebruikersnaam + "'";
+                                database.Insert(queryUpdate);
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
 
             }
             catch (Exception)
             {
-                Check = false;
+                return false;
             }
-            return Check;
+            return false;
         }
 
         /// <summary>
