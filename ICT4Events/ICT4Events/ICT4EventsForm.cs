@@ -688,6 +688,7 @@ namespace ICT4Events
         /// </summary>
         public void RefreshAll()
         {
+            mediabeheer.Update();
             LbFeed.Items.Clear();
             foreach (Mediabeheer.Mediafile m in mediabeheer.GetMediafileLijst)
             {
