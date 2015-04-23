@@ -441,8 +441,8 @@ namespace ICT4Events
                                         sstringId = Selectedtem.Substring(Selectedtem.IndexOf("d"), y);
                                         if (sstringId.IndexOf(",") == -1)
                                         {
-                                            string grg = Selectedtem.Substring(3, y - 3);
-                                            GetMediaId = grg.Substring(1, grg.Length - 1);
+                                            string grg = sstringId.Substring(3, y - 3);
+                                            GetMediaId = grg;
                                             y = -1;
                                         }
                                     }
