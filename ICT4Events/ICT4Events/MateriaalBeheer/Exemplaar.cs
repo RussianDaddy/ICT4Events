@@ -2,9 +2,15 @@
 {
     class Exemplaar
     {
-        public Exemplaar(Materiaal materiaal)
+        public int Id { get; set; }
+        public Exemplaar(int id, Materiaal materiaal)
         {
-            
+            Id = id;
+        }
+
+        public override string ToString()
+        {
+            return Id.ToString();
         }
     }
 }

@@ -6,17 +6,30 @@ using System.Threading.Tasks;
 
 namespace ICT4Events.ReserveringBeheer
 {
+    /// <summary>
+    /// In deze klasse worden de objecten van de reserveringen gemaakt
+    /// </summary>
     class Reservering
     {
-        private int Nummer;
-        private DateTime Datum;
-        private bool Betaald;
+        public int Nummer { get; set; }
+        public DateTime AankomstDatum { get; set; }
+        public DateTime VertrekDatum { get; set; }
+        public bool Betaald { get; set; }
 
-        public Reservering(int nummer, DateTime datum, bool betaald)
+
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="number"> Het reserveringsnummer </param>
+        /// <param name="arrivalDate"> De aankomstdatum van de gasten </param>
+        /// <param name="departureDate"> De vertrekdatum van de gasten </param>
+        /// <param name="paid"> De check om te zien of de reservering betaald is </param>
+        public Reservering(int number, DateTime arrivalDate, DateTime departureDate, bool paid)
         {
-            this.Nummer = nummer;
-            this.Datum = datum;
-            this.Betaald = betaald;
+            Nummer = number;
+            AankomstDatum = arrivalDate;
+            VertrekDatum = departureDate;
+            Betaald = paid;
         }
     }
 }

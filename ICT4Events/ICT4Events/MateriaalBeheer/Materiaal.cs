@@ -1,14 +1,20 @@
-﻿namespace ICT4Events.MateriaalBeheer
+﻿using System.Collections.Generic;
+
+namespace ICT4Events.MateriaalBeheer
 {
     class Materiaal
     {
-        private string soort;
-        private int borg;
-
+        public string Soort { get; set; }
+        public int Borg { get; set; } 
         public Materiaal(string soort, int borg)
         {
-            this.soort = soort;
-            this.borg = borg;
+            Soort = soort;
+            Borg = borg;
+        }
+
+        public override string ToString()
+        {
+            return Soort + " - " + Borg;
         }
     }
 }
